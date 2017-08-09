@@ -1,0 +1,13 @@
+05/10/2016 01:05 p. m. => sesion inactiva
+05/10/2016 01:05 p. m. => Data Source=PORFIRIO\SQLEXPRESS;Initial Catalog=cuenca_conagua;Integrated Security=True
+05/10/2016 04:30 p. m. => sesion inactiva
+05/10/2016 04:30 p. m. => Data Source=PORFIRIO\SQLEXPRESS;Initial Catalog=cuenca_conagua;Integrated Security=True
+05/10/2016 04:34 p. m. => sesion inactiva
+05/10/2016 04:34 p. m. => Data Source=PORFIRIO\SQLEXPRESS;Initial Catalog=cuenca_conagua;Integrated Security=True
+05/10/2016 04:38 p. m. => sesion inactiva
+14/10/2016 10:47 a. m. => sesion inactiva
+14/10/2016 11:23 a. m. => sesion inactiva
+14/10/2016 11:23 a. m. => sesion inactiva
+14/10/2016 11:23 a. m. => Data Source=UAZSERVER\SQLEXPRESS;Initial Catalog=cuenca_conagua;Integrated Security=True
+20/10/2016 12:32 p. m. => sesion inactiva
+20/10/2016 12:32 p. m. => Data Source=UAZSERVER\SQLEXPRESS;Initial Catalog=cuenca_conagua;Integrated Security=True

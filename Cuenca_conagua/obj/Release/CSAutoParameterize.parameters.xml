@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="sqlConnectionString-Web.config Connection String" description="sqlConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=UAZSERVER\SQLEXPRESS;Initial Catalog=cuenca_conagua;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\PorfirioÁngel\\OneDrive\\Servicio_social\\Cuenca_web\\Cuenca_conagua\\Cuenca_conagua\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='sqlConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

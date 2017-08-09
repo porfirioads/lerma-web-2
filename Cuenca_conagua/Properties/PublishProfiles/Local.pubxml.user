@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\inetpub\wwwroot\cuenca</_PublishTargetUrl>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3Kxto02Ld0KQKIC7W2qfxQAAAAACAAAAAAAQZgAAAAEAACAAAADbm/nrJsJMwfnEJHVkcBTuqoDKDUYE0MPDHuylY79CVgAAAAAOgAAAAAIAACAAAAA1laUmeN6rH6lM4CbhdSrMZnxIXAs9LVzYB2eIU8XvxjAAAAB97WOqzNSHykQFZS5ykfYX+G9eVNqqmkgyqtD3GwxcticIHxJgN1sdpb1LGB3eY8hAAAAA93D4MAuo7Va4tzc6hCFDZaeOTvWxqoS/X5rPheSp4JAYXCNIISe6DbXsf/pUsq8XERiZUO3bPuiFgcKAw3i5zQ==</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>07/14/2016 16:21:56</publishTime>
+    </File>
+    <File Include="App_Code/Constantes.cs">
+      <publishTime>08/28/2016 16:38:42</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>07/14/2016 16:21:56</publishTime>
+    </File>
+    <File Include="bin/App_Code.compiled">
+      <publishTime>09/09/2016 00:24:41</publishTime>
+    </File>
+    <File Include="bin/App_Code.dll">
+      <publishTime>09/09/2016 00:24:41</publishTime>
+    </File>
+    <File Include="bin/Cuenca_conagua.dll">
+      <publishTime>09/08/2016 23:34:53</publishTime>
+    </File>
+    <File Include="bin/Excel.dll">
+      <publishTime>08/24/2009 16:23:16</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>08/27/2016 09:53:40</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>12/07/2015 19:04:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>03/10/2016 14:26:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>03/09/2016 12:00:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>03/09/2016 11:57:34</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>06/15/2015 02:06:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>06/18/2015 20:19:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>06/18/2015 20:19:46</publishTime>
+    </File>
+    <File Include="css/combined.css">
+      <publishTime>09/07/2016 23:00:23</publishTime>
+    </File>
+    <File Include="css/dropzone.css">
+      <publishTime>08/27/2016 17:14:41</publishTime>
+    </File>
+    <File Include="css/my_charts.css">
+      <publishTime>09/05/2016 20:24:26</publishTime>
+    </File>
+    <File Include="js/chart.min.js">
+      <publishTime>09/05/2016 18:12:56</publishTime>
+    </File>
+    <File Include="js/chart_general.js">
+      <publishTime>09/05/2016 18:49:00</publishTime>
+    </File>
+    <File Include="js/chart_precipitacion_media.js">
+      <publishTime>09/06/2016 22:24:20</publishTime>
+    </File>
+    <File Include="js/dropzone.js">
+      <publishTime>08/27/2016 23:09:22</publishTime>
+    </File>
+    <File Include="js/general.js">
+      <publishTime>07/15/2016 12:42:49</publishTime>
+    </File>
+    <File Include="js/jquery-3.1.0.min.js">
+      <publishTime>07/15/2016 09:33:29</publishTime>
+    </File>
+    <File Include="js/pager_historica.js">
+      <publishTime>09/05/2016 17:52:48</publishTime>
+    </File>
+    <File Include="js/subir_datos.js">
+      <publishTime>08/31/2016 23:14:38</publishTime>
+    </File>
+    <File Include="js/upload_data.js">
+      <publishTime>09/07/2016 23:04:47</publishTime>
+    </File>
+    <File Include="js/validador_login.js">
+      <publishTime>09/07/2016 22:50:33</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/14/2016 16:21:57</publishTime>
+    </File>
+    <File Include="pages/boletines.aspx">
+      <publishTime>09/03/2016 12:42:08</publishTime>
+    </File>
+    <File Include="pages/general.aspx">
+      <publishTime>09/04/2016 00:26:13</publishTime>
+    </File>
+    <File Include="pages/hidroclimatologica.aspx">
+      <publishTime>07/15/2016 13:52:07</publishTime>
+    </File>
+    <File Include="pages/historica.aspx">
+      <publishTime>09/07/2016 23:09:02</publishTime>
+    </File>
+    <File Include="pages/inicio.aspx">
+      <publishTime>09/03/2016 23:56:50</publishTime>
+    </File>
+    <File Include="pages/login_admin.aspx">
+      <publishTime>09/07/2016 23:00:56</publishTime>
+    </File>
+    <File Include="pages/reglamentacion.aspx">
+      <publishTime>09/03/2016 12:48:43</publishTime>
+    </File>
+    <File Include="pages/subir_datos.aspx">
+      <publishTime>09/03/2016 12:55:47</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>09/09/2016 00:24:32</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin01_1992.pdf">
+      <publishTime>11/27/2015 11:06:48</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin02_1993.pdf">
+      <publishTime>11/27/2015 11:18:40</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin03_1994.pdf">
+      <publishTime>11/27/2015 11:18:42</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin04_1995.pdf">
+      <publishTime>11/27/2015 11:18:44</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin05_1996.pdf">
+      <publishTime>11/27/2015 11:18:46</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin06_1997.pdf">
+      <publishTime>11/27/2015 11:18:48</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin07_1998.pdf">
+      <publishTime>11/27/2015 11:18:50</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin08_1999.pdf">
+      <publishTime>11/27/2015 11:18:54</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin09_2000.pdf">
+      <publishTime>11/27/2015 11:18:58</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin10_2001.pdf">
+      <publishTime>11/27/2015 11:19:00</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin11_2002.pdf">
+      <publishTime>11/27/2015 11:19:08</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin12_2003.pdf">
+      <publishTime>11/27/2015 11:19:06</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin13_2004.pdf">
+      <publishTime>11/27/2015 11:19:08</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin14_2005.pdf">
+      <publishTime>11/27/2015 11:19:04</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin15_2006.pdf">
+      <publishTime>07/22/2016 09:57:19</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin16_2007.pdf">
+      <publishTime>11/27/2015 11:19:12</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin17_2007.pdf">
+      <publishTime>11/27/2015 11:19:12</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin18_2009.pdf">
+      <publishTime>07/22/2016 09:57:19</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin19_2010.pdf">
+      <publishTime>07/22/2016 09:57:19</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin20_2011.pdf">
+      <publishTime>07/22/2016 09:57:19</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin21_2012.pdf">
+      <publishTime>07/22/2016 09:57:19</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin22_2013.pdf">
+      <publishTime>07/22/2016 09:57:19</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin23_2014.pdf">
+      <publishTime>07/22/2016 09:57:19</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin24_2015.pdf">
+      <publishTime>07/22/2016 09:57:19</publishTime>
+    </File>
+    <File Include="res/boletines/LermaBoletin25_2016.pdf">
+      <publishTime>07/22/2016 09:57:19</publishTime>
+    </File>
+    <File Include="res/docs_reglamentacion/1_acuerdo_1991.pdf">
+      <publishTime>07/15/2016 15:49:51</publishTime>
+    </File>
+    <File Include="res/docs_reglamentacion/2_acuerdo_de_coordinación_2004.pdf">
+      <publishTime>07/15/2016 15:49:51</publishTime>
+    </File>
+    <File Include="res/docs_reglamentacion/3_convenio_2004.pdf">
+      <publishTime>07/15/2016 15:49:51</publishTime>
+    </File>
+    <File Include="res/docs_reglamentacion/4_decreto_2014.pdf">
+      <publishTime>07/15/2016 15:49:51</publishTime>
+    </File>
+    <File Include="res/icons/conagua.ico">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/cuenca_lc_con_nombres.png.png">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/cuenca_lc_sin_nombres.png">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/fondo_menu.jpg">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/gral_almacenamientos.png">
+      <publishTime>07/15/2016 13:19:11</publishTime>
+    </File>
+    <File Include="res/images/gral_corrientes.png">
+      <publishTime>07/15/2016 12:50:10</publishTime>
+    </File>
+    <File Include="res/images/gral_localizacion.png">
+      <publishTime>07/14/2016 21:57:46</publishTime>
+    </File>
+    <File Include="res/images/gral_regionalizacion_1.png">
+      <publishTime>07/14/2016 22:09:34</publishTime>
+    </File>
+    <File Include="res/images/gral_regionalizacion_2.jpg">
+      <publishTime>07/14/2016 22:10:23</publishTime>
+    </File>
+    <File Include="res/images/gral_usuarios.png">
+      <publishTime>07/15/2016 13:21:53</publishTime>
+    </File>
+    <File Include="res/images/logoSEMARNAT_hoz.png">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/loguito.png">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/rs.png">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/semarnat.jpg">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/SubcuencaLaja1.jpg">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/SubcuencaLaja1.png">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/SubcuencaLaja2.jpg">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/SubcuencaLaja2.png">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/SubcuencaLerma5.jpg">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/SubcuencaLerma5.png">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/SubcuencaQueretaro.jpg">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/SubcuencaQueretaro.png">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/SubcuencaTurbio.jpg">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/SubcuencaTurbio.png">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/tw.png">
+      <publishTime>06/02/2016 07:35:00</publishTime>
+    </File>
+    <File Include="res/images/upload_icon.png">
+      <publishTime>08/27/2016 14:58:32</publishTime>
+    </File>
+    <File Include="res/texts/general_almacenamientos.html">
+      <publishTime>07/15/2016 13:22:55</publishTime>
+    </File>
+    <File Include="res/texts/general_corrientes.html">
+      <publishTime>07/15/2016 13:22:55</publishTime>
+    </File>
+    <File Include="res/texts/general_cuenca.html">
+      <publishTime>07/14/2016 21:46:33</publishTime>
+    </File>
+    <File Include="res/texts/general_localizacion.html">
+      <publishTime>07/14/2016 22:31:45</publishTime>
+    </File>
+    <File Include="res/texts/general_regionalizacion.html">
+      <publishTime>07/14/2016 23:55:52</publishTime>
+    </File>
+    <File Include="res/texts/general_usuarios.html">
+      <publishTime>07/15/2016 13:22:55</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.js">
+      <publishTime>07/14/2016 16:21:57</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.min.js">
+      <publishTime>07/14/2016 16:21:56</publishTime>
+    </File>
+    <File Include="themes/fa/theme.js">
+      <publishTime>08/29/2016 21:17:27</publishTime>
+    </File>
+    <File Include="themes/gly/theme.js">
+      <publishTime>08/29/2016 21:17:27</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/09/2016 00:31:24</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

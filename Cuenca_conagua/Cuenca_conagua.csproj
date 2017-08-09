@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ABB38E5F-1D36-445F-89C5-65A49B9F170B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cuenca_conagua</RootNamespace>
+    <AssemblyName>Cuenca_conagua</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Cuenca_conagua.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Excel, Version=2.0.1.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Snippets\CuencaFilesIO\CuencaFilesIO\bin\Debug\Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Snippets\CuencaFilesIO\CuencaFilesIO\bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\combined.css" />
+    <Content Include="css\dropzone.css" />
+    <Content Include="css\my_charts.css" />
+    <Content Include="js\Chart.min.js" />
+    <Content Include="js\chart_escurrimiento_anual.js" />
+    <Content Include="js\chart_general.js" />
+    <Content Include="js\chart_precipitacion_media.js" />
+    <Content Include="js\chart_volumenes.js" />
+    <Content Include="js\dropzone.js" />
+    <Content Include="js\pager_general.js" />
+    <Content Include="js\jquery-3.1.0.min.js" />
+    <Content Include="js\pager_historica.js" />
+    <Content Include="js\upload_data.js" />
+    <Content Include="js\validador_login.js" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pages\login_admin.aspx" />
+    <Content Include="pages\subir_datos.aspx" />
+    <Content Include="res\boletines\LermaBoletin01_1992.pdf" />
+    <Content Include="res\boletines\LermaBoletin02_1993.pdf" />
+    <Content Include="res\boletines\LermaBoletin03_1994.pdf" />
+    <Content Include="res\boletines\LermaBoletin04_1995.pdf" />
+    <Content Include="res\boletines\LermaBoletin05_1996.pdf" />
+    <Content Include="res\boletines\LermaBoletin06_1997.pdf" />
+    <Content Include="res\boletines\LermaBoletin07_1998.pdf" />
+    <Content Include="res\boletines\LermaBoletin08_1999.pdf" />
+    <Content Include="res\boletines\LermaBoletin09_2000.pdf" />
+    <Content Include="res\boletines\LermaBoletin10_2001.pdf" />
+    <Content Include="res\boletines\LermaBoletin11_2002.pdf" />
+    <Content Include="res\boletines\LermaBoletin12_2003.pdf" />
+    <Content Include="res\boletines\LermaBoletin13_2004.pdf" />
+    <Content Include="res\boletines\LermaBoletin14_2005.pdf" />
+    <Content Include="res\boletines\LermaBoletin16_2007.pdf" />
+    <Content Include="res\boletines\LermaBoletin17_2007.pdf" />
+    <Content Include="res\docs_reglamentacion\1_acuerdo_1991.pdf" />
+    <Content Include="res\docs_reglamentacion\2_acuerdo_de_coordinación_2004.pdf" />
+    <Content Include="res\docs_reglamentacion\3_convenio_2004.pdf" />
+    <Content Include="res\docs_reglamentacion\4_decreto_2014.pdf" />
+    <Content Include="res\boletines\LermaBoletin15_2006.pdf" />
+    <Content Include="res\boletines\LermaBoletin18_2009.pdf" />
+    <Content Include="res\boletines\LermaBoletin19_2010.pdf" />
+    <Content Include="res\boletines\LermaBoletin20_2011.pdf" />
+    <Content Include="res\boletines\LermaBoletin21_2012.pdf" />
+    <Content Include="res\boletines\LermaBoletin22_2013.pdf" />
+    <Content Include="res\boletines\LermaBoletin23_2014.pdf" />
+    <Content Include="res\boletines\LermaBoletin24_2015.pdf" />
+    <Content Include="res\boletines\LermaBoletin25_2016.pdf" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="pages\boletines.aspx" />
+    <Content Include="pages\hidroclimatologica.aspx" />
+    <Content Include="pages\historica.aspx" />
+    <Content Include="pages\inicio.aspx" />
+    <Content Include="pages\general.aspx" />
+    <Content Include="pages\reglamentacion.aspx" />
+    <Content Include="res\icons\conagua.ico" />
+    <Content Include="res\images\cuenca_lc_con_nombres.png.png" />
+    <Content Include="res\images\cuenca_lc_sin_nombres.png" />
+    <Content Include="res\images\gral_corrientes.png" />
+    <Content Include="res\images\fondo_menu.jpg" />
+    <Content Include="res\images\gral_almacenamientos.png" />
+    <Content Include="res\images\gral_localizacion.png" />
+    <Content Include="res\images\gral_regionalizacion_1.png" />
+    <Content Include="res\images\gral_regionalizacion_2.jpg" />
+    <Content Include="res\images\gral_usuarios.png" />
+    <Content Include="res\images\logoSEMARNAT_hoz.png" />
+    <Content Include="res\images\loguito.png" />
+    <Content Include="res\images\rs.png" />
+    <Content Include="res\images\semarnat.jpg" />
+    <Content Include="res\images\SubcuencaLaja1.jpg" />
+    <Content Include="res\images\SubcuencaLaja1.png" />
+    <Content Include="res\images\SubcuencaLaja2.jpg" />
+    <Content Include="res\images\SubcuencaLaja2.png" />
+    <Content Include="res\images\SubcuencaLerma5.jpg" />
+    <Content Include="res\images\SubcuencaLerma5.png" />
+    <Content Include="res\images\SubcuencaQueretaro.jpg" />
+    <Content Include="res\images\SubcuencaQueretaro.png" />
+    <Content Include="res\images\SubcuencaTurbio.jpg" />
+    <Content Include="res\images\SubcuencaTurbio.png" />
+    <Content Include="res\images\tw.png" />
+    <Content Include="res\images\upload_icon.png" />
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="themes\fa\theme.js" />
+    <Content Include="themes\gly\theme.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="pages\boletines.aspx.cs">
+      <DependentUpon>boletines.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\boletines.aspx.designer.cs">
+      <DependentUpon>boletines.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\hidroclimatologica.aspx.cs">
+      <DependentUpon>hidroclimatologica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\hidroclimatologica.aspx.designer.cs">
+      <DependentUpon>hidroclimatologica.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\historica.aspx.cs">
+      <DependentUpon>historica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\historica.aspx.designer.cs">
+      <DependentUpon>historica.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\inicio.aspx.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\inicio.aspx.designer.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\general.aspx.cs">
+      <DependentUpon>general.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\general.aspx.designer.cs">
+      <DependentUpon>general.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\login_admin.aspx.cs">
+      <DependentUpon>login_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\login_admin.aspx.designer.cs">
+      <DependentUpon>login_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\reglamentacion.aspx.cs">
+      <DependentUpon>reglamentacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\reglamentacion.aspx.designer.cs">
+      <DependentUpon>reglamentacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\subir_datos.aspx.cs">
+      <DependentUpon>subir_datos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\subir_datos.aspx.designer.cs">
+      <DependentUpon>subir_datos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\BaseDatos\ConexionBD.cs" />
+    <Compile Include="src\BaseDatos\NamespaceDoc.cs" />
+    <Compile Include="src\Entidades\Administrador.cs" />
+    <Compile Include="src\Entidades\EscurrimientoAnual.cs" />
+    <Compile Include="src\Entidades\NamespaceDoc.cs" />
+    <Compile Include="src\Entidades\PrecipitacionMedia.cs" />
+    <Compile Include="src\Entidades\VolumenDr.cs" />
+    <Compile Include="src\Entidades\VolumenDrAsignado.cs" />
+    <Compile Include="src\Entidades\VolumenDrAutorizado.cs" />
+    <Compile Include="src\Entidades\VolumenDrUtilizado.cs" />
+    <Compile Include="src\Entidades\VolumenPi.cs" />
+    <Compile Include="src\Entidades\VolumenPiAsignado.cs" />
+    <Compile Include="src\Entidades\VolumenPiAutorizado.cs" />
+    <Compile Include="src\Entidades\VolumenPiUtilizado.cs" />
+    <Compile Include="src\Utilidades\ExcelFileIO.cs" />
+    <Compile Include="src\Utilidades\Logger.cs" />
+    <Compile Include="src\Utilidades\NamespaceDoc.cs" />
+    <Compile Include="src\Utilidades\SessionItemsManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="log\" />
+    <Folder Include="uploaded_files\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49457</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49457/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
