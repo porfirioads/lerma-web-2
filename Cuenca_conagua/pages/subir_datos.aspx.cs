@@ -55,7 +55,9 @@ namespace Cuenca_conagua.pages
         {
             string archivoSinRuta = nombreArchivo.Substring(nombreArchivo
                 .LastIndexOf('\\') + 1);
+
             Logger.AddToLog("Agregar " + archivoSinRuta, true);
+
             if (archivoSinRuta.StartsWith("Lluvia_media_anual"))
             {
                 IngresarPrecipitacionBD(nombreArchivo);
@@ -81,8 +83,14 @@ namespace Cuenca_conagua.pages
         {
             List<PrecipitacionMedia> precipitaciones
                     = ExcelFileIO.ReadPrecipitacionMedia(nombreArchivo);
+
             foreach (PrecipitacionMedia pm in precipitaciones)
             {
+                Logger.AddToLog("Precipitación: " + pm.Ciclo + ", "
+                    + pm.Nov + ", " + pm.Dic + ", " + pm.Ene + ", "
+                     + pm.Feb + ", " + pm.Mar + ", " + pm.Abr + ", "
+                      + pm.May + ", " + pm.Jun + ", " + pm.Jul + ", "
+                       + pm.Ago + ", " + pm.Sep + ", " + pm.Oct, true);
                 if (pm.Save())
                 {
                     Logger.AddToLog("Precipitación: " + pm.Ciclo + " agregado.", true);

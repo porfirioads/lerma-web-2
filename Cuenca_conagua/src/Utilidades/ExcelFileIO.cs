@@ -8,6 +8,7 @@ using System.Web;
 using Excel;
 using Cuenca_conagua.src.Utilidades;
 using Cuenca_conagua.src.Entidades;
+using System.Globalization;
 
 namespace Cuenca_conagua.src.Utilidades
 {
@@ -78,18 +79,18 @@ namespace Cuenca_conagua.src.Utilidades
                     }
                     pm = new PrecipitacionMedia();
                     pm.Ciclo = rows[i][0].ToString();
-                    pm.Nov = double.Parse(rows[i][1].ToString());
-                    pm.Dic = double.Parse(rows[i][2].ToString());
-                    pm.Ene = double.Parse(rows[i][3].ToString());
-                    pm.Feb = double.Parse(rows[i][4].ToString());
-                    pm.Mar = double.Parse(rows[i][5].ToString());
-                    pm.Abr = double.Parse(rows[i][6].ToString());
-                    pm.May = double.Parse(rows[i][7].ToString());
-                    pm.Jun = double.Parse(rows[i][8].ToString());
-                    pm.Jul = double.Parse(rows[i][9].ToString());
-                    pm.Ago = double.Parse(rows[i][10].ToString());
-                    pm.Sep = double.Parse(rows[i][11].ToString());
-                    pm.Oct = double.Parse(rows[i][12].ToString());
+                    pm.Nov = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
+                    pm.Dic = double.Parse(rows[i][2].ToString(), CultureInfo.InvariantCulture);
+                    pm.Ene = double.Parse(rows[i][3].ToString(), CultureInfo.InvariantCulture);
+                    pm.Feb = double.Parse(rows[i][4].ToString(), CultureInfo.InvariantCulture);
+                    pm.Mar = double.Parse(rows[i][5].ToString(), CultureInfo.InvariantCulture);
+                    pm.Abr = double.Parse(rows[i][6].ToString(), CultureInfo.InvariantCulture);
+                    pm.May = double.Parse(rows[i][7].ToString(), CultureInfo.InvariantCulture);
+                    pm.Jun = double.Parse(rows[i][8].ToString(), CultureInfo.InvariantCulture);
+                    pm.Jul = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
+                    pm.Ago = double.Parse(rows[i][10].ToString(), CultureInfo.InvariantCulture);
+                    pm.Sep = double.Parse(rows[i][11].ToString(), CultureInfo.InvariantCulture);
+                    pm.Oct = double.Parse(rows[i][12].ToString(), CultureInfo.InvariantCulture);
                     precipitacionesMedias.Add(pm);
                 }
             }
@@ -140,23 +141,23 @@ namespace Cuenca_conagua.src.Utilidades
                     }
                     es = new EscurrimientoAnual();
                     es.Ciclo = rows[i][0].ToString();
-                    es.Alzate = double.Parse(rows[i][1].ToString());
-                    es.Ramirez = double.Parse(rows[i][2].ToString());
-                    es.Tepetitlan = double.Parse(rows[i][3].ToString());
-                    es.Tepuxtepec = double.Parse(rows[i][4].ToString());
-                    es.Solis = double.Parse(rows[i][5].ToString());
-                    es.Begona = double.Parse(rows[i][6].ToString());
-                    es.Ameche = double.Parse(rows[i][7].ToString());
-                    es.Pericos = double.Parse(rows[i][8].ToString());
-                    es.Yuriria = double.Parse(rows[i][9].ToString());
-                    es.Salamanca = double.Parse(rows[i][10].ToString());
-                    es.Adjuntas = double.Parse(rows[i][11].ToString());
-                    es.Angulo = double.Parse(rows[i][12].ToString());
-                    es.Corrales = double.Parse(rows[i][13].ToString());
-                    es.Yurecuaro = double.Parse(rows[i][14].ToString());
-                    es.Duero = double.Parse(rows[i][15].ToString());
-                    es.Zula = double.Parse(rows[i][16].ToString());
-                    es.Chapala = double.Parse(rows[i][17].ToString());
+                    es.Alzate = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
+                    es.Ramirez = double.Parse(rows[i][2].ToString(), CultureInfo.InvariantCulture);
+                    es.Tepetitlan = double.Parse(rows[i][3].ToString(), CultureInfo.InvariantCulture);
+                    es.Tepuxtepec = double.Parse(rows[i][4].ToString(), CultureInfo.InvariantCulture);
+                    es.Solis = double.Parse(rows[i][5].ToString(), CultureInfo.InvariantCulture);
+                    es.Begona = double.Parse(rows[i][6].ToString(), CultureInfo.InvariantCulture);
+                    es.Ameche = double.Parse(rows[i][7].ToString(), CultureInfo.InvariantCulture);
+                    es.Pericos = double.Parse(rows[i][8].ToString(), CultureInfo.InvariantCulture);
+                    es.Yuriria = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
+                    es.Salamanca = double.Parse(rows[i][10].ToString(), CultureInfo.InvariantCulture);
+                    es.Adjuntas = double.Parse(rows[i][11].ToString(), CultureInfo.InvariantCulture);
+                    es.Angulo = double.Parse(rows[i][12].ToString(), CultureInfo.InvariantCulture);
+                    es.Corrales = double.Parse(rows[i][13].ToString(), CultureInfo.InvariantCulture);
+                    es.Yurecuaro = double.Parse(rows[i][14].ToString(), CultureInfo.InvariantCulture);
+                    es.Duero = double.Parse(rows[i][15].ToString(), CultureInfo.InvariantCulture);
+                    es.Zula = double.Parse(rows[i][16].ToString(), CultureInfo.InvariantCulture);
+                    es.Chapala = double.Parse(rows[i][17].ToString(), CultureInfo.InvariantCulture);
                     //Logger.AddToLog("- " + es.ToString(), true);
                     escurrimientosAnuales.Add(es);
                 }
@@ -193,15 +194,15 @@ namespace Cuenca_conagua.src.Utilidades
                     {
                         vol = new VolumenDr();
                         vol.Ciclo = rows[i][0].ToString();
-                        vol.Dr033 = double.Parse(rows[i][1].ToString());
-                        vol.Dr045 = double.Parse(rows[i][2].ToString());
-                        vol.Dr011 = double.Parse(rows[i][3].ToString());
-                        vol.Dr085 = double.Parse(rows[i][4].ToString());
-                        vol.Dr087 = double.Parse(rows[i][5].ToString());
-                        vol.Dr022 = double.Parse(rows[i][6].ToString());
-                        vol.Dr061 = double.Parse(rows[i][7].ToString());
-                        vol.Dr024 = double.Parse(rows[i][8].ToString());
-                        vol.Dr013 = double.Parse(rows[i][9].ToString());
+                        vol.Dr033 = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
+                        vol.Dr045 = double.Parse(rows[i][2].ToString(), CultureInfo.InvariantCulture);
+                        vol.Dr011 = double.Parse(rows[i][3].ToString(), CultureInfo.InvariantCulture);
+                        vol.Dr085 = double.Parse(rows[i][4].ToString(), CultureInfo.InvariantCulture);
+                        vol.Dr087 = double.Parse(rows[i][5].ToString(), CultureInfo.InvariantCulture);
+                        vol.Dr022 = double.Parse(rows[i][6].ToString(), CultureInfo.InvariantCulture);
+                        vol.Dr061 = double.Parse(rows[i][7].ToString(), CultureInfo.InvariantCulture);
+                        vol.Dr024 = double.Parse(rows[i][8].ToString(), CultureInfo.InvariantCulture);
+                        vol.Dr013 = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
                         volumenes.Add(vol);
                     }
                 }
@@ -305,21 +306,21 @@ namespace Cuenca_conagua.src.Utilidades
                     {
                         vol = new VolumenPi();
                         vol.Ciclo = rows[i][0].ToString();
-                        vol.PiAlzate = double.Parse(rows[i][1].ToString());
-                        vol.PiRamirez = double.Parse(rows[i][2].ToString());
-                        vol.PiTepetitlan = double.Parse(rows[i][3].ToString());
-                        vol.PiTepuxtepec = double.Parse(rows[i][4].ToString());
-                        vol.PiSolis = double.Parse(rows[i][5].ToString());
-                        vol.PiBegona = double.Parse(rows[i][6].ToString());
-                        vol.PiQueretaro = double.Parse(rows[i][7].ToString());
-                        vol.PiPericos = double.Parse(rows[i][8].ToString());
-                        vol.PiAdjuntas = double.Parse(rows[i][9].ToString());
-                        vol.PiAngulo = double.Parse(rows[i][10].ToString());
-                        vol.PiCorrales = double.Parse(rows[i][11].ToString());
-                        vol.PiYurecuaro = double.Parse(rows[i][12].ToString());
-                        vol.PiDuero = double.Parse(rows[i][13].ToString());
-                        vol.PiZula = double.Parse(rows[i][14].ToString());
-                        vol.PiChapala = double.Parse(rows[i][15].ToString());
+                        vol.PiAlzate = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiRamirez = double.Parse(rows[i][2].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiTepetitlan = double.Parse(rows[i][3].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiTepuxtepec = double.Parse(rows[i][4].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiSolis = double.Parse(rows[i][5].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiBegona = double.Parse(rows[i][6].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiQueretaro = double.Parse(rows[i][7].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiPericos = double.Parse(rows[i][8].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiAdjuntas = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiAngulo = double.Parse(rows[i][10].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiCorrales = double.Parse(rows[i][11].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiYurecuaro = double.Parse(rows[i][12].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiDuero = double.Parse(rows[i][13].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiZula = double.Parse(rows[i][14].ToString(), CultureInfo.InvariantCulture);
+                        vol.PiChapala = double.Parse(rows[i][15].ToString(), CultureInfo.InvariantCulture);
                         volumenes.Add(vol);
                     }
                 }
