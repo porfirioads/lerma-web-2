@@ -152,6 +152,7 @@
     <Content Include="res\boletines\LermaBoletin23_2014.pdf" />
     <Content Include="res\boletines\LermaBoletin24_2015.pdf" />
     <Content Include="res\boletines\LermaBoletin25_2016.pdf" />
+    <Content Include="Default.aspx" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

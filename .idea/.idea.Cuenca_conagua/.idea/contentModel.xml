@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\porfi\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_Cuenca_conagua.-1208516294.00" t="ExcludeRecursive" />
+    <e p="C:\Users\porfi\RiderProjects\LermaWeb2" t="IncludeFlat">
+      <e p="Cuenca_conagua" t="IncludeRecursive">
+        <e p="ApplicationInsights.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="css" t="Include">
+          <e p="combined.css" t="Include" />
+          <e p="dropzone.css" t="Include" />
+          <e p="my_charts.css" t="Include" />
+        </e>
+        <e p="Cuenca_conagua.csproj" t="IncludeRecursive" />
+        <e p="Default.aspx" t="Include" />
+        <e p="js" t="Include">
+          <e p="Chart.min.js" t="Include" />
+          <e p="chart_escurrimiento_anual.js" t="Include" />
+          <e p="chart_general.js" t="Include" />
+          <e p="chart_precipitacion_media.js" t="Include" />
+          <e p="chart_volumenes.js" t="Include" />
+          <e p="dropzone.js" t="Include" />
+          <e p="jquery-3.1.0.min.js" t="Include" />
+          <e p="pager_general.js" t="Include" />
+          <e p="pager_historica.js" t="Include" />
+          <e p="upload_data.js" t="Include" />
+          <e p="validador_login.js" t="Include" />
+        </e>
+        <e p="log" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="pages" t="Include">
+          <e p="boletines.aspx" t="Include" />
+          <e p="boletines.aspx.cs" t="Include" />
+          <e p="boletines.aspx.designer.cs" t="Include" />
+          <e p="general.aspx" t="Include" />
+          <e p="general.aspx.cs" t="Include" />
+          <e p="general.aspx.designer.cs" t="Include" />
+          <e p="hidroclimatologica.aspx" t="Include" />
+          <e p="hidroclimatologica.aspx.cs" t="Include" />
+          <e p="hidroclimatologica.aspx.designer.cs" t="Include" />
+          <e p="historica.aspx" t="Include" />
+          <e p="historica.aspx.cs" t="Include" />
+          <e p="historica.aspx.designer.cs" t="Include" />
+          <e p="inicio.aspx" t="Include" />
+          <e p="inicio.aspx.cs" t="Include" />
+          <e p="inicio.aspx.designer.cs" t="Include" />
+          <e p="login_admin.aspx" t="Include" />
+          <e p="login_admin.aspx.cs" t="Include" />
+          <e p="login_admin.aspx.designer.cs" t="Include" />
+          <e p="reglamentacion.aspx" t="Include" />
+          <e p="reglamentacion.aspx.cs" t="Include" />
+          <e p="reglamentacion.aspx.designer.cs" t="Include" />
+          <e p="subir_datos.aspx" t="Include" />
+          <e p="subir_datos.aspx.cs" t="Include" />
+          <e p="subir_datos.aspx.designer.cs" t="Include" />
+        </e>
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="PublishProfiles" t="Include">
+            <e p="Local.pubxml" t="Include" />
+          </e>
+        </e>
+        <e p="res" t="Include">
+          <e p="boletines" t="Include">
+            <e p="LermaBoletin01_1992.pdf" t="Include" />
+            <e p="LermaBoletin02_1993.pdf" t="Include" />
+            <e p="LermaBoletin03_1994.pdf" t="Include" />
+            <e p="LermaBoletin04_1995.pdf" t="Include" />
+            <e p="LermaBoletin05_1996.pdf" t="Include" />
+            <e p="LermaBoletin06_1997.pdf" t="Include" />
+            <e p="LermaBoletin07_1998.pdf" t="Include" />
+            <e p="LermaBoletin08_1999.pdf" t="Include" />
+            <e p="LermaBoletin09_2000.pdf" t="Include" />
+            <e p="LermaBoletin10_2001.pdf" t="Include" />
+            <e p="LermaBoletin11_2002.pdf" t="Include" />
+            <e p="LermaBoletin12_2003.pdf" t="Include" />
+            <e p="LermaBoletin13_2004.pdf" t="Include" />
+            <e p="LermaBoletin14_2005.pdf" t="Include" />
+            <e p="LermaBoletin15_2006.pdf" t="Include" />
+            <e p="LermaBoletin16_2007.pdf" t="Include" />
+            <e p="LermaBoletin17_2007.pdf" t="Include" />
+            <e p="LermaBoletin18_2009.pdf" t="Include" />
+            <e p="LermaBoletin19_2010.pdf" t="Include" />
+            <e p="LermaBoletin20_2011.pdf" t="Include" />
+            <e p="LermaBoletin21_2012.pdf" t="Include" />
+            <e p="LermaBoletin22_2013.pdf" t="Include" />
+            <e p="LermaBoletin23_2014.pdf" t="Include" />
+            <e p="LermaBoletin24_2015.pdf" t="Include" />
+            <e p="LermaBoletin25_2016.pdf" t="Include" />
+          </e>
+          <e p="docs_reglamentacion" t="Include">
+            <e p="1_acuerdo_1991.pdf" t="Include" />
+            <e p="2_acuerdo_de_coordinación_2004.pdf" t="Include" />
+            <e p="3_convenio_2004.pdf" t="Include" />
+            <e p="4_decreto_2014.pdf" t="Include" />
+          </e>
+          <e p="icons" t="Include">
+            <e p="conagua.ico" t="Include" />
+          </e>
+          <e p="images" t="Include">
+            <e p="cuenca_lc_con_nombres.png.png" t="Include" />
+            <e p="cuenca_lc_sin_nombres.png" t="Include" />
+            <e p="fondo_menu.jpg" t="Include" />
+            <e p="gral_almacenamientos.png" t="Include" />
+            <e p="gral_corrientes.png" t="Include" />
+            <e p="gral_localizacion.png" t="Include" />
+            <e p="gral_regionalizacion_1.png" t="Include" />
+            <e p="gral_regionalizacion_2.jpg" t="Include" />
+            <e p="gral_usuarios.png" t="Include" />
+            <e p="logoSEMARNAT_hoz.png" t="Include" />
+            <e p="loguito.png" t="Include" />
+            <e p="rs.png" t="Include" />
+            <e p="semarnat.jpg" t="Include" />
+            <e p="SubcuencaLaja1.jpg" t="Include" />
+            <e p="SubcuencaLaja1.png" t="Include" />
+            <e p="SubcuencaLaja2.jpg" t="Include" />
+            <e p="SubcuencaLaja2.png" t="Include" />
+            <e p="SubcuencaLerma5.jpg" t="Include" />
+            <e p="SubcuencaLerma5.png" t="Include" />
+            <e p="SubcuencaQueretaro.jpg" t="Include" />
+            <e p="SubcuencaQueretaro.png" t="Include" />
+            <e p="SubcuencaTurbio.jpg" t="Include" />
+            <e p="SubcuencaTurbio.png" t="Include" />
+            <e p="tw.png" t="Include" />
+            <e p="upload_icon.png" t="Include" />
+          </e>
+        </e>
+        <e p="roslyn" t="Include" />
+        <e p="scripts" t="Include">
+          <e p="ai.0.22.9-build00167.js" t="Include" />
+          <e p="ai.0.22.9-build00167.min.js" t="Include" />
+        </e>
+        <e p="src" t="Include">
+          <e p="BaseDatos" t="Include">
+            <e p="ConexionBD.cs" t="Include" />
+            <e p="NamespaceDoc.cs" t="Include" />
+          </e>
+          <e p="Entidades" t="Include">
+            <e p="Administrador.cs" t="Include" />
+            <e p="EscurrimientoAnual.cs" t="Include" />
+            <e p="NamespaceDoc.cs" t="Include" />
+            <e p="PrecipitacionMedia.cs" t="Include" />
+            <e p="VolumenDr.cs" t="Include" />
+            <e p="VolumenDrAsignado.cs" t="Include" />
+            <e p="VolumenDrAutorizado.cs" t="Include" />
+            <e p="VolumenDrUtilizado.cs" t="Include" />
+            <e p="VolumenPi.cs" t="Include" />
+            <e p="VolumenPiAsignado.cs" t="Include" />
+            <e p="VolumenPiAutorizado.cs" t="Include" />
+            <e p="VolumenPiUtilizado.cs" t="Include" />
+          </e>
+          <e p="Utilidades" t="Include">
+            <e p="ExcelFileIO.cs" t="Include" />
+            <e p="Logger.cs" t="Include" />
+            <e p="NamespaceDoc.cs" t="Include" />
+            <e p="SessionItemsManager.cs" t="Include" />
+          </e>
+        </e>
+        <e p="themes" t="Include">
+          <e p="fa" t="Include">
+            <e p="theme.js" t="Include" />
+          </e>
+          <e p="gly" t="Include">
+            <e p="theme.js" t="Include" />
+          </e>
+        </e>
+        <e p="uploaded_files" t="Include" />
+        <e p="Web.config" t="Include" />
+        <e p="Web.Debug.config" t="Include" />
+        <e p="Web.Release.config" t="Include" />
+      </e>
+      <e p="Cuenca_conagua.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive">
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\csc.exe" t="Include" />
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\Microsoft.Build.Tasks.CodeAnalysis.dll" t="Include" />
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\Microsoft.CodeAnalysis.CSharp.dll" t="Include" />
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\Microsoft.CodeAnalysis.dll" t="Include" />
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\Microsoft.CodeAnalysis.VisualBasic.dll" t="Include" />
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\Microsoft.CSharp.Core.targets" t="Include" />
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\Microsoft.VisualBasic.Core.targets" t="Include" />
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\System.Collections.Immutable.dll" t="Include" />
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\System.Reflection.Metadata.dll" t="Include" />
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\vbc.exe" t="Include" />
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\VBCSCompiler.exe" t="Include" />
+        <e p="Microsoft.Net.Compilers.1.0.0\tools\VBCSCompiler.exe.config" t="Include" />
+      </e>
+    </e>
+  </component>
+</project>
