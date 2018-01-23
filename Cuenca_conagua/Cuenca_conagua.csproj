@@ -123,6 +123,7 @@
     </Content>
     <Content Include="pages\login_admin.aspx" />
     <Content Include="pages\subir_datos.aspx" />
+    <Content Include="pages\test.aspx" />
     <Content Include="res\boletines\LermaBoletin01_1992.pdf" />
     <Content Include="res\boletines\LermaBoletin02_1993.pdf" />
     <Content Include="res\boletines\LermaBoletin03_1994.pdf" />
@@ -259,6 +260,7 @@
     <Compile Include="pages\subir_datos.aspx.designer.cs">
       <DependentUpon>subir_datos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\test.aspx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\BaseDatos\ConexionBD.cs" />
     <Compile Include="src\BaseDatos\NamespaceDoc.cs" />
