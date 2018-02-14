@@ -33,9 +33,18 @@
                                         target="_self">RSS</a>
                     </div>
                 </div>
-                <div id="logotipo">
-                    <img src="../res/images/semarnat.jpg" />
-                </div>
+                
+                <table class="table-logo-header">
+                    <tr>
+                        <td class="header-image">
+                            <img src="../res/images/semarnat.jpg" />
+                        </td>
+                        <td class="header-title">
+                            <h1>LERMA WEB 2</h1>
+                        </td>
+                    </tr>
+                </table>
+                
                 <div class="menu_principal">
                     <ul id="lista_menu" runat="server">
                         <li><a href="inicio.aspx">Inicio</a></li>

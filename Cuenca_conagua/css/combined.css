@@ -23,10 +23,10 @@ body {
     background-color: rgb(241, 241, 241);
 }
 
-    .lateral > * {
-        width: 100%;
-        line-height: 1.5;
-    }
+.lateral > * {
+    width: 100%;
+    line-height: 1.5;
+}
 
 .contenido {
     width: 70%;
@@ -66,14 +66,14 @@ body {
     text-align: right;
 }
 
-    #herramientas a {
-        text-decoration: none;
-        color: rgb(65, 64, 64);
-    }
+#herramientas a {
+    text-decoration: none;
+    color: rgb(65, 64, 64);
+}
 
-        #herramientas a:hover {
-            text-decoration: none;
-        }
+#herramientas a:hover {
+    text-decoration: none;
+}
 
 .menu_principal {
     display: block;
@@ -84,70 +84,70 @@ body {
     background-size: 100%;
 }
 
-    .menu_principal ul {
-        height: 2em;
-        list-style: none;
-        margin: 0px;
-        padding: 0px;
-        text-align: center;
-    }
+.menu_principal ul {
+    height: 2em;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
 
-    .menu_principal li {
-        display: inline-block;
-        font-weight: bold;
-        margin-bottom: 0px;
-        background-color: transparent;
-    }
+.menu_principal li {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 0px;
+    background-color: transparent;
+}
 
-        .menu_principal li a {
-            color: white;
-            display: block;
-            line-height: 2em;
-            text-align: center;
-            text-decoration: none;
-            padding: 0px 0.5em;
-        }
+.menu_principal li a {
+    color: white;
+    display: block;
+    line-height: 2em;
+    text-align: center;
+    text-decoration: none;
+    padding: 0px 0.5em;
+}
 
-            .menu_principal li a:hover, .menu_principal li a.active {
-                color: rgb(102, 102, 102);
-                background-color: whitesmoke;
-            }
+.menu_principal li a:hover, .menu_principal li a.active {
+    color: rgb(102, 102, 102);
+    background-color: whitesmoke;
+}
 
-        .menu_principal li ul {
-            display: none;
-            height: auto;
-            position: absolute;
-            width: 10em;
-            z-index: 200;
-            margin-top: -1px;
-            background: rgb(115, 115, 115);
-        }
+.menu_principal li ul {
+    display: none;
+    height: auto;
+    position: absolute;
+    width: 10em;
+    z-index: 200;
+    margin-top: -1px;
+    background: rgb(115, 115, 115);
+}
 
-        .menu_principal li:hover ul {
-            display: block;
-        }
+.menu_principal li:hover ul {
+    display: block;
+}
 
-        .menu_principal li li {
-            display: block;
-            float: none;
-            padding: 0px;
-            width: 10em;
-            margin: 0px;
-            font-weight: normal;
-            font-style: normal;
-            color: white;
-        }
+.menu_principal li li {
+    display: block;
+    float: none;
+    padding: 0px;
+    width: 10em;
+    margin: 0px;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+}
 
-        .menu_principal li ul a {
-            display: block;
-            font-style: normal;
-            padding: 0px 10px 0px 15px;
-            text-align: left;
-        }
+.menu_principal li ul a {
+    display: block;
+    font-style: normal;
+    padding: 0px 10px 0px 15px;
+    text-align: left;
+}
 
-            .menu_principal li ul a:hover {
-                text-decoration: underline;
-            }
+.menu_principal li ul a:hover {
+    text-decoration: underline;
+}
 
 .footer {
     clear: both;
@@ -198,22 +198,22 @@ li {
     list-style-type: inherit;
 }
 
-    li li {
-        list-style-type: disc;
-        line-height: 1em;
-        margin-bottom: 0.1em;
-        padding-bottom: 0px;
-        list-style-position: inside;
-    }
+li li {
+    list-style-type: disc;
+    line-height: 1em;
+    margin-bottom: 0.1em;
+    padding-bottom: 0px;
+    list-style-position: inside;
+}
 
 a {
     text-decoration: none;
     color: rgb(47, 47, 47);
 }
 
-    a:hover {
-        text-decoration: underline;
-    }
+a:hover {
+    text-decoration: underline;
+}
 
 img {
     border: none;
@@ -260,15 +260,15 @@ h3 {
     margin-bottom: 1em !important;
 }
 
-    h3 a {
-        color: rgb(0, 121, 52);
-        text-decoration: none;
-    }
+h3 a {
+    color: rgb(0, 121, 52);
+    text-decoration: none;
+}
 
-        h3 a:hover {
-            text-decoration: none;
-            color: rgb(0, 121, 52);
-        }
+h3 a:hover {
+    text-decoration: none;
+    color: rgb(0, 121, 52);
+}
 
 h4 {
     text-transform: uppercase;
@@ -279,13 +279,13 @@ h4 {
     font-size: 1em;
 }
 
-    h4 a {
-        color: maroon;
-    }
+h4 a {
+    color: maroon;
+}
 
-        h4 a:hover {
-            text-decoration: none;
-        }
+h4 a:hover {
+    text-decoration: none;
+}
 
 h5 {
     font-size: 0.8em;
@@ -293,14 +293,14 @@ h5 {
     font-weight: bold;
 }
 
-    h5 a {
-        color: gray;
-        text-decoration: none;
-    }
+h5 a {
+    color: gray;
+    text-decoration: none;
+}
 
-        h5 a:hover {
-            text-decoration: underline;
-        }
+h5 a:hover {
+    text-decoration: underline;
+}
 
 h6 {
     font-size: 0.7em;
@@ -319,7 +319,6 @@ input {
     font-family: Arial;
     font-size: 1em;
 }
-
 
 .img-max-100 {
     max-width: 100%;
@@ -359,9 +358,9 @@ table.unformatted th, table.unformatted td {
     width: 100%;
 }
 
-    .table-100 td * {
-        width: 100%;
-    }
+.table-100 td * {
+    width: 100%;
+}
 
 .table-font-body {
     font-size: 1em;
@@ -439,72 +438,73 @@ a.link-page {
     color: black;
 }
 
-    .btn-white:hover {
-        background-color: #EEEEEE;
-    }
+.btn-white:hover {
+    background-color: #EEEEEE;
+}
 
 .btn-green, btn-green:active, btn-green:visited {
     background-color: #588266;
     border-color: #245334;
 }
 
-    .btn-green:hover {
-        background-color: #3C6B4C;
-    }
+.btn-green:hover {
+    background-color: #3C6B4C;
+}
 
 .btn-blue, btn-blue:active, btn-green:visited {
     background-color: #506373;
     border-color: #233849;
 }
 
-    .btn-blue:hover {
-        background-color: #394D5E;
-    }
+.btn-blue:hover {
+    background-color: #394D5E;
+}
 
 .btn-purple, .btn-purple:active, .btn-purple:visited {
     background-color: #6F5075;
     border-color: #44214A;
 }
 
-    .btn-purple:hover {
-        background-color: #44214A;
-    }
+.btn-purple:hover {
+    background-color: #44214A;
+}
 
 .btn-yellow, .btn-yellow:active, .btn-yellow:visited {
     background-color: #B2A878;
     border-color: #726731;
 }
 
-    .btn-yellow:hover {
-        background-color: #918755;
-    }
+.btn-yellow:hover {
+    background-color: #918755;
+}
 
 .btn-red, .btn-red:active, .btn-red:visited {
     background-color: #B27878;
     border-color: #723131;
 }
 
-    .btn-red:hover {
-        background-color: #915555;
-    }
+.btn-red:hover {
+    background-color: #915555;
+}
 
-table.table-padded th td{
+table.table-padded th td {
     padding: 8px;
 }
 
-/*table.data-table {
-    border-collapse: collapse;
+.table-logo-header {
+    border: none;
     width: 100%;
 }
 
-table.data-table th, td {
-    text-align: left;
-    padding: 8px;
+.table-logo-header td {
+    border: none;
+    vertical-align: middle;
 }
 
-table.data-table tr:nth-child(even){background-color: #f2f2f2}
+.table-logo-header .header-image {
+    width: 100px;
+}
 
-table.data-table th {
-    background-color: #4CAF50;
-    color: white;
-}*/
+.table-logo-header .header-title  h1{
+    color: black !important;
+}
