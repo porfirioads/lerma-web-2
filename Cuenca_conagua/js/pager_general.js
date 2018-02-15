@@ -4,11 +4,10 @@
 $(document).ready(function () {
     var almacenamientos = $('#almacenamientos');
     var corrientes = $('#corrientes');
-    var cuenca = $('#cuenca');
     var localizacion = $('#localizacion');
     var regionalizacion = $('#regionalizacion');
     var usuarios = $('#usuarios');
-    var sections = [almacenamientos, corrientes, cuenca, localizacion,
+    var sections = [almacenamientos, corrientes, localizacion,
         regionalizacion, usuarios];
 
     // Oculta todas las secciones de información de la página de información
@@ -18,12 +17,6 @@ $(document).ready(function () {
             sections[i].addClass('hidden');
         }
     }
-
-    // Se ejecuta cuando se presiona el botón de la cuenca.
-    $('#btnGralCuenca').click(function () {
-        hideAll();
-        cuenca.removeClass('hidden');
-    });
 
     // Se ejecuta cuando se presiona el botón de la localización.
     $('#btnGralLocalizacion').click(function () {
