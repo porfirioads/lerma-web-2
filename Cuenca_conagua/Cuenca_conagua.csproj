@@ -109,6 +109,7 @@
     <Content Include="css\my_charts.css" />
     <Content Include="js\activate_boletines_tab.js" />
     <Content Include="js\activate_general_tab.js" />
+    <Content Include="js\activate_historica_tab.js" />
     <Content Include="js\activate_inicio_tab.js" />
     <Content Include="js\activate_reglamentacion_tab.js" />
     <Content Include="js\Chart.min.js" />

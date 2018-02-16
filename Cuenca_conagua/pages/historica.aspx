@@ -1,4 +1,136 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="historica.aspx.cs" Inherits="Cuenca_conagua.pages.historica" %>
+﻿<%@ Page Title="Histórica" Language="C#" MasterPageFile="~/pages/esqueleto.Master" AutoEventWireup="true" CodeBehind="historica.aspx.cs" Inherits="Cuenca_conagua.pages.historica" %>
+
+<asp:Content ID="contentHead" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="../css/my_charts.css" />
+    <script src="../js/activate_historica_tab.js"></script>
+    <script src="../js/jquery-3.1.0.min.js"></script>
+    <script src="../js/Chart.min.js"></script>
+    <script src="../js/pager_historica.js"></script>
+    <script src="../js/chart_general.js"></script>
+    <script src="../js/chart_precipitacion_media.js"></script>
+    <script src="../js/chart_escurrimiento_anual.js"></script>
+    <script src="../js/chart_volumenes.js"></script>
+</asp:Content>
+
+<asp:Content ID="contentCuerpoContainer" ContentPlaceHolderID="cuerpoContainer" runat="server">
+    <aside class="lateral" runat="server">
+        <h4>Información Histórica</h4>
+        <a id="btnLluviaMediaAnual" class="btn btn-white btn-100">Lluvia media anual registrada en la cuenca</a>
+        <a id="btnEscurrimiento" class="btn btn-white btn-100">Escurrimiento generado por ciclo</a>
+        <a id="btnVolumenes" class="btn btn-white btn-100">Resumen de volúmenes autorizados y utilizados</a>
+        <a id="bntAlmPrincipales" class="btn btn-white btn-100">Almacenamientos principales</a>
+        <a id="btnAlmLagoChapala" class="btn btn-white btn-100">Almacenamiento del lago de Chapala</a>
+    </aside>
+    <section id="contPrecipitacionMedia" class="contenido">
+        <%-- Esta etiqueda div se va a sustituir por un script --%>
+        <div id="scrPrecAnual" class="hidden" runat="server"></div>
+        <script>
+            $('#cuerpoContainer_scrPrecAnual').contents().unwrap().wrap('<script/>');
+        </script>
+        <section id="precMedia">
+            <div id="precChart" class="chart-area">
+                <div class="chart-content">
+                    <canvas id="grafica_pma" class="chart" width="500" height="300"></canvas>
+                </div>
+            </div>
+            <div id="divChkAnual" class="form-control">
+                <input id="chkAnual" type="checkbox" />
+                Mostrar precipitación media anual
+            </div>
+            <div id="divChkMensual" class="form-control hidden">
+                <input id="chkMensual" type="checkbox" />
+                Mostrar precipitación media mensual
+            </div>
+            <select id="selCiclo" class="form-control hidden">
+            </select>
+            <div>
+                <a id="btnChangePrecMensual" class="btn btn-green">Precipitación Mensual
+                </a>
+                <a id="btnChangePrecAnual" class="btn btn-green hidden">Precipitación Anual
+                </a>
+            </div>
+        </section>
+    </section>
+    <section id="contEscurrimiento" class="contenido hidden">
+        <%-- Esta etiqueda div se va a sustituir por un script --%>
+        <div id="scrEscurrimiento" class="hidden" runat="server"></div>
+        <script>
+            $('#cuerpoContainer_scrEscurrimiento').contents().unwrap().wrap('<script/>');
+        </script>
+        <section id="escuAnual">
+            <div id="escuChart" class="chart-area">
+                <div class="chart-content">
+                    <canvas id="grafica_ea" class="chart" width="500" height="300"></canvas>
+                </div>
+            </div>
+            <select id="selCicloEscu" class="form-control">
+                <option value="0">Selecciona una subcuenca</option>
+            </select>
+            <div id="divChkEscAnual" class="form-control">
+                <input id="chkEscAnual" type="checkbox" />
+                Mostrar Escurrimiento Anual
+            </div>
+        </section>
+    </section>
+    <section id="contVolumenes" class="contenido hidden">
+        <%-- Esta etiqueda div se va a sustituir por un script --%>
+        <div id="scrVolumenes" class="hidden" runat="server"></div>
+        <script>
+            $('#cuerpoContainer_scrVolumenes').contents().unwrap().wrap('<script/>');
+        </script>
+        <section id="volumenes">
+            <div id="volumenesChart" class="chart-area">
+                <div class="chart-content">
+                    <canvas id="grafica_vol" class="chart" width="500" height="300"></canvas>
+                </div>
+            </div>
+            <br />
+            <table id="tablaResumen" class="table-100 table-padded">
+                <tr>
+                    <th id="resId" rowspan="2">DR</th>
+                    <th rowspan="2">Vol. máx (hm<sup>3</sup>)</th>
+                    <th colspan="4">Volumen promedio (hm<sup>3</sup>)</th>
+                    <th rowspan="2">Vol. aut. / Vol. máx %</th>
+                    <th rowspan="2">Vol. aut. / Vol. uti %</th>
+                </tr>
+                <tr>
+                    <th>Autorizado</th>
+                    <th>Asignado</th>
+                    <th>Utilizado</th>
+                    <th>Excedido</th>
+                </tr>
+                <tr>
+                    <td id="colId">1</td>
+                    <td id="colVolMax">2</td>
+                    <td id="colVolAut">3</td>
+                    <td id="colVolAsi">4</td>
+                    <td id="colVolUti">5</td>
+                    <td id="colVolExc">6</td>
+                    <td id="colVolAuM">7</td>
+                    <td id="colVolUtM">8</td>
+                </tr>
+            </table>
+            <select id="selDr" class="form-control">
+            </select>
+            <select id="selPi" class="form-control hidden">
+            </select>
+            <div>
+                <a id="btnChangeVolPi" class="btn btn-green">Volúmenes Pequeña Irrigación
+                </a>
+                <a id="btnChangeVolDr" class="btn btn-green hidden">Volúmenes Distritos de Riego
+                </a>
+            </div>
+        </section>
+    </section>
+    <section id="contAlmPrincipales" class="contenido hidden">
+        AlmacenamientosPrincipales
+    </section>
+    <section id="contAlmLagoChapala" class="contenido hidden" runat="server">
+        AlmacenamientoLagoChapala
+    </section>
+</asp:Content>
+
+<%--<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="historica.aspx.cs" Inherits="Cuenca_conagua.pages.historica" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -33,7 +165,7 @@
                                         target="_self">RSS</a>
                     </div>
                 </div>
-                
+
                 <table class="table-logo-header">
                     <tr>
                         <td class="header-image">
@@ -44,7 +176,7 @@
                         </td>
                     </tr>
                 </table>
-                
+
                 <div class="menu_principal">
                     <ul id="lista_menu" runat="server">
                         <li><a href="inicio.aspx">Inicio</a></li>
@@ -58,121 +190,6 @@
                 </div>
             </div>
             <div id="cuerpo">
-                <aside class="lateral" runat="server">
-                    <h4>Información Histórica</h4>
-                    <a id="btnLluviaMediaAnual" class="btn btn-white btn-100">Lluvia media anual registrada en la cuenca</a>
-                    <a id="btnEscurrimiento" class="btn btn-white btn-100">Escurrimiento generado por ciclo</a>
-                    <a id="btnVolumenes" class="btn btn-white btn-100">Resumen de volúmenes autorizados y utilizados</a>
-                    <a id="bntAlmPrincipales" class="btn btn-white btn-100">Almacenamientos principales</a>
-                    <a id="btnAlmLagoChapala" class="btn btn-white btn-100">Almacenamiento del lago de Chapala</a>
-                </aside>
-                <section id="contPrecipitacionMedia" class="contenido">
-                    <%-- Esta etiqueda div se va a sustituir por un script --%>
-                    <div id="scrPrecAnual" class="hidden" runat="server"></div>
-                    <script>
-                        $('#scrPrecAnual').contents().unwrap().wrap('<script/>');
-                    </script>
-                    <section id="precMedia">
-                        <div id="precChart" class="chart-area">
-                            <div class="chart-content">
-                                <canvas id="grafica_pma" class="chart" width="500" height="300"></canvas>
-                            </div>
-                        </div>
-                        <div id="divChkAnual" class="form-control">
-                            <input id="chkAnual" type="checkbox" />
-                            Mostrar precipitación media anual
-                        </div>
-                        <div id="divChkMensual" class="form-control hidden">
-                            <input id="chkMensual" type="checkbox" />
-                            Mostrar precipitación media mensual
-                        </div>
-                        <select id="selCiclo" class="form-control hidden">
-                        </select>
-                        <div>
-                            <a id="btnChangePrecMensual" class="btn btn-green">Precipitación Mensual
-                            </a>
-                            <a id="btnChangePrecAnual" class="btn btn-green hidden">Precipitación Anual
-                            </a>
-                        </div>
-                    </section>
-                </section>
-                <section id="contEscurrimiento" class="contenido hidden">
-                    <%-- Esta etiqueda div se va a sustituir por un script --%>
-                    <div id="scrEscurrimiento" class="hidden" runat="server"></div>
-                    <script>
-                        $('#scrEscurrimiento').contents().unwrap().wrap('<script/>');
-                    </script>
-                    <section id="escuAnual">
-                        <div id="escuChart" class="chart-area">
-                            <div class="chart-content">
-                                <canvas id="grafica_ea" class="chart" width="500" height="300"></canvas>
-                            </div>
-                        </div>
-                        <select id="selCicloEscu" class="form-control">
-                            <option value="0">Selecciona una subcuenca</option>
-                        </select>
-                        <div id="divChkEscAnual" class="form-control">
-                            <input id="chkEscAnual" type="checkbox"/>
-                            Mostrar Escurrimiento Anual
-                        </div>
-                    </section>
-                </section>
-                <section id="contVolumenes" class="contenido hidden">
-                    <%-- Esta etiqueda div se va a sustituir por un script --%>
-                    <div id="scrVolumenes" class="hidden" runat="server"></div>
-                    <script>
-                        $('#scrVolumenes').contents().unwrap().wrap('<script/>');
-                    </script>
-                    <section id="volumenes">
-                        <div id="volumenesChart" class="chart-area">
-                            <div class="chart-content">
-                                <canvas id="grafica_vol" class="chart" width="500" height="300"></canvas>
-                            </div>
-                        </div>
-                        <br />
-                        <table id="tablaResumen" class="table-100 table-padded">
-                            <tr>
-                                <th id="resId" rowspan="2">DR</th>
-                                <th rowspan="2">Vol. máx (hm<sup>3</sup>)</th>
-                                <th colspan="4">Volumen promedio (hm<sup>3</sup>)</th>
-                                <th rowspan="2">Vol. aut. / Vol. máx %</th>
-                                <th rowspan="2">Vol. aut. / Vol. uti %</th>
-                            </tr>
-                            <tr>
-                                <th>Autorizado</th>
-                                <th>Asignado</th>
-                                <th>Utilizado</th>
-                                <th>Excedido</th>
-                            </tr>
-                            <tr>
-                                <td id="colId">1</td>
-                                <td id="colVolMax">2</td>
-                                <td id="colVolAut">3</td>
-                                <td id="colVolAsi">4</td>
-                                <td id="colVolUti">5</td>
-                                <td id="colVolExc">6</td>
-                                <td id="colVolAuM">7</td>
-                                <td id="colVolUtM">8</td>
-                            </tr>   
-                        </table>
-                        <select id="selDr" class="form-control">
-                        </select>
-                        <select id="selPi" class="form-control hidden">
-                        </select>
-                        <div>
-                            <a id="btnChangeVolPi" class="btn btn-green">Volúmenes Pequeña Irrigación
-                            </a>
-                            <a id="btnChangeVolDr" class="btn btn-green hidden">Volúmenes Distritos de Riego
-                            </a>
-                        </div>
-                    </section>
-                </section>
-                <section id="contAlmPrincipales" class="contenido hidden">
-                    AlmacenamientosPrincipales
-                </section>
-                <section id="contAlmLagoChapala" class="contenido hidden" runat="server">
-                    AlmacenamientoLagoChapala
-                </section>
             </div>
             <div class="footer">
                 <div style="border-top: 1px solid #dedede; border-bottom: 1px solid #dedede; font-family: 'Times New Roman', serif; font-size: 14px; color: #666666; text-align: center; padding: 14px 0px;">
@@ -229,4 +246,4 @@
         </div>
     </form>
 </body>
-</html>
+</html>--%>

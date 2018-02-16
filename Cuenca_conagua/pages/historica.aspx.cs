@@ -22,7 +22,7 @@ namespace Cuenca_conagua.pages
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            SessionItemsManager.HideIfNotSession(Session, linkSubirDatos);
+                
             CargarPrecipitacionesJS();
             CargarEscurrimientosJS();
             CargarVolumenesJS();
