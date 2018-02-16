@@ -14,14 +14,5 @@ namespace Cuenca_conagua.pages
     /// </summary>
     public partial class boletines : System.Web.UI.Page
     {
-        /// <summary>
-        /// Se ejecuta cuando la página se carga.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            SessionItemsManager.HideIfNotSession(Session, linkSubirDatos);
-        }
     }
 }
