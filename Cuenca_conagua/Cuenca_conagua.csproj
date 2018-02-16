@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -106,6 +107,7 @@
     <Content Include="css\combined.css" />
     <Content Include="css\dropzone.css" />
     <Content Include="css\my_charts.css" />
+    <Content Include="js\activate_inicio_tab.js" />
     <Content Include="js\Chart.min.js" />
     <Content Include="js\chart_escurrimiento_anual.js" />
     <Content Include="js\chart_general.js" />
@@ -123,7 +125,6 @@
     </Content>
     <Content Include="pages\login_admin.aspx" />
     <Content Include="pages\subir_datos.aspx" />
-    <Content Include="pages\test.aspx" />
     <Content Include="res\boletines\LermaBoletin01_1992.pdf" />
     <Content Include="res\boletines\LermaBoletin02_1993.pdf" />
     <Content Include="res\boletines\LermaBoletin03_1994.pdf" />
@@ -154,6 +155,7 @@
     <Content Include="res\boletines\LermaBoletin24_2015.pdf" />
     <Content Include="res\boletines\LermaBoletin25_2016.pdf" />
     <Content Include="Default.aspx" />
+    <Content Include="pages\esqueleto.Master" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -211,6 +213,13 @@
     <Compile Include="pages\boletines.aspx.designer.cs">
       <DependentUpon>boletines.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\esqueleto.Master.cs">
+      <DependentUpon>esqueleto.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\esqueleto.Master.designer.cs">
+      <DependentUpon>esqueleto.Master</DependentUpon>
+    </Compile>
     <Compile Include="pages\hidroclimatologica.aspx.cs">
       <DependentUpon>hidroclimatologica.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -260,7 +269,6 @@
     <Compile Include="pages\subir_datos.aspx.designer.cs">
       <DependentUpon>subir_datos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\test.aspx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\BaseDatos\ConexionBD.cs" />
     <Compile Include="src\BaseDatos\NamespaceDoc.cs" />

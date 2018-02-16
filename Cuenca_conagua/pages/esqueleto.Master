@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="esqueleto.master.cs" Inherits="Cuenca_conagua.pages.esqueleto" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="../css/combined.css" />
+    <link rel="icon" type="image/ico" href="../res/icons/conagua.ico" />
+    <script src="../js/jquery-3.1.0.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="cuerpo_principal">
+            <div id="encabezado">
+                <div id="barra_herramientas">
+                    <div id="herramientas">
+                        <a href="http://www.conagua.gob.mx/"
+                            target="_self">Inicio</a>
+                        | <a href="http://portaltransparencia.gob.mx/pot/directorio/begin.do?method=begin&amp;_idDependencia=16101"
+                            rel="external">Directorio</a> | <a
+                                href="http://www.conagua.gob.mx/home.aspx"
+                                target="_self">English</a> | <a
+                                    href="http://www.conagua.gob.mx/Mapadelsitio.aspx"
+                                    target="_self">Mapa de Sitio</a> | <a
+                                        href="http://www.conagua.gob.mx/Contenido.aspx?n1=7&amp;n2=81"
+                                        target="_self">RSS</a>
+                    </div>
+                </div>
+
+                <table class="table-logo-header">
+                    <tr>
+                        <td class="header-image">
+                            <img src="../res/images/semarnat.jpg" />
+                        </td>
+                        <td class="header-title">
+                            <h1>LERMA WEB 2</h1>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="menu_principal">
+                    <ul id="lista_menu" runat="server">
+                        <li><a id="menuInicio" href="inicio.aspx">Inicio</a></li>
+                        <li><a id="menuGeneral" href="general.aspx">General</a></li>
+                        <li><a id="menuReglas" href="reglamentacion.aspx">Reglamentación</a></li>
+                        <li><a id="menuBoletines" href="boletines.aspx">Boletines</a></li>
+                        <li><a id="menuHistorica" href="historica.aspx">Histórica</a></li>
+                        <li><a id="menuHidroclimatologica" href="hidroclimatologica.aspx">Hidroclimatológica</a></li>
+                        <li><a id="linkSubirDatos" runat="server" href="subir_datos.aspx">Subir datos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="cuerpo">
+                <asp:ContentPlaceHolder ID="cuerpoContainer" runat="server" />
+            </div>
+        </div>
+    </form>
+</body>
+</html>
