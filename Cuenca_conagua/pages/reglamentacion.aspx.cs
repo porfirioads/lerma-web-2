@@ -12,15 +12,6 @@ namespace Cuenca_conagua.pages
     /// Esta clase contiene el código de la página de reglamentación.
     /// </summary>
     public partial class reglamentacion : System.Web.UI.Page
-    {
-        /// <summary>
-        /// Se ejecuta cuando la página se carga.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            SessionItemsManager.HideIfNotSession(Session, linkSubirDatos);
-        }
+    {       
     }
 }
