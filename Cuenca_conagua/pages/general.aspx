@@ -28,7 +28,7 @@
                                         target="_self">RSS</a>
                     </div>
                 </div>
-               
+
                 <table class="table-logo-header">
                     <tr>
                         <td class="header-image">
@@ -39,7 +39,7 @@
                         </td>
                     </tr>
                 </table>
-                
+
                 <div class="menu_principal">
                     <ul id="lista_menu" runat="server">
                         <li><a href="inicio.aspx">Inicio</a></li>
@@ -55,54 +55,24 @@
             <div id="cuerpo">
                 <aside class="lateral" runat="server">
                     <h4>Información General</h4>
-                    <a id="btnGralLocalizacion" class="btn btn-white">Localización
-                    </a>
-                    <a id="btnGralRegionalizacion" class="btn btn-white">Regionalización
-                    </a>
-                    <a id="btnGralCorrPrin" class="btn btn-white">Corrientes Principales
-                    </a>
-                    <a id="btnGralAlmPrin" class="btn btn-white">Almacenamientos Principales
-                    </a>
-                    <a id="btnGralUsuAgSup" class="btn btn-white">Usuarios del Agua Superficial
-                    </a>
+                    <a id="btnGralLocalizacion" class="btn btn-white">Localización</a>
+                    <a id="btnGralRegionalizacion" class="btn btn-white">Regionalización</a>
+                    <a id="btnGralCuencas" class="btn btn-white">Cuencas</a>
+                    <a id="btnGralCorrPrin" class="btn btn-white">Corrientes Principales</a>
+                    <a id="btnGralAlmPrin" class="btn btn-white">Almacenamientos Principales</a>
+                    <a id="btnGralUsuAgSup" class="btn btn-white">Usuarios del Agua Superficial</a>
                 </aside>
-                <section id="almacenamientos" class="contenido hidden" runat="server">
-                    <h4>Almacenamientos Principales</h4>
-                    <img class="img-max-100" src="../res/images/gral_almacenamientos.png" />
-                </section>
-                <section id="corrientes" class="contenido hidden" runat="server">
-                    <h4>CORRIENTES Y EMBALSES PRINCIPALES</h4>
-                    <p>
-                        El sistema hidrológico de esta zona está constituido por el río Lerma, que
-    es la corriente principal, de 708 kilómetros de longitud, con origen en la
-    Chignahuapan o laguna de Almoloya, al sureste de la ciudad de Toluca. En su
-    recorrido se integran como tributarios importantes los ríos La Gavia,
-    Jaltepec, Laja, Silao-Guanajuato, Turbio, Angulo y Duero, hasta descargar
-    al lago de Chapala, que es el vaso interior de mayores dimensiones del país
-    y en donde también descargan los ríos La Pasión y Zula.
-                    </p>
-                    <p>
-                        El rio Lerma desemboca en el lago de Chapala, que es el más grande del
-    país, con una superficie de 1189 km2 y una capacidad máxima de 8125
-    millones de metros cúbicos.
-                    </p>
-                    <h4>Datos Hidrométricos</h4>
-                    <p>
-                        Los puntos de control se dividen en: ocho estaciones hidrométricas, siete 
-    presas, el lago de Chapala, la laguna de Yuriria.
-                    </p>
-                    <img class="img-max-100" src="../res/images/gral_corrientes.png" />
-                </section>
+
                 <section id="localizacion" class="contenido" runat="server">
                     <h4>Localización de la cuenca Lerma-Chapala</h4>
                     <p>
                         La cuenca Lerma Chapala se encuentra en la parte centro del país,  está
-    limitada al norte y oeste por la cuenca del río Santiago, perteneciente a
-    la misma Región Hidrológica No. 12, al sur por la Región Hidrológica número
-    18, al este y noreste por la Región Hidrológica No. 26. Geográficamente
-    está comprendida entre los paralelos 19° 02´ 52´´ y 21° 34´ 10´´ de la
-    latitud norte y los meridianos 99° 17´ 48´´ y 103° 30´ 52´´ de longitud
-    oeste.
+                        limitada al norte y oeste por la cuenca del río Santiago, perteneciente a
+                        la misma Región Hidrológica No. 12, al sur por la Región Hidrológica número
+                        18, al este y noreste por la Región Hidrológica No. 26. Geográficamente
+                        está comprendida entre los paralelos 19° 02´ 52´´ y 21° 34´ 10´´ de la
+                        latitud norte y los meridianos 99° 17´ 48´´ y 103° 30´ 52´´ de longitud
+                        oeste.
                     </p>
                     <figure>
                         <img class="img-max-100" src="../res/images/gral_localizacion.png" />
@@ -327,6 +297,39 @@
                             </tr>
                         </tfoot>
                     </table>
+                </section>
+                <section id="cuencas" class="contenido" runat="server">
+                    <h4>Cuencas</h4>
+                    <a href="../res/images/cuenca_lc_con_nombres.png.png">
+                        <img class="img-max-100" src="../res/images/cuenca_lc_con_nombres.png.png" />
+                    </a>
+                </section>
+                <section id="corrientes" class="contenido hidden" runat="server">
+                    <h4>CORRIENTES Y EMBALSES PRINCIPALES</h4>
+                    <p>
+                        El sistema hidrológico de esta zona está constituido por el río Lerma, que
+                        es la corriente principal, de 708 kilómetros de longitud, con origen en la
+                        Chignahuapan o laguna de Almoloya, al sureste de la ciudad de Toluca. En su
+                        recorrido se integran como tributarios importantes los ríos La Gavia,
+                        Jaltepec, Laja, Silao-Guanajuato, Turbio, Angulo y Duero, hasta descargar
+                        al lago de Chapala, que es el vaso interior de mayores dimensiones del país
+                        y en donde también descargan los ríos La Pasión y Zula.
+                    </p>
+                    <p>
+                        El rio Lerma desemboca en el lago de Chapala, que es el más grande del
+                        país, con una superficie de 1189 km2 y una capacidad máxima de 8125
+                        millones de metros cúbicos.
+                    </p>
+                    <h4>Datos Hidrométricos</h4>
+                    <p>
+                        Los puntos de control se dividen en: ocho estaciones hidrométricas, siete 
+                        presas, el lago de Chapala, la laguna de Yuriria.
+                    </p>
+                    <img class="img-max-100" src="../res/images/gral_corrientes.png" />
+                </section>
+                <section id="almacenamientos" class="contenido hidden" runat="server">
+                    <h4>Almacenamientos Principales</h4>
+                    <img class="img-max-100" src="../res/images/gral_almacenamientos.png" />
                 </section>
                 <section id="usuarios" class="contenido hidden" runat="server">
                     <h4>Usuarios del Agua Superficial</h4>

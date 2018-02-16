@@ -40,33 +40,6 @@ namespace Cuenca_conagua.pages {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor linkSubirDatos;
         
         /// <summary>
-        /// cuenca control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cuenca;
-        
-        /// <summary>
-        /// almacenamientos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl almacenamientos;
-        
-        /// <summary>
-        /// corrientes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl corrientes;
-        
-        /// <summary>
         /// localizacion control.
         /// </summary>
         /// <remarks>
@@ -83,6 +56,33 @@ namespace Cuenca_conagua.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl regionalizacion;
+        
+        /// <summary>
+        /// cuencas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cuencas;
+        
+        /// <summary>
+        /// corrientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl corrientes;
+        
+        /// <summary>
+        /// almacenamientos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl almacenamientos;
         
         /// <summary>
         /// usuarios control.

@@ -7,8 +7,9 @@ $(document).ready(function () {
     var localizacion = $('#localizacion');
     var regionalizacion = $('#regionalizacion');
     var usuarios = $('#usuarios');
+    var cuencas = $('#cuencas');
     var sections = [almacenamientos, corrientes, localizacion,
-        regionalizacion, usuarios];
+        regionalizacion, usuarios, cuencas];
 
     // Oculta todas las secciones de información de la página de información
     // general.
@@ -28,6 +29,13 @@ $(document).ready(function () {
     $('#btnGralRegionalizacion').click(function () {
         hideAll();
         regionalizacion.removeClass('hidden');
+    });
+
+
+    // Se ejecuta cuando se presiona el botón de las cuencas.
+    $('#btnGralCuencas').click(function () {
+        hideAll();
+        cuencas.removeClass('hidden');
     });
 
     // Se ejecuta cuando se presiona el botón de las corrientes.
