@@ -2,12 +2,14 @@
 // dependiendo de la sección seleccionada.
 
 $(document).ready(function () {
-    var almacenamientos = $('#almacenamientos');
-    var corrientes = $('#corrientes');
-    var localizacion = $('#localizacion');
-    var regionalizacion = $('#regionalizacion');
-    var usuarios = $('#usuarios');
-    var cuencas = $('#cuencas');
+    console.log('pager_general');
+
+    var almacenamientos = $('#cuerpoContainer_almacenamientos');
+    var corrientes = $('#cuerpoContainer_corrientes');
+    var localizacion = $('#cuerpoContainer_localizacion');
+    var regionalizacion = $('#cuerpoContainer_regionalizacion');
+    var usuarios = $('#cuerpoContainer_usuarios');
+    var cuencas = $('#cuerpoContainer_cuencas');
     var sections = [almacenamientos, corrientes, localizacion,
         regionalizacion, usuarios, cuencas];
 
@@ -21,6 +23,7 @@ $(document).ready(function () {
 
     // Se ejecuta cuando se presiona el botón de la localización.
     $('#btnGralLocalizacion').click(function () {
+        console.log('btnGralLocalizacion');
         hideAll();
         localizacion.removeClass('hidden');
     });

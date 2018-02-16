@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pages/esqueleto.Master" AutoEventWireup="true" CodeBehind="inicio.aspx.cs" Inherits="Cuenca_conagua.pages.inicio" %>
+﻿<%@ Page Title="Inicio" Language="C#" MasterPageFile="~/pages/esqueleto.Master" AutoEventWireup="true" CodeBehind="inicio.aspx.cs" Inherits="Cuenca_conagua.pages.inicio" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="contentHead" ContentPlaceHolderID="head" runat="server">
     <script src="../js/activate_inicio_tab.js"></script>
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="cuerpoContainer" runat="server">
+<asp:Content ID="contentCuerpoContainer" ContentPlaceHolderID="cuerpoContainer" runat="server">
     <h4>Información General de la Cuenca Lerma-Chapala</h4>
     <p>
         La cuenca Lerma-Chapala es una de las más importantes de México. La región
