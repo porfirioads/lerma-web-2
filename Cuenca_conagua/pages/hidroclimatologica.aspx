@@ -1,16 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="hidroclimatologica.aspx.cs" Inherits="Cuenca_conagua.pages.hidroclimatologica" %>
+﻿<%@ Page Title="Hidroclimatológica" Language="C#" MasterPageFile="~/pages/esqueleto.Master" AutoEventWireup="true" CodeBehind="hidroclimatologica.aspx.cs" Inherits="Cuenca_conagua.pages.hidroclimatologica" %>
 
-<!DOCTYPE html>
+<asp:Content ID="contentHead" ContentPlaceHolderID="head" runat="server">
+    <script src="../js/activate_hidroclimatologica_tab.js"></script>
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
-    </div>
-    </form>
-</body>
-</html>
+<asp:Content ID="contentCuerpoContainer" ContentPlaceHolderID="cuerpoContainer" runat="server">
+
+</asp:Content>
