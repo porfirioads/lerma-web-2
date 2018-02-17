@@ -6,6 +6,9 @@ using System.Web;
 
 namespace Cuenca_conagua.src.Utilidades
 {
+    /// <summary>
+    /// Esta clase tiene métodos para el manejo de archivos y directorios
+    /// </summary>
     public class FileManager
     {
         /// <summary>
