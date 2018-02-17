@@ -65,7 +65,7 @@
                 <option value="Lluvia_media_anual">Precipitación media (Lluvia_media_anual.xlsx)</option>
                 <option value="Escurrimiento_anual">Escurrimiento anual (Escurrimiento_anual.xlsx)</option>
                 <option value="Volumenes_DR_PI">Volúmenes utilizados por DR y PI (Volumenes_DR_PI.xlsx)</option>
-                <option>Opción4</option>
+                <option value="Boletin">Boletín (*.pdf)</option>
             </select>
             <br />
             <div id="uploadResult" class="div-mensaje hidden"></div>

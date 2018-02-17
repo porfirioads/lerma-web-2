@@ -290,6 +290,7 @@
     <Compile Include="src\Entidades\VolumenPiAutorizado.cs" />
     <Compile Include="src\Entidades\VolumenPiUtilizado.cs" />
     <Compile Include="src\Utilidades\ExcelFileIO.cs" />
+    <Compile Include="src\Utilidades\FileManager.cs" />
     <Compile Include="src\Utilidades\Logger.cs" />
     <Compile Include="src\Utilidades\NamespaceDoc.cs" />
     <Compile Include="src\Utilidades\SessionItemsManager.cs" />
