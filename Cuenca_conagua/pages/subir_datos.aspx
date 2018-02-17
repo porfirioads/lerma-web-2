@@ -59,25 +59,35 @@
                 ahora puedes subir la información que desees o bien, puedes
                 <a class="link-page" runat="server" onserverclick="Logout">Cerrar sesión</a>.
             </div>
+
             <p id="txtBienvenido" runat="server"></p>
+
             <p><strong>Tipo de información:</strong></p>
+
             <select id="sel_tipo_archivo" class="form-control">
                 <option value="Lluvia_media_anual">Precipitación media (Lluvia_media_anual.xlsx)</option>
                 <option value="Escurrimiento_anual">Escurrimiento anual (Escurrimiento_anual.xlsx)</option>
                 <option value="Volumenes_DR_PI">Volúmenes utilizados por DR y PI (Volumenes_DR_PI.xlsx)</option>
                 <option value="Boletin">Boletín (*.pdf)</option>
             </select>
+
             <br />
+
             <div id="uploadResult" class="div-mensaje hidden"></div>
+
             <div id="dropzone">
                 <form id="fileUpload" runat="server" class="dropzone needsclick dz-clickable" action="subir_datos.aspx">
+                    <asp:HiddenField ID="tipoArchivo" runat="server"></asp:HiddenField>
+
                     <div class="dz-message needsclick">
                         Arrastra los archivos aquí o haz click para subir
                     </div>
+
                     <script src="../js/upload_data.js"></script>
                 </form>
             </div>
         </div>
+
         <div class="footer">
             <div style="border-top: 1px solid #dedede; border-bottom: 1px solid #dedede; font-family: 'Times New Roman', serif; font-size: 14px; color: #666666; text-align: center; padding: 14px 0px;">
                 CONAGUA - ALGUNOS DERECHOS RESERVADOS © 2012 - <a

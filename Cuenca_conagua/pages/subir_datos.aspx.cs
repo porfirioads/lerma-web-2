@@ -23,21 +23,60 @@ namespace Cuenca_conagua.pages
             if (Session["usuario"] != null)
             {
                 txtBienvenidaUsuario.InnerText = Session["usuario"].ToString();
+
                 foreach (string s in Request.Files)
                 {
                     HttpPostedFile file = Request.Files[s];
-                    int fileSizeInBytes = file.ContentLength;
-                    string fileName = file.FileName;
-                    string savedFileName = Path
-                        .Combine(Server.MapPath("../uploaded_files"), fileName);
-                    file.SaveAs(savedFileName);
-                    IngresarBaseDatos(savedFileName);
+                    string tipo = tipoArchivo.Value;
+
+                    Logger.AddToLog("TipoArchivo: " + tipo, true);
+                    string savedFileName = SaveFile(file, tipoArchivo.Value);
+                    
+                    if(tipo == "datos")
+                    {
+                        IngresarBaseDatos(savedFileName);
+                    }
                 }
             }
             else
             {
                 Response.Redirect("login_admin.aspx");
             }
+        }
+
+        /// <summary>
+        /// Guarda el archivo recibido en el directorio correspondiente
+        /// </summary>
+        /// <param name="file">
+        /// El archivo a subir
+        /// </param>
+        /// <param name="tipo">
+        /// El tipo de archivo
+        /// </param>
+        /// <returns>
+        /// Ubicación donde se guardó el archivo
+        /// </returns>
+        private string SaveFile(HttpPostedFile file, string tipo)
+        {
+            string path = "../";
+            string fileName = file.FileName;
+
+
+            if (tipo.Equals("boletin"))
+            {
+                FileManager.crearCarpetasFaltantes("uploaded_files/boletines");
+                path = "../uploaded_files/boletines";
+            }
+            else if (tipo.Equals("datos"))
+            {
+                FileManager.crearCarpetasFaltantes("uploaded_files/datos");
+                path = "../uploaded_files/datos";
+            }
+
+            string savedFileName = Path.Combine(Server.MapPath(path), fileName);
+            file.SaveAs(savedFileName);
+
+            return savedFileName;
         }
 
         /// <summary>
@@ -147,6 +186,7 @@ namespace Cuenca_conagua.pages
                 .ReadVolumenPiAutorizado(nombreArchivo);
             List<VolumenPiUtilizado> volsPiUtilizados = ExcelFileIO
                 .ReadVolumenPiUtilizado(nombreArchivo);
+
             foreach (VolumenDrAsignado volAs in volsDrAsignados)
             {
                 if (volAs.Save())
@@ -158,6 +198,7 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen DR Asignado: " + volAs.Ciclo + " no guardado", true);
                 }
             }
+
             foreach (VolumenDrAutorizado volAu in volsDrAutorizados)
             {
                 if (volAu.Save())
@@ -169,6 +210,7 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen DR Autorizado: " + volAu.Ciclo + " no guardado", true);
                 }
             }
+
             foreach (VolumenDrUtilizado volUt in volsDrUtilizados)
             {
                 if (volUt.Save())
@@ -180,6 +222,7 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen DR Utilizado: " + volUt.Ciclo + " no guardado", true);
                 }
             }
+
             foreach (VolumenPiAsignado volAs in volsPiAsignados)
             {
                 if (volAs.Save())
@@ -191,6 +234,7 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen PI asignado: " + volAs.Ciclo + " no guardado", true);
                 }
             }
+
             foreach (VolumenPiAutorizado volAu in volsPiAutorizados)
             {
                 if (volAu.Save())
@@ -202,6 +246,7 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen PI autorizado: " + volAu.Ciclo + " no guardado", true);
                 }
             }
+
             foreach (VolumenPiUtilizado volUt in volsPiUtilizados)
             {
                 if (volUt.Save())
