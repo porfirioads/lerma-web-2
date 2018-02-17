@@ -23,17 +23,39 @@ namespace Cuenca_conagua.src.Utilidades
         }
 
         /// <summary>
-        /// Lista los archivos de un path dado
+        /// Lista los paths absolutos de los archivos de un path dado
         /// </summary>
         /// <param name="relativePath">
         /// Es el path a partir del cual se realizará el proceso, debe ser 
         /// relativo al directorio raiz del proyecto (.)
         /// </param>
-        public static string[] getArchivosEnDirectorio(string relativePath)
+        public static string[] getArchivosEnDirectorioAbsolute(string relativePath)
         {
             string path = HttpContext.Current.Server.MapPath("../" +
                 relativePath);
+
             string[] files = Directory.GetFiles(path);
+
+            return files;
+        }
+
+        /// <summary>
+        /// Lista los paths relativos de los archivos de un path dado
+        /// </summary>
+        /// <param name="relativePath">
+        /// Es el path a partir del cual se realizará el proceso, debe ser 
+        /// relativo al directorio raiz del proyecto (.)
+        /// </param>
+        public static string[] getArchivosEnDirectorioRelative(string relativePath)
+        {
+            string[] files = getArchivosEnDirectorioAbsolute(relativePath);
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                files[i] = "../" + relativePath + "/" +
+                    ExtractFilename(files[i]);
+            }
+
             return files;
         }
 
@@ -47,6 +69,7 @@ namespace Cuenca_conagua.src.Utilidades
             // If path ends with a "\", it's a path only so return String.Empty.
             if (filepath.Trim().EndsWith(@"\"))
             {
+                Logger.AddToLog(filepath + " termina con \\", true);
                 return String.Empty;
             }
 
@@ -56,30 +79,14 @@ namespace Cuenca_conagua.src.Utilidades
             // If there is no backslash, assume that this is a filename.
             if (position == -1)
             {
-                // Determine whether file exists in the current directory.
-                if (File.Exists(Environment.CurrentDirectory +
-                    Path.DirectorySeparatorChar + filepath))
-                {
-                    return filepath;
-                }
-                else
-                {
-                    return String.Empty;
-                }
+                Logger.AddToLog(filepath + " no tiene \\", true);
+                return filepath;
             }
             else
             {
+                Logger.AddToLog(filepath + " tiene \\", true);
                 // Determine whether file exists using filepath.
-                if (File.Exists(filepath))
-                {
-                    // Return filename without file path.
-                    return filepath.Substring(position + 1);
-                }
-
-                else
-                {
-                    return String.Empty;
-                }
+                return filepath.Substring(position + 1);
             }
         }
     }

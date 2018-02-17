@@ -33,7 +33,7 @@ namespace Cuenca_conagua.pages
         {
             FileManager.crearCarpetasFaltantes(BOLETINES_PATH);
 
-            string[] files = FileManager.getArchivosEnDirectorio(
+            string[] files = FileManager.getArchivosEnDirectorioRelative(
                 BOLETINES_PATH);
 
             int mitad = files.Length / 2;
@@ -54,20 +54,36 @@ namespace Cuenca_conagua.pages
             }
         }
 
+        /// <summary>
+        /// Agrega un link como celda de una fila de una tabla
+        /// </summary>
+        /// <param name="row">
+        /// Es la fila de la tabla donde se agregará la celda
+        /// </param>
+        /// <param name="filePath">
+        /// Es la ruta a donde apuntará el link
+        /// </param>
         private void AddLinkCellToRow(HtmlTableRow row, string filePath)
         {
             HtmlTableCell cell = new HtmlTableCell();
             HtmlAnchor anchor = new HtmlAnchor();
             anchor.Attributes["class"] = "btn btn-white btn-100";
             anchor.Attributes["href"] = filePath;
-            anchor.InnerHtml = FileManager.ExtractFilename(filePath);
+            anchor.Attributes["target"] = "_blank";
+            string filename = FileManager.ExtractFilename(filePath.Replace(
+                '/', '\\'));
+            Logger.AddToLog("Filename: " + filename, true);
+            anchor.InnerHtml = filename;
             cell.Controls.Add(anchor);
             row.Cells.Add(cell);
         }
 
+        /// <summary>
+        /// Lista los boletines y los escribe en el log
+        /// </summary>
         private void LogBoletinesList()
         {
-            string[] files = FileManager.getArchivosEnDirectorio(
+            string[] files = FileManager.getArchivosEnDirectorioRelative(
                 BOLETINES_PATH);
             Logger.AddToLog("Archivos en " + BOLETINES_PATH, true);
             Logger.AddToLog("Hay " + files.Length + " archivos", true);
