@@ -47,11 +47,11 @@
   <ItemGroup>
     <Reference Include="Excel, Version=2.0.1.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Snippets\CuencaFilesIO\CuencaFilesIO\bin\Debug\Excel.dll</HintPath>
+      <HintPath>..\..\..\Desktop\Excel.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Snippets\CuencaFilesIO\CuencaFilesIO\bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\Desktop\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
@@ -86,6 +86,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -130,37 +131,13 @@
     </Content>
     <Content Include="pages\login_admin.aspx" />
     <Content Include="pages\subir_datos.aspx" />
-    <Content Include="res\boletines\LermaBoletin01_1992.pdf" />
-    <Content Include="res\boletines\LermaBoletin02_1993.pdf" />
-    <Content Include="res\boletines\LermaBoletin03_1994.pdf" />
-    <Content Include="res\boletines\LermaBoletin04_1995.pdf" />
-    <Content Include="res\boletines\LermaBoletin05_1996.pdf" />
-    <Content Include="res\boletines\LermaBoletin06_1997.pdf" />
-    <Content Include="res\boletines\LermaBoletin07_1998.pdf" />
-    <Content Include="res\boletines\LermaBoletin08_1999.pdf" />
-    <Content Include="res\boletines\LermaBoletin09_2000.pdf" />
-    <Content Include="res\boletines\LermaBoletin10_2001.pdf" />
-    <Content Include="res\boletines\LermaBoletin11_2002.pdf" />
-    <Content Include="res\boletines\LermaBoletin12_2003.pdf" />
-    <Content Include="res\boletines\LermaBoletin13_2004.pdf" />
-    <Content Include="res\boletines\LermaBoletin14_2005.pdf" />
-    <Content Include="res\boletines\LermaBoletin16_2007.pdf" />
-    <Content Include="res\boletines\LermaBoletin17_2007.pdf" />
     <Content Include="res\docs_reglamentacion\1_acuerdo_1991.pdf" />
     <Content Include="res\docs_reglamentacion\2_acuerdo_de_coordinación_2004.pdf" />
     <Content Include="res\docs_reglamentacion\3_convenio_2004.pdf" />
     <Content Include="res\docs_reglamentacion\4_decreto_2014.pdf" />
-    <Content Include="res\boletines\LermaBoletin15_2006.pdf" />
-    <Content Include="res\boletines\LermaBoletin18_2009.pdf" />
-    <Content Include="res\boletines\LermaBoletin19_2010.pdf" />
-    <Content Include="res\boletines\LermaBoletin20_2011.pdf" />
-    <Content Include="res\boletines\LermaBoletin21_2012.pdf" />
-    <Content Include="res\boletines\LermaBoletin22_2013.pdf" />
-    <Content Include="res\boletines\LermaBoletin23_2014.pdf" />
-    <Content Include="res\boletines\LermaBoletin24_2015.pdf" />
-    <Content Include="res\boletines\LermaBoletin25_2016.pdf" />
     <Content Include="Default.aspx" />
     <Content Include="pages\esqueleto.Master" />
+    <None Include="Properties\PublishProfiles\DeployAWS.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -206,6 +183,32 @@
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="themes\fa\theme.js" />
     <Content Include="themes\gly\theme.js" />
+    <Content Include="uploaded_files\boletines\LermaBoletin01_1992.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin02_1993.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin03_1994.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin04_1995.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin05_1996.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin06_1997.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin07_1998.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin08_1999.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin09_2000.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin10_2001.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin11_2002.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin12_2003.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin13_2004.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin14_2005.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin15_2005.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin16_2007.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin17_2007.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin18_2008.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin19_2009.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin20_2010.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin21_2011.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin22_2012.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin23_2013.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin24_2014.pdf" />
+    <Content Include="uploaded_files\boletines\LermaBoletin25_2015.pdf" />
+    <Content Include="uploaded_files\datos\Lluvia_media_anual.xlsx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -297,7 +300,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="log\" />
-    <Folder Include="uploaded_files\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
