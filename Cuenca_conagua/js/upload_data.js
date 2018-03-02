@@ -44,7 +44,7 @@ Dropzone.options.fileUpload = {
 
         this.on("complete", function (file) {
             setTimeout(function () {
-                parent.removeAllFiles();
+                //parent.removeAllFiles();
                 mostrarMensajeResultado(RES_EXITO, MSJ_EXITO);
                 maxFilesExceeded = false;
             }, 2000);
