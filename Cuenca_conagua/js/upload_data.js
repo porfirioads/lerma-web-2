@@ -1,36 +1,52 @@
 ﻿// Este script controla el componente de subida de archivos del sistema.
 
+var maxFilesExceeded = false;
+var uploadAllowed = false;
+var maxFiles = 100;
+
 Dropzone.options.fileUpload = {
-    maxFiles: 1,
+    maxFiles: maxFiles,
+
     accept: function (file, done) {
         done();
     },
+
     init: function () {
         var parent = this;
+
         this.on("maxfilesexceeded", function (file) {
-            this.removeAllFiles();
-            this.addFile(file);
+            console.log('maxfilesexceeded: ' + file.name);
+            mostrarMensajeResultado(RES_ERROR, MSG_MAX_FILES);
+            maxFilesExceeded = true;
+            return false;
         });
+
         this.on("addedfile", function (file) {
-            if (!confirm("¿Seguro que deseas subir el archivo?")) {
-                this.removeFile(file);
-                return false;
-            } else {
-                if (!evaluarExtension(file.name)) {
-                    mostrarMensajeResultado(RES_ERROR, EXT_INVAL);
+            if (!maxFilesExceeded) {
+                if (!uploadAllowed && !confirm("¿Seguro que deseas subir el archivo?")) {
                     this.removeFile(file);
                     return false;
-                } else if (!evaluarNombre(file.name)) {
-                    mostrarMensajeResultado(RES_ERROR, NOM_INVAL);
-                    this.removeFile(file);
-                    return false;
+                } else {
+                    uploadAllowed = true;
+
+                    if (!evaluarExtension(file.name)) {
+                        mostrarMensajeResultado(RES_ERROR, EXT_INVAL);
+                        this.removeFile(file);
+                        return false;
+                    } else if (!evaluarNombre(file.name)) {
+                        mostrarMensajeResultado(RES_ERROR, NOM_INVAL);
+                        this.removeFile(file);
+                        return false;
+                    }
                 }
             }
         });
+
         this.on("complete", function (file) {
             setTimeout(function () {
                 parent.removeAllFiles();
                 mostrarMensajeResultado(RES_EXITO, MSJ_EXITO);
+                maxFilesExceeded = false;
             }, 2000);
         });
     }
@@ -47,6 +63,9 @@ $('#sel_tipo_archivo').change(function () {
 
 function updateTipoArchivo() {
     var tipo = $('#sel_tipo_archivo').val();
+
+    uploadAllowed = false;
+    maxFilesExceeded = false;
 
     console.log('sel_tipo_archivo change', tipo);
 
@@ -68,6 +87,7 @@ var RES_EXITO = 1;
 var EXT_INVAL = '<strong>Debes subir un archivo con la extensión esperada.</strong>';
 var NOM_INVAL = '<strong>El nombre del archivo debe ser el indicado en la lista.</strong>';
 var MSJ_EXITO = '<strong>El archivo fue subido correctamente.</strong>';
+var MSJ_MAX_FILES = '<strong>Puedes subir máximo ' + maxFiles + ' archivos</strong>';
 
 // Determina si la extension del archivo es correcta.
 function evaluarExtension(nombreArchivo) {
