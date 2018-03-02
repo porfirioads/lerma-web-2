@@ -10,33 +10,15 @@
 namespace Cuenca_conagua.pages {
     
     
-    public partial class boletines {
+    public partial class reglamentacion {
         
         /// <summary>
-        /// form1 control.
+        /// reglamentacionTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// lista_menu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lista_menu;
-        
-        /// <summary>
-        /// linkSubirDatos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkSubirDatos;
+        protected global::System.Web.UI.HtmlControls.HtmlTable reglamentacionTable;
     }
 }

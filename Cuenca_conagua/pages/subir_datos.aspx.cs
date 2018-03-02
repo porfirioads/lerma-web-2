@@ -61,7 +61,6 @@ namespace Cuenca_conagua.pages
             string path = "../";
             string fileName = file.FileName;
 
-
             if (tipo.Equals("boletin"))
             {
                 FileManager.crearCarpetasFaltantes("uploaded_files/boletines");
