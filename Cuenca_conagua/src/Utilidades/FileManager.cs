@@ -37,6 +37,8 @@ namespace Cuenca_conagua.src.Utilidades
             string path = HttpContext.Current.Server.MapPath("../" +
                 relativePath);
 
+            FileManager.crearCarpetasFaltantes(relativePath);
+
             string[] files = Directory.GetFiles(path);
 
             return files;
