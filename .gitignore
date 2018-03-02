@@ -326,3 +326,11 @@ ASALocalRun/
 
 # MSBuild Binary and Structured Log
 *.binlog
+
+# Uploaded Files
+*.pdf
+*.xls
+*.xlsx
+
+# Log file
+log.txt

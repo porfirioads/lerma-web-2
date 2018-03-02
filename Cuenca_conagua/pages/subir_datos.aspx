@@ -69,6 +69,7 @@
                 <option value="Escurrimiento_anual">Escurrimiento anual (Escurrimiento_anual.xlsx)</option>
                 <option value="Volumenes_DR_PI">Volúmenes utilizados por DR y PI (Volumenes_DR_PI.xlsx)</option>
                 <option value="Boletin">Boletín (*.pdf)</option>
+                <option value="Reglamentación">Reglamentación (*.pdf)</option>
             </select>
 
             <br />

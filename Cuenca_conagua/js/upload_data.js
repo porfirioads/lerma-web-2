@@ -54,6 +54,8 @@ function updateTipoArchivo() {
 
     if (tipo == 'Boletin') {
         tipoArchivo.val('boletin');
+    } else if (tipo == 'Reglamentación') {
+        tipoArchivo.val('reglamentacion');
     } else if (tipo == 'Lluvia_media_anual' || tipo == 'Escurrimiento_anual'
         || tipo == 'Volumenes_DR_PI') {
         tipoArchivo.val('datos');
@@ -72,7 +74,9 @@ function evaluarExtension(nombreArchivo) {
     var nombreCorrecto = $('#sel_tipo_archivo').val();
 
     if (nombreCorrecto == "Boletin") {
-        return nombreArchivo.endsWith('.pdf')
+        return nombreArchivo.endsWith('.pdf');
+    } else if (nombreCorrecto == "Reglamentación") {
+        return nombreArchivo.endsWith('.pdf');
     } else {
         return nombreArchivo.endsWith('.xls') || nombreArchivo.endsWith('.xlsx');
     }
@@ -82,7 +86,7 @@ function evaluarExtension(nombreArchivo) {
 function evaluarNombre(nombreArchivo) {
     var nombreCorrecto = $('#sel_tipo_archivo').val();
 
-    if (nombreCorrecto == "Boletin") {
+    if (nombreCorrecto == "Boletin" || nombreCorrecto == "Reglamentación") {
         // Devuelve true si se trata de un archivo donde no se requiere 
         // coincidencia en el nombre
         return true;

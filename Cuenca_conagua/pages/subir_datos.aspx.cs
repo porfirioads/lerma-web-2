@@ -67,11 +67,18 @@ namespace Cuenca_conagua.pages
                 FileManager.crearCarpetasFaltantes("uploaded_files/boletines");
                 path = "../uploaded_files/boletines";
             }
+            else if(tipo.Equals("reglamentacion"))
+            {
+                FileManager.crearCarpetasFaltantes("uploaded_files/reglamentacion");
+                path = "../uploaded_files/reglamentacion";
+            }
             else if (tipo.Equals("datos"))
             {
                 FileManager.crearCarpetasFaltantes("uploaded_files/datos");
                 path = "../uploaded_files/datos";
             }
+
+            Logger.AddToLog("Tipo de archivo: " + tipo, true);
 
             string savedFileName = Path.Combine(Server.MapPath(path), fileName);
             file.SaveAs(savedFileName);
