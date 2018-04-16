@@ -60,6 +60,7 @@ $(document).ready(function () {
     // Se ejecuta cuando se presiona el botón de los usuarios.
     $('#btnGralUsuAgSup').click(function () {
         hideAll();
+        $('#imgUsuarios').rwdImageMaps();
         usuarios.removeClass('hidden');
     });
 

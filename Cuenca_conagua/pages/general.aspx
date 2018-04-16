@@ -801,6 +801,7 @@
             </table>
         </div>
     </section>
+
     <section id="usuarios" class="contenido hidden" runat="server">
         <h4>Usuarios del Agua Superficial</h4>
         <p>
@@ -813,7 +814,60 @@
             Un usuario más que se tiene en la cuenca es el agua potable de la ciudad de
     Guadalajara.
         </p>
-        <img class="img-max-100" src="../res/images/gral_usuarios.png" />
+
+        <img id="imgUsuarios" 
+            src="../res/images/gral_usuarios.png" width="1163" 
+            height="653" usemap="#mapUsuarios" alt/>
+
+        <map name="mapUsuarios" id="mapUsuarios">
+            <area shape="poly" coords="736, 323, 849, 321, 849, 366, 736, 366" 
+                title="Distrito de Riego 011" alt="alt" 
+                href="../uploaded_files/usuarios_agua_superficial/DR 011.pdf"
+                target="_blank"
+                id="areaDR011"/>
+
+            <area shape="poly" coords="168, 279, 281, 279, 281, 323, 168, 323" 
+                title="Distrito de Riego 013" alt="alt" 
+                href="../uploaded_files/usuarios_agua_superficial/DR 013.pdf"
+                target="_blank"
+                id="areaDR013"/>
+
+            <area shape="poly" coords="142, 420, 255, 420, 255, 466, 142, 466" 
+                title="Distrito de Riego 024" alt="alt" 
+                href="../uploaded_files/usuarios_agua_superficial/DR 024.pdf" 
+                target="_blank"
+                id="areaDR024"/>
+
+            <area shape="poly" coords="972, 374, 1081, 374, 1081, 417, 972, 417" 
+                title="Distrito de Riego 033" alt="alt" 
+                href="../uploaded_files/usuarios_agua_superficial/DR 033.pdf"
+                target="_blank"
+                id="areaDR033"/>
+
+            <area shape="poly" coords="798, 491, 911, 491, 911, 534, 798, 534" 
+                title="Distrito de Riego 045" alt="alt" 
+                href="../uploaded_files/usuarios_agua_superficial/DR 045.pdf"
+                target="_blank"
+                id="areaDR045"/>
+
+            <area shape="poly" coords="330, 439, 446, 439, 446, 482, 330, 482" 
+                title="Distrito de Riego 061" alt="alt" 
+                href="../uploaded_files/usuarios_agua_superficial/DR 061.pdf"
+                target="_blank"
+                id="areaDR061"/>
+
+            <area shape="poly" coords="713, 183, 827, 183, 827, 228, 713, 226" 
+                title="Distrito de Riego 085" alt="alt" 
+                href="../uploaded_files/usuarios_agua_superficial/DR 085.pdf"
+                target="_blank"
+                id="areaDR085"/>
+
+            <area shape="poly" coords="387, 279, 499, 279, 500, 323, 387, 323" 
+                title="Distrito de Riego 087" alt="alt" 
+                href="../uploaded_files/usuarios_agua_superficial/DR 087.pdf"
+                target="_blank"
+                id="areaDR087"/>
+        </map>
     </section>
 </asp:Content>
 
