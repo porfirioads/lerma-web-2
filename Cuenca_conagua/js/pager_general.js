@@ -13,6 +13,10 @@ $(document).ready(function () {
     var sections = [almacenamientos, corrientes, localizacion,
         regionalizacion, usuarios, cuencas];
 
+    var mapsLoaded = {
+        mapAlmacenamientos: false
+    }
+
     // Oculta todas las secciones de información de la página de información
     // general.
     function hideAll() {
@@ -34,7 +38,6 @@ $(document).ready(function () {
         regionalizacion.removeClass('hidden');
     });
 
-
     // Se ejecuta cuando se presiona el botón de las cuencas.
     $('#btnGralCuencas').click(function () {
         hideAll();
@@ -50,6 +53,7 @@ $(document).ready(function () {
     // Se ejecuta cuando se presiona el botón de los almacenamientos.
     $('#btnGralAlmPrin').click(function () {
         hideAll();
+        $('#imgAlmacenamientos').rwdImageMaps();
         almacenamientos.removeClass('hidden');
     });
 
@@ -58,4 +62,6 @@ $(document).ready(function () {
         hideAll();
         usuarios.removeClass('hidden');
     });
+
+    localizacion.trigger('click');
 });

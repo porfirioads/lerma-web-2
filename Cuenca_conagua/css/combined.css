@@ -508,3 +508,19 @@ table.table-padded th td {
 .table-logo-header .header-title  h1{
     color: black !important;
 }
+
+img[usemap] {
+    border: none;
+    height: auto;
+    max-width: 100%;
+    width: auto;
+}
+
+.full-table {
+    width: 100%;
+    font-size: 12pt;
+}
+
+    .full-table td {
+        vertical-align: top;
+    }

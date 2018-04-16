@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
+    <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">
     <title></title>
     <link rel="stylesheet" href="../css/combined.css" />
     <link rel="icon" type="image/ico" href="../res/icons/conagua.ico" />
@@ -57,5 +58,7 @@
             </div>
         </div>
     </form>
+    <asp:ContentPlaceHolder ID="footerScripts" runat="server">
+    </asp:ContentPlaceHolder>
 </body>
 </html>

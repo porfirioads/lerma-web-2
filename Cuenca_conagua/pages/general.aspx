@@ -3,7 +3,8 @@
 <asp:Content ID="contentHead" ContentPlaceHolderID="head" runat="server">
     <script src="../js/pager_general.js"></script>
     <script src="../js/activate_general_tab.js"></script>
-    
+    <script src="../js/jquery.rwdImageMaps.min.js"></script>
+    <script src="../js/almacenamientosMap.js"></script>
 </asp:Content>
 
 <asp:Content ID="contentCuerpoContainer" ContentPlaceHolderID="cuerpoContainer" runat="server">
@@ -252,7 +253,7 @@
             </tfoot>
         </table>
     </section>
-    <section id="cuencas" class="contenido" runat="server">
+    <section id="cuencas" class="contenido hidden" runat="server">
         <h4>Cuencas</h4>
         <a href="../res/images/cuenca_lc_con_nombres.png.png">
             <img class="img-max-100" src="../res/images/cuenca_lc_con_nombres.png.png" />
@@ -283,7 +284,522 @@
     </section>
     <section id="almacenamientos" class="contenido hidden" runat="server">
         <h4>Almacenamientos Principales</h4>
-        <img class="img-max-100" src="../res/images/gral_almacenamientos.png" />
+        <img id="imgAlmacenamientos" 
+            src="../res/images/gral_almacenamientos.png" width="1179" 
+            height="628" usemap="#mapAlmacenamientos" alt/>
+
+        <map name="mapAlmacenamientos" id="mapAlmacenamientos">
+            <area shape="poly" coords="1036, 516, 1064, 482, 1095, 516" 
+                title="Presa José Antonio Álzate" alt="alt" href="#" id="areaJAA"/>
+
+            <area shape="poly" coords="997, 513, 1023, 478, 1042, 500, 1033, 511" 
+                title="Presa Ignacio Ramírez" alt="alt" href="#" id="areaIR"/>
+
+            <area shape="poly" coords="944, 479, 974, 439, 1003, 469" 
+                title="Presa Tepetitlán" alt="alt" href="#" id="areaTepetitlan"/>
+
+            <area shape="poly" coords="875, 377, 906, 346, 931, 376" 
+                title="Presa Tepuxtepec" alt="alt" href="#" id="areaTepuxtepec"/>
+
+            <area shape="poly" coords="760, 372, 788, 341, 817, 372" 
+                title="Presa Solís" alt="alt" href="#" id="areaSolis"/>
+
+            <area shape="poly" coords="706, 193, 734, 162, 762, 193" 
+                title="Presa Ignacio Allende" alt="alt" href="#" id="areaIA"/>
+
+            <area shape="poly" coords="644, 316, 673, 284, 701, 316" 
+                title="Laguna de Yuriria" alt="alt" href="#" id="areaLDY"/>
+
+            <area shape="poly" coords="488, 356, 498, 342, 506, 357" 
+                title="Presa Melchor Ocampo" alt="alt" href="#" id="areaPMO"/>
+
+            <area shape="poly" coords="112, 328, 139, 296, 169, 328" 
+                title="Lago de Chapala" alt="alt" href="#" id="areaChapala"/>
+
+            <area shape="poly" coords="802, 229, 802, 252, 828, 252, 828, 229" 
+                title="Estación hidrométrica Ameche" alt="alt" href="#" id="areaEHA"/>
+
+            <area shape="poly" coords="675, 238, 675, 261, 702, 238, 675, 238" 
+                title="Estación hidrométrica Pericos" alt="alt" href="#" id="areaEHP"/>
+
+            <area shape="poly" coords="634, 223, 661, 223, 661, 246, 634, 246" 
+                title="Estación hidrométrica Salamanca" alt="alt" href="#" id="areaEHS"/>
+
+            <area shape="poly" coords="455, 195, 482, 195, 482, 219, 455, 219" 
+                title="Estación hidrométrica Adjuntas" alt="alt" href="#" id="areaEHAS"/>
+
+            <area shape="poly" coords="479, 312, 507, 312, 507, 335, 479, 335" 
+                title="Estación hidrométrica Corrales" alt="alt" href="#" id="areaEHC"/>
+
+            <area shape="poly" coords="350, 278, 378, 278, 378, 302, 350, 302" 
+                title="Estación hidrométrica Yurécuaro" alt="alt" href="#" id="areaEHY"/>
+
+            <area shape="poly" coords="" 
+                title="Estación hidrométrica Estanzuela" alt="alt" href="#" id="areaEHE"/>
+
+            <area shape="poly" coords="" 
+                title="Estación hidrométrica Zula" alt="alt" href="#" id="areaEHZ"/>
+        </map>
+
+        <div id="areaJAAInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Presa José Antonio Álzate
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Lerma
+                        <br />
+                        <strong>Estado:</strong> Edo. De México
+                        <br />
+                        <strong>Uso principal:</strong> Irrigación y control de avenidas
+                        <br />
+                        <strong>Clave BANDAS:</strong> 210JAA
+                    </td>
+                    <td>
+                        <strong>Elevaciones:</strong>
+                        <br />
+                        NAME: 2566.92 msnm
+                        <br />
+                        NAMO: 2565.56 msnm
+                        <br />
+                        <strong>Volumen:</strong>
+                        <br />
+                        NAME: 52.5 hm<sup>3</sup>
+                        <br />
+                        NAMO: 35.9 hm<sup>3</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaIRInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Presa Ignacio Ramírez
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río La Gavia
+                        <br />
+                        <strong>Estado:</strong> Edo. De México
+                        <br />
+                        <strong>Uso principal:</strong> Irrigación y control de avenidas
+                        <br />
+                        <strong>Clave BANDAS:</strong> 195IRA
+                    </td>
+                    <td>
+                        <strong>Elevaciones:</strong>
+                        <br />
+                        NAME: 2550.48 msnm
+                        <br />
+                        NAMO: 2548.4 msnm
+                        <br />
+                        <strong>Volumen:</strong>
+                        <br />
+                        NAME: 36.3 hm<sup>3</sup>
+                        <br />
+                        NAMO: 20.5 hm<sup>3</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaTepetitlanInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Presa Tepetitlán
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Jaltepec
+                        <br />
+                        <strong>Estado:</strong> Edo. De México
+                        <br />
+                        <strong>Uso principal:</strong> Irrigación y control de avenidas
+                        <br />
+                        <strong>Clave BANDAS:</strong> 435TPN
+                    </td>
+                    <td>
+                        <strong>Elevaciones:</strong>
+                        <br />
+                        NAME: 2594.46 msnm
+                        <br />
+                        NAMO: 2592.02 msnm
+                        <br />
+                        <strong>Volumen:</strong>
+                        <br />
+                        NAME: 92.1 hm<sup>3</sup>
+                        <br />
+                        NAMO: 57.62 hm<sup>3</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaTepuxtepecInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Presa Tepuxtepec
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Lerma
+                        <br />
+                        <strong>Estado:</strong> Michoacán
+                        <br />
+                        <strong>Uso principal:</strong> Irrigación, Generación hidroeléctrica y control de avenidas
+                        <br />
+                        <strong>Clave BANDAS:</strong> 440TPX
+                    </td>
+                    <td>
+                        <strong>Elevaciones:</strong>
+                        <br />
+                        NAME: 2350 msnm
+                        <br />
+                        NAMO: 2346.54 msnm
+                        <br />
+                        <strong>Volumen:</strong>
+                        <br />
+                        NAME: 537.7 hm<sup>3</sup>
+                        <br />
+                        NAMO: 425 hm<sup>3</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaSolisInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Presa Solís
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Lerma
+                        <br />
+                        <strong>Estado:</strong> Guanajuato
+                        <br />
+                        <strong>Uso principal:</strong> Irrigación y control de avenidas
+                        <br />
+                        <strong>Clave BANDAS:</strong> 410SOL
+                    </td>
+                    <td>
+                        <strong>Elevaciones:</strong>
+                        <br />
+                        NAME: 1898.7 msnm
+                        <br />
+                        NAMO: 1892.93 msnm
+                        <br />
+                        <strong>Volumen:</strong>
+                        <br />
+                        NAME: 1071.02 hm<sup>3</sup>
+                        <br />
+                        NAMO: 728.28 hm<sup>3</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaIAInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Presa Ignacio Allende
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río La Laja
+                        <br />
+                        <strong>Estado:</strong> Guanajuato
+                        <br />
+                        <strong>Uso principal:</strong> Irrigación y control de avenidas
+                        <br />
+                        <strong>Clave BANDAS:</strong> 410SOL
+                        <br />
+                        <strong>Batimetría:</strong> autorizada en 2017
+                    </td>
+                    <td>
+                        <strong>Elevaciones:</strong>
+                        <br />
+                        NAME: 1832.65 msnm
+                        <br />
+                        NAMO: 1828.75 msnm
+                        <br />
+                        <strong>Volumen:</strong>
+                        <br />
+                        NAME: 221.69 hm<sup>3</sup>
+                        <br />
+                        NAMO: 125.115 hm<sup>3</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaLDYInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Laguna de Yuriria
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Lerma
+                        <br />
+                        <strong>Estado:</strong> Guanajuato
+                        <br />
+                        <strong>Uso principal:</strong> Irrigación y control de avenidas
+                        <br />
+                        <strong>Clave BANDAS:</strong> 270LYU
+                    </td>
+                    <td>
+                        <strong>Elevaciones:</strong>
+                        <br />
+                        NAME: 1731.4 msnm
+                        <br />
+                        NAMO: msnm
+                        <br />
+                        <strong>Volumen:</strong>
+                        <br />
+                        NAME: 325.20 hm<sup>3</sup>
+                        <br />
+                        NAMO: 188.0 hm<sup>3</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaPMOInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Presa Melchor Ocampo
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Angulo
+                        <br />
+                        <strong>Estado:</strong> Michoacán
+                        <br />
+                        <strong>Uso principal:</strong> Irrigación y control de avenidas
+                        <br />
+                        <strong>Clave BANDAS:</strong> 322MOC
+                    </td>
+                    <td>
+                        <strong>Elevaciones:</strong>
+                        <br />
+                        NAME: 1714.41 msnm
+                        <br />
+                        NAMO: 1711.9 msnm
+                        <br />
+                        <strong>Volumen:</strong>
+                        <br />
+                        NAME: 253 hm<sup>3</sup>
+                        <br />
+                        NAMO: 200 hm<sup>3</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaChapalaInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Lago de Chapala 
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Lerma
+                        <br />
+                        <strong>Estado:</strong> Jalisco
+                        <br />
+                        <strong>Uso principal:</strong> Irrigación y agua potable
+                        <br />
+                        <strong>Clave BANDAS:</strong> 245LCH
+                    </td>
+                    <td>
+                        <strong>Elevaciones:</strong>
+                        <br />
+                        NAME: msnm
+                        <br />
+                        NAMO: 1524.04 msnm
+                        <br />
+                        <strong>Volumen:</strong>
+                        <br />
+                        NAME: hm<sup>3</sup>
+                        <br />
+                        NAMO: 8124.9 hm<sup>3</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaEHAInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Estación hidrométrica Ameche 
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Querétaro
+                        <br />
+                        <strong>Estado:</strong> Guanajuato
+                        <br />
+                        <strong>Clave BANDAS:</strong> 12718
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaEHPInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Estación hidrométrica Pericos
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Querétaro
+                        <br />
+                        <strong>Estado:</strong> Guanajuato
+                        <br />
+                        <strong>Clave BANDAS:</strong> 12238
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="areaEHSInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Estación hidrométrica Salamanca
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Lerma
+                        <br />
+                        <strong>Estado:</strong> Guanajuato
+                        <br />
+                        <strong>Clave BANDAS:</strong> 12352
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaEHASInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Estación hidrométrica Adjuntas
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Turbio
+                        <br />
+                        <strong>Estado:</strong> Guanajuato
+                        <br />
+                        <strong>Clave BANDAS:</strong> 12391
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaEHCInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Estación hidrométrica Corrales
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Lerma
+                        <br />
+                        <strong>Estado:</strong> Michoacán
+                        <br />
+                        <strong>Clave BANDAS:</strong> 12233
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaEHYInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Estación hidrométrica Yurécuaro
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Lerma
+                        <br />
+                        <strong>Estado:</strong> Michoacán
+                        <br />
+                        <strong>Clave BANDAS:</strong> 12526
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaEHEInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Estación hidrométrica Estanzuela
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Duero
+                        <br />
+                        <strong>Estado:</strong> Michoacán
+                        <br />
+                        <strong>Clave BANDAS:</strong> 12310
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="areaEHZInfo" class="containerAlmacenamientos hidden">
+            <table class="full-table">
+                <tr>
+                    <th colspan="2">
+                        Estación hidrométrica Zula
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Corriente:</strong> Río Ocotlán
+                        <br />
+                        <strong>Estado:</strong> Jalisco
+                        <br />
+                        <strong>Clave BANDAS:</strong> 12937
+                    </td>
+                </tr>
+            </table>
+        </div>
     </section>
     <section id="usuarios" class="contenido hidden" runat="server">
         <h4>Usuarios del Agua Superficial</h4>
@@ -299,4 +815,7 @@
         </p>
         <img class="img-max-100" src="../res/images/gral_usuarios.png" />
     </section>
+</asp:Content>
+
+<asp:Content ID="contentFooterScripts" ContentPlaceHolderID="footerScripts" runat="server">
 </asp:Content>

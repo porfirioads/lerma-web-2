@@ -114,12 +114,14 @@
     <Content Include="js\activate_historica_tab.js" />
     <Content Include="js\activate_inicio_tab.js" />
     <Content Include="js\activate_reglamentacion_tab.js" />
+    <Content Include="js\almacenamientosMap.js" />
     <Content Include="js\Chart.min.js" />
     <Content Include="js\chart_escurrimiento_anual.js" />
     <Content Include="js\chart_general.js" />
     <Content Include="js\chart_precipitacion_media.js" />
     <Content Include="js\chart_volumenes.js" />
     <Content Include="js\dropzone.js" />
+    <Content Include="js\jquery.rwdImageMaps.min.js" />
     <Content Include="js\pager_general.js" />
     <Content Include="js\jquery-3.1.0.min.js" />
     <Content Include="js\pager_historica.js" />
