@@ -35,6 +35,7 @@
             </figcaption>
         </figure>
     </section>
+
     <section id="regionalizacion" class="contenido hidden" runat="server">
         <h4>Regionalización de la Cuenca Lerma-Chapala</h4>
         <p>
@@ -45,6 +46,15 @@
     49,664.58 km².
         </p>
         <img class="img-max-100" src="../res/images/gral_regionalizacion_1.png" />
+    </section>
+
+    <section id="cuencas" class="contenido hidden" runat="server">
+        <h4>Cuencas</h4>
+
+        <%--<a href="../res/images/cuenca_lc_con_nombres.png.png">
+            <img class="img-max-100" src="../res/images/cuenca_lc_con_nombres.png.png" />
+        </a>--%>
+
         <p>
             La cuenca se divide en 19 subcuencas, incluyendo las cuencas cerradas de
     Pátzcuaro y Cuitzeo.
@@ -253,12 +263,7 @@
             </tfoot>
         </table>
     </section>
-    <section id="cuencas" class="contenido hidden" runat="server">
-        <h4>Cuencas</h4>
-        <a href="../res/images/cuenca_lc_con_nombres.png.png">
-            <img class="img-max-100" src="../res/images/cuenca_lc_con_nombres.png.png" />
-        </a>
-    </section>
+
     <section id="corrientes" class="contenido hidden" runat="server">
         <h4>CORRIENTES Y EMBALSES PRINCIPALES</h4>
         <p>
@@ -282,70 +287,70 @@
         </p>
         <img class="img-max-100" src="../res/images/gral_corrientes.png" />
     </section>
+
     <section id="almacenamientos" class="contenido hidden" runat="server">
         <h4>Almacenamientos Principales</h4>
-        <img id="imgAlmacenamientos" 
-            src="../res/images/gral_almacenamientos.png" width="1179" 
-            height="628" usemap="#mapAlmacenamientos" alt/>
+        <img id="imgAlmacenamientos"
+            src="../res/images/gral_almacenamientos.png" width="1179"
+            height="628" usemap="#mapAlmacenamientos" alt />
 
         <map name="mapAlmacenamientos" id="mapAlmacenamientos">
-            <area shape="poly" coords="1036, 516, 1064, 482, 1095, 516" 
-                title="Presa José Antonio Álzate" alt="alt" href="#" id="areaJAA"/>
+            <area shape="poly" coords="1036, 516, 1064, 482, 1095, 516"
+                title="Presa José Antonio Álzate" alt="alt" href="#" id="areaJAA" />
 
-            <area shape="poly" coords="997, 513, 1023, 478, 1042, 500, 1033, 511" 
-                title="Presa Ignacio Ramírez" alt="alt" href="#" id="areaIR"/>
+            <area shape="poly" coords="997, 513, 1023, 478, 1042, 500, 1033, 511"
+                title="Presa Ignacio Ramírez" alt="alt" href="#" id="areaIR" />
 
-            <area shape="poly" coords="944, 479, 974, 439, 1003, 469" 
-                title="Presa Tepetitlán" alt="alt" href="#" id="areaTepetitlan"/>
+            <area shape="poly" coords="944, 479, 974, 439, 1003, 469"
+                title="Presa Tepetitlán" alt="alt" href="#" id="areaTepetitlan" />
 
-            <area shape="poly" coords="875, 377, 906, 346, 931, 376" 
-                title="Presa Tepuxtepec" alt="alt" href="#" id="areaTepuxtepec"/>
+            <area shape="poly" coords="875, 377, 906, 346, 931, 376"
+                title="Presa Tepuxtepec" alt="alt" href="#" id="areaTepuxtepec" />
 
-            <area shape="poly" coords="760, 372, 788, 341, 817, 372" 
-                title="Presa Solís" alt="alt" href="#" id="areaSolis"/>
+            <area shape="poly" coords="760, 372, 788, 341, 817, 372"
+                title="Presa Solís" alt="alt" href="#" id="areaSolis" />
 
-            <area shape="poly" coords="706, 193, 734, 162, 762, 193" 
-                title="Presa Ignacio Allende" alt="alt" href="#" id="areaIA"/>
+            <area shape="poly" coords="706, 193, 734, 162, 762, 193"
+                title="Presa Ignacio Allende" alt="alt" href="#" id="areaIA" />
 
-            <area shape="poly" coords="644, 316, 673, 284, 701, 316" 
-                title="Laguna de Yuriria" alt="alt" href="#" id="areaLDY"/>
+            <area shape="poly" coords="644, 316, 673, 284, 701, 316"
+                title="Laguna de Yuriria" alt="alt" href="#" id="areaLDY" />
 
-            <area shape="poly" coords="488, 356, 498, 342, 506, 357" 
-                title="Presa Melchor Ocampo" alt="alt" href="#" id="areaPMO"/>
+            <area shape="poly" coords="488, 356, 498, 342, 506, 357"
+                title="Presa Melchor Ocampo" alt="alt" href="#" id="areaPMO" />
 
-            <area shape="poly" coords="112, 328, 139, 296, 169, 328" 
-                title="Lago de Chapala" alt="alt" href="#" id="areaChapala"/>
+            <area shape="poly" coords="112, 328, 139, 296, 169, 328"
+                title="Lago de Chapala" alt="alt" href="#" id="areaChapala" />
 
-            <area shape="poly" coords="802, 229, 802, 252, 828, 252, 828, 229" 
-                title="Estación hidrométrica Ameche" alt="alt" href="#" id="areaEHA"/>
+            <area shape="poly" coords="802, 229, 802, 252, 828, 252, 828, 229"
+                title="Estación hidrométrica Ameche" alt="alt" href="#" id="areaEHA" />
 
-            <area shape="poly" coords="675, 238, 675, 261, 702, 238, 675, 238" 
-                title="Estación hidrométrica Pericos" alt="alt" href="#" id="areaEHP"/>
+            <area shape="poly" coords="675, 238, 675, 261, 702, 238, 675, 238"
+                title="Estación hidrométrica Pericos" alt="alt" href="#" id="areaEHP" />
 
-            <area shape="poly" coords="634, 223, 661, 223, 661, 246, 634, 246" 
-                title="Estación hidrométrica Salamanca" alt="alt" href="#" id="areaEHS"/>
+            <area shape="poly" coords="634, 223, 661, 223, 661, 246, 634, 246"
+                title="Estación hidrométrica Salamanca" alt="alt" href="#" id="areaEHS" />
 
-            <area shape="poly" coords="455, 195, 482, 195, 482, 219, 455, 219" 
-                title="Estación hidrométrica Adjuntas" alt="alt" href="#" id="areaEHAS"/>
+            <area shape="poly" coords="455, 195, 482, 195, 482, 219, 455, 219"
+                title="Estación hidrométrica Adjuntas" alt="alt" href="#" id="areaEHAS" />
 
-            <area shape="poly" coords="479, 312, 507, 312, 507, 335, 479, 335" 
-                title="Estación hidrométrica Corrales" alt="alt" href="#" id="areaEHC"/>
+            <area shape="poly" coords="479, 312, 507, 312, 507, 335, 479, 335"
+                title="Estación hidrométrica Corrales" alt="alt" href="#" id="areaEHC" />
 
-            <area shape="poly" coords="350, 278, 378, 278, 378, 302, 350, 302" 
-                title="Estación hidrométrica Yurécuaro" alt="alt" href="#" id="areaEHY"/>
+            <area shape="poly" coords="350, 278, 378, 278, 378, 302, 350, 302"
+                title="Estación hidrométrica Yurécuaro" alt="alt" href="#" id="areaEHY" />
 
-            <area shape="poly" coords="323, 339, 332, 347, 324, 354, 323, 347" 
-                title="Estación hidrométrica Estanzuela" alt="alt" href="#" id="areaEHE"/>
+            <area shape="poly" coords="323, 339, 332, 347, 324, 354, 323, 347"
+                title="Estación hidrométrica Estanzuela" alt="alt" href="#" id="areaEHE" />
 
-            <area shape="poly" coords="198, 283, 225, 283, 225, 306, 198, 306" 
-                title="Estación hidrométrica Zula" alt="alt" href="#" id="areaEHZ"/>
+            <area shape="poly" coords="198, 283, 225, 283, 225, 306, 198, 306"
+                title="Estación hidrométrica Zula" alt="alt" href="#" id="areaEHZ" />
         </map>
 
         <div id="areaJAAInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Presa José Antonio Álzate
+                    <th colspan="2">Presa José Antonio Álzate
                     </th>
                 </tr>
                 <tr>
@@ -378,8 +383,7 @@
         <div id="areaIRInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Presa Ignacio Ramírez
+                    <th colspan="2">Presa Ignacio Ramírez
                     </th>
                 </tr>
                 <tr>
@@ -412,8 +416,7 @@
         <div id="areaTepetitlanInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Presa Tepetitlán
+                    <th colspan="2">Presa Tepetitlán
                     </th>
                 </tr>
                 <tr>
@@ -446,8 +449,7 @@
         <div id="areaTepuxtepecInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Presa Tepuxtepec
+                    <th colspan="2">Presa Tepuxtepec
                     </th>
                 </tr>
                 <tr>
@@ -480,8 +482,7 @@
         <div id="areaSolisInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Presa Solís
+                    <th colspan="2">Presa Solís
                     </th>
                 </tr>
                 <tr>
@@ -514,8 +515,7 @@
         <div id="areaIAInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Presa Ignacio Allende
+                    <th colspan="2">Presa Ignacio Allende
                     </th>
                 </tr>
                 <tr>
@@ -550,8 +550,7 @@
         <div id="areaLDYInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Laguna de Yuriria
+                    <th colspan="2">Laguna de Yuriria
                     </th>
                 </tr>
                 <tr>
@@ -584,8 +583,7 @@
         <div id="areaPMOInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Presa Melchor Ocampo
+                    <th colspan="2">Presa Melchor Ocampo
                     </th>
                 </tr>
                 <tr>
@@ -618,8 +616,7 @@
         <div id="areaChapalaInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Lago de Chapala 
+                    <th colspan="2">Lago de Chapala 
                     </th>
                 </tr>
                 <tr>
@@ -652,8 +649,7 @@
         <div id="areaEHAInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Estación hidrométrica Ameche 
+                    <th colspan="2">Estación hidrométrica Ameche 
                     </th>
                 </tr>
                 <tr>
@@ -671,8 +667,7 @@
         <div id="areaEHPInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Estación hidrométrica Pericos
+                    <th colspan="2">Estación hidrométrica Pericos
                     </th>
                 </tr>
                 <tr>
@@ -686,12 +681,11 @@
                 </tr>
             </table>
         </div>
-        
+
         <div id="areaEHSInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Estación hidrométrica Salamanca
+                    <th colspan="2">Estación hidrométrica Salamanca
                     </th>
                 </tr>
                 <tr>
@@ -709,8 +703,7 @@
         <div id="areaEHASInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Estación hidrométrica Adjuntas
+                    <th colspan="2">Estación hidrométrica Adjuntas
                     </th>
                 </tr>
                 <tr>
@@ -728,8 +721,7 @@
         <div id="areaEHCInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Estación hidrométrica Corrales
+                    <th colspan="2">Estación hidrométrica Corrales
                     </th>
                 </tr>
                 <tr>
@@ -747,8 +739,7 @@
         <div id="areaEHYInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Estación hidrométrica Yurécuaro
+                    <th colspan="2">Estación hidrométrica Yurécuaro
                     </th>
                 </tr>
                 <tr>
@@ -766,8 +757,7 @@
         <div id="areaEHEInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Estación hidrométrica Estanzuela
+                    <th colspan="2">Estación hidrométrica Estanzuela
                     </th>
                 </tr>
                 <tr>
@@ -785,8 +775,7 @@
         <div id="areaEHZInfo" class="containerAlmacenamientos hidden">
             <table class="full-table">
                 <tr>
-                    <th colspan="2">
-                        Estación hidrométrica Zula
+                    <th colspan="2">Estación hidrométrica Zula
                     </th>
                 </tr>
                 <tr>
@@ -815,63 +804,62 @@
     Guadalajara.
         </p>
 
-        <img id="imgUsuarios" 
-            src="../res/images/gral_usuarios.png" width="1163" 
-            height="653" usemap="#mapUsuarios" alt/>
+        <img id="imgUsuarios"
+            src="../res/images/gral_usuarios.png" width="1163"
+            height="653" usemap="#mapUsuarios" alt />
 
         <map name="mapUsuarios" id="mapUsuarios">
-            <area shape="poly" coords="736, 323, 849, 321, 849, 366, 736, 366" 
-                title="Distrito de Riego 011" alt="alt" 
+            <area shape="poly" coords="736, 323, 849, 321, 849, 366, 736, 366"
+                title="Distrito de Riego 011" alt="alt"
                 href="../uploaded_files/usuarios_agua_superficial/DR 011.pdf"
                 target="_blank"
-                id="areaDR011"/>
+                id="areaDR011" />
 
-            <area shape="poly" coords="168, 279, 281, 279, 281, 323, 168, 323" 
-                title="Distrito de Riego 013" alt="alt" 
+            <area shape="poly" coords="168, 279, 281, 279, 281, 323, 168, 323"
+                title="Distrito de Riego 013" alt="alt"
                 href="../uploaded_files/usuarios_agua_superficial/DR 013.pdf"
                 target="_blank"
-                id="areaDR013"/>
+                id="areaDR013" />
 
-            <area shape="poly" coords="142, 420, 255, 420, 255, 466, 142, 466" 
-                title="Distrito de Riego 024" alt="alt" 
-                href="../uploaded_files/usuarios_agua_superficial/DR 024.pdf" 
+            <area shape="poly" coords="142, 420, 255, 420, 255, 466, 142, 466"
+                title="Distrito de Riego 024" alt="alt"
+                href="../uploaded_files/usuarios_agua_superficial/DR 024.pdf"
                 target="_blank"
-                id="areaDR024"/>
+                id="areaDR024" />
 
-            <area shape="poly" coords="972, 374, 1081, 374, 1081, 417, 972, 417" 
-                title="Distrito de Riego 033" alt="alt" 
+            <area shape="poly" coords="972, 374, 1081, 374, 1081, 417, 972, 417"
+                title="Distrito de Riego 033" alt="alt"
                 href="../uploaded_files/usuarios_agua_superficial/DR 033.pdf"
                 target="_blank"
-                id="areaDR033"/>
+                id="areaDR033" />
 
-            <area shape="poly" coords="798, 491, 911, 491, 911, 534, 798, 534" 
-                title="Distrito de Riego 045" alt="alt" 
+            <area shape="poly" coords="798, 491, 911, 491, 911, 534, 798, 534"
+                title="Distrito de Riego 045" alt="alt"
                 href="../uploaded_files/usuarios_agua_superficial/DR 045.pdf"
                 target="_blank"
-                id="areaDR045"/>
+                id="areaDR045" />
 
-            <area shape="poly" coords="330, 439, 446, 439, 446, 482, 330, 482" 
-                title="Distrito de Riego 061" alt="alt" 
+            <area shape="poly" coords="330, 439, 446, 439, 446, 482, 330, 482"
+                title="Distrito de Riego 061" alt="alt"
                 href="../uploaded_files/usuarios_agua_superficial/DR 061.pdf"
                 target="_blank"
-                id="areaDR061"/>
+                id="areaDR061" />
 
-            <area shape="poly" coords="713, 183, 827, 183, 827, 228, 713, 226" 
-                title="Distrito de Riego 085" alt="alt" 
+            <area shape="poly" coords="713, 183, 827, 183, 827, 228, 713, 226"
+                title="Distrito de Riego 085" alt="alt"
                 href="../uploaded_files/usuarios_agua_superficial/DR 085.pdf"
                 target="_blank"
-                id="areaDR085"/>
+                id="areaDR085" />
 
-            <area shape="poly" coords="387, 279, 499, 279, 500, 323, 387, 323" 
-                title="Distrito de Riego 087" alt="alt" 
+            <area shape="poly" coords="387, 279, 499, 279, 500, 323, 387, 323"
+                title="Distrito de Riego 087" alt="alt"
                 href="../uploaded_files/usuarios_agua_superficial/DR 087.pdf"
                 target="_blank"
-                id="areaDR087"/>
+                id="areaDR087" />
         </map>
 
         <a class="btn btn-green"
-            href="../uploaded_files/usuarios_agua_superficial/RESUMEN TITULOS DE CONCESION_DR.xls">
-            Resumen Títulos de Concesión
+            href="../uploaded_files/usuarios_agua_superficial/RESUMEN TITULOS DE CONCESION_DR.xls">Resumen Títulos de Concesión
         </a>
     </section>
 </asp:Content>
