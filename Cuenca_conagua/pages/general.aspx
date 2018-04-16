@@ -868,6 +868,11 @@
                 target="_blank"
                 id="areaDR087"/>
         </map>
+
+        <a class="btn btn-green"
+            href="../uploaded_files/usuarios_agua_superficial/RESUMEN TITULOS DE CONCESION_DR.xls">
+            Resumen Títulos de Concesión
+        </a>
     </section>
 </asp:Content>
 
