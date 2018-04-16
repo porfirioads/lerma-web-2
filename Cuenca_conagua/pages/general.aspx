@@ -334,10 +334,10 @@
             <area shape="poly" coords="350, 278, 378, 278, 378, 302, 350, 302" 
                 title="Estación hidrométrica Yurécuaro" alt="alt" href="#" id="areaEHY"/>
 
-            <area shape="poly" coords="" 
+            <area shape="poly" coords="323, 339, 332, 347, 324, 354, 323, 347" 
                 title="Estación hidrométrica Estanzuela" alt="alt" href="#" id="areaEHE"/>
 
-            <area shape="poly" coords="" 
+            <area shape="poly" coords="198, 283, 225, 283, 225, 306, 198, 306" 
                 title="Estación hidrométrica Zula" alt="alt" href="#" id="areaEHZ"/>
         </map>
 
