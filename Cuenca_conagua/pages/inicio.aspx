@@ -6,6 +6,7 @@
 
 <asp:Content ID="contentCuerpoContainer" ContentPlaceHolderID="cuerpoContainer" runat="server">
     <h4>Información General de la Cuenca Lerma-Chapala</h4>
+    <br />
     <p>
         La cuenca Lerma-Chapala es una de las más importantes de México. La región
     se considera como un factor determinante en la dinámica socioeconómica del
