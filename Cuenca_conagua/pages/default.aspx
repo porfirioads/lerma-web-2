@@ -10,8 +10,6 @@
         LERMA WEB 2
     </p>
 
-    <br />
-
     <p class="lerma-general-info">
         Información hidrológica y del uso del agua utilizando la política de
         distribución del agua superficial de la cuenca Lerma Chapala aprobada

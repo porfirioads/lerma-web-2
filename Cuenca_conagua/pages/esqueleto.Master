@@ -15,7 +15,7 @@
     <form id="form1" runat="server">
         <div id="cuerpo_principal">
             <div id="encabezado">
-                <div id="barra_herramientas">
+                <%--<div id="barra_herramientas">
                     <div id="herramientas">
                         <a href="http://www.conagua.gob.mx/"
                             target="_self">Inicio</a>
@@ -28,7 +28,7 @@
                                         href="http://www.conagua.gob.mx/Contenido.aspx?n1=7&amp;n2=81"
                                         target="_self">RSS</a>
                     </div>
-                </div>
+                </div>--%>
 
                 <table class="table-logo-header">
                     <tr>

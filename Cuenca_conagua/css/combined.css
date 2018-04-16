@@ -46,7 +46,7 @@ body {
 #encabezado {
     display: table;
     overflow: hidden;
-    height: 9.8em;
+    /*height: 9.8em;*/
     width: 100%;
     margin-bottom: 0px;
 }
@@ -505,9 +505,10 @@ table.table-padded th td {
     width: 100px;
 }
 
-.table-logo-header .header-title  h1{
-    color: black !important;
-}
+    .table-logo-header .header-title h1 {
+        color: #002060 !important;
+        font-size: 20pt !important;
+    }
 
 img[usemap] {
     border: none;
@@ -540,7 +541,7 @@ img[usemap] {
 .lerma-general-info {
     text-align: center;
     font-weight: bold;
-    font-size: 20pt;
+    font-size: 18pt;
     color: black;
     text-transform: capitalize;
 }
