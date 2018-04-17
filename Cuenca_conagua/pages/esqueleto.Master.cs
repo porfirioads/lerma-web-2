@@ -13,6 +13,7 @@ namespace Cuenca_conagua.pages
         protected void Page_Load(object sender, EventArgs e)
         {
             SessionItemsManager.HideIfNotSession(Session, linkSubirDatos);
+            SessionItemsManager.HideIfNotSession(Session, linkRestitucion);
         }
     }
 }

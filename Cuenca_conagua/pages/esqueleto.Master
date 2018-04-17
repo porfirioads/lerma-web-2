@@ -50,13 +50,66 @@
                         <li><a id="menuReglas" href="reglamentacion.aspx">Reglamentación</a></li>
                         <li><a id="menuBoletines" href="boletines.aspx">Boletines</a></li>
                         <li><a id="menuHistorica" href="historica.aspx">Histórica</a></li>
+                        <li><a id="linkRestitucion" runat="server" href="restitucion.aspx">Restitución</a></li>
                         <li><a id="menuHidroclimatologica" href="hidroclimatologica.aspx">Hidroclimatológica</a></li>
                         <li><a id="linkSubirDatos" runat="server" href="subir_datos.aspx">Subir datos</a></li>
+
                     </ul>
                 </div>
             </div>
             <div id="cuerpo">
                 <asp:ContentPlaceHolder ID="cuerpoContainer" runat="server" />
+            </div>
+            <div class="footer">
+                <div style="border-top: 1px solid #dedede; border-bottom: 1px solid #dedede; font-family: 'Times New Roman', serif; font-size: 14px; color: #666666; text-align: center; padding: 14px 0px;">
+                    CONAGUA - ALGUNOS DERECHOS RESERVADOS © 2012 - <a
+                        href="PoliticaPrivacidad.aspx">POLÍTICAS DE PRIVACIDAD</a>
+                </div>
+                <div style="clear: both; width: 100%; border-top: 1px solid #dedede; margin-top: 1px;"></div>
+
+                <div style="clear: both; margin-top: 48px; margin-bottom: 0px;">
+                    <div id="social" style="width: 242px; float: left; height: 34px;">
+                        <a href="http://twitter.com/conagua_mx" rel="external">
+                            <img
+                                src="../res/images/tw.png" style="margin-right: 6px;"
+                                alt="Twitter conagua_mx" height="31" width="31" /></a>
+                        <a href="http://www.conagua.gob.mx/Contenido.aspx?n1=7&amp;n2=81">
+                            <img src="../res/images/rs.png" alt="RSS Conagua"
+                                height="31"
+                                width="31" />
+                        </a>
+                    </div>
+                </div>
+
+                <div style="clear: both; width: 100%;">
+
+                    <div style="float: left; border-top: 1px solid #dedede; border-bottom: 1px solid #dedede; width: 353px; height: 1px; margin-top: 38px;">
+                    </div>
+                    <img src="../res/images/logoSEMARNAT_hoz.png"
+                        style="float: left; margin: 0px 24px;" alt="SEMARNAT"
+                        height="70" width="220" />
+                    <div style="float: left; border-top: 1px solid #dedede; border-bottom: 1px solid #dedede; width: 353px; height: 1px; margin-top: 38px;">
+                    </div>
+                    <div style="clear: both; width: 100%;"></div>
+                </div>
+
+                <div style="margin: 32px auto 42px auto; text-align: center; font-family: 'Times New Roman', serif; font-weight: lighter; font-size: 13px;">
+                    <p style="color: #808080; line-height: 7px;">
+                        Av. Insurgentes Sur #
+                2416, Col. Copilco el Bajo, Deleg. Coyoacán
+                    </p>
+                    <p style="color: #808080; line-height: 7px;">
+                        Ciudad de México CP.
+                04340, Tel. (55) 5174-4000
+                    </p>
+                    <p style="color: #808080; line-height: 7px;">
+                        <a
+                            href="http://www.conagua.gob.mx/ContactanosMail.aspx?Id=webmaster@conagua.gob.mx"
+                            style="text-decoration: none; color: #808080;">Comentarios
+                sobre este Sitio de Internet</a>
+                    </p>
+                </div>
+                <div style="clear: both; width: 100%;"></div>
             </div>
         </div>
     </form>

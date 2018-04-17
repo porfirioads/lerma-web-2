@@ -14,7 +14,7 @@
 <body>
     <div id="cuerpo_principal">
         <div id="encabezado">
-            <div id="barra_herramientas">
+            <%--<div id="barra_herramientas">
                 <div id="herramientas">
                     <a href="http://www.conagua.gob.mx/"
                         target="_self">Inicio</a>
@@ -27,12 +27,12 @@
                                     href="http://www.conagua.gob.mx/Contenido.aspx?n1=7&amp;n2=81"
                                     target="_self">RSS</a>
                 </div>
-            </div>
+            </div>--%>
 
             <table class="table-logo-header">
                 <tr>
                     <td class="header-image">
-                        <img src="../res/images/semarnat.jpg" />
+                        <img src="../res/images/lerma_logo.png" />
                     </td>
                     <td class="header-title">
                         <h1>LERMA WEB 2</h1>
@@ -47,6 +47,7 @@
                     <li><a href="reglamentacion.aspx">Reglamentación</a></li>
                     <li><a href="boletines.aspx">Boletines</a></li>
                     <li><a href="historica.aspx">Histórica</a></li>
+                    <li><a href="restitucion.aspx" class="active">Restitución</a></li>
                     <li><a href="hidroclimatologica.aspx">Hidroclimatológica</a></li>
                     <li><a href="subir_datos.aspx" class="active">Subir datos</a></li>
                 </ul>
