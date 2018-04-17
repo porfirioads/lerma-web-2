@@ -23,7 +23,14 @@ namespace Cuenca_conagua.pages
         {
             if (Session["usuario"] != null)
             {
-                Response.Redirect("subir_datos.aspx");
+                if (Session["pageBeforeLogin"] == null)
+                {
+                    Response.Redirect("default.aspx");
+                }
+                else
+                {
+                    Response.Redirect(Session["pageBeforeLogin"].ToString());
+                }
             }
         }
 
@@ -61,7 +68,15 @@ namespace Cuenca_conagua.pages
                 if (ValidarUsuario(usuario, password))
                 {
                     Session["usuario"] = txtUsuario.Text;
-                    Response.Redirect("subir_datos.aspx");
+
+                    if (Session["pageBeforeLogin"] == null)
+                    {
+                        Response.Redirect("default.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect(Session["pageBeforeLogin"].ToString());
+                    }
                 }
                 else
                 {

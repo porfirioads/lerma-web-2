@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="subir_datos.aspx.cs" Inherits="Cuenca_conagua.pages.subir_datos" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="restitucion.aspx.cs" Inherits="Cuenca_conagua.pages.restitucion" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Subir información</title>
+    <title>Restitución de escurrimientos</title>
     <link rel="icon" type="image/ico" href="../res/icons/conagua.ico" />
     <link rel="stylesheet" href="../css/dropzone.css" />
     <link rel="stylesheet" href="../css/combined.css" />
@@ -32,9 +32,7 @@
             <table class="table-logo-header">
                 <tr>
                     <td class="header-image">
-                        <a href="default.aspx">
-                            <img src="../res/images/lerma_logo.png" />
-                        </a>
+                        <img src="../res/images/lerma_logo.png" />
                     </td>
                     <td class="header-title">
                         <h1>LERMA WEB 2</h1>
@@ -49,48 +47,51 @@
                     <li><a href="reglamentacion.aspx">Reglamentación</a></li>
                     <li><a href="boletines.aspx">Boletines</a></li>
                     <li><a href="historica.aspx">Histórica</a></li>
-                    <li><a href="restitucion.aspx">Restitución</a></li>
+                    <li><a href="restitucion.aspx" class="active">Restitución</a></li>
                     <li><a href="hidroclimatologica.aspx">Hidroclimatológica</a></li>
-                    <li><a href="subir_datos.aspx" class="active">Subir datos</a></li>
+                    <li><a href="subir_datos.aspx">Subir datos</a></li>
                 </ul>
             </div>
         </div>
         <div id="cuerpo">
-            <h1>Subir información</h1>
-            <div id="divBienvenida" class="div-mensaje">
-                Bienvenido <strong id="txtBienvenidaUsuario" runat="server"></strong>,
-                ahora puedes subir la información que desees o bien, puedes
-                <a class="link-page" runat="server" onserverclick="Logout">Cerrar sesión</a>.
-            </div>
-
-
-            <p id="txtBienvenido" runat="server"></p>
-
-            <p><strong>Tipo de información:</strong></p>
-
-            <select id="sel_tipo_archivo" class="form-control">
-                <option value="Lluvia_media_anual">Precipitación media (Lluvia_media_anual.xlsx)</option>
-                <option value="Escurrimiento_anual">Escurrimiento anual (Escurrimiento_anual.xlsx)</option>
-                <option value="Volumenes_DR_PI">Volúmenes utilizados por DR y PI (Volumenes_DR_PI.xlsx)</option>
-                <option value="Boletin">Boletín (*.pdf)</option>
-                <option value="Reglamentación">Reglamentación (*.pdf)</option>
-            </select>
-
-            <br />
-
-            <div id="uploadResult" class="div-mensaje hidden"></div>
-
-            <div id="dropzone">
-                <form id="fileUpload" runat="server" class="dropzone needsclick dz-clickable" action="subir_datos.aspx">
-                    <asp:HiddenField ID="tipoArchivo" runat="server"></asp:HiddenField>
-
-                    <div class="dz-message needsclick">
-                        Arrastra los archivos aquí o haz click para subir
+            <aside class="lateral" runat="server">
+                <h4>Información Histórica</h4>
+                <a id="btnLluviaMediaAnual" class="btn btn-white btn-100">Lluvia media anual registrada en la cuenca</a>
+                <a id="btnEscurrimiento" class="btn btn-white btn-100">Escurrimiento generado por ciclo</a>
+                <a id="btnVolumenes" class="btn btn-white btn-100">Resumen de volúmenes autorizados y utilizados</a>
+                <a id="bntAlmPrincipales" class="btn btn-white btn-100">Almacenamientos principales</a>
+                <a id="btnAlmLagoChapala" class="btn btn-white btn-100">Almacenamiento del lago de Chapala</a>
+            </aside>
+            <section id="contPrecipitacionMedia" class="contenido">
+                <%-- Esta etiqueda div se va a sustituir por un script --%>
+                <div id="scrPrecAnual" class="hidden" runat="server"></div>
+                <script>
+                    $('#cuerpoContainer_scrPrecAnual').contents().unwrap().wrap('<script/>');
+                </script>
+                <section id="precMedia">
+                    <div id="precChart" class="chart-area">
+                        <div class="chart-content">
+                            <canvas id="grafica_pma" class="chart" width="500" height="300"></canvas>
+                        </div>
                     </div>
-
-                    <script src="../js/upload_data.js"></script>
-                </form>
-            </div>
+                    <div id="divChkAnual" class="form-control">
+                        <input id="chkAnual" type="checkbox" />
+                        Mostrar precipitación media anual
+                    </div>
+                    <div id="divChkMensual" class="form-control hidden">
+                        <input id="chkMensual" type="checkbox" />
+                        Mostrar precipitación media mensual
+                    </div>
+                    <select id="selCiclo" class="form-control hidden">
+                    </select>
+                    <div>
+                        <a id="btnChangePrecMensual" class="btn btn-green">Precipitación Mensual
+                        </a>
+                        <a id="btnChangePrecAnual" class="btn btn-green hidden">Precipitación Anual
+                        </a>
+                    </div>
+                </section>
+            </section>
         </div>
 
         <div class="footer">

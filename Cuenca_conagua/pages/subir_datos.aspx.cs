@@ -40,6 +40,7 @@ namespace Cuenca_conagua.pages
             }
             else
             {
+                Session["pageBeforeLogin"] = "subir_datos.aspx";
                 Response.Redirect("login_admin.aspx");
             }
         }
@@ -272,6 +273,7 @@ namespace Cuenca_conagua.pages
         protected void Logout(object sender, EventArgs e)
         {
             Session["usuario"] = null;
+            Session["pageBeforeLogin"] = null;
             Response.Redirect("login_admin.aspx");
         }
     }

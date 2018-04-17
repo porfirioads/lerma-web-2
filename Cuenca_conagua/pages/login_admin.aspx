@@ -14,7 +14,7 @@
     <form id="formLogin" runat="server">
         <div id="cuerpo_principal">
             <div id="encabezado">
-                <div id="barra_herramientas">
+                <%--<div id="barra_herramientas">
                     <div id="herramientas">
                         <a href="http://www.conagua.gob.mx/"
                             target="_self">Inicio</a>
@@ -27,12 +27,14 @@
                                         href="http://www.conagua.gob.mx/Contenido.aspx?n1=7&amp;n2=81"
                                         target="_self">RSS</a>
                     </div>
-                </div>
+                </div>--%>
 
                 <table class="table-logo-header">
                     <tr>
                         <td class="header-image">
-                            <img src="../res/images/semarnat.jpg" />
+                            <a href="default.aspx">
+                                <img src="../res/images/lerma_logo.png" />
+                            </a>
                         </td>
                         <td class="header-title">
                             <h1>LERMA WEB 2</h1>

@@ -133,6 +133,7 @@
     </Content>
     <Content Include="pages\default.aspx" />
     <Content Include="pages\login_admin.aspx" />
+    <Content Include="pages\restitucion.aspx" />
     <Content Include="pages\subir_datos.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="pages\esqueleto.Master" />
@@ -249,6 +250,13 @@
     </Compile>
     <Compile Include="pages\reglamentacion.aspx.designer.cs">
       <DependentUpon>reglamentacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\restitucion.aspx.cs">
+      <DependentUpon>restitucion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\restitucion.aspx.designer.cs">
+      <DependentUpon>restitucion.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\subir_datos.aspx.cs">
       <DependentUpon>subir_datos.aspx</DependentUpon>
