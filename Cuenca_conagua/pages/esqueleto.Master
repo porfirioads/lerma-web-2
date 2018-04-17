@@ -33,7 +33,9 @@
                 <table class="table-logo-header">
                     <tr>
                         <td class="header-image">
-                            <img src="../res/images/semarnat.jpg" />
+                            <a href="default.aspx">
+                                <img src="../res/images/lerma_logo.png" />
+                            </a>
                         </td>
                         <td class="header-title">
                             <h1>LERMA WEB 2</h1>

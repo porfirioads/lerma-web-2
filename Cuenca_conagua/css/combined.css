@@ -524,3 +524,34 @@ img[usemap] {
     .full-table td {
         vertical-align: top;
     }
+
+.very-big-text {
+    color: #002060;
+    font-size: 60pt;
+    text-align: center;
+    font-weight: bold;
+}
+
+.medium-text {
+    text-align: center;
+    font-size: 15pt;
+}
+
+.lerma-general-info {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20pt;
+    color: black;
+    text-transform: capitalize;
+}
+
+table.blue-big-text td {
+    color: #002060;
+    font-size: 20pt;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table-no-border, .table-no-border td {
+    border: 0;
+}

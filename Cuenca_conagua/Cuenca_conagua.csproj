@@ -131,6 +131,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="pages\default.aspx" />
     <Content Include="pages\login_admin.aspx" />
     <Content Include="pages\subir_datos.aspx" />
     <Content Include="Default.aspx" />
@@ -192,6 +193,13 @@
     </Compile>
     <Compile Include="pages\boletines.aspx.designer.cs">
       <DependentUpon>boletines.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\esqueleto.Master.cs">
       <DependentUpon>esqueleto.Master</DependentUpon>
