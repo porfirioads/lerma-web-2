@@ -31,8 +31,8 @@ namespace Cuenca_conagua.pages
 
                     Logger.AddToLog("TipoArchivo: " + tipo, true);
                     string savedFileName = SaveFile(file, tipoArchivo.Value);
-                    
-                    if(tipo == "datos")
+
+                    if (tipo == "datos")
                     {
                         IngresarBaseDatos(savedFileName);
                     }
@@ -67,7 +67,7 @@ namespace Cuenca_conagua.pages
                 FileManager.crearCarpetasFaltantes("uploaded_files/boletines");
                 path = "../uploaded_files/boletines";
             }
-            else if(tipo.Equals("reglamentacion"))
+            else if (tipo.Equals("reglamentacion"))
             {
                 FileManager.crearCarpetasFaltantes("uploaded_files/reglamentacion");
                 path = "../uploaded_files/reglamentacion";
@@ -76,6 +76,16 @@ namespace Cuenca_conagua.pages
             {
                 FileManager.crearCarpetasFaltantes("uploaded_files/datos");
                 path = "../uploaded_files/datos";
+            }
+            else if (tipo.Equals("archivo_calculo"))
+            {
+                FileManager.crearCarpetasFaltantes("uploaded_files/restitucion/archivos_calculo");
+                path = "../uploaded_files/restitucion/archivos_calculo";
+            }
+            else if (tipo.Equals("presentacion_covi"))
+            {
+                FileManager.crearCarpetasFaltantes("uploaded_files/restitucion/presentacion_covi");
+                path = "../uploaded_files/restitucion/presentacion_covi";
             }
 
             Logger.AddToLog("Tipo de archivo: " + tipo, true);

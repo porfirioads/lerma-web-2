@@ -74,6 +74,8 @@
                 <option value="Volumenes_DR_PI">Volúmenes utilizados por DR y PI (Volumenes_DR_PI.xlsx)</option>
                 <option value="Boletin">Boletín (*.pdf)</option>
                 <option value="Reglamentación">Reglamentación (*.pdf)</option>
+                <option value="Archivo_calculo">Archivo de cálculo (*.xls, *.xlsx)</option>
+                <option value="Presentación_covi">Presentación COVI (*.ppt, *.pptx)</option>
             </select>
 
             <br />

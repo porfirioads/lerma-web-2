@@ -332,6 +332,8 @@ ASALocalRun/
 *.xls
 *.xlsx
 *.txt
+*.ppt
+*.pptx
 !Cuenca_conagua/uploaded_files/usuarios_agua_superficial/*
 
 # Log file

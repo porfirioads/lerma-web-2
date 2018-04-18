@@ -125,6 +125,7 @@
     <Content Include="js\pager_general.js" />
     <Content Include="js\jquery-3.1.0.min.js" />
     <Content Include="js\pager_historica.js" />
+    <Content Include="js\pager_restitucion.js" />
     <Content Include="js\upload_data.js" />
     <Content Include="js\validador_login.js" />
     <Content Include="packages.config" />
