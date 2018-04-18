@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/dropzone.css" />
     <link rel="stylesheet" href="../css/combined.css" />
     <script src="../js/jquery-3.1.0.min.js"></script>
-    <script src="../js/dropzone.js"></script>
+    <script src="../js/pager_restitucion.js"></script>
 </head>
 <body>
     <div id="cuerpo_principal">
@@ -53,44 +53,24 @@
                 </ul>
             </div>
         </div>
+
         <div id="cuerpo">
             <aside class="lateral" runat="server">
-                <h4>Información Histórica</h4>
-                <a id="btnLluviaMediaAnual" class="btn btn-white btn-100">Lluvia media anual registrada en la cuenca</a>
-                <a id="btnEscurrimiento" class="btn btn-white btn-100">Escurrimiento generado por ciclo</a>
-                <a id="btnVolumenes" class="btn btn-white btn-100">Resumen de volúmenes autorizados y utilizados</a>
-                <a id="bntAlmPrincipales" class="btn btn-white btn-100">Almacenamientos principales</a>
-                <a id="btnAlmLagoChapala" class="btn btn-white btn-100">Almacenamiento del lago de Chapala</a>
+                <h4>Restitución de escurrimientos</h4>
+                <a id="btnArchivosCalculo" class="btn btn-white btn-100">Archivos de cálculo</a>
+                <a id="btnPresentacionCovi" class="btn btn-white btn-100">Presentación de resultados al COVI</a>
             </aside>
-            <section id="contPrecipitacionMedia" class="contenido">
-                <%-- Esta etiqueda div se va a sustituir por un script --%>
-                <div id="scrPrecAnual" class="hidden" runat="server"></div>
-                <script>
-                    $('#cuerpoContainer_scrPrecAnual').contents().unwrap().wrap('<script/>');
-                </script>
-                <section id="precMedia">
-                    <div id="precChart" class="chart-area">
-                        <div class="chart-content">
-                            <canvas id="grafica_pma" class="chart" width="500" height="300"></canvas>
-                        </div>
-                    </div>
-                    <div id="divChkAnual" class="form-control">
-                        <input id="chkAnual" type="checkbox" />
-                        Mostrar precipitación media anual
-                    </div>
-                    <div id="divChkMensual" class="form-control hidden">
-                        <input id="chkMensual" type="checkbox" />
-                        Mostrar precipitación media mensual
-                    </div>
-                    <select id="selCiclo" class="form-control hidden">
-                    </select>
-                    <div>
-                        <a id="btnChangePrecMensual" class="btn btn-green">Precipitación Mensual
-                        </a>
-                        <a id="btnChangePrecAnual" class="btn btn-green hidden">Precipitación Anual
-                        </a>
-                    </div>
-                </section>
+
+            <section id="contArchivosCalculo" class="contenido">
+                <table id="archivosCalculoTable" runat="server"
+                    class="unformatted table-100 table-font-body">
+                </table>
+            </section>
+
+            <section id="contPresentacionCovi" class="contenido hidden">
+                <table id="presentacionCoviTable" runat="server"
+                    class="unformatted table-100 table-font-body">
+                </table>
             </section>
         </div>
 

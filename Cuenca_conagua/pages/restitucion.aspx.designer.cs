@@ -22,12 +22,21 @@ namespace Cuenca_conagua.pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lista_menu;
         
         /// <summary>
-        /// scrPrecAnual control.
+        /// archivosCalculoTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl scrPrecAnual;
+        protected global::System.Web.UI.HtmlControls.HtmlTable archivosCalculoTable;
+        
+        /// <summary>
+        /// presentacionCoviTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable presentacionCoviTable;
     }
 }
