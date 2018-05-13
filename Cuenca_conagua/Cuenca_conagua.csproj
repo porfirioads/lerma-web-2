@@ -138,6 +138,7 @@
     <Content Include="pages\subir_datos.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="pages\esqueleto.Master" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\DeployAWS.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Web.Debug.config">
@@ -164,10 +165,10 @@
     <Content Include="res\images\gral_regionalizacion_1.png" />
     <Content Include="res\images\gral_regionalizacion_2.jpg" />
     <Content Include="res\images\gral_usuarios.png" />
+    <Content Include="res\images\lerma_logo.png" />
     <Content Include="res\images\logoSEMARNAT_hoz.png" />
     <Content Include="res\images\loguito.png" />
     <Content Include="res\images\rs.png" />
-    <Content Include="res\images\semarnat.jpg" />
     <Content Include="res\images\SubcuencaLaja1.jpg" />
     <Content Include="res\images\SubcuencaLaja1.png" />
     <Content Include="res\images\SubcuencaLaja2.jpg" />
