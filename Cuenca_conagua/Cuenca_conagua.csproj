@@ -141,6 +141,15 @@
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\DeployAWS.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <Content Include="uploaded_files\usuarios_agua_superficial\DR 011.pdf" />
+    <Content Include="uploaded_files\usuarios_agua_superficial\DR 013.pdf" />
+    <Content Include="uploaded_files\usuarios_agua_superficial\DR 024.pdf" />
+    <Content Include="uploaded_files\usuarios_agua_superficial\DR 033.pdf" />
+    <Content Include="uploaded_files\usuarios_agua_superficial\DR 045.pdf" />
+    <Content Include="uploaded_files\usuarios_agua_superficial\DR 061.pdf" />
+    <Content Include="uploaded_files\usuarios_agua_superficial\DR 085.pdf" />
+    <Content Include="uploaded_files\usuarios_agua_superficial\DR 087.pdf" />
+    <Content Include="uploaded_files\usuarios_agua_superficial\RESUMEN TITULOS DE CONCESION_DR.xls" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

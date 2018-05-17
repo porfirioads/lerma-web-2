@@ -8,7 +8,7 @@
     <script runat="server">
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("pages/inicio.aspx");
+            Response.Redirect("pages/default.aspx");
         }
     </script>
 
