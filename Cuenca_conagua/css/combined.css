@@ -556,3 +556,11 @@ table.blue-big-text td {
 .table-no-border, .table-no-border td {
     border: 0;
 }
+
+.blue-text, .blue-text * {
+    color: #002060;
+}
+
+.align-right, .align-right * {
+    text-align: right;
+}

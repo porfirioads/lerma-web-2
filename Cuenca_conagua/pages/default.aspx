@@ -34,6 +34,14 @@
             <td>Jalisco</td>
         </tr>
     </table>
+
+    <div class="align-right blue-text">
+        <br />
+        <br />
+        <p>Administrado por:</p>
+        <p>Universidad Autónoma de Zacatecas</p>
+        <p>Dr. Ruperto Ortiz Gómez</p>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footerScripts" runat="server">
 </asp:Content>
