@@ -94,7 +94,7 @@
                 </form>
             </div>
         </div>
-
+        <!--
         <div class="footer">
             <div style="border-top: 1px solid #dedede; border-bottom: 1px solid #dedede; font-family: 'Times New Roman', serif; font-size: 14px; color: #666666; text-align: center; padding: 14px 0px;">
                 CONAGUA - ALGUNOS DERECHOS RESERVADOS © 2012 - <a
@@ -145,8 +145,8 @@
                 </p>
             </div>
             <div style="clear: both; width: 100%;"></div>
-
         </div>
+        -->
     </div>
 </body>
 </html>
