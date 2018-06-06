@@ -419,5 +419,55 @@ namespace Cuenca_conagua.src.Utilidades
                     return true;
             return false;
         }
+
+        /// <summary>
+        /// Lee los registros de lluvia anual por estación del archivo de excel
+        /// correspondiente.
+        /// </summary>
+        /// <param name="excelFilename">
+        /// Es el nombre del archivo de excel donde vienen los datos.
+        /// </param>
+        /// <returns>
+        /// Una lista con los de lluvia anual por estación.
+        /// </returns>
+        public static List<LluviaAnualEstacion> ReadLluviaAnualEstacion(
+            string excelFilename)
+        {
+            
+            List<LluviaAnualEstacion> lluviasAnuales = new List<LluviaAnualEstacion>();
+            DataRowCollection rows = ReadExcel(excelFilename);
+
+            /*
+            if (rows != null)
+            {
+                LluviaAnualEstacion lae;
+                int filasIgnoradas = 5;
+
+                for (int i = filasIgnoradas; i < rows.Count; i++)
+                {
+                    if (rows[i][0].ToString().Length == 0)
+                    {
+                        break;
+                    }
+                    pm = new PrecipitacionMedia();
+                    pm.Ciclo = rows[i][0].ToString();
+                    pm.Nov = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
+                    pm.Dic = double.Parse(rows[i][2].ToString(), CultureInfo.InvariantCulture);
+                    pm.Ene = double.Parse(rows[i][3].ToString(), CultureInfo.InvariantCulture);
+                    pm.Feb = double.Parse(rows[i][4].ToString(), CultureInfo.InvariantCulture);
+                    pm.Mar = double.Parse(rows[i][5].ToString(), CultureInfo.InvariantCulture);
+                    pm.Abr = double.Parse(rows[i][6].ToString(), CultureInfo.InvariantCulture);
+                    pm.May = double.Parse(rows[i][7].ToString(), CultureInfo.InvariantCulture);
+                    pm.Jun = double.Parse(rows[i][8].ToString(), CultureInfo.InvariantCulture);
+                    pm.Jul = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
+                    pm.Ago = double.Parse(rows[i][10].ToString(), CultureInfo.InvariantCulture);
+                    pm.Sep = double.Parse(rows[i][11].ToString(), CultureInfo.InvariantCulture);
+                    pm.Oct = double.Parse(rows[i][12].ToString(), CultureInfo.InvariantCulture);
+                    precipitacionesMedias.Add(pm);
+                }
+            }
+            */
+            return lluviasAnuales;
+        }
     }
 }

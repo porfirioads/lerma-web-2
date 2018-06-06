@@ -281,6 +281,7 @@
     <Compile Include="src\BaseDatos\NamespaceDoc.cs" />
     <Compile Include="src\Entidades\Administrador.cs" />
     <Compile Include="src\Entidades\EscurrimientoAnual.cs" />
+    <Compile Include="src\Entidades\LluviaAnualEstacion.cs" />
     <Compile Include="src\Entidades\NamespaceDoc.cs" />
     <Compile Include="src\Entidades\PrecipitacionMedia.cs" />
     <Compile Include="src\Entidades\VolumenDr.cs" />
