@@ -3,6 +3,7 @@
 
 $(document).ready(function () {
     var contPrecipitacionMedia = $('#contPrecipitacionMedia');
+    var contLluviaAnualEstacion = $('#contLluviaAnualEstacion');
     var contEscurrimiento = $('#contEscurrimiento');
     var contVolumenes = $('#contVolumenes');
     var contAlmPrincipales = $('#contAlmPrincipales');
@@ -12,8 +13,10 @@ $(document).ready(function () {
     var btnVolumenes = $('#btnVolumenes');
     var bntAlmPrincipales = $('#bntAlmPrincipales');
     var btnAlmLagoChapala = $('#btnAlmLagoChapala');
+    var btnLluviaAnualEstacion = $('#btnLluviaAnualEstacion');
     var contenedores = [contPrecipitacionMedia, contEscurrimiento,
-        contVolumenes, contAlmPrincipales, contAlmLagoChapala];
+        contVolumenes, contAlmPrincipales, contAlmLagoChapala,
+        contLluviaAnualEstacion];
 
     // Visualiza el contenedor de la precipitacion media.
     btnLluviaMediaAnual.click(function () {
@@ -21,6 +24,12 @@ $(document).ready(function () {
         hideAll();
         contPrecipitacionMedia.removeClass('hidden');
         btnChangePrecAnual.click();
+    });
+
+    // visualiza el contenedor de la lluvia anual por estación
+    btnLluviaAnualEstacion.click(function () {
+        hideAll();
+        contLluviaAnualEstacion.removeClass('hidden');
     });
 
     // Visualiza el contenedor del escurrimiento.

@@ -57,7 +57,8 @@ namespace Cuenca_conagua.src.BaseDatos
         {
             if (conexion == null)
             {
-                connectionString = ConfigurationManager.ConnectionStrings["sqlConnectionString"].ConnectionString;
+                connectionString = ConfigurationManager
+                    .ConnectionStrings["sqlConnectionString"].ConnectionString;
                 Logger.AddToLog(connectionString, true);
                 //connectionString = "Data Source=PORFIRIO\\SQLEXPRESS;Initial Catalog=cuenca_conagua;Integrated Security=True";
                 conexion = new SqlConnection(connectionString);
@@ -656,6 +657,113 @@ namespace Cuenca_conagua.src.BaseDatos
                 reader.Close();
                 return vols;
             }
+        }
+
+        /// <summary>
+        /// Devuelve todos los registros de lluvia anual por estación.
+        /// </summary>
+        /// <returns>
+        /// Una lista con las lluvias anuales.
+        /// </returns>
+        public static List<LluviaAnualEstacion> GetAllLluviaAnualEstacion()
+        {
+            InitConnection();
+            string query = "SELECT * FROM [lluvia_ae]";
+            SqlCommand command = new SqlCommand(query, conexion);
+            List<LluviaAnualEstacion> laes = new List<LluviaAnualEstacion>();
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                LluviaAnualEstacion lae = null;
+
+                while (reader.Read())
+                {
+                    lae = new LluviaAnualEstacion();
+                    lae.Ciclo = reader.GetString(0);
+                    lae.LaeCelaya = double.Parse(reader.GetValue(1).ToString());
+                    lae.LaeGuanajuato = double.Parse(reader.GetValue(2).ToString());
+                    lae.LaeIrapuato = double.Parse(reader.GetValue(3).ToString());
+                    lae.LaeAdjuntas = double.Parse(reader.GetValue(4).ToString());
+                    lae.LaeLeon = double.Parse(reader.GetValue(5).ToString());
+                    lae.LaePPenuelitas = double.Parse(reader.GetValue(6).ToString());
+                    lae.LaePSolis = double.Parse(reader.GetValue(7).ToString());
+                    lae.LaeSanFelipe = double.Parse(reader.GetValue(8).ToString());
+                    lae.LaeSanLuisDeLaPaz = double.Parse(reader.GetValue(9).ToString());
+                    lae.LaeYuriria = double.Parse(reader.GetValue(10).ToString());
+                    lae.LaeChapala = double.Parse(reader.GetValue(11).ToString());
+                    lae.LaeFuerte = double.Parse(reader.GetValue(12).ToString());
+                    lae.LaeTule = double.Parse(reader.GetValue(13).ToString());
+                    lae.LaeTizapan = double.Parse(reader.GetValue(14).ToString());
+                    lae.LaeYurecuaro = double.Parse(reader.GetValue(15).ToString());
+                    lae.LaeAtlacomulco = double.Parse(reader.GetValue(16).ToString());
+                    lae.LaeTolucaRectoria = double.Parse(reader.GetValue(17).ToString());
+                    lae.LaeChincua = double.Parse(reader.GetValue(18).ToString());
+                    lae.LaeCuitzeoAu = double.Parse(reader.GetValue(19).ToString());
+                    lae.LaeMelchorOcampo = double.Parse(reader.GetValue(20).ToString());
+                    lae.LaeMorelia = double.Parse(reader.GetValue(21).ToString());
+                    lae.LaeTepuxtepec = double.Parse(reader.GetValue(22).ToString());
+                    lae.LaeZacapu = double.Parse(reader.GetValue(23).ToString());
+                    lae.LaeZamora = double.Parse(reader.GetValue(24).ToString());
+                    lae.LaeQueretaroObs = double.Parse(reader.GetValue(25).ToString());
+                    laes.Add(lae);
+                }
+
+                reader.Close();
+            }
+            return laes;
+        }
+
+        /// <summary>
+        /// Inserta un registro a la tabla de lluvia_ae.
+        /// </summary>
+        /// <param name="lae">
+        /// Es el registro de lluvia anual por estación a insertar.
+        /// </param>
+        /// <returns>
+        /// true si el registro fue insertado o false si no se pudo insertar.
+        /// </returns>
+        public static bool InsertarLluviaAnualEstacion(LluviaAnualEstacion lae)
+        {
+            InitConnection();
+
+            bool insertado = false;
+
+            string sql = string.Format("INSERT INTO precipitacion_ma " +
+                "VALUES('{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, " +
+                "{9}, {10}, {11}, {12}, {13}, {14}, {15}, {16}, {17}, {18}, " +
+                "{19}, {20}, {21}, {22}, {23}, {24}, {25})", lae.Ciclo,
+                lae.LaeCelaya, lae.LaeGuanajuato, lae.LaeIrapuato,
+                lae.LaeAdjuntas, lae.LaeLeon, lae.LaePPenuelitas,                 lae.LaePSolis, lae.LaeSanFelipe, lae.LaeSanLuisDeLaPaz,                 lae.LaeYuriria, lae.LaeChapala, lae.LaeFuerte, lae.LaeTule,                 lae.LaeTizapan, lae.LaeYurecuaro, lae.LaeAtlacomulco,                 lae.LaeTolucaRectoria, lae.LaeChincua, lae.LaeCuitzeoAu,                 lae.LaeMelchorOcampo, lae.LaeMorelia, lae.LaeTepuxtepec,                 lae.LaeZacapu, lae.LaeZamora, lae.LaeQueretaroObs);
+
+            SqlCommand cmd = new SqlCommand(sql, conexion);
+            cmd.CommandType = CommandType.Text;
+
+            if (GetLluviaAnualEstacion(lae.Ciclo) == null)
+            {
+                try
+                {
+                    insertado = cmd.ExecuteNonQuery() > 0;
+                }
+                catch (Exception ex)
+                {
+                    Logger.AddToLog(ex.Message, true);
+                }
+            }
+
+            return insertado;
+        }
+
+        /// <summary>
+        /// Devuelve la lluvia anual por estación con el ciclo dado, 
+        /// o null si no existe ningún registro con ese ciclo.
+        /// </summary>
+        /// <param name="ciclo">Es el ciclo que identifica al registro.</param>
+        /// <returns>
+        /// La lluvia anual por estación buscada.
+        /// </returns>
+        public static LluviaAnualEstacion GetLluviaAnualEstacion(string ciclo)
+        {
+            throw new NotImplementedException();
         }
     }
 }

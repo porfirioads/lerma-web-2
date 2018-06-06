@@ -16,6 +16,7 @@
     <aside class="lateral" runat="server">
         <h4>Información Histórica</h4>
         <a id="btnLluviaMediaAnual" class="btn btn-white btn-100">Lluvia media anual registrada en la cuenca</a>
+        <a id="btnLluviaAnualEstacion" class="btn btn-white btn-100">Lluvia anual por estación</a>
         <a id="btnEscurrimiento" class="btn btn-white btn-100">Escurrimiento generado por ciclo</a>
         <a id="btnVolumenes" class="btn btn-white btn-100">Resumen de volúmenes autorizados y utilizados</a>
         <a id="bntAlmPrincipales" class="btn btn-white btn-100">Almacenamientos principales</a>
@@ -51,6 +52,40 @@
             </div>
         </section>
     </section>
+
+    <section id="contLluviaAnualEstacion" class="contenido">
+        <%-- Esta etiqueda div se va a sustituir por un script --%>
+        <div id="Div1" class="hidden" runat="server"></div>
+        <script>
+            //$('#cuerpoContainer_scrPrecAnual').contents().unwrap().wrap('<script/>');
+        </script>
+        <section id="lluviaAnual">
+            <div id="lluviaAnualChart" class="chart-area">
+                <div class="chart-content">
+                    <canvas id="grafica_lae" class="chart" width="500" height="300"></canvas>
+                </div>
+            </div>
+            <!--
+            <div id="divChkAnual" class="form-control">
+                <input id="chkAnual" type="checkbox" />
+                Mostrar precipitación media anual
+            </div>
+            <div id="divChkMensual" class="form-control hidden">
+                <input id="chkMensual" type="checkbox" />
+                Mostrar precipitación media mensual
+            </div>
+            <select id="selCiclo" class="form-control hidden">
+            </select>
+            <div>
+                <a id="btnChangePrecMensual" class="btn btn-green">Precipitación Mensual
+                </a>
+                <a id="btnChangePrecAnual" class="btn btn-green hidden">Precipitación Anual
+                </a>
+            </div>
+            -->
+        </section>
+    </section>
+
     <section id="contEscurrimiento" class="contenido hidden">
         <%-- Esta etiqueda div se va a sustituir por un script --%>
         <div id="scrEscurrimiento" class="hidden" runat="server"></div>
