@@ -54,7 +54,7 @@
         </section>
     </section>
 
-    <section id="contLluviaAnualEstacion" class="contenido">
+    <section id="contLluviaAnualEstacion" class="contenido hidden">
         <%-- Esta etiqueda div se va a sustituir por un script --%>
         <div id="srcLluviaAnualEstacion" class="hidden" runat="server"></div>
         <script>
