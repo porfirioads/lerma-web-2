@@ -707,7 +707,13 @@ namespace Cuenca_conagua.src.BaseDatos
                 "{9}, {10}, {11}, {12}, {13}, {14}, {15}, {16}, {17}, {18}, " +
                 "{19}, {20}, {21}, {22}, {23}, {24}, {25})", lae.Ciclo,
                 lae.LaeCelaya, lae.LaeGuanajuato, lae.LaeIrapuato,
-                lae.LaeAdjuntas, lae.LaeLeon, lae.LaePPenuelitas,                 lae.LaePSolis, lae.LaeSanFelipe, lae.LaeSanLuisDeLaPaz,                 lae.LaeYuriria, lae.LaeChapala, lae.LaeFuerte, lae.LaeTule,                 lae.LaeTizapan, lae.LaeYurecuaro, lae.LaeAtlacomulco,                 lae.LaeTolucaRectoria, lae.LaeChincua, lae.LaeCuitzeoAu,                 lae.LaeMelchorOcampo, lae.LaeMorelia, lae.LaeTepuxtepec,                 lae.LaeZacapu, lae.LaeZamora, lae.LaeQueretaroObs);
+                lae.LaeAdjuntas, lae.LaeLeon, lae.LaePPenuelitas, 
+                lae.LaePSolis, lae.LaeSanFelipe, lae.LaeSanLuisDeLaPaz, 
+                lae.LaeYuriria, lae.LaeChapala, lae.LaeFuerte, lae.LaeTule, 
+                lae.LaeTizapan, lae.LaeYurecuaro, lae.LaeAtlacomulco, 
+                lae.LaeTolucaRectoria, lae.LaeChincua, lae.LaeCuitzeoAu, 
+                lae.LaeMelchorOcampo, lae.LaeMorelia, lae.LaeTepuxtepec, 
+                lae.LaeZacapu, lae.LaeZamora, lae.LaeQueretaroObs);
 
             SqlCommand cmd = new SqlCommand(sql, conexion);
             cmd.CommandType = CommandType.Text;
