@@ -110,8 +110,8 @@
                     <th id="resId" rowspan="2">DR</th>
                     <th rowspan="2">Vol. máx (hm<sup>3</sup>)</th>
                     <th colspan="4">Volumen promedio (hm<sup>3</sup>)</th>
-                    <th rowspan="2">Vol. aut. / Vol. máx %</th>
-                    <th rowspan="2">Vol. aut. / Vol. uti %</th>
+                    <th rowspan="2">Vol. aut / Vol. máx %</th>
+                    <th rowspan="2">Vol. uti / Vol. máx, % </th>
                 </tr>
                 <tr>
                     <th>Autorizado</th>
