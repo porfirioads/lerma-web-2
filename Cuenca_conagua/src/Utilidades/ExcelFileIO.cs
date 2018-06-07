@@ -433,40 +433,76 @@ namespace Cuenca_conagua.src.Utilidades
         public static List<LluviaAnualEstacion> ReadLluviaAnualEstacion(
             string excelFilename)
         {
-            
             List<LluviaAnualEstacion> lluviasAnuales = new List<LluviaAnualEstacion>();
             DataRowCollection rows = ReadExcel(excelFilename);
 
-            /*
             if (rows != null)
             {
                 LluviaAnualEstacion lae;
-                int filasIgnoradas = 5;
+                int filasIgnoradas = 2;
 
                 for (int i = filasIgnoradas; i < rows.Count; i++)
                 {
                     if (rows[i][0].ToString().Length == 0)
-                    {
                         break;
-                    }
-                    pm = new PrecipitacionMedia();
-                    pm.Ciclo = rows[i][0].ToString();
-                    pm.Nov = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
-                    pm.Dic = double.Parse(rows[i][2].ToString(), CultureInfo.InvariantCulture);
-                    pm.Ene = double.Parse(rows[i][3].ToString(), CultureInfo.InvariantCulture);
-                    pm.Feb = double.Parse(rows[i][4].ToString(), CultureInfo.InvariantCulture);
-                    pm.Mar = double.Parse(rows[i][5].ToString(), CultureInfo.InvariantCulture);
-                    pm.Abr = double.Parse(rows[i][6].ToString(), CultureInfo.InvariantCulture);
-                    pm.May = double.Parse(rows[i][7].ToString(), CultureInfo.InvariantCulture);
-                    pm.Jun = double.Parse(rows[i][8].ToString(), CultureInfo.InvariantCulture);
-                    pm.Jul = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
-                    pm.Ago = double.Parse(rows[i][10].ToString(), CultureInfo.InvariantCulture);
-                    pm.Sep = double.Parse(rows[i][11].ToString(), CultureInfo.InvariantCulture);
-                    pm.Oct = double.Parse(rows[i][12].ToString(), CultureInfo.InvariantCulture);
-                    precipitacionesMedias.Add(pm);
+
+                    lae = new LluviaAnualEstacion();
+
+                    lae.Ciclo = rows[i][0].ToString();
+                    lae.LaeCelaya = double.Parse(rows[i][1].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeGuanajuato = double.Parse(rows[i][2].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeIrapuato = double.Parse(rows[i][3].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeAdjuntas = double.Parse(rows[i][4].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeLeon = double.Parse(rows[i][5].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaePPenuelitas = double.Parse(rows[i][6].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaePSolis = double.Parse(rows[i][7].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeSanFelipe = double.Parse(rows[i][8].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeSanLuisDeLaPaz = double.Parse(rows[i][9].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeYuriria = double.Parse(rows[i][10].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeChapala = double.Parse(rows[i][11].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeFuerte = double.Parse(rows[i][12].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeTule = double.Parse(rows[i][13].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeTizapan = double.Parse(rows[i][14].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeYurecuaro = double.Parse(rows[i][15].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeAtlacomulco = double.Parse(rows[i][16].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeTolucaRectoria = double.Parse(rows[i][17].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeChincua = double.Parse(rows[i][18].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeCuitzeoAu = double.Parse(rows[i][19].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeMelchorOcampo = double.Parse(rows[i][20].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeMorelia = double.Parse(rows[i][21].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeTepuxtepec = double.Parse(rows[i][22].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeZacapu = double.Parse(rows[i][23].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeZamora = double.Parse(rows[i][24].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lae.LaeQueretaroObs = double.Parse(rows[i][25].ToString(),
+                        CultureInfo.InvariantCulture);
+                    lluviasAnuales.Add(lae);
                 }
             }
-            */
+
             return lluviasAnuales;
         }
     }

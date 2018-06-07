@@ -678,33 +678,7 @@ namespace Cuenca_conagua.src.BaseDatos
 
                 while (reader.Read())
                 {
-                    lae = new LluviaAnualEstacion();
-                    lae.Ciclo = reader.GetString(0);
-                    lae.LaeCelaya = double.Parse(reader.GetValue(1).ToString());
-                    lae.LaeGuanajuato = double.Parse(reader.GetValue(2).ToString());
-                    lae.LaeIrapuato = double.Parse(reader.GetValue(3).ToString());
-                    lae.LaeAdjuntas = double.Parse(reader.GetValue(4).ToString());
-                    lae.LaeLeon = double.Parse(reader.GetValue(5).ToString());
-                    lae.LaePPenuelitas = double.Parse(reader.GetValue(6).ToString());
-                    lae.LaePSolis = double.Parse(reader.GetValue(7).ToString());
-                    lae.LaeSanFelipe = double.Parse(reader.GetValue(8).ToString());
-                    lae.LaeSanLuisDeLaPaz = double.Parse(reader.GetValue(9).ToString());
-                    lae.LaeYuriria = double.Parse(reader.GetValue(10).ToString());
-                    lae.LaeChapala = double.Parse(reader.GetValue(11).ToString());
-                    lae.LaeFuerte = double.Parse(reader.GetValue(12).ToString());
-                    lae.LaeTule = double.Parse(reader.GetValue(13).ToString());
-                    lae.LaeTizapan = double.Parse(reader.GetValue(14).ToString());
-                    lae.LaeYurecuaro = double.Parse(reader.GetValue(15).ToString());
-                    lae.LaeAtlacomulco = double.Parse(reader.GetValue(16).ToString());
-                    lae.LaeTolucaRectoria = double.Parse(reader.GetValue(17).ToString());
-                    lae.LaeChincua = double.Parse(reader.GetValue(18).ToString());
-                    lae.LaeCuitzeoAu = double.Parse(reader.GetValue(19).ToString());
-                    lae.LaeMelchorOcampo = double.Parse(reader.GetValue(20).ToString());
-                    lae.LaeMorelia = double.Parse(reader.GetValue(21).ToString());
-                    lae.LaeTepuxtepec = double.Parse(reader.GetValue(22).ToString());
-                    lae.LaeZacapu = double.Parse(reader.GetValue(23).ToString());
-                    lae.LaeZamora = double.Parse(reader.GetValue(24).ToString());
-                    lae.LaeQueretaroObs = double.Parse(reader.GetValue(25).ToString());
+                    lae = ReadLaeFromReader(reader);
                     laes.Add(lae);
                 }
 
@@ -728,7 +702,7 @@ namespace Cuenca_conagua.src.BaseDatos
 
             bool insertado = false;
 
-            string sql = string.Format("INSERT INTO precipitacion_ma " +
+            string sql = string.Format("INSERT INTO lluvia_ae " +
                 "VALUES('{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, " +
                 "{9}, {10}, {11}, {12}, {13}, {14}, {15}, {16}, {17}, {18}, " +
                 "{19}, {20}, {21}, {22}, {23}, {24}, {25})", lae.Ciclo,
@@ -763,7 +737,65 @@ namespace Cuenca_conagua.src.BaseDatos
         /// </returns>
         public static LluviaAnualEstacion GetLluviaAnualEstacion(string ciclo)
         {
-            throw new NotImplementedException();
+            InitConnection();
+            string query = "SELECT * FROM [lluvia_ae] WHERE ciclo=@ciclo";
+            SqlCommand command = new SqlCommand(query, conexion);
+            command.Parameters.AddWithValue("@ciclo", ciclo);
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                LluviaAnualEstacion lae = null;
+
+                if (reader.Read())
+                {
+                    lae = ReadLaeFromReader(reader);
+                }
+
+                reader.Close();
+                return lae;
+            }
+        }
+
+        /// <summary>
+        /// Lee los datos de una lluvia anual por estación a partir de un 
+        /// SqlDataReader que ya contiene un registro de la tabla lluvia_ae.
+        /// </summary>
+        /// <param name="reader">
+        /// Es el reader que contiene el registro leido.
+        /// </param>
+        /// <returns>
+        /// Instancia de LluviaAnualEstacion generada a partir del reader.
+        /// </returns>
+        private static LluviaAnualEstacion ReadLaeFromReader(SqlDataReader reader)
+        {
+            LluviaAnualEstacion lae = new LluviaAnualEstacion();
+            lae.Ciclo = reader.GetString(0);
+            lae.LaeCelaya = double.Parse(reader.GetValue(1).ToString());
+            lae.LaeGuanajuato = double.Parse(reader.GetValue(2).ToString());
+            lae.LaeIrapuato = double.Parse(reader.GetValue(3).ToString());
+            lae.LaeAdjuntas = double.Parse(reader.GetValue(4).ToString());
+            lae.LaeLeon = double.Parse(reader.GetValue(5).ToString());
+            lae.LaePPenuelitas = double.Parse(reader.GetValue(6).ToString());
+            lae.LaePSolis = double.Parse(reader.GetValue(7).ToString());
+            lae.LaeSanFelipe = double.Parse(reader.GetValue(8).ToString());
+            lae.LaeSanLuisDeLaPaz = double.Parse(reader.GetValue(9).ToString());
+            lae.LaeYuriria = double.Parse(reader.GetValue(10).ToString());
+            lae.LaeChapala = double.Parse(reader.GetValue(11).ToString());
+            lae.LaeFuerte = double.Parse(reader.GetValue(12).ToString());
+            lae.LaeTule = double.Parse(reader.GetValue(13).ToString());
+            lae.LaeTizapan = double.Parse(reader.GetValue(14).ToString());
+            lae.LaeYurecuaro = double.Parse(reader.GetValue(15).ToString());
+            lae.LaeAtlacomulco = double.Parse(reader.GetValue(16).ToString());
+            lae.LaeTolucaRectoria = double.Parse(reader.GetValue(17).ToString());
+            lae.LaeChincua = double.Parse(reader.GetValue(18).ToString());
+            lae.LaeCuitzeoAu = double.Parse(reader.GetValue(19).ToString());
+            lae.LaeMelchorOcampo = double.Parse(reader.GetValue(20).ToString());
+            lae.LaeMorelia = double.Parse(reader.GetValue(21).ToString());
+            lae.LaeTepuxtepec = double.Parse(reader.GetValue(22).ToString());
+            lae.LaeZacapu = double.Parse(reader.GetValue(23).ToString());
+            lae.LaeZamora = double.Parse(reader.GetValue(24).ToString());
+            lae.LaeQueretaroObs = double.Parse(reader.GetValue(25).ToString());
+            return lae;
         }
     }
 }

@@ -71,16 +71,16 @@ function updateTipoArchivo() {
 
     var tipoArchivo = $('#tipoArchivo');
 
-    if (tipo == 'Boletin') {
+    if (tipo === 'Boletin') {
         tipoArchivo.val('boletin');
-    } else if (tipo == 'Reglamentación') {
+    } else if (tipo === 'Reglamentación') {
         tipoArchivo.val('reglamentacion');
-    } else if (tipo == 'Lluvia_media_anual' || tipo == 'Escurrimiento_anual'
-        || tipo == 'Volumenes_DR_PI') {
+    } else if (tipo === 'Lluvia_media_anual' || tipo === 'Escurrimiento_anual'
+        || tipo === 'Volumenes_DR_PI' || tipo === 'Lluva_anual_estación') {
         tipoArchivo.val('datos');
-    } else if (tipo == 'Archivo_calculo') {
+    } else if (tipo === 'Archivo_calculo') {
         tipoArchivo.val('archivo_calculo');
-    } else if (tipo == 'Presentación_covi') {
+    } else if (tipo === 'Presentación_covi') {
         tipoArchivo.val('presentacion_covi');
     }
 }
@@ -97,12 +97,12 @@ var MSJ_MAX_FILES = '<strong>Puedes subir máximo ' + maxFiles + ' archivos</str
 function evaluarExtension(nombreArchivo) {
     var nombreCorrecto = $('#sel_tipo_archivo').val();
 
-    if (nombreCorrecto == "Boletin"
-        || nombreCorrecto == "Reglamentación") {
+    if (nombreCorrecto === "Boletin"
+        || nombreCorrecto === "Reglamentación") {
         return nombreArchivo.endsWith('.pdf');
-    } else if (nombreCorrecto == "Archivo_calculo") {
+    } else if (nombreCorrecto === "Archivo_calculo") {
         return nombreArchivo.endsWith('.xls') || nombreArchivo.endsWith('.xlsx');
-    } else if (nombreCorrecto == "Presentación_covi") {
+    } else if (nombreCorrecto === "Presentación_covi") {
         return nombreArchivo.endsWith('.ppt') || nombreArchivo.endsWith('.pptx');
     } else {
         return nombreArchivo.endsWith('.xls') || nombreArchivo.endsWith('.xlsx');
@@ -113,16 +113,16 @@ function evaluarExtension(nombreArchivo) {
 function evaluarNombre(nombreArchivo) {
     var nombreCorrecto = $('#sel_tipo_archivo').val();
 
-    if (nombreCorrecto == "Boletin"
-        || nombreCorrecto == "Reglamentación"
-        || nombreCorrecto == "Archivo_calculo"
-        || nombreCorrecto == "Presentación_covi") {
+    if (nombreCorrecto === "Boletin"
+        || nombreCorrecto === "Reglamentación"
+        || nombreCorrecto === "Archivo_calculo"
+        || nombreCorrecto === "Presentación_covi") {
         // Devuelve true si se trata de un archivo donde no se requiere 
         // coincidencia en el nombre
         return true;
     } else {
         // Aquí sí se evalúa que el nombre sea el esperado
-        return removeFileExtension(nombreArchivo) == nombreCorrecto;
+        return removeFileExtension(nombreArchivo) === nombreCorrecto;
     }
 }
 
@@ -138,7 +138,7 @@ function removeFileExtension(nombreArchivo) {
 function mostrarMensajeResultado(resCode, mensaje) {
     var uploadResult = $('#uploadResult');
 
-    if (resCode == RES_ERROR) {
+    if (resCode === RES_ERROR) {
         uploadResult.addClass('div-error');
     } else {
         uploadResult.addClass('div-exito');

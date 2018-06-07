@@ -36,32 +36,161 @@ namespace Cuenca_conagua.src.Entidades
         private double laeZamora;
         private double laeQueretaroObs;
 
-        public string Ciclo { get => ciclo; set => ciclo = value; }
-        public double LaeCelaya { get => laeCelaya; set => laeCelaya = value; }
-        public double LaeGuanajuato { get => laeGuanajuato; set => laeGuanajuato = value; }
-        public double LaeIrapuato { get => laeIrapuato; set => laeIrapuato = value; }
-        public double LaeAdjuntas { get => laeAdjuntas; set => laeAdjuntas = value; }
-        public double LaeLeon { get => laeLeon; set => laeLeon = value; }
-        public double LaePPenuelitas { get => laePPenuelitas; set => laePPenuelitas = value; }
-        public double LaePSolis { get => laePSolis; set => laePSolis = value; }
-        public double LaeSanFelipe { get => laeSanFelipe; set => laeSanFelipe = value; }
-        public double LaeSanLuisDeLaPaz { get => laeSanLuisDeLaPaz; set => laeSanLuisDeLaPaz = value; }
-        public double LaeYuriria { get => laeYuriria; set => laeYuriria = value; }
-        public double LaeChapala { get => laeChapala; set => laeChapala = value; }
-        public double LaeFuerte { get => laeFuerte; set => laeFuerte = value; }
-        public double LaeTule { get => laeTule; set => laeTule = value; }
-        public double LaeTizapan { get => laeTizapan; set => laeTizapan = value; }
-        public double LaeYurecuaro { get => laeYurecuaro; set => laeYurecuaro = value; }
-        public double LaeAtlacomulco { get => laeAtlacomulco; set => laeAtlacomulco = value; }
-        public double LaeTolucaRectoria { get => laeTolucaRectoria; set => laeTolucaRectoria = value; }
-        public double LaeChincua { get => laeChincua; set => laeChincua = value; }
-        public double LaeCuitzeoAu { get => laeCuitzeoAu; set => laeCuitzeoAu = value; }
-        public double LaeMelchorOcampo { get => laeMelchorOcampo; set => laeMelchorOcampo = value; }
-        public double LaeMorelia { get => laeMorelia; set => laeMorelia = value; }
-        public double LaeTepuxtepec { get => laeTepuxtepec; set => laeTepuxtepec = value; }
-        public double LaeZacapu { get => laeZacapu; set => laeZacapu = value; }
-        public double LaeZamora { get => laeZamora; set => laeZamora = value; }
-        public double LaeQueretaroObs { get => laeQueretaroObs; set => laeQueretaroObs = value; }
+        public string Ciclo
+        {
+            get { return ciclo; }
+            set { ciclo = value; }
+        }
+
+        public double LaeCelaya
+        {
+            get { return laeCelaya; }
+            set { laeCelaya = value; }
+        }
+
+        public double LaeGuanajuato
+        {
+            get { return laeGuanajuato; }
+            set { laeGuanajuato = value; }
+        }
+
+        public double LaeIrapuato
+        {
+            get { return laeIrapuato; }
+            set { laeIrapuato = value; }
+        }
+
+        public double LaeAdjuntas
+        {
+            get { return laeAdjuntas; }
+            set { laeAdjuntas = value; }
+        }
+
+        public double LaeLeon
+        {
+            get { return laeLeon; }
+            set { laeLeon = value; }
+        }
+
+        public double LaePPenuelitas
+        {
+            get { return laePPenuelitas; }
+            set { laePPenuelitas = value; }
+        }
+
+        public double LaePSolis
+        {
+            get { return laePSolis; }
+            set { laePSolis = value; }
+        }
+
+        public double LaeSanFelipe
+        {
+            get { return laeSanFelipe; }
+            set { laeSanFelipe = value; }
+        }
+
+        public double LaeSanLuisDeLaPaz
+        {
+            get { return laeSanLuisDeLaPaz; }
+            set { laeSanLuisDeLaPaz = value; }
+        }
+
+        public double LaeYuriria
+        {
+            get { return laeYuriria; }
+            set { laeYuriria = value; }
+        }
+
+        public double LaeChapala
+        {
+            get { return laeChapala; }
+            set { laeChapala = value; }
+        }
+
+        public double LaeFuerte
+        {
+            get { return laeFuerte; }
+            set { laeFuerte = value; }
+        }
+
+        public double LaeTule
+        {
+            get { return laeTule; }
+            set { laeTule = value; }
+        }
+
+        public double LaeTizapan
+        {
+            get { return laeTizapan; }
+            set { laeTizapan = value; }
+        }
+
+        public double LaeYurecuaro
+        {
+            get { return laeYurecuaro; }
+            set { laeYurecuaro = value; }
+        }
+
+        public double LaeAtlacomulco
+        {
+            get { return laeAtlacomulco; }
+            set { laeAtlacomulco = value; }
+        }
+
+        public double LaeTolucaRectoria
+        {
+            get { return laeTolucaRectoria; }
+            set { laeTolucaRectoria = value; }
+        }
+
+        public double LaeChincua
+        {
+            get { return laeChincua; }
+            set { laeChincua = value; }
+        }
+
+        public double LaeCuitzeoAu
+        {
+            get { return laeCuitzeoAu; }
+            set { laeCuitzeoAu = value; }
+        }
+
+        public double LaeMelchorOcampo
+        {
+            get { return laeMelchorOcampo; }
+            set { laeMelchorOcampo = value; }
+        }
+
+        public double LaeMorelia
+        {
+            get { return laeMorelia; }
+            set { laeMorelia = value; }
+        }
+
+        public double LaeTepuxtepec
+        {
+            get { return laeTepuxtepec; }
+            set { laeTepuxtepec = value; }
+        }
+
+        public double LaeZacapu
+        {
+            get { return laeZacapu; }
+            set { laeZacapu = value; }
+        }
+
+        public double LaeZamora
+        {
+            get { return laeZamora; }
+            set { laeZamora = value; }
+        }
+
+        public double LaeQueretaroObs
+        {
+            get { return laeQueretaroObs; }
+            set { laeQueretaroObs = value; }
+        }
 
         public double Media
         {
@@ -85,26 +214,80 @@ namespace Cuenca_conagua.src.Entidades
         /// </returns>
         public override string ToString()
         {
-            return string.Format("Ciclo: {0, -10}. LaeCelaya: {1, -20}, " +
-                "LaeGuanajuato: {2, -20}, LaeIrapuato: {3, -20}, " + 
-                "LaeAdjuntas: {4, -20}, LaeLeon: {5, -20}, " + 
-                "LaePPenuelitas: {6, -20}, LaePSolis: {7, -20}, " + 
-                "LaeSanFelipe: {8, -20}, LaeSanLuisDeLaPaz: {9, -20}, " + 
-                "LaeYuriria: {10, -20}, LaeChapala: {11, -20}, " + 
-                "LaeFuerte: {12, -20}, LaeTule: {13, -20}, " +
-                "LaeTizapan: {14, -20}, LaeYurecuaro: {15, -20}, " + 
-                "LaeAtlacomulco: {16, -20}, LaeTolucaRectoria: {17, -20}, " +
-                "LaeChincua: {18, -20}, LaeCuitzeoAu: {19, -20}, " +
-                "LaeMelchorOcampo: {20, -20}, LaeMorelia: {21, -20}, " + 
-                "LaeTepuxtepec: {22, -20}, LaeZacapu: {23, -20}, " +
-                "LaeZamora: {24, -20}, LaeQueretaroObs: {25, -20}, " + 
-                "media: {26, -20}", ciclo, laeCelaya, laeGuanajuato, 
+            return string.Format("Ciclo: {0}. LaeCelaya: {1}, " +
+                "LaeGuanajuato: {2}, LaeIrapuato: {3}, " +
+                "LaeAdjuntas: {4}, LaeLeon: {5}, " +
+                "LaePPenuelitas: {6}, LaePSolis: {7}, " +
+                "LaeSanFelipe: {8}, LaeSanLuisDeLaPaz: {9}, " +
+                "LaeYuriria: {10}, LaeChapala: {11}, " +
+                "LaeFuerte: {12}, LaeTule: {13}, " +
+                "LaeTizapan: {14}, LaeYurecuaro: {15}, " +
+                "LaeAtlacomulco: {16}, LaeTolucaRectoria: {17}, " +
+                "LaeChincua: {18}, LaeCuitzeoAu: {19}, " +
+                "LaeMelchorOcampo: {20}, LaeMorelia: {21}, " +
+                "LaeTepuxtepec: {22}, LaeZacapu: {23}, " +
+                "LaeZamora: {24}, LaeQueretaroObs: {25}, " +
+                "media: {26}", ciclo, laeCelaya, laeGuanajuato,
                 laeIrapuato, laeAdjuntas, laeLeon, LaePPenuelitas, laePSolis,
                 laeSanFelipe, laeSanLuisDeLaPaz, laeYuriria, laeChapala,
                 laeFuerte, laeTule, laeTizapan, laeYurecuaro, laeAtlacomulco,
                 laeTolucaRectoria, laeChincua, laeCuitzeoAu, laeMelchorOcampo,
-                laeMorelia, laeTepuxtepec, laeZacapu, laeZamora, 
+                laeMorelia, laeTepuxtepec, laeZacapu, laeZamora,
                 laeQueretaroObs, Media);
+        }
+
+        /// <summary>
+        /// Genera la representación en JSON del objeto.
+        /// </summary>
+        /// <returns>
+        /// Una cadena con el JSON.
+        /// </returns>
+        public string ToJSON()
+        {
+            StringBuilder json = new StringBuilder();
+            json.Append("{");
+            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(",");
+            json.Append("laeCelaya: ").Append(laeCelaya).Append(",");
+            json.Append("laeGuanajuato: ").Append(laeGuanajuato).Append(",");
+            json.Append("laeIrapuato: ").Append(laeIrapuato).Append(",");
+            json.Append("laeAdjuntas: ").Append(laeAdjuntas).Append(",");
+            json.Append("laeLeon: ").Append(laeLeon).Append(",");
+            json.Append("laePPenuelitas: ").Append(laePPenuelitas).Append(",");
+            json.Append("laePSolis: ").Append(laePSolis).Append(",");
+            json.Append("laeSanFelipe: ").Append(laeSanFelipe).Append(",");
+            json.Append("laeSanLuisDeLaPaz: ").Append(laeSanLuisDeLaPaz).Append(",");
+            json.Append("laeYuriria: ").Append(laeYuriria).Append(",");
+            json.Append("laeChapala: ").Append(laeChapala).Append(",");
+            json.Append("laeFuerte: ").Append(laeFuerte).Append(",");
+            json.Append("laeTule: ").Append(laeTule).Append(",");
+            json.Append("laeTizapan: ").Append(laeTizapan).Append(",");
+            json.Append("laeYurecuaro: ").Append(laeYurecuaro).Append(",");
+            json.Append("laeAtlacomulco: ").Append(laeAtlacomulco).Append(",");
+            json.Append("laeTolucaRectoria: ").Append(laeTolucaRectoria).Append(",");
+            json.Append("laeChincua: ").Append(laeChincua).Append(",");
+            json.Append("laeCuitzeoAu: ").Append(laeCuitzeoAu).Append(",");
+            json.Append("laeMelchorOcampo: ").Append(laeMelchorOcampo).Append(",");
+            json.Append("laeMorelia: ").Append(laeMorelia).Append(",");
+            json.Append("laeTepuxtepec: ").Append(laeTepuxtepec).Append(",");
+            json.Append("laeZacapu: ").Append(laeZacapu).Append(",");
+            json.Append("laeZamora: ").Append(laeZamora).Append(",");
+            json.Append("laeQueretaroObs: ").Append(laeQueretaroObs);
+            json.Append("}");
+            return json.ToString();
+        }
+
+        /// <summary>
+        /// Genera la representación en JSON formateado del objeto.
+        /// </summary>
+        /// <returns>
+        /// Una cadena con el JSON.
+        /// </returns>
+        public string ToFormatedJSON()
+        {
+            return ToJSON()
+                .Replace("{", "{\n    ")
+                .Replace(",", ",\n    ")
+                .Replace("}", "\n}");
         }
 
         /// <summary>
@@ -151,46 +334,6 @@ namespace Cuenca_conagua.src.Entidades
         public static List<LluviaAnualEstacion> All()
         {
             return ConexionBD.GetAllLluviaAnualEstacion();
-        }
-
-        /// <summary>
-        /// Genera la representación en JSON del objeto.
-        /// </summary>
-        /// <returns>
-        /// Una cadena con el JSON.
-        /// </returns>
-        public string ToJSON()
-        {
-            StringBuilder json = new StringBuilder();
-            json.Append("{");
-            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(", ");
-            json.Append("laeCelaya: ").Append(laeCelaya).Append(", ");
-            json.Append("laeGuanajuato: ").Append(laeGuanajuato).Append(", ");
-            json.Append("laeIrapuato: ").Append(laeIrapuato).Append(", ");
-            json.Append("laeAdjuntas: ").Append(laeAdjuntas).Append(", ");
-            json.Append("laeLeon: ").Append(laeLeon).Append(", ");
-            json.Append("laePPenuelitas: ").Append(laePPenuelitas).Append(", ");
-            json.Append("laePSolis: ").Append(laePSolis).Append(", ");
-            json.Append("laeSanFelipe: ").Append(laeSanFelipe).Append(", ");
-            json.Append("laeSanLuisDeLaPaz: ").Append(laeSanLuisDeLaPaz).Append(", ");
-            json.Append("laeYuriria: ").Append(laeYuriria).Append(", ");
-            json.Append("laeChapala: ").Append(laeChapala).Append(", ");
-            json.Append("laeFuerte: ").Append(laeFuerte).Append(", ");
-            json.Append("laeTule: ").Append(laeTule).Append(", ");
-            json.Append("laeTizapan: ").Append(laeTizapan).Append(", ");
-            json.Append("laeYurecuaro: ").Append(laeYurecuaro).Append(", ");
-            json.Append("laeAtlacomulco: ").Append(laeAtlacomulco).Append(", ");
-            json.Append("laeTolucaRectoria: ").Append(laeTolucaRectoria).Append(", ");
-            json.Append("laeChincua: ").Append(laeChincua).Append(", ");
-            json.Append("laeCuitzeoAu: ").Append(laeCuitzeoAu).Append(", ");
-            json.Append("laeMelchorOcampo: ").Append(laeMelchorOcampo).Append(", ");
-            json.Append("laeMorelia: ").Append(laeMorelia).Append(", ");
-            json.Append("laeTepuxtepec: ").Append(laeTepuxtepec).Append(", ");
-            json.Append("laeZacapu: ").Append(laeZacapu).Append(", ");
-            json.Append("laeZamora: ").Append(laeZamora).Append(", ");
-            json.Append("laeQueretaroObs: ").Append(laeQueretaroObs).Append(", ");
-            json.Append("}");
-            return json.ToString();
         }
 
         /// <summary>

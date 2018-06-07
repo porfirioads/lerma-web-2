@@ -29,7 +29,6 @@ namespace Cuenca_conagua.pages
                     HttpPostedFile file = Request.Files[s];
                     string tipo = tipoArchivo.Value;
 
-                    Logger.AddToLog("TipoArchivo: " + tipo, true);
                     string savedFileName = SaveFile(file, tipoArchivo.Value);
 
                     if (tipo == "datos")
@@ -113,15 +112,23 @@ namespace Cuenca_conagua.pages
 
             if (archivoSinRuta.StartsWith("Lluvia_media_anual"))
             {
+                Logger.AddToLog("IngresarPrecipitacionBD", true);
                 IngresarPrecipitacionBD(nombreArchivo);
             }
             else if (archivoSinRuta.StartsWith("Escurrimiento_anual"))
             {
+                Logger.AddToLog("IngresarEscurrimientoBD", true);
                 IngresarEscurrimientoBD(nombreArchivo);
             }
             else if (archivoSinRuta.StartsWith("Volumenes_DR_PI"))
             {
+                Logger.AddToLog("IngresarVolumenesBD", true);
                 IngresarVolumenesBD(nombreArchivo);
+            }
+            else if (archivoSinRuta.StartsWith("Lluvia_anual_estación"))
+            {
+                Logger.AddToLog("IngresarLluviaAnualEstacion", true);
+                IngresarLluviaAnualEstacion(nombreArchivo);
             }
         }
 
@@ -273,6 +280,36 @@ namespace Cuenca_conagua.pages
                 else
                 {
                     Logger.AddToLog("Volumen PI utilizado: " + volUt.Ciclo + " no guardado", true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ingresa los registros de lluvia anual por estación en caso de que 
+        /// ese archivo sea el que se subió al servidor.
+        /// </summary>
+        /// <param name="nombreArchivo">
+        /// Nombre del archivo de excel que contiene los datos.
+        /// </param>
+        protected void IngresarLluviaAnualEstacion(string nombreArchivo)
+        {
+            List<LluviaAnualEstacion> lluvias =
+                ExcelFileIO.ReadLluviaAnualEstacion(nombreArchivo);
+
+            foreach (LluviaAnualEstacion lae in lluvias)
+            {
+                Logger.AddToLog("Excel Lluvia anual por estación: \n" +
+                    lae.ToFormatedJSON(), true);
+
+                if (lae.Save())
+                {
+                    Logger.AddToLog("Lluvia anual por estación: " + lae.Ciclo +
+                        " agregado.", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Lluvia anual por estación: " + lae.Ciclo +
+                        " no agregado.", true);
                 }
             }
         }
