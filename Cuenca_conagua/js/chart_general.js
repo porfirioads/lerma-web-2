@@ -34,7 +34,10 @@ getChartOptions = function (chartTitle, yTitle, xTitle, unidad) {
                 scaleLabel: {
                     display: true,
                     labelString: xTitle,
-                    fontSize: 15
+                    fontSize: 13
+                },
+                ticks: {
+                    autoSkip: false
                 }
             }]
         }

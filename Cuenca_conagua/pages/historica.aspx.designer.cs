@@ -22,13 +22,13 @@ namespace Cuenca_conagua.pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl scrPrecAnual;
         
         /// <summary>
-        /// Div1 control.
+        /// srcLluviaAnualEstacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl srcLluviaAnualEstacion;
         
         /// <summary>
         /// scrEscurrimiento control.

@@ -10,6 +10,7 @@
     <script src="../js/chart_precipitacion_media.js"></script>
     <script src="../js/chart_escurrimiento_anual.js"></script>
     <script src="../js/chart_volumenes.js"></script>
+    <script src="../js/chart_lluvia_anual_estacion.js"></script>
 </asp:Content>
 
 <asp:Content ID="contentCuerpoContainer" ContentPlaceHolderID="cuerpoContainer" runat="server">
@@ -55,9 +56,9 @@
 
     <section id="contLluviaAnualEstacion" class="contenido">
         <%-- Esta etiqueda div se va a sustituir por un script --%>
-        <div id="Div1" class="hidden" runat="server"></div>
+        <div id="srcLluviaAnualEstacion" class="hidden" runat="server"></div>
         <script>
-            //$('#cuerpoContainer_scrPrecAnual').contents().unwrap().wrap('<script/>');
+            $('#cuerpoContainer_srcLluviaAnualEstacion').contents().unwrap().wrap('<script/>');
         </script>
         <section id="lluviaAnual">
             <div id="lluviaAnualChart" class="chart-area">
@@ -65,24 +66,8 @@
                     <canvas id="grafica_lae" class="chart" width="500" height="300"></canvas>
                 </div>
             </div>
-            <!--
-            <div id="divChkAnual" class="form-control">
-                <input id="chkAnual" type="checkbox" />
-                Mostrar precipitación media anual
-            </div>
-            <div id="divChkMensual" class="form-control hidden">
-                <input id="chkMensual" type="checkbox" />
-                Mostrar precipitación media mensual
-            </div>
-            <select id="selCiclo" class="form-control hidden">
+            <select id="selCicloLae" class="form-control">
             </select>
-            <div>
-                <a id="btnChangePrecMensual" class="btn btn-green">Precipitación Mensual
-                </a>
-                <a id="btnChangePrecAnual" class="btn btn-green hidden">Precipitación Anual
-                </a>
-            </div>
-            -->
         </section>
     </section>
 

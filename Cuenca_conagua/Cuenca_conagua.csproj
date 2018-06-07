@@ -118,6 +118,7 @@
     <Content Include="js\Chart.min.js" />
     <Content Include="js\chart_escurrimiento_anual.js" />
     <Content Include="js\chart_general.js" />
+    <Content Include="js\chart_lluvia_anual_estacion.js" />
     <Content Include="js\chart_precipitacion_media.js" />
     <Content Include="js\chart_volumenes.js" />
     <Content Include="js\dropzone.js" />

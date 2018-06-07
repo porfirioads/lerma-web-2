@@ -26,6 +26,29 @@ namespace Cuenca_conagua.pages
             CargarPrecipitacionesJS();
             CargarEscurrimientosJS();
             CargarVolumenesJS();
+            CargarLluviasAnualesEstacionJS();
+        }
+
+        private void CargarLluviasAnualesEstacionJS()
+        {
+            List<LluviaAnualEstacion> laes = LluviaAnualEstacion.All();
+            laes.Sort();
+
+            if (laes != null)
+            {
+                StringBuilder json = new StringBuilder();
+                json.Append("[");
+
+                foreach (LluviaAnualEstacion lae in laes)
+                {
+                    json.Append(lae.ToJSON()).Append(", ");
+                }
+
+                json.Remove(json.Length - 1, 1);
+                json.Append("]");
+                srcLluviaAnualEstacion.InnerHtml = "var regLluviaAnualEstacion = " + 
+                    json.ToString() + ";";
+            }
         }
 
         /// <summary>
