@@ -9,7 +9,7 @@ getChartOptions = function (chartTitle, yTitle, xTitle, unidad) {
             mode: 'label',
             callbacks: {
                 label: function (tooltipItem, data) {
-                    return tooltipItem.yLabel.toFixed(3) + ' ' + unidad;
+                    return tooltipItem.yLabel.toFixed(2) + ' ' + unidad;
                 }
             }
         },
