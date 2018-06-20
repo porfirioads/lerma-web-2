@@ -75,8 +75,11 @@ function updateTipoArchivo() {
         tipoArchivo.val('boletin');
     } else if (tipo === 'Reglamentación') {
         tipoArchivo.val('reglamentacion');
-    } else if (tipo === 'Lluvia_media_anual' || tipo === 'Escurrimiento_anual'
-        || tipo === 'Volumenes_DR_PI' || tipo === 'Lluva_anual_estación') {
+    } else if (tipo === 'Lluvia_media_anual'
+        || tipo === 'Escurrimiento_anual'
+        || tipo === 'Volumenes_DR_PI'
+        || tipo === 'Lluva_anual_estación'
+        || tipo === 'Almacenamientos_principales') {
         tipoArchivo.val('datos');
     } else if (tipo === 'Archivo_calculo') {
         tipoArchivo.val('archivo_calculo');

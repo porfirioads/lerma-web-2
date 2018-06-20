@@ -108,7 +108,7 @@ namespace Cuenca_conagua.pages
             string archivoSinRuta = nombreArchivo.Substring(nombreArchivo
                 .LastIndexOf('\\') + 1);
 
-            Logger.AddToLog("Agregar " + archivoSinRuta, true);
+            Logger.AddToLog("IngresarBaseDatos(" + archivoSinRuta + ")", true);
 
             if (archivoSinRuta.StartsWith("Lluvia_media_anual"))
             {
@@ -129,6 +129,9 @@ namespace Cuenca_conagua.pages
             {
                 Logger.AddToLog("IngresarLluviaAnualEstacion", true);
                 IngresarLluviaAnualEstacion(nombreArchivo);
+            } else if(archivoSinRuta.StartsWith("Almacenamientos_principales"))
+            {
+                Logger.AddToLog("IngresarLluviaAnualEstacion", true);
             }
         }
 
