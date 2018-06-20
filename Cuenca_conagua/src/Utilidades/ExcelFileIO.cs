@@ -166,6 +166,58 @@ namespace Cuenca_conagua.src.Utilidades
         }
 
         /// <summary>
+        /// Lee los registros de almacenamientos principales del archivo de 
+        /// excel correspondiente.
+        /// </summary>
+        /// <param name="nombreArchivo">
+        /// Es el nombre del archivo de excel donde vienen los datos.
+        /// </param>
+        /// <returns>
+        /// Una lista con los registros de almacenamientos principales.
+        /// </returns>
+        public static List<AlmacenamientoPrincipal> ReadAlmacenamientoPrincipal(string nombreArchivo)
+        {
+            List<AlmacenamientoPrincipal> almacenamientos = 
+                new List<AlmacenamientoPrincipal>();
+
+            DataRowCollection rows = ReadExcel(nombreArchivo, 0);
+
+            if (rows != null)
+            {
+                AlmacenamientoPrincipal alm;
+                int filasIgnoradas = 4;
+
+                for (int i = filasIgnoradas; i < rows.Count; i++)
+                {
+                    if (rows[i][0].ToString().Replace(" ", "").Length == 0)
+                    {
+                        break;
+                    }
+
+                    alm = new AlmacenamientoPrincipal();
+                    alm.Anio = rows[i][0].ToString();
+                    alm.Alzate = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
+                    alm.Ramirez = double.Parse(rows[i][2].ToString(), CultureInfo.InvariantCulture);
+                    alm.Tepetitlan = double.Parse(rows[i][3].ToString(), CultureInfo.InvariantCulture);
+                    alm.Tepuxtepec = double.Parse(rows[i][4].ToString(), CultureInfo.InvariantCulture);
+                    alm.Solis = double.Parse(rows[i][5].ToString(), CultureInfo.InvariantCulture);
+                    alm.Yuriria = double.Parse(rows[i][6].ToString(), CultureInfo.InvariantCulture);
+                    alm.Allende = double.Parse(rows[i][7].ToString(), CultureInfo.InvariantCulture);
+                    alm.MOcampo = double.Parse(rows[i][8].ToString(), CultureInfo.InvariantCulture);
+                    alm.Purisima = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
+                    alm.Chapala = double.Parse(rows[i][10].ToString(), CultureInfo.InvariantCulture);
+                    almacenamientos.Add(alm);
+                }
+
+            }
+
+            Logger.AddToLog("Se leyeron " + almacenamientos.Count +
+                " almacenamientos del archivo de Excel", true);
+
+            return almacenamientos;
+        }
+
+        /// <summary>
         /// Lee los registros de algun tipo de volumen DR del archivo de excel
         /// correspondiente.
         /// </summary>

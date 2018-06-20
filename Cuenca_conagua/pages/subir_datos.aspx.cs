@@ -131,8 +131,24 @@ namespace Cuenca_conagua.pages
                 IngresarLluviaAnualEstacion(nombreArchivo);
             } else if(archivoSinRuta.StartsWith("Almacenamientos_principales"))
             {
-                Logger.AddToLog("IngresarLluviaAnualEstacion", true);
+                Logger.AddToLog("IngresarAlmacenamientosPrincipales", true);
+                IngresarAlmacenamientosPrincipalesBD(nombreArchivo);
             }
+        }
+
+        /// <summary>
+        /// Ingresa los registros de almacenamientos principales en caso de 
+        /// que ese archivo sea el que se subió al servidor.
+        /// </summary>
+        /// <param name="nombreArchivo">
+        /// Nombre del archivo de excel que contiene los datos.
+        /// </param>
+        private void IngresarAlmacenamientosPrincipalesBD(string nombreArchivo)
+        {
+            List<AlmacenamientoPrincipal> almacenamientos = ExcelFileIO.
+                ReadAlmacenamientoPrincipal(nombreArchivo);
+
+            // TODO Continue implementation
         }
 
         /// <summary>

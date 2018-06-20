@@ -83,6 +83,21 @@ namespace Cuenca_conagua.src.BaseDatos
             }
         }
 
+        internal static AlmacenamientoPrincipal GetAlmacenamientoPrincipal(string anio)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static bool InsertarAlmacenamientoPrincipal(AlmacenamientoPrincipal almacenamientoPrincipal)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static List<AlmacenamientoPrincipal> GetAllAlmacenamientoPrincipal()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Inserta un registro a la tabla de precipitacion_ma.
         /// </summary>
