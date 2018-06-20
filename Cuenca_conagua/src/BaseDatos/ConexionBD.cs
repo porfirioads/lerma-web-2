@@ -83,19 +83,108 @@ namespace Cuenca_conagua.src.BaseDatos
             }
         }
 
-        internal static AlmacenamientoPrincipal GetAlmacenamientoPrincipal(string anio)
+        /// <summary>
+        /// Devuelve el almacenamiento principal con el año dado.
+        /// </summary>
+        /// <param name="anio">
+        /// Es el año que identifica al registro.
+        /// </param>
+        /// <returns>
+        /// El almacenamiento buscado en caso de ser encontrado, o null si no 
+        /// existe.
+        /// </returns>
+        public static AlmacenamientoPrincipal GetAlmacenamientoPrincipal(string anio)
         {
-            throw new NotImplementedException();
+            InitConnection();
+
+            string query = "SELECT * FROM [almacenamientos_principales] " + 
+                "WHERE anio=@anio";
+            SqlCommand command = new SqlCommand(query, conexion);
+            command.Parameters.AddWithValue("@anio", anio);
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                AlmacenamientoPrincipal alm = null;
+
+                if (reader.Read())
+                {
+                    alm = ReadAlmFromReader(reader);
+                }
+
+                reader.Close();
+                return alm;
+            }
         }
 
-        internal static bool InsertarAlmacenamientoPrincipal(AlmacenamientoPrincipal almacenamientoPrincipal)
+        /// <summary>
+        /// Inserta un registro a la tabla almacenamientos_principales.
+        /// </summary>
+        /// <param name="alm">
+        /// Es el registro de almacenamiento principal a ingresar.
+        /// </param>
+        /// <returns>
+        /// true si el registro fue insertado o false si no se pudo insertar.
+        /// </returns>
+        internal static bool InsertarAlmacenamientoPrincipal(AlmacenamientoPrincipal alm)
         {
-            throw new NotImplementedException();
+            InitConnection();
+            bool insertado = false;
+
+            string sql = string.Format("INSERT INTO " + 
+                "almacenamientos_principales VALUES('{0}', {1}, {2}, {3}, " + 
+                "{4}, {5}, {6}, {7}, {8}, {9}, {10})", alm.Anio, alm.Alzate, 
+                alm.Ramirez, alm.Tepetitlan, alm.Tepuxtepec, alm.Solis, 
+                alm.Yuriria, alm.Allende, alm.MOcampo, alm.Purisima, 
+                alm.Chapala);
+
+            SqlCommand cmd = new SqlCommand(sql, conexion);
+            cmd.CommandType = CommandType.Text;
+
+            if (GetAlmacenamientoPrincipal(alm.Anio) == null)
+            {
+                try
+                {
+                    insertado = cmd.ExecuteNonQuery() > 0;
+                }
+                catch (Exception ex)
+                {
+                    Logger.AddToLog(ex.Message, true);
+                }
+            }
+            return insertado;
         }
 
         internal static List<AlmacenamientoPrincipal> GetAllAlmacenamientoPrincipal()
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Lee los datos de un almacenamiento principal a partir de un
+        /// SqlDataReader que contiene un registro de la tabla 
+        /// almacenamientos_principales.
+        /// </summary>
+        /// <param name="reader">
+        /// Es el reader que contiene el registro leido.
+        /// </param>
+        /// <returns>
+        /// Instancia de AlmacenamientoPrincipal generada a partir del reader.
+        /// </returns>
+        private static AlmacenamientoPrincipal ReadAlmFromReader(SqlDataReader reader)
+        {
+            AlmacenamientoPrincipal alm = new AlmacenamientoPrincipal();
+            alm.Anio = reader.GetString(0);
+            alm.Alzate = double.Parse(reader.GetValue(1).ToString());
+            alm.Alzate = double.Parse(reader.GetValue(2).ToString());
+            alm.Alzate = double.Parse(reader.GetValue(3).ToString());
+            alm.Alzate = double.Parse(reader.GetValue(4).ToString());
+            alm.Alzate = double.Parse(reader.GetValue(5).ToString());
+            alm.Alzate = double.Parse(reader.GetValue(6).ToString());
+            alm.Alzate = double.Parse(reader.GetValue(7).ToString());
+            alm.Alzate = double.Parse(reader.GetValue(8).ToString());
+            alm.Alzate = double.Parse(reader.GetValue(9).ToString());
+            alm.Alzate = double.Parse(reader.GetValue(10).ToString());
+            return alm;
         }
 
         /// <summary>

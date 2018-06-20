@@ -207,6 +207,8 @@ namespace Cuenca_conagua.src.Utilidades
                     alm.Purisima = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
                     alm.Chapala = double.Parse(rows[i][10].ToString(), CultureInfo.InvariantCulture);
                     almacenamientos.Add(alm);
+
+                    Logger.AddToLog(alm.ToJSON(), true);
                 }
 
             }

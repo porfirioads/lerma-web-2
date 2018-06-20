@@ -129,7 +129,8 @@ namespace Cuenca_conagua.pages
             {
                 Logger.AddToLog("IngresarLluviaAnualEstacion", true);
                 IngresarLluviaAnualEstacion(nombreArchivo);
-            } else if(archivoSinRuta.StartsWith("Almacenamientos_principales"))
+            }
+            else if (archivoSinRuta.StartsWith("Almacenamientos_principales"))
             {
                 Logger.AddToLog("IngresarAlmacenamientosPrincipales", true);
                 IngresarAlmacenamientosPrincipalesBD(nombreArchivo);
@@ -147,6 +148,21 @@ namespace Cuenca_conagua.pages
         {
             List<AlmacenamientoPrincipal> almacenamientos = ExcelFileIO.
                 ReadAlmacenamientoPrincipal(nombreArchivo);
+
+
+            foreach (AlmacenamientoPrincipal alm in almacenamientos)
+            {
+                if (alm.Save())
+                {
+                    Logger.AddToLog("Almacenamiento principal: " + alm.Anio +
+                        " agregado.", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Almacenamiento principal: " + alm.Anio +
+                        " no agregado.", true);
+                }
+            }
 
             // TODO Continue implementation
         }
