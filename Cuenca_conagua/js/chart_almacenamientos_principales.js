@@ -6,6 +6,8 @@ $(document).ready(function () {
     var valuesAlmEnUnaPresa;
     var labelsPresas = ['Alzate', 'Ramírez', 'Tepetitlán', 'Tepuxtepec',
         'Solís', 'Yuriria', 'Allende', 'M. Ocampo', 'Purísima', 'Chapala'];
+    var keysPresas = ['alzate', 'ramirez', 'tepetitlan', 'tepuxtepec',
+        'solis', 'yuriria', 'allende', 'm_ocampo', 'purisima', 'chapala'];
 
     var capsOperacion = {
         alzate: 35,
@@ -31,7 +33,7 @@ $(document).ready(function () {
     // Inicia la carga de los datos para la creación de las gráficas de 
     // almacenamientos principales.
     function start() {
-        console.log('chart_almacenamientos_principales start()');
+        //console.log('chart_almacenamientos_principales start()');
         labelsAnios = [];
         valuesAlmEnPresas = [];
         valuesAlmEnPresasPorc = [];
@@ -49,7 +51,7 @@ $(document).ready(function () {
 
         // Llena los selects de presa
         for (var i = 0; i < labelsPresas.length; i++) {
-            var option = '<option value="' + i + '">' + labelsPresas[i] + '</option>';
+            var option = '<option value="' + keysPresas[i] + '">' + labelsPresas[i] + '</option>';
             selPresaAlm.append(option);
         }
 
@@ -130,7 +132,35 @@ $(document).ready(function () {
     }
 
     function crearGraficaAlmPresa() {
+        clearCanvas();
+        datasets = [];
 
+        var presaKey = selPresaAlm.val();
+        var presaName = $('#selPresaAlm option:selected').text();
+        var values = [];
+
+        //console.log(presaKey + ': ' + presaName);
+
+        for (var i = 0; i < regAlmacenamientosPrincipales.length; i++) {
+            values.push(regAlmacenamientosPrincipales[i][presaKey]);
+        }
+
+        //console.log(values);
+
+        datasets.push(getBarDataSet('',
+            values, "rgba(41, 81, 109, 1)",
+            "rgba(18, 55, 82, 1)"));
+
+        chart = new Chart(context, {
+            type: 'bar',
+            data: {
+                labels: labelsAnios,
+                datasets: datasets
+            },
+            options: getChartOptions([
+                'Almacenamiento al 1° de noviembre presa ' + presaName
+            ], "Volumen de almacenamiento", "Presa", "hm3", false)
+        });
     }
 
     // Limpia el canvas.
@@ -159,7 +189,7 @@ $(document).ready(function () {
     // Muestra/oculta opciones y manda renderizar el tipo de gráfica 
     // seleccionado.
     selTipoGraficaAlm.change(function () {
-        console.log('selTipoGraficaAlm.change()');
+        //console.log('selTipoGraficaAlm.change()');
 
         var tipo = selTipoGraficaAlm.val();
 
