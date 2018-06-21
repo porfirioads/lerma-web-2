@@ -18,6 +18,7 @@ $(document).ready(function () {
         contVolumenes, contAlmPrincipales, contAlmLagoChapala,
         contLluviaAnualEstacion];
     var selTipoGraficaAlm = $('#selTipoGraficaAlm');
+    var selCicloLae = $('#selCicloLae');
 
     // Visualiza el contenedor de la precipitacion media.
     btnLluviaMediaAnual.click(function () {
@@ -31,6 +32,7 @@ $(document).ready(function () {
     btnLluviaAnualEstacion.click(function () {
         hideAll();
         contLluviaAnualEstacion.removeClass('hidden');
+        selCicloLae.trigger('change');
     });
 
     // Visualiza el contenedor del escurrimiento.
