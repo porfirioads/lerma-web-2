@@ -41,7 +41,8 @@ $(document).ready(function () {
 
         // Llena los selects del año
         for (var i = 0; i < regAlmacenamientosPrincipales.length; i++) {
-            labelsAnios.push(regAlmacenamientosPrincipales[i].anio);
+            var anio = '20' + regAlmacenamientosPrincipales[i].anio.slice(4);
+            labelsAnios.push(anio);
             var option = '<option value="' + i + '">' + labelsAnios[i] + '</option>';
             selAnioAlm.append(option);
         }
@@ -79,10 +80,7 @@ $(document).ready(function () {
 
         var values = valuesAlmEnPresas[index].slice(0, -1);
         var labels = labelsPresas.slice(0, -1);
-        var anio = '20' + labelsAnios[index].slice(4);
-
-        console.log(anio);
-
+        var anio = labelsAnios[index];
 
         datasets.push(getBarDataSet('',
             values, "rgba(41, 81, 109, 1)",
