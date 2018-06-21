@@ -154,9 +154,30 @@ namespace Cuenca_conagua.src.BaseDatos
             return insertado;
         }
 
-        internal static List<AlmacenamientoPrincipal> GetAllAlmacenamientoPrincipal()
+        /// <summary>
+        /// Devuelve todos los registros de almacenamientos principales.
+        /// </summary>
+        /// <returns>
+        /// Una lista con los almacenamientos principales.
+        /// </returns>
+        public static List<AlmacenamientoPrincipal> GetAllAlmacenamientoPrincipal()
         {
-            throw new NotImplementedException();
+            InitConnection();
+            string query = "SELECT * FROM [almacenamientos_principales]";
+            SqlCommand command = new SqlCommand(query, conexion);
+            List<AlmacenamientoPrincipal> alms = new List<AlmacenamientoPrincipal>();
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                AlmacenamientoPrincipal alm = null;
+                while (reader.Read())
+                {
+                    alm = ReadAlmFromReader(reader);
+                    alms.Add(alm);
+                }
+                reader.Close();
+            }
+            return alms;
         }
 
         /// <summary>
@@ -175,15 +196,15 @@ namespace Cuenca_conagua.src.BaseDatos
             AlmacenamientoPrincipal alm = new AlmacenamientoPrincipal();
             alm.Anio = reader.GetString(0);
             alm.Alzate = double.Parse(reader.GetValue(1).ToString());
-            alm.Alzate = double.Parse(reader.GetValue(2).ToString());
-            alm.Alzate = double.Parse(reader.GetValue(3).ToString());
-            alm.Alzate = double.Parse(reader.GetValue(4).ToString());
-            alm.Alzate = double.Parse(reader.GetValue(5).ToString());
-            alm.Alzate = double.Parse(reader.GetValue(6).ToString());
-            alm.Alzate = double.Parse(reader.GetValue(7).ToString());
-            alm.Alzate = double.Parse(reader.GetValue(8).ToString());
-            alm.Alzate = double.Parse(reader.GetValue(9).ToString());
-            alm.Alzate = double.Parse(reader.GetValue(10).ToString());
+            alm.Ramirez = double.Parse(reader.GetValue(2).ToString());
+            alm.Tepetitlan = double.Parse(reader.GetValue(3).ToString());
+            alm.Tepuxtepec = double.Parse(reader.GetValue(4).ToString());
+            alm.Solis = double.Parse(reader.GetValue(5).ToString());
+            alm.Yuriria = double.Parse(reader.GetValue(6).ToString());
+            alm.Allende = double.Parse(reader.GetValue(7).ToString());
+            alm.MOcampo = double.Parse(reader.GetValue(8).ToString());
+            alm.Purisima = double.Parse(reader.GetValue(9).ToString());
+            alm.Chapala = double.Parse(reader.GetValue(10).ToString());
             return alm;
         }
 

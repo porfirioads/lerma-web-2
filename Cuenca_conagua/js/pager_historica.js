@@ -17,6 +17,7 @@ $(document).ready(function () {
     var contenedores = [contPrecipitacionMedia, contEscurrimiento,
         contVolumenes, contAlmPrincipales, contAlmLagoChapala,
         contLluviaAnualEstacion];
+    var selTipoGraficaAlm = $('#selTipoGraficaAlm');
 
     // Visualiza el contenedor de la precipitacion media.
     btnLluviaMediaAnual.click(function () {
@@ -56,14 +57,13 @@ $(document).ready(function () {
     bntAlmPrincipales.click(function () {
         hideAll();
         contAlmPrincipales.removeClass('hidden');
-        // TODO reiniciar esta seccion
+        selTipoGraficaAlm.trigger('change');
     });
 
     // Visualiza el contenedor del almacenamiento lago chapala.
     btnAlmLagoChapala.click(function () {
         hideAll();
         contAlmLagoChapala.removeClass('hidden');
-        // TODO reiniciar esta seccion
     });
 
     // Oculta todos los contenedores

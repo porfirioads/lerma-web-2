@@ -27,6 +27,7 @@ namespace Cuenca_conagua.pages
             CargarEscurrimientosJS();
             CargarVolumenesJS();
             CargarLluviasAnualesEstacionJS();
+            CargarAlmacenamientosPrincipalesJS();
         }
 
         private void CargarLluviasAnualesEstacionJS()
@@ -197,6 +198,34 @@ namespace Cuenca_conagua.pages
                 json.Append("]");
                 scrVolumenes.InnerHtml += "var volPiUtilizados = "
                     + json.ToString() + ";";
+            }
+        }
+
+        /// <summary>
+        /// Carga los valores de los almacenamientos principales desde la base 
+        /// de datos para agregarlos al html y poder accederlos por medio de 
+        /// Javascript.
+        /// </summary>
+        private void CargarAlmacenamientosPrincipalesJS()
+        {
+            List<AlmacenamientoPrincipal> alms = AlmacenamientoPrincipal.All();
+            alms.Sort();
+
+            if(alms != null)
+            {
+                StringBuilder json = new StringBuilder();
+                json.Append("[");
+
+                foreach (AlmacenamientoPrincipal alm in alms)
+                {
+                    json.Append(alm.ToJSON()).Append(", ");
+                }
+
+                json.Remove(json.Length - 1, 1);
+                json.Append("]");
+                srcAlmacenamientosPrincipales.InnerHtml = 
+                    "var regAlmacenamientosPrincipales = " + json.ToString() + 
+                    ";";
             }
         }
     }

@@ -49,6 +49,15 @@ namespace Cuenca_conagua.pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl scrVolumenes;
         
         /// <summary>
+        /// srcAlmacenamientosPrincipales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl srcAlmacenamientosPrincipales;
+        
+        /// <summary>
         /// contAlmLagoChapala control.
         /// </summary>
         /// <remarks>

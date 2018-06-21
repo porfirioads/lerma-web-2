@@ -3,8 +3,11 @@
 // como parámetros a los métodos de la construcción de las gráficas.
 
 // Obtiene las opciones de configuración comunes a todos las gráficas.
-getChartOptions = function (chartTitle, yTitle, xTitle, unidad) {
+getChartOptions = function (chartTitle, yTitle, xTitle, unidad, showLegend=true) {
     return {
+        legend: {
+            display: showLegend
+        },
         tooltips: {
             mode: 'label',
             callbacks: {

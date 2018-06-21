@@ -84,19 +84,9 @@ $(document).ready(function () {
         datasets.push(getBarDataSet(cicloName, valuesLluviaPorCiclo,
             "rgba(41, 81, 109, 1)", "rgba(18, 55, 82, 1)"));
 
-        console.log('Prom histórico: ' + valuesPromHistorico);   
-        console.log(cicloName + ': ' + valuesLluviaPorCiclo);   
+        //console.log('Prom histórico: ' + valuesPromHistorico);   
+        //console.log(cicloName + ': ' + valuesLluviaPorCiclo);   
 
-
-        /*
-        if (media) {
-            datasets.push(getLineDataSet('Precipitación media anual',
-                precAnualMediaValues, "rgba(170, 60, 57, 1)",
-                "rgba(128, 25, 22, 1)"));
-        }
-        datasets.push(getBarDataSet('Precipitación anual', precAnualValues,
-            "rgba(41, 81, 109, 1)", "rgba(18, 55, 82, 1)"));
-        */
         chart = new Chart(context, {
             type: 'bar',
             data: {

@@ -11,6 +11,7 @@
     <script src="../js/chart_escurrimiento_anual.js"></script>
     <script src="../js/chart_volumenes.js"></script>
     <script src="../js/chart_lluvia_anual_estacion.js"></script>
+    <script src="../js/chart_almacenamientos_principales.js"></script>
 </asp:Content>
 
 <asp:Content ID="contentCuerpoContainer" ContentPlaceHolderID="cuerpoContainer" runat="server">
@@ -143,7 +144,36 @@
         </section>
     </section>
     <section id="contAlmPrincipales" class="contenido hidden">
-        AlmacenamientosPrincipales
+        <%-- Esta etiqueda div se va a sustituir por un script --%>
+        <div id="srcAlmacenamientosPrincipales" class="hidden" runat="server"></div>
+        <script>
+            $('#cuerpoContainer_srcAlmacenamientosPrincipales').contents().unwrap().wrap('<script/>');
+        </script>
+        <section id="almacenamientos">
+            <div id="almacenamientosChart" class="chart-area">
+                <div class="chart-content">
+                    <canvas id="grafica_alm" class="chart" width="500" height="300"></canvas>
+                </div>
+            </div>
+
+            <select id="selTipoGraficaAlm" class="form-control">
+                <option value="almAnio">
+                    Almacenamiento al 1° de noviembre presas principales
+                </option>
+                <option value="almAnioPorc">
+                    Porcentaje de almacenamiento al 1° de noviembre presas principales
+                </option>
+                <option value="almPresa">
+                    Almacenamiento al 1° de noviembre para cada presa
+                </option>
+            </select>
+
+            <select id="selAnioAlm" class="form-control">
+            </select>
+
+            <select id="selPresaAlm" class="form-control">
+            </select>
+        </section>
     </section>
     <section id="contAlmLagoChapala" class="contenido hidden" runat="server">
         AlmacenamientoLagoChapala
