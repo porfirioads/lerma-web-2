@@ -98,11 +98,35 @@ $(document).ready(function () {
             ], "Volumen de almacenamiento", "Presa", "hm3", false)
         });
 
-        console.log('crearGraficaAlmAnio() end');
+        //console.log('crearGraficaAlmAnio() end');
     }
 
     function crearGraficaAlmAnioPorc() {
+        //console.log('crearGraficaAlmAnioPorc() start');
 
+        clearCanvas();
+        datasets = [];
+
+        var index = selAnioAlm.val();
+        var anio = labelsAnios[index];
+
+        datasets.push(getBarDataSet('',
+            valuesAlmEnPresasPorc[index], "rgba(41, 81, 109, 1)",
+            "rgba(18, 55, 82, 1)"));
+
+        chart = new Chart(context, {
+            type: 'bar',
+            data: {
+                labels: labelsPresas,
+                datasets: datasets
+            },
+            options: getChartOptions([
+                'Porcentaje de almacenamiento al 1° de noviembre de ' + anio,
+                ' de las presas principales, respecto a su capacidad de operación'
+            ], "% de almacenamiento", "Presa", "%", false)
+        });
+
+        //console.log('crearGraficaAlmAnioPorc() end');
     }
 
     function crearGraficaAlmPresa() {
