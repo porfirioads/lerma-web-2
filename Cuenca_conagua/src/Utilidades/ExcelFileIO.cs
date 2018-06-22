@@ -197,7 +197,7 @@ namespace Cuenca_conagua.src.Utilidades
                     }
 
                     alm = new AlmacenamientoHistoricoChapala();
-                    alm.Fecha = Convert.ToDateTime(rows[i][0].ToString());
+                    alm.Fecha = DateConversion.ConvertSqlDateToDateTime(rows[i][0].ToString());
                     alm.Almacenamiento = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
                     almacenamientos.Add(alm);
                 }

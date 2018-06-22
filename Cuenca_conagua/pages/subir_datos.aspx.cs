@@ -153,6 +153,20 @@ namespace Cuenca_conagua.pages
         {
             List<AlmacenamientoHistoricoChapala> almacenamientos = 
                 ExcelFileIO.ReadAlmacenamientoHistoricoChapala(nombreArchivo);
+
+            foreach (AlmacenamientoHistoricoChapala alm in almacenamientos)
+            {
+                if (alm.Save())
+                {
+                    Logger.AddToLog("Almacenamiento histórico de chapala: " + 
+                        alm.Fecha + " agregado.", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Almacenamiento histórico de chapala: " +
+                        alm.Fecha + " no agregado.", true);
+                }
+            }
         }
 
         /// <summary>
@@ -181,8 +195,6 @@ namespace Cuenca_conagua.pages
                         " no agregado.", true);
                 }
             }
-
-            // TODO Continue implementation
         }
 
         /// <summary>

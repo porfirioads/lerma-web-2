@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -95,7 +96,28 @@ namespace Cuenca_conagua.src.BaseDatos
         /// </returns>
         public static AlmacenamientoHistoricoChapala GetAlmacenamientoHistoricoChapala(DateTime fecha)
         {
-            throw new NotImplementedException();
+            InitConnection();
+
+            string query = "SELECT * FROM [almacenamiento_historico_chapala] " +
+                "WHERE fecha=@fecha";
+            SqlCommand command = new SqlCommand(query, conexion);
+            string formatedDate = DateConversion.ConvertDateTimeToSqlDate(fecha);
+            command.Parameters.AddWithValue("@fecha", formatedDate);
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                AlmacenamientoHistoricoChapala alm = null;
+
+                if (reader.Read())
+                {
+                    alm = new AlmacenamientoHistoricoChapala();
+                    alm.Fecha = DateConversion.ConvertSqlDateToDateTime(reader.GetString(0)) ;
+                    alm.Almacenamiento = double.Parse(reader.GetValue(1).ToString());
+                }
+
+                reader.Close();
+                return alm;
+            }
         }
 
         /// <summary>
@@ -109,7 +131,31 @@ namespace Cuenca_conagua.src.BaseDatos
         /// </returns>
         public static bool InsertarAlmacenamientoHistoricoChapala(AlmacenamientoHistoricoChapala alm)
         {
-            throw new NotImplementedException();
+            InitConnection();
+            bool insertado = false;
+
+            string formatedDate = DateConversion.ConvertDateTimeToSqlDate(alm.Fecha);
+
+            string sql = string.Format("INSERT INTO " +
+                "almacenamiento_historico_chapala VALUES('{0}', {1})",
+                formatedDate, alm.Almacenamiento);
+
+            SqlCommand cmd = new SqlCommand(sql, conexion);
+            cmd.CommandType = CommandType.Text;
+
+            if (GetAlmacenamientoHistoricoChapala(alm.Fecha) == null)
+            {
+                try
+                {
+                    insertado = cmd.ExecuteNonQuery() > 0;
+                }
+                catch (Exception ex)
+                {
+                    Logger.AddToLog(ex.Message, true);
+                }
+            }
+
+            return insertado;
         }
 
         /// <summary>
@@ -121,7 +167,7 @@ namespace Cuenca_conagua.src.BaseDatos
         /// </returns>
         public static List<AlmacenamientoHistoricoChapala> GetAllAlmacenamientoHistoricoChapala()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         /// <summary>
@@ -138,7 +184,7 @@ namespace Cuenca_conagua.src.BaseDatos
         {
             InitConnection();
 
-            string query = "SELECT * FROM [almacenamientos_principales] " + 
+            string query = "SELECT * FROM [almacenamientos_principales] " +
                 "WHERE anio=@anio";
             SqlCommand command = new SqlCommand(query, conexion);
             command.Parameters.AddWithValue("@anio", anio);
@@ -171,11 +217,11 @@ namespace Cuenca_conagua.src.BaseDatos
             InitConnection();
             bool insertado = false;
 
-            string sql = string.Format("INSERT INTO " + 
-                "almacenamientos_principales VALUES('{0}', {1}, {2}, {3}, " + 
-                "{4}, {5}, {6}, {7}, {8}, {9}, {10})", alm.Anio, alm.Alzate, 
-                alm.Ramirez, alm.Tepetitlan, alm.Tepuxtepec, alm.Solis, 
-                alm.Yuriria, alm.Allende, alm.MOcampo, alm.Purisima, 
+            string sql = string.Format("INSERT INTO " +
+                "almacenamientos_principales VALUES('{0}', {1}, {2}, {3}, " +
+                "{4}, {5}, {6}, {7}, {8}, {9}, {10})", alm.Anio, alm.Alzate,
+                alm.Ramirez, alm.Tepetitlan, alm.Tepuxtepec, alm.Solis,
+                alm.Yuriria, alm.Allende, alm.MOcampo, alm.Purisima,
                 alm.Chapala);
 
             SqlCommand cmd = new SqlCommand(sql, conexion);
@@ -873,12 +919,12 @@ namespace Cuenca_conagua.src.BaseDatos
                 "{9}, {10}, {11}, {12}, {13}, {14}, {15}, {16}, {17}, {18}, " +
                 "{19}, {20}, {21}, {22}, {23}, {24}, {25})", lae.Ciclo,
                 lae.LaeCelaya, lae.LaeGuanajuato, lae.LaeIrapuato,
-                lae.LaeAdjuntas, lae.LaeLeon, lae.LaePPenuelitas, 
-                lae.LaePSolis, lae.LaeSanFelipe, lae.LaeSanLuisDeLaPaz, 
-                lae.LaeYuriria, lae.LaeChapala, lae.LaeFuerte, lae.LaeTule, 
-                lae.LaeTizapan, lae.LaeYurecuaro, lae.LaeAtlacomulco, 
-                lae.LaeTolucaRectoria, lae.LaeChincua, lae.LaeCuitzeoAu, 
-                lae.LaeMelchorOcampo, lae.LaeMorelia, lae.LaeTepuxtepec, 
+                lae.LaeAdjuntas, lae.LaeLeon, lae.LaePPenuelitas,
+                lae.LaePSolis, lae.LaeSanFelipe, lae.LaeSanLuisDeLaPaz,
+                lae.LaeYuriria, lae.LaeChapala, lae.LaeFuerte, lae.LaeTule,
+                lae.LaeTizapan, lae.LaeYurecuaro, lae.LaeAtlacomulco,
+                lae.LaeTolucaRectoria, lae.LaeChincua, lae.LaeCuitzeoAu,
+                lae.LaeMelchorOcampo, lae.LaeMorelia, lae.LaeTepuxtepec,
                 lae.LaeZacapu, lae.LaeZamora, lae.LaeQueretaroObs);
 
             SqlCommand cmd = new SqlCommand(sql, conexion);
