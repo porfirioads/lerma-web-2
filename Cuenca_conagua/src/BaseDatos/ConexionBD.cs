@@ -32,6 +32,7 @@ namespace Cuenca_conagua.src.BaseDatos
         /// Constante que indica el volumen asignado PI.
         /// </summary>
         public const int VOL_PI_ASIGNADO = 3;
+
         /// <summary>
         /// Constante que indica el volumen autorizado PI.
         /// </summary>
@@ -84,6 +85,46 @@ namespace Cuenca_conagua.src.BaseDatos
         }
 
         /// <summary>
+        /// Devuelve el almacenamiento histórico de chapala con la fecha dada.
+        /// </summary>
+        /// <param name="fecha">
+        /// Es la fecha que identifica al registro.
+        /// </param>
+        /// <returns>
+        /// El almacenamiento buscado en caso de ser encontrado, o null si no 
+        /// </returns>
+        public static AlmacenamientoHistoricoChapala GetAlmacenamientoHistoricoChapala(DateTime fecha)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Inserta un registro a la tabla almacenamiento_historico_chapala.
+        /// </summary>
+        /// <param name="alm">
+        /// Es el registro de almacenamiento histórico de chapala a ingresar.
+        /// </param>
+        /// <returns>
+        /// true si el registro fue insertado o false si no se pudo insertar.
+        /// </returns>
+        public static bool InsertarAlmacenamientoHistoricoChapala(AlmacenamientoHistoricoChapala alm)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Devuelve todos los registros de almacenamientos históricos de 
+        /// chapala.
+        /// </summary>
+        /// <returns>
+        /// Una lista con los almacenamientos históricos de chapala.
+        /// </returns>
+        public static List<AlmacenamientoHistoricoChapala> GetAllAlmacenamientoHistoricoChapala()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Devuelve el almacenamiento principal con el año dado.
         /// </summary>
         /// <param name="anio">
@@ -108,7 +149,7 @@ namespace Cuenca_conagua.src.BaseDatos
 
                 if (reader.Read())
                 {
-                    alm = ReadAlmFromReader(reader);
+                    alm = ReadAlmPrincipalFromReader(reader);
                 }
 
                 reader.Close();
@@ -125,7 +166,7 @@ namespace Cuenca_conagua.src.BaseDatos
         /// <returns>
         /// true si el registro fue insertado o false si no se pudo insertar.
         /// </returns>
-        internal static bool InsertarAlmacenamientoPrincipal(AlmacenamientoPrincipal alm)
+        public static bool InsertarAlmacenamientoPrincipal(AlmacenamientoPrincipal alm)
         {
             InitConnection();
             bool insertado = false;
@@ -172,7 +213,7 @@ namespace Cuenca_conagua.src.BaseDatos
                 AlmacenamientoPrincipal alm = null;
                 while (reader.Read())
                 {
-                    alm = ReadAlmFromReader(reader);
+                    alm = ReadAlmPrincipalFromReader(reader);
                     alms.Add(alm);
                 }
                 reader.Close();
@@ -191,7 +232,7 @@ namespace Cuenca_conagua.src.BaseDatos
         /// <returns>
         /// Instancia de AlmacenamientoPrincipal generada a partir del reader.
         /// </returns>
-        private static AlmacenamientoPrincipal ReadAlmFromReader(SqlDataReader reader)
+        private static AlmacenamientoPrincipal ReadAlmPrincipalFromReader(SqlDataReader reader)
         {
             AlmacenamientoPrincipal alm = new AlmacenamientoPrincipal();
             alm.Anio = reader.GetString(0);

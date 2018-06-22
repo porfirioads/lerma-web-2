@@ -135,6 +135,24 @@ namespace Cuenca_conagua.pages
                 Logger.AddToLog("IngresarAlmacenamientosPrincipales", true);
                 IngresarAlmacenamientosPrincipalesBD(nombreArchivo);
             }
+            else if(archivoSinRuta.StartsWith("Almacenamiento_histórico_chapala"))
+            {
+                Logger.AddToLog("IngresarAlmacenamientoHistoricoChapala", true);
+                IngresarAlmacenamientoHistoricoChapalaBD(nombreArchivo);
+            }
+        }
+
+        /// <summary>
+        /// Ingresa los registros de almacenamiento histórico de Chapala en 
+        /// caso de que ese archivo sea el que se subió al servidor.
+        /// </summary>
+        /// <param name="nombreArchivo">
+        /// Nombre del archivo de excel que contiene los datos.
+        /// </param>
+        private void IngresarAlmacenamientoHistoricoChapalaBD(string nombreArchivo)
+        {
+            List<AlmacenamientoHistoricoChapala> almacenamientos = 
+                ExcelFileIO.ReadAlmacenamientoHistoricoChapala(nombreArchivo);
         }
 
         /// <summary>

@@ -35,6 +35,7 @@ namespace Cuenca_conagua.src.Utilidades
         {
             DataSet result = new DataSet();
             StringBuilder a = new StringBuilder();
+
             if (excelFilename.EndsWith(".xlsx") || excelFilename.EndsWith(".xlsx"))
             {
                 FileStream stream = File.Open(excelFilename, FileMode.Open,
@@ -42,7 +43,6 @@ namespace Cuenca_conagua.src.Utilidades
                 IExcelDataReader excelReader = ExcelReaderFactory
                     .CreateOpenXmlReader(stream);
                 result = excelReader.AsDataSet();
-                //Logger.AddToLog(result.Tables[sheetIndex].TableName, true);
                 excelReader.Close();
                 stream.Close();
                 return result.Tables[sheetIndex].Rows;
@@ -158,11 +158,56 @@ namespace Cuenca_conagua.src.Utilidades
                     es.Duero = double.Parse(rows[i][15].ToString(), CultureInfo.InvariantCulture);
                     es.Zula = double.Parse(rows[i][16].ToString(), CultureInfo.InvariantCulture);
                     es.Chapala = double.Parse(rows[i][17].ToString(), CultureInfo.InvariantCulture);
-                    //Logger.AddToLog("- " + es.ToString(), true);
                     escurrimientosAnuales.Add(es);
                 }
             }
             return escurrimientosAnuales;
+        }
+
+        /// <summary>
+        /// Lee los registros de almacenamientos históricos de chapala del 
+        /// archivo de excel correspondiente.
+        /// </summary>
+        /// <param name="nombreArchivo">
+        /// Es el nombre del archivo de excel donde vienen los datos.
+        /// </param>
+        /// <returns>
+        /// Una lista con los registros de almacenamientos históricos de 
+        /// chapala.
+        /// </returns>
+        public static List<AlmacenamientoHistoricoChapala> ReadAlmacenamientoHistoricoChapala(string nombreArchivo)
+        {
+            List<AlmacenamientoHistoricoChapala> almacenamientos =
+                new List<AlmacenamientoHistoricoChapala>();
+
+            DataRowCollection rows = ReadExcel(nombreArchivo);
+
+            Logger.AddToLog(nombreArchivo, true);
+
+            if (rows != null)
+            {
+                AlmacenamientoHistoricoChapala alm;
+                int filasIgnoradas = 3;
+
+                for (int i = filasIgnoradas; i < rows.Count; i++)
+                {
+                    if (rows[i][0].ToString().Replace(" ", "").Length == 0)
+                    {
+                        break;
+                    }
+
+                    alm = new AlmacenamientoHistoricoChapala();
+                    alm.Fecha = Convert.ToDateTime(rows[i][0].ToString());
+                    alm.Almacenamiento = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
+                    almacenamientos.Add(alm);
+                }
+            }
+
+            Logger.AddToLog("Se leyeron " + almacenamientos.Count +
+                " almacenamientos históricos de chapala del archivo de Excel",
+                true);
+
+            return almacenamientos;
         }
 
         /// <summary>
@@ -177,7 +222,7 @@ namespace Cuenca_conagua.src.Utilidades
         /// </returns>
         public static List<AlmacenamientoPrincipal> ReadAlmacenamientoPrincipal(string nombreArchivo)
         {
-            List<AlmacenamientoPrincipal> almacenamientos = 
+            List<AlmacenamientoPrincipal> almacenamientos =
                 new List<AlmacenamientoPrincipal>();
 
             DataRowCollection rows = ReadExcel(nombreArchivo, 0);
@@ -214,7 +259,7 @@ namespace Cuenca_conagua.src.Utilidades
             }
 
             Logger.AddToLog("Se leyeron " + almacenamientos.Count +
-                " almacenamientos del archivo de Excel", true);
+                " almacenamientos principales del archivo de Excel", true);
 
             return almacenamientos;
         }

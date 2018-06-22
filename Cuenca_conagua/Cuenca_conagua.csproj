@@ -282,6 +282,7 @@
     <Compile Include="src\BaseDatos\ConexionBD.cs" />
     <Compile Include="src\BaseDatos\NamespaceDoc.cs" />
     <Compile Include="src\Entidades\Administrador.cs" />
+    <Compile Include="src\Entidades\AlmacenamientoHistoricoChapala.cs" />
     <Compile Include="src\Entidades\AlmacenamientoPrincipal.cs" />
     <Compile Include="src\Entidades\EscurrimientoAnual.cs" />
     <Compile Include="src\Entidades\LluviaAnualEstacion.cs" />
