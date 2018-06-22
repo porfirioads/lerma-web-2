@@ -11,7 +11,7 @@ namespace Cuenca_conagua.src.Entidades
     /// Entidad que representa un registro de la tabla 
     /// 'almacenamiento_historico_chapala'.
     /// </summary>
-    public class AlmacenamientoHistoricoChapala : IComparable<AlmacenamientoHistoricoChapala>
+    public class AlmacenamientoHistoricoChapala : IComparable<AlmacenamientoHistoricoChapala>, IJsonable
     {
         private DateTime fecha;
         private double almacenamiento;
@@ -84,7 +84,7 @@ namespace Cuenca_conagua.src.Entidades
             StringBuilder json = new StringBuilder();
             json.Append("{\n    ");
             json.Append("fecha: '").Append(fecha).Append("',\n    ");
-            json.Append("almacenamiento: ").Append(almacenamiento).Append(",\n");
+            json.Append("almacenamiento: ").Append(almacenamiento).Append("\n");
             json.Append("}");
             return json.ToString();
         }

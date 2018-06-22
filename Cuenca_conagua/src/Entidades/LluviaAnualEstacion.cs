@@ -207,36 +207,6 @@ namespace Cuenca_conagua.src.Entidades
         }
 
         /// <summary>
-        /// Obtiene la representación en string del objeto.
-        /// </summary>
-        /// <returns>
-        /// El string del objeto.
-        /// </returns>
-        public override string ToString()
-        {
-            return string.Format("Ciclo: {0}. LaeCelaya: {1}, " +
-                "LaeGuanajuato: {2}, LaeIrapuato: {3}, " +
-                "LaeAdjuntas: {4}, LaeLeon: {5}, " +
-                "LaePPenuelitas: {6}, LaePSolis: {7}, " +
-                "LaeSanFelipe: {8}, LaeSanLuisDeLaPaz: {9}, " +
-                "LaeYuriria: {10}, LaeChapala: {11}, " +
-                "LaeFuerte: {12}, LaeTule: {13}, " +
-                "LaeTizapan: {14}, LaeYurecuaro: {15}, " +
-                "LaeAtlacomulco: {16}, LaeTolucaRectoria: {17}, " +
-                "LaeChincua: {18}, LaeCuitzeoAu: {19}, " +
-                "LaeMelchorOcampo: {20}, LaeMorelia: {21}, " +
-                "LaeTepuxtepec: {22}, LaeZacapu: {23}, " +
-                "LaeZamora: {24}, LaeQueretaroObs: {25}, " +
-                "media: {26}", ciclo, laeCelaya, laeGuanajuato,
-                laeIrapuato, laeAdjuntas, laeLeon, LaePPenuelitas, laePSolis,
-                laeSanFelipe, laeSanLuisDeLaPaz, laeYuriria, laeChapala,
-                laeFuerte, laeTule, laeTizapan, laeYurecuaro, laeAtlacomulco,
-                laeTolucaRectoria, laeChincua, laeCuitzeoAu, laeMelchorOcampo,
-                laeMorelia, laeTepuxtepec, laeZacapu, laeZamora,
-                laeQueretaroObs, Media);
-        }
-
-        /// <summary>
         /// Genera la representación en JSON del objeto.
         /// </summary>
         /// <returns>
@@ -245,49 +215,35 @@ namespace Cuenca_conagua.src.Entidades
         public string ToJSON()
         {
             StringBuilder json = new StringBuilder();
-            json.Append("{");
-            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(",");
-            json.Append("laeCelaya: ").Append(laeCelaya).Append(",");
-            json.Append("laeGuanajuato: ").Append(laeGuanajuato).Append(",");
-            json.Append("laeIrapuato: ").Append(laeIrapuato).Append(",");
-            json.Append("laeAdjuntas: ").Append(laeAdjuntas).Append(",");
-            json.Append("laeLeon: ").Append(laeLeon).Append(",");
-            json.Append("laePPenuelitas: ").Append(laePPenuelitas).Append(",");
-            json.Append("laePSolis: ").Append(laePSolis).Append(",");
-            json.Append("laeSanFelipe: ").Append(laeSanFelipe).Append(",");
-            json.Append("laeSanLuisDeLaPaz: ").Append(laeSanLuisDeLaPaz).Append(",");
-            json.Append("laeYuriria: ").Append(laeYuriria).Append(",");
-            json.Append("laeChapala: ").Append(laeChapala).Append(",");
-            json.Append("laeFuerte: ").Append(laeFuerte).Append(",");
-            json.Append("laeTule: ").Append(laeTule).Append(",");
-            json.Append("laeTizapan: ").Append(laeTizapan).Append(",");
-            json.Append("laeYurecuaro: ").Append(laeYurecuaro).Append(",");
-            json.Append("laeAtlacomulco: ").Append(laeAtlacomulco).Append(",");
-            json.Append("laeTolucaRectoria: ").Append(laeTolucaRectoria).Append(",");
-            json.Append("laeChincua: ").Append(laeChincua).Append(",");
-            json.Append("laeCuitzeoAu: ").Append(laeCuitzeoAu).Append(",");
-            json.Append("laeMelchorOcampo: ").Append(laeMelchorOcampo).Append(",");
-            json.Append("laeMorelia: ").Append(laeMorelia).Append(",");
-            json.Append("laeTepuxtepec: ").Append(laeTepuxtepec).Append(",");
-            json.Append("laeZacapu: ").Append(laeZacapu).Append(",");
-            json.Append("laeZamora: ").Append(laeZamora).Append(",");
-            json.Append("laeQueretaroObs: ").Append(laeQueretaroObs);
+            json.Append("{\n    ");
+            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(",\n    ");
+            json.Append("laeCelaya: ").Append(laeCelaya).Append(",\n    ");
+            json.Append("laeGuanajuato: ").Append(laeGuanajuato).Append(",\n    ");
+            json.Append("laeIrapuato: ").Append(laeIrapuato).Append(",\n    ");
+            json.Append("laeAdjuntas: ").Append(laeAdjuntas).Append(",\n    ");
+            json.Append("laeLeon: ").Append(laeLeon).Append(",\n    ");
+            json.Append("laePPenuelitas: ").Append(laePPenuelitas).Append(",\n    ");
+            json.Append("laePSolis: ").Append(laePSolis).Append(",\n    ");
+            json.Append("laeSanFelipe: ").Append(laeSanFelipe).Append(",\n    ");
+            json.Append("laeSanLuisDeLaPaz: ").Append(laeSanLuisDeLaPaz).Append(",\n    ");
+            json.Append("laeYuriria: ").Append(laeYuriria).Append(",\n    ");
+            json.Append("laeChapala: ").Append(laeChapala).Append(",\n    ");
+            json.Append("laeFuerte: ").Append(laeFuerte).Append(",\n    ");
+            json.Append("laeTule: ").Append(laeTule).Append(",\n    ");
+            json.Append("laeTizapan: ").Append(laeTizapan).Append(",\n    ");
+            json.Append("laeYurecuaro: ").Append(laeYurecuaro).Append(",\n    ");
+            json.Append("laeAtlacomulco: ").Append(laeAtlacomulco).Append(",\n    ");
+            json.Append("laeTolucaRectoria: ").Append(laeTolucaRectoria).Append(",\n    ");
+            json.Append("laeChincua: ").Append(laeChincua).Append(",\n    ");
+            json.Append("laeCuitzeoAu: ").Append(laeCuitzeoAu).Append(",\n    ");
+            json.Append("laeMelchorOcampo: ").Append(laeMelchorOcampo).Append(",\n    ");
+            json.Append("laeMorelia: ").Append(laeMorelia).Append(",\n    ");
+            json.Append("laeTepuxtepec: ").Append(laeTepuxtepec).Append(",\n    ");
+            json.Append("laeZacapu: ").Append(laeZacapu).Append(",\n    ");
+            json.Append("laeZamora: ").Append(laeZamora).Append(",\n    ");
+            json.Append("laeQueretaroObs: ").Append(laeQueretaroObs).Append("\n");
             json.Append("}");
             return json.ToString();
-        }
-
-        /// <summary>
-        /// Genera la representación en JSON formateado del objeto.
-        /// </summary>
-        /// <returns>
-        /// Una cadena con el JSON.
-        /// </returns>
-        public string ToFormatedJSON()
-        {
-            return ToJSON()
-                .Replace("{", "{\n    ")
-                .Replace(",", ",\n    ")
-                .Replace("}", "\n}");
         }
 
         /// <summary>

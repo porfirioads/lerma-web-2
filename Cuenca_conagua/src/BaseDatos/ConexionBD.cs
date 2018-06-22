@@ -111,7 +111,7 @@ namespace Cuenca_conagua.src.BaseDatos
                 if (reader.Read())
                 {
                     alm = new AlmacenamientoHistoricoChapala();
-                    alm.Fecha = DateConversion.ConvertSqlDateToDateTime(reader.GetString(0)) ;
+                    alm.Fecha = reader.GetDateTime(0);
                     alm.Almacenamiento = double.Parse(reader.GetValue(1).ToString());
                 }
 
@@ -167,7 +167,23 @@ namespace Cuenca_conagua.src.BaseDatos
         /// </returns>
         public static List<AlmacenamientoHistoricoChapala> GetAllAlmacenamientoHistoricoChapala()
         {
-            return null;
+            InitConnection();
+            string query = "SELECT * FROM [almacenamiento_historico_chapala]";
+            SqlCommand command = new SqlCommand(query, conexion);
+            List<AlmacenamientoHistoricoChapala> alms = new List<AlmacenamientoHistoricoChapala>();
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                AlmacenamientoHistoricoChapala alm = null;
+                while (reader.Read())
+                {
+                    alm = new AlmacenamientoHistoricoChapala();
+                    alm.Fecha = reader.GetDateTime(0);
+                    alm.Almacenamiento = double.Parse(reader.GetValue(1).ToString());
+                }
+                reader.Close();
+            }
+            return alms;
         }
 
         /// <summary>
@@ -362,7 +378,6 @@ namespace Cuenca_conagua.src.BaseDatos
                     pm.Ago = double.Parse(reader.GetValue(10).ToString());
                     pm.Sep = double.Parse(reader.GetValue(11).ToString());
                     pm.Oct = double.Parse(reader.GetValue(12).ToString());
-                    //Logger.AddToLog("GetPrecipitacionMedia: " + pm.ToString(), true);
                 }
                 reader.Close();
                 return pm;

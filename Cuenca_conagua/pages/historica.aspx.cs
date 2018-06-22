@@ -18,16 +18,19 @@ namespace Cuenca_conagua.pages
         /// <summary>
         /// Se ejecuta cuando la página se carga.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-                
             CargarPrecipitacionesJS();
             CargarEscurrimientosJS();
             CargarVolumenesJS();
             CargarLluviasAnualesEstacionJS();
             CargarAlmacenamientosPrincipalesJS();
+            CargarAlmacenamientoHistoricoChapalaJS();
+        }
+
+        private void CargarAlmacenamientoHistoricoChapalaJS()
+        {
+            
         }
 
         private void CargarLluviasAnualesEstacionJS()
@@ -52,10 +55,6 @@ namespace Cuenca_conagua.pages
             }
         }
 
-        /// <summary>
-        /// Carga los valores de las precipitaciones desde la base de datos para
-        /// agregarlos a la página para su acceso por medio de Javascript.
-        /// </summary>
         private void CargarPrecipitacionesJS()
         {
             List<PrecipitacionMedia> pms = PrecipitacionMedia.All();
@@ -74,10 +73,6 @@ namespace Cuenca_conagua.pages
             }
         }
 
-        /// <summary>
-        /// Carga los valores de los escurrimientos desde la base de datos para
-        /// agregarlos a la página para su acceso por medio de Javascript.
-        /// </summary>
         private void CargarEscurrimientosJS()
         {
             List<EscurrimientoAnual> eas = EscurrimientoAnual.All();
@@ -101,10 +96,6 @@ namespace Cuenca_conagua.pages
             }
         }
 
-        /// <summary>
-        /// Carga los valores de los volúmenes desde la base de datos para
-        /// agregarlos a la página para su acceso por medio de Javascript.
-        /// </summary>
         private void CargarVolumenesJS()
         {
             StringBuilder json = new StringBuilder();
@@ -201,11 +192,6 @@ namespace Cuenca_conagua.pages
             }
         }
 
-        /// <summary>
-        /// Carga los valores de los almacenamientos principales desde la base 
-        /// de datos para agregarlos al html y poder accederlos por medio de 
-        /// Javascript.
-        /// </summary>
         private void CargarAlmacenamientosPrincipalesJS()
         {
             List<AlmacenamientoPrincipal> alms = AlmacenamientoPrincipal.All();

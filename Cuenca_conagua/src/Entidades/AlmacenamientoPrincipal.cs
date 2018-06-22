@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Cuenca_conagua.src.Entidades
 {
-    public class AlmacenamientoPrincipal : IComparable<AlmacenamientoPrincipal>
+    public class AlmacenamientoPrincipal : IComparable<AlmacenamientoPrincipal>, IJsonable
     {
         private string anio;
         private double alzate;
@@ -130,17 +130,17 @@ namespace Cuenca_conagua.src.Entidades
         public string ToJSON()
         {
             StringBuilder json = new StringBuilder();
-            json.Append("{\n");
-            json.Append("anio: '").Append(anio).Append("',\n");
-            json.Append("alzate: ").Append(alzate).Append(",\n");
-            json.Append("ramirez: ").Append(ramirez).Append(",\n");
-            json.Append("tepetitlan: ").Append(tepetitlan).Append(",\n");
-            json.Append("tepuxtepec: ").Append(tepuxtepec).Append(",\n");
-            json.Append("solis: ").Append(solis).Append(",\n");
-            json.Append("yuriria: ").Append(yuriria).Append(",\n");
-            json.Append("allende: ").Append(allende).Append(",\n");
-            json.Append("m_ocampo: ").Append(mOcampo).Append(",\n");
-            json.Append("purisima: ").Append(purisima).Append(",\n");
+            json.Append("{\n    ");
+            json.Append("anio: '").Append(anio).Append("',\n    ");
+            json.Append("alzate: ").Append(alzate).Append(",\n    ");
+            json.Append("ramirez: ").Append(ramirez).Append(",\n    ");
+            json.Append("tepetitlan: ").Append(tepetitlan).Append(",\n    ");
+            json.Append("tepuxtepec: ").Append(tepuxtepec).Append(",\n    ");
+            json.Append("solis: ").Append(solis).Append(",\n    ");
+            json.Append("yuriria: ").Append(yuriria).Append(",\n    ");
+            json.Append("allende: ").Append(allende).Append(",\n    ");
+            json.Append("m_ocampo: ").Append(mOcampo).Append(",\n    ");
+            json.Append("purisima: ").Append(purisima).Append(",\n    ");
             json.Append("chapala: ").Append(chapala).Append("\n");
             json.Append("}");
             return json.ToString();

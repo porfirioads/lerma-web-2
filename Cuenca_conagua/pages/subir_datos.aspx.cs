@@ -250,7 +250,6 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Escurrimiento: " + ea.Ciclo
                         + " no agregado.", true);
                 }
-                //Logger.AddToLog(ea.ToString(), true);
             }
         }
 
@@ -363,9 +362,6 @@ namespace Cuenca_conagua.pages
 
             foreach (LluviaAnualEstacion lae in lluvias)
             {
-                Logger.AddToLog("Excel Lluvia anual por estación: \n" +
-                    lae.ToFormatedJSON(), true);
-
                 if (lae.Save())
                 {
                     Logger.AddToLog("Lluvia anual por estación: " + lae.Ciclo +

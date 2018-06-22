@@ -444,28 +444,6 @@ namespace Cuenca_conagua.src.Entidades
         }
 
         /// <summary>
-        /// Genera la representación en string del objeto.
-        /// </summary>
-        /// <returns>
-        /// La cadena que representa al objeto.
-        /// </returns>
-        public override string ToString()
-        {
-            return string.Format("Ciclo: {0, -10}. P.I. Alzate: {1, -10}, "
-                + "P.I. Ramirez: {2, -10}, P.I. Tepetitlan: {3, -10}, "
-                + "P.I. Tepuxtepec: {4, -10}, P.I. Solis: {5, -10}"
-                + "P.I. La Begoña: {6, -10}, P.I. Queretro: {7, -10}"
-                + "P.I. Pericos: {8, -10}, P.I. Adjuntas: {9, -10}"
-                + "P.I. Angulo: {10, -10}, P.I. Corrales: {11, -10}"
-                + "P.I. Yurecuaro: {12, -10}, P.I. Duero: {13, -10}"
-                + "P.I. Zula: {14, -10}, P.I. Solis: {15, -10}, "
-                + "Total: {16, -10}", ciclo, piAlzate, piRamirez, piTepetitlan,
-                piTepuxtepec, piSolis, piBegona, piQueretaro, piPericos,
-                piAdjuntas, piAngulo, piCorrales, piYurecuaro, piDuero, piZula,
-                piChapala, Total);
-        }
-
-        /// <summary>
         /// Genera la representación en JSON del objeto.
         /// </summary>
         /// <returns>
@@ -474,24 +452,24 @@ namespace Cuenca_conagua.src.Entidades
         public string ToJSON()
         {
             StringBuilder json = new StringBuilder();
-            json.Append("{");
-            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(", ");
-            json.Append("piAlzate: ").Append(piAlzate).Append(", ");
-            json.Append("piRamirez: ").Append(piRamirez).Append(", ");
-            json.Append("piTepetitlan: ").Append(piTepetitlan).Append(", ");
-            json.Append("piTepuxtepec: ").Append(piTepuxtepec).Append(", ");
-            json.Append("piSolis: ").Append(piSolis).Append(", ");
-            json.Append("piBegona: ").Append(piBegona).Append(", ");
-            json.Append("piQueretaro: ").Append(piQueretaro).Append(", ");
-            json.Append("piPericos: ").Append(piPericos).Append(", ");
-            json.Append("piAdjuntas: ").Append(piAdjuntas).Append(", ");
-            json.Append("piAngulo: ").Append(piAngulo).Append(", ");
-            json.Append("piCorrales: ").Append(piCorrales).Append(", ");
-            json.Append("piYurecuaro: ").Append(piYurecuaro).Append(", ");
-            json.Append("piDuero: ").Append(piDuero).Append(", ");
-            json.Append("piZula: ").Append(piZula).Append(", ");
-            json.Append("piChapala: ").Append(piChapala).Append(", ");
-            json.Append("total: ").Append(Total);
+            json.Append("{\n    ");
+            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(",\n    ");
+            json.Append("piAlzate: ").Append(piAlzate).Append(",\n    ");
+            json.Append("piRamirez: ").Append(piRamirez).Append(",\n    ");
+            json.Append("piTepetitlan: ").Append(piTepetitlan).Append(",\n    ");
+            json.Append("piTepuxtepec: ").Append(piTepuxtepec).Append(",\n    ");
+            json.Append("piSolis: ").Append(piSolis).Append(",\n    ");
+            json.Append("piBegona: ").Append(piBegona).Append(",\n    ");
+            json.Append("piQueretaro: ").Append(piQueretaro).Append(",\n    ");
+            json.Append("piPericos: ").Append(piPericos).Append(",\n    ");
+            json.Append("piAdjuntas: ").Append(piAdjuntas).Append(",\n    ");
+            json.Append("piAngulo: ").Append(piAngulo).Append(",\n    ");
+            json.Append("piCorrales: ").Append(piCorrales).Append(",\n    ");
+            json.Append("piYurecuaro: ").Append(piYurecuaro).Append(",\n    ");
+            json.Append("piDuero: ").Append(piDuero).Append(",\n    ");
+            json.Append("piZula: ").Append(piZula).Append(",\n    ");
+            json.Append("piChapala: ").Append(piChapala).Append(",\n    ");
+            json.Append("total: ").Append(Total).Append("\n");
             json.Append("}");
             return json.ToString();
         }

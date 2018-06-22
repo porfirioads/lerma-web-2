@@ -247,22 +247,6 @@ namespace Cuenca_conagua.src.Entidades
         }
 
         /// <summary>
-        /// Obtiene la representación en string del objeto.
-        /// </summary>
-        /// <returns>
-        /// El string del objeto.
-        /// </returns>
-        public override string ToString()
-        {
-            return string.Format("Ciclo: {0, -10}. nov: {1, -20}, " +
-                "dic: {2, -20}, ene: {3, -20}, feb: {4, -20}, mar: {5, -20}, "
-                + "abr: {6, -20}, may: {7, -20}, jun: {8, -20}, jul: {9, -20}, "
-                + "ago: {10, -20}, sep: {11, -20}, oct: {12, -20}, "
-                + "total: {13, -20}", ciclo, nov, dic, ene, feb, mar, abr, may,
-                jun, jul, ago, sep, oct, Total);
-        }
-
-        /// <summary>
         /// Devuelve la instancia de la entidad con el identificador dado.
         /// </summary>
         /// <param name="ciclo">
@@ -317,21 +301,21 @@ namespace Cuenca_conagua.src.Entidades
         public string ToJSON()
         {
             StringBuilder json = new StringBuilder();
-            json.Append("{");
-            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(", ");
-            json.Append("nov: ").Append(nov).Append(", ");
-            json.Append("dic: ").Append(dic).Append(", ");
-            json.Append("ene: ").Append(ene).Append(", ");
-            json.Append("feb: ").Append(feb).Append(", ");
-            json.Append("mar: ").Append(mar).Append(", ");
-            json.Append("abr: ").Append(abr).Append(", ");
-            json.Append("may: ").Append(may).Append(", ");
-            json.Append("jun: ").Append(jun).Append(", ");
-            json.Append("jul: ").Append(jul).Append(", ");
-            json.Append("ago: ").Append(ago).Append(", ");
-            json.Append("sep: ").Append(sep).Append(", ");
-            json.Append("oct: ").Append(oct).Append(", ");
-            json.Append("total: ").Append(Total);
+            json.Append("{\n    ");
+            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(",\n    ");
+            json.Append("nov: ").Append(nov).Append(",\n    ");
+            json.Append("dic: ").Append(dic).Append(",\n    ");
+            json.Append("ene: ").Append(ene).Append(",\n    ");
+            json.Append("feb: ").Append(feb).Append(",\n    ");
+            json.Append("mar: ").Append(mar).Append(",\n    ");
+            json.Append("abr: ").Append(abr).Append(",\n    ");
+            json.Append("may: ").Append(may).Append(",\n    ");
+            json.Append("jun: ").Append(jun).Append(",\n    ");
+            json.Append("jul: ").Append(jul).Append(",\n    ");
+            json.Append("ago: ").Append(ago).Append(",\n    ");
+            json.Append("sep: ").Append(sep).Append(",\n    ");
+            json.Append("oct: ").Append(oct).Append(",\n    ");
+            json.Append("total: ").Append(Total).Append("\n");
             json.Append("}");
             return json.ToString();
         }

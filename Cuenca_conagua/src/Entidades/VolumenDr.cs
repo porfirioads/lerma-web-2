@@ -322,22 +322,6 @@ namespace Cuenca_conagua.src.Entidades
         }
 
         /// <summary>
-        /// Genera la representación en string del objeto.
-        /// </summary>
-        /// <returns>
-        /// La cadena que representa al objeto.
-        /// </returns>
-        public override string ToString()
-        {
-            return string.Format("Ciclo: {0, -10}. DR033: {1, -10}, "
-                + "DR045: {2, -10}, DR011: {3, -10}, DR085: {4, -10}, "
-                + "DR087: {5, -10}, DR022: {6, -10}, DR061: {7, -10}, "
-                + "DR024: {8, -10}, DR013: {9, -10}, Total: {10, -10}", ciclo,
-                dr033, dr045, dr011, dr085, dr087, dr022, dr061, dr024, dr013,
-                Total);
-        }
-
-        /// <summary>
         /// Genera la representación en JSON del objeto.
         /// </summary>
         /// <returns>
@@ -346,18 +330,18 @@ namespace Cuenca_conagua.src.Entidades
         public string ToJSON()
         {
             StringBuilder json = new StringBuilder();
-            json.Append("{");
-            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(", ");
-            json.Append("dr033: ").Append(dr033).Append(", ");
-            json.Append("dr045: ").Append(dr045).Append(", ");
-            json.Append("dr011: ").Append(dr011).Append(", ");
-            json.Append("dr085: ").Append(dr085).Append(", ");
-            json.Append("dr087: ").Append(dr087).Append(", ");
-            json.Append("dr022: ").Append(dr022).Append(", ");
-            json.Append("dr061: ").Append(dr061).Append(", ");
-            json.Append("dr024: ").Append(dr024).Append(", ");
-            json.Append("dr013: ").Append(dr013).Append(", ");
-            json.Append("total: ").Append(Total);
+            json.Append("{\n    ");
+            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(",\n    ");
+            json.Append("dr033: ").Append(dr033).Append(",\n    ");
+            json.Append("dr045: ").Append(dr045).Append(",\n    ");
+            json.Append("dr011: ").Append(dr011).Append(",\n    ");
+            json.Append("dr085: ").Append(dr085).Append(",\n    ");
+            json.Append("dr087: ").Append(dr087).Append(",\n    ");
+            json.Append("dr022: ").Append(dr022).Append(",\n    ");
+            json.Append("dr061: ").Append(dr061).Append(",\n    ");
+            json.Append("dr024: ").Append(dr024).Append(",\n    ");
+            json.Append("dr013: ").Append(dr013).Append(",\n    ");
+            json.Append("total: ").Append(Total).Append("\n");
             json.Append("}");
             return json.ToString();
         }

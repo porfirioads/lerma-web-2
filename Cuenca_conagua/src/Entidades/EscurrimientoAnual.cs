@@ -380,27 +380,6 @@ namespace Cuenca_conagua.src.Entidades
         }
 
         /// <summary>
-        /// Genera la representacion en String del objeto.
-        /// </summary>
-        /// <returns>
-        /// Una cadena con el String.
-        /// </returns>
-        public override string ToString()
-        {
-            return string.Format("Ciclo: {0}, alzate: {1, -10}, "
-                + "ramirez: {2, -10}, tepetitlan: {3, -10}, "
-                + "tepuxtepec: {4, -10}, solis: {5, -10}, begoña: {6, -10}, "
-                + "ameche: {7, -10}, pericos: {8, -10}, yuriria: {9, -10}, "
-                + "salamanca: {10, -10}, adjuntas: {11, -10}, "
-                + "angulo: {12, -10}, corrales: {13, -10}, "
-                + "yurecuaro: {14, -10}, duero: {15, -10}, zula: {16, -10}, "
-                + "chapala: {17, -10}, total: {18, -10}", ciclo, alzate,
-                ramirez, tepetitlan, tepuxtepec, solis, begona, ameche, pericos,
-                yuriria, salamanca, adjuntas, angulo, corrales, yurecuaro,
-                duero, zula, chapala, Total);
-        }
-
-        /// <summary>
         /// Genera la representacion en JSON del objeto.
         /// </summary>
         /// <returns>
@@ -409,26 +388,26 @@ namespace Cuenca_conagua.src.Entidades
         public string ToJSON()
         {
             StringBuilder json = new StringBuilder();
-            json.Append("{");
-            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(", ");
-            json.Append("alzate: ").Append(alzate).Append(", ");
-            json.Append("ramirez: ").Append(ramirez).Append(", ");
-            json.Append("tepetitlan: ").Append(tepetitlan).Append(", ");
-            json.Append("tepuxtepec: ").Append(tepuxtepec).Append(", ");
-            json.Append("solis: ").Append(solis).Append(", ");
-            json.Append("begona: ").Append(begona).Append(", ");
-            json.Append("ameche: ").Append(ameche).Append(", ");
-            json.Append("pericos: ").Append(pericos).Append(", ");
-            json.Append("yuriria: ").Append(yuriria).Append(", ");
-            json.Append("salamanca: ").Append(salamanca).Append(", ");
-            json.Append("adjuntas: ").Append(adjuntas).Append(", ");
-            json.Append("angulo: ").Append(angulo).Append(", ");
-            json.Append("corrales: ").Append(corrales).Append(", ");
-            json.Append("yurecuaro: ").Append(yurecuaro).Append(", ");
-            json.Append("duero: ").Append(duero).Append(", ");
-            json.Append("zula: ").Append(zula).Append(", ");
-            json.Append("chapala: ").Append(chapala).Append(", ");
-            json.Append("total: ").Append(Total);
+            json.Append("{\n    ");
+            json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(",\n    ");
+            json.Append("alzate: ").Append(alzate).Append(",\n    ");
+            json.Append("ramirez: ").Append(ramirez).Append(",\n    ");
+            json.Append("tepetitlan: ").Append(tepetitlan).Append(",\n    ");
+            json.Append("tepuxtepec: ").Append(tepuxtepec).Append(",\n    ");
+            json.Append("solis: ").Append(solis).Append(",\n    ");
+            json.Append("begona: ").Append(begona).Append(",\n    ");
+            json.Append("ameche: ").Append(ameche).Append(",\n    ");
+            json.Append("pericos: ").Append(pericos).Append(",\n    ");
+            json.Append("yuriria: ").Append(yuriria).Append(",\n    ");
+            json.Append("salamanca: ").Append(salamanca).Append(",\n    ");
+            json.Append("adjuntas: ").Append(adjuntas).Append(",\n    ");
+            json.Append("angulo: ").Append(angulo).Append(",\n    ");
+            json.Append("corrales: ").Append(corrales).Append(",\n    ");
+            json.Append("yurecuaro: ").Append(yurecuaro).Append(",\n    ");
+            json.Append("duero: ").Append(duero).Append(",\n    ");
+            json.Append("zula: ").Append(zula).Append(",\n    ");
+            json.Append("chapala: ").Append(chapala).Append(",\n    ");
+            json.Append("total: ").Append(Total).Append("\n"); ;
             json.Append("}");
             return json.ToString();
         }

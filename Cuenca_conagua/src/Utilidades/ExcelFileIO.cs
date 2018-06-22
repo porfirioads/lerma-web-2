@@ -92,6 +92,7 @@ namespace Cuenca_conagua.src.Utilidades
                     pm.Sep = double.Parse(rows[i][11].ToString(), CultureInfo.InvariantCulture);
                     pm.Oct = double.Parse(rows[i][12].ToString(), CultureInfo.InvariantCulture);
                     precipitacionesMedias.Add(pm);
+                    Logger.AddToLog(pm.ToJSON(), true);
                 }
             }
             return precipitacionesMedias;
@@ -159,6 +160,7 @@ namespace Cuenca_conagua.src.Utilidades
                     es.Zula = double.Parse(rows[i][16].ToString(), CultureInfo.InvariantCulture);
                     es.Chapala = double.Parse(rows[i][17].ToString(), CultureInfo.InvariantCulture);
                     escurrimientosAnuales.Add(es);
+                    Logger.AddToLog(es.ToJSON(), true);
                 }
             }
             return escurrimientosAnuales;
@@ -200,6 +202,7 @@ namespace Cuenca_conagua.src.Utilidades
                     alm.Fecha = DateConversion.ConvertSqlDateToDateTime(rows[i][0].ToString());
                     alm.Almacenamiento = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
                     almacenamientos.Add(alm);
+                    Logger.AddToLog(alm.ToJSON(), true);
                 }
             }
 
@@ -252,7 +255,6 @@ namespace Cuenca_conagua.src.Utilidades
                     alm.Purisima = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
                     alm.Chapala = double.Parse(rows[i][10].ToString(), CultureInfo.InvariantCulture);
                     almacenamientos.Add(alm);
-
                     Logger.AddToLog(alm.ToJSON(), true);
                 }
 
@@ -303,6 +305,7 @@ namespace Cuenca_conagua.src.Utilidades
                         vol.Dr024 = double.Parse(rows[i][8].ToString(), CultureInfo.InvariantCulture);
                         vol.Dr013 = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
                         volumenes.Add(vol);
+                        Logger.AddToLog(vol.ToJSON(), true);
                     }
                 }
 
@@ -421,6 +424,7 @@ namespace Cuenca_conagua.src.Utilidades
                         vol.PiZula = double.Parse(rows[i][14].ToString(), CultureInfo.InvariantCulture);
                         vol.PiChapala = double.Parse(rows[i][15].ToString(), CultureInfo.InvariantCulture);
                         volumenes.Add(vol);
+                        Logger.AddToLog(vol.ToJSON(), true);
                     }
                 }
 
@@ -467,9 +471,8 @@ namespace Cuenca_conagua.src.Utilidades
             List<VolumenPiAsignado> volumenesAsignados = new List<VolumenPiAsignado>();
             foreach (VolumenPi v in volumenes)
             {
-                Logger.AddToLog(v.ToString(), true);
                 volumenesAsignados.Add(v.ToVolumenPiAsignado());
-                Logger.AddToLog(v.ToVolumenPiAsignado().ToString(), true);
+                Logger.AddToLog(v.ToJSON(), true);
             }
             return volumenesAsignados;
         }
@@ -599,6 +602,7 @@ namespace Cuenca_conagua.src.Utilidades
                     lae.LaeQueretaroObs = double.Parse(rows[i][25].ToString(),
                         CultureInfo.InvariantCulture);
                     lluviasAnuales.Add(lae);
+                    Logger.AddToLog(lae.ToJSON(), true);
                 }
             }
 
