@@ -10,7 +10,7 @@ namespace Cuenca_conagua.src.Entidades
     /// <summary>
     /// Representa un registro del escurrimiento anual.
     /// </summary>
-    public class EscurrimientoAnual : IComparable<EscurrimientoAnual>
+    public class EscurrimientoAnual : IComparable<EscurrimientoAnual>, IJsonable
     {
         private string ciclo;
         private double alzate;

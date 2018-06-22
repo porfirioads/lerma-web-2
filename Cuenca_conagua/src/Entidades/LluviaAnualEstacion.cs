@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Cuenca_conagua.src.Entidades
 {
-    public class LluviaAnualEstacion: IComparable<LluviaAnualEstacion>
+    public class LluviaAnualEstacion: IComparable<LluviaAnualEstacion>, IJsonable
     {
         private string ciclo;
         private double laeCelaya;

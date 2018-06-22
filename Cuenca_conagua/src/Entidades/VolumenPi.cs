@@ -10,7 +10,7 @@ namespace Cuenca_conagua.src.Entidades
     /// Es la clase padre para los volumenes autorizados, asignados y 
     /// utilizados de las PI.
     /// </summary>
-    public class VolumenPi : IComparable<VolumenPi>
+    public class VolumenPi : IComparable<VolumenPi>, IJsonable
     {
         private string ciclo;
         private double piAlzate;

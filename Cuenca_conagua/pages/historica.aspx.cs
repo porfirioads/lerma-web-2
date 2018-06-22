@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace Cuenca_conagua.pages
@@ -20,198 +21,96 @@ namespace Cuenca_conagua.pages
         /// </summary>
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             CargarPrecipitacionesJS();
             CargarEscurrimientosJS();
             CargarVolumenesJS();
             CargarLluviasAnualesEstacionJS();
             CargarAlmacenamientosPrincipalesJS();
             CargarAlmacenamientoHistoricoChapalaJS();
-        }
+            */
+            //yourList.Cast<IMyInterface>().ToList()
 
-        private void CargarAlmacenamientoHistoricoChapalaJS()
-        {
-            
-        }
+            List<PrecipitacionMedia> precipitaciones = PrecipitacionMedia.All();
+            precipitaciones.Sort();
+            CargarListEntidadJs(precipitaciones.Cast<IJsonable>().ToList(),
+                "regPrecipitacion", scrPrecAnual);
 
-        private void CargarLluviasAnualesEstacionJS()
-        {
-            List<LluviaAnualEstacion> laes = LluviaAnualEstacion.All();
-            laes.Sort();
+            List<LluviaAnualEstacion> lluviasAnuales = LluviaAnualEstacion.All();
+            lluviasAnuales.Sort();
+            CargarListEntidadJs(lluviasAnuales.Cast<IJsonable>().ToList(),
+                "regLluviaAnualEstacion", srcLluviaAnualEstacion);
 
-            if (laes != null)
-            {
-                StringBuilder json = new StringBuilder();
-                json.Append("[");
+            List<EscurrimientoAnual> escurrimientos = EscurrimientoAnual.All();
+            escurrimientos.Sort();
+            CargarListEntidadJs(escurrimientos.Cast<IJsonable>().ToList(),
+                "regEscurrimiento", scrEscurrimiento);
 
-                foreach (LluviaAnualEstacion lae in laes)
-                {
-                    json.Append(lae.ToJSON()).Append(", ");
-                }
+            List<AlmacenamientoPrincipal> almacenamientosPrincipales = AlmacenamientoPrincipal.All();
+            almacenamientosPrincipales.Sort();
+            CargarListEntidadJs(almacenamientosPrincipales.Cast<IJsonable>().ToList(),
+                "regAlmacenamientosPrincipales", srcAlmacenamientosPrincipales);
 
-                json.Remove(json.Length - 1, 1);
-                json.Append("]");
-                srcLluviaAnualEstacion.InnerHtml = "var regLluviaAnualEstacion = " + 
-                    json.ToString() + ";";
-            }
-        }
-
-        private void CargarPrecipitacionesJS()
-        {
-            List<PrecipitacionMedia> pms = PrecipitacionMedia.All();
-            pms.Sort();
-            if (pms != null)
-            {
-                StringBuilder json = new StringBuilder();
-                json.Append("[");
-                foreach (PrecipitacionMedia pm in pms)
-                {
-                    json.Append(pm.ToJSON()).Append(", ");
-                }
-                json.Remove(json.Length - 1, 1);
-                json.Append("]");
-                scrPrecAnual.InnerHtml = "var regPrecipitacion = " + json.ToString() + ";";
-            }
-        }
-
-        private void CargarEscurrimientosJS()
-        {
-            List<EscurrimientoAnual> eas = EscurrimientoAnual.All();
-            eas.Sort();
-            if (eas != null)
-            {
-                if (eas.Count == 0)
-                {
-                    Logger.AddToLog("No escurrimientos", true);
-                }
-                StringBuilder json = new StringBuilder();
-                json.Append("[");
-                foreach (EscurrimientoAnual ea in eas)
-                {
-                    json.Append(ea.ToJSON()).Append(", ");
-                }
-                json.Remove(json.Length - 1, 1);
-                json.Append("]");
-                scrEscurrimiento.InnerHtml = "var regEscurrimiento = "
-                    + json.ToString() + ";";
-            }
-        }
-
-        private void CargarVolumenesJS()
-        {
-            StringBuilder json = new StringBuilder();
             List<VolumenDrAsignado> volDrAsignados = VolumenDrAsignado.All();
-            List<VolumenDrAutorizado> volDrAutorizados = VolumenDrAutorizado.All();
-            List<VolumenDrUtilizado> volDrUtilizados = VolumenDrUtilizado.All();
-            List<VolumenPiAsignado> volPiAsignados = VolumenPiAsignado.All();
-            List<VolumenPiAutorizado> volPiAutorizados = VolumenPiAutorizado.All();
-            List<VolumenPiUtilizado> volPiUtilizados = VolumenPiUtilizado.All();
             volDrAsignados.Sort();
+            CargarListEntidadJs(volDrAsignados.Cast<IJsonable>().ToList(),
+                "volDrAsignados", scrVolumenes, true);
+
+            List<VolumenDrAutorizado> volDrAutorizados = VolumenDrAutorizado.All();
             volDrAutorizados.Sort();
+            CargarListEntidadJs(volDrAutorizados.Cast<IJsonable>().ToList(),
+                "volDrAutorizados", scrVolumenes, true);
+
+            List<VolumenDrUtilizado> volDrUtilizados = VolumenDrUtilizado.All();
             volDrUtilizados.Sort();
+            CargarListEntidadJs(volDrUtilizados.Cast<IJsonable>().ToList(),
+                "volDrUtilizados", scrVolumenes, true);
+
+            List<VolumenPiAsignado> volPiAsignados = VolumenPiAsignado.All();
             volPiAsignados.Sort();
+            CargarListEntidadJs(volPiAsignados.Cast<IJsonable>().ToList(),
+                "volPiAsignados", scrVolumenes, true);
+
+            List<VolumenPiAutorizado> volPiAutorizados = VolumenPiAutorizado.All();
             volPiAutorizados.Sort();
+            CargarListEntidadJs(volPiAutorizados.Cast<IJsonable>().ToList(),
+                "volPiAutorizados", scrVolumenes, true);
+
+            List<VolumenPiUtilizado> volPiUtilizados = VolumenPiUtilizado.All();
             volPiUtilizados.Sort();
-            scrVolumenes.InnerHtml = "";
-            if (volDrAsignados != null)
-            {
-                json.Clear();
-                json.Append("[");
-                foreach (VolumenDrAsignado vol in volDrAsignados)
-                {
-                    json.Append(vol.ToJSON()).Append(", ");
-                }
-                //json.Remove(json.Length - 1, 1);
-                json.Append("]");
-                scrVolumenes.InnerHtml += "var volDrAsignados = "
-                    + json.ToString() + ";";
-            }
-            if (volDrAutorizados != null)
-            {
-                json.Clear();
-                json.Append("[");
-                foreach (VolumenDrAutorizado vol in volDrAutorizados)
-                {
-                    json.Append(vol.ToJSON()).Append(", ");
-                }
-               // json.Remove(json.Length - 1, 1);
-                json.Append("]");
-                scrVolumenes.InnerHtml += "var volDrAutorizados = "
-                    + json.ToString() + ";";
-            }
-            if (volDrUtilizados != null)
-            {
-                json.Clear();
-                json.Append("[");
-                foreach (VolumenDrUtilizado vol in volDrUtilizados)
-                {
-                    json.Append(vol.ToJSON()).Append(", ");
-                }
-                //json.Remove(json.Length - 1, 1);
-                json.Append("]");
-                scrVolumenes.InnerHtml += "var volDrUtilizados = "
-                    + json.ToString() + ";";
-            }
-            if (volPiAsignados != null)
-            {
-                json.Clear();
-                json.Append("[");
-                foreach (VolumenPiAsignado vol in volPiAsignados)
-                {
-                    json.Append(vol.ToJSON()).Append(", ");
-                }
-                //json.Remove(json.Length - 1, 1);
-                json.Append("]");
-                scrVolumenes.InnerHtml += "var volPiAsignados = "
-                    + json.ToString() + ";";
-            }
-            if (volPiAutorizados != null)
-            {
-                json.Clear();
-                json.Append("[");
-                foreach (VolumenPiAutorizado vol in volPiAutorizados)
-                {
-                    json.Append(vol.ToJSON()).Append(", ");
-                }
-                //json.Remove(json.Length - 1, 1);
-                json.Append("]");
-                scrVolumenes.InnerHtml += "var volPiAutorizados = "
-                    + json.ToString() + ";";
-            }
-            if (volPiUtilizados != null)
-            {
-                json.Clear();
-                json.Append("[");
-                foreach (VolumenPiUtilizado vol in volPiUtilizados)
-                {
-                    json.Append(vol.ToJSON()).Append(", ");
-                }
-                //json.Remove(json.Length - 1, 1);
-                json.Append("]");
-                scrVolumenes.InnerHtml += "var volPiUtilizados = "
-                    + json.ToString() + ";";
-            }
+            CargarListEntidadJs(volPiUtilizados.Cast<IJsonable>().ToList(),
+                "volPiUtilizados", scrVolumenes, true);
+
         }
 
-        private void CargarAlmacenamientosPrincipalesJS()
+        private void CargarListEntidadJs(List<IJsonable> listaEntidades,
+            string nombreVariableJs, HtmlGenericControl srcControl,
+            bool append = false)
         {
-            List<AlmacenamientoPrincipal> alms = AlmacenamientoPrincipal.All();
-            alms.Sort();
-
-            if(alms != null)
+            if (listaEntidades != null)
             {
                 StringBuilder json = new StringBuilder();
                 json.Append("[");
 
-                foreach (AlmacenamientoPrincipal alm in alms)
+                foreach (IJsonable entidad in listaEntidades)
                 {
-                    json.Append(alm.ToJSON()).Append(", ");
+                    json.Append(entidad.ToJSON()).Append(",");
                 }
 
                 json.Remove(json.Length - 1, 1);
                 json.Append("]");
-                srcAlmacenamientosPrincipales.InnerHtml = 
-                    "var regAlmacenamientosPrincipales = " + json.ToString() + 
-                    ";";
+
+                if (append)
+                {
+                    srcControl.InnerHtml += "var " + nombreVariableJs + " = " +
+                    json.ToString() + ";";
+                }
+                else
+                {
+                    srcControl.InnerHtml = "var " + nombreVariableJs + " = " +
+                    json.ToString() + ";";
+                }
+
             }
         }
     }

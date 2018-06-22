@@ -10,7 +10,7 @@ namespace Cuenca_conagua.src.Entidades
     /// Es la clase padre para los volumenes autorizados, asignados y 
     /// utilizados de los DR.
     /// </summary>
-    public class VolumenDr: IComparable<VolumenDr>
+    public class VolumenDr: IComparable<VolumenDr>, IJsonable
     {
         private string ciclo;
         private double dr033;

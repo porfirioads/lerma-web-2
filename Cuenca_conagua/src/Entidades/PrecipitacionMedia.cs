@@ -10,7 +10,7 @@ namespace Cuenca_conagua.src.Entidades
     /// <summary>
     /// Representa un registro de la precipitacion media
     /// </summary>
-    public class PrecipitacionMedia : IComparable<PrecipitacionMedia>
+    public class PrecipitacionMedia : IComparable<PrecipitacionMedia>, IJsonable
     {
         private string ciclo;
         private double nov;
