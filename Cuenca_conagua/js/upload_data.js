@@ -79,7 +79,8 @@ function updateTipoArchivo() {
         || tipo === 'Escurrimiento_anual'
         || tipo === 'Volumenes_DR_PI'
         || tipo === 'Lluva_anual_estación'
-        || tipo === 'Almacenamientos_principales') {
+        || tipo === 'Almacenamientos_principales'
+        || tipo === 'Almacenamiento_histórico_chapala') {
         tipoArchivo.val('datos');
     } else if (tipo === 'Archivo_calculo') {
         tipoArchivo.val('archivo_calculo');

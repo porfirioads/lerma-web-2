@@ -69,15 +69,35 @@
             <p><strong>Tipo de información:</strong></p>
 
             <select id="sel_tipo_archivo" class="form-control">
-                <option value="Lluvia_media_anual">Precipitación media (Lluvia_media_anual.xlsx)</option>
-                <option value="Escurrimiento_anual">Escurrimiento anual (Escurrimiento_anual.xlsx)</option>
-                <option value="Volumenes_DR_PI">Volúmenes utilizados por DR y PI (Volumenes_DR_PI.xlsx)</option>
-                <option value="Lluvia_anual_estación">Lluvia anual por estación (Lluvia_anual_estación.xlsx)</option>
-                <option value="Almacenamientos_principales">Almacenamientos_principales (Almacenamientos_principales.xlsx)</option>
-                <option value="Boletin">Boletín (*.pdf)</option>
-                <option value="Reglamentación">Reglamentación (*.pdf)</option>
-                <option value="Archivo_calculo">Archivo de cálculo (*.xls, *.xlsx)</option>
-                <option value="Presentación_covi">Presentación COVI (*.ppt, *.pptx)</option>
+                <option value="Lluvia_media_anual">
+                    Precipitación media (Lluvia_media_anual.xlsx)
+                </option>
+                <option value="Escurrimiento_anual">
+                    Escurrimiento anual (Escurrimiento_anual.xlsx)</option>
+                <option value="Volumenes_DR_PI">
+                    Volúmenes utilizados por DR y PI (Volumenes_DR_PI.xlsx)
+                </option>
+                <option value="Lluvia_anual_estación">
+                    Lluvia anual por estación (Lluvia_anual_estación.xlsx)
+                </option>
+                <option value="Almacenamientos_principales">
+                    Almacenamientos principales (Almacenamiento_histórico_chapala.xlsx)
+                </option>
+                <option value="Almacenamiento_histórico_chapala">
+                    Almacenamiento histórico Chapala (Almacenamiento_histórico_chapala.xlsx)
+                </option>
+                <option value="Boletin">
+                    Boletín (*.pdf)
+                </option>
+                <option value="Reglamentación">
+                    Reglamentación (*.pdf)
+                </option>
+                <option value="Archivo_calculo">
+                    Archivo de cálculo (*.xls, *.xlsx)
+                </option>
+                <option value="Presentación_covi">
+                    Presentación COVI (*.ppt, *.pptx)
+                </option>
             </select>
 
             <br />
