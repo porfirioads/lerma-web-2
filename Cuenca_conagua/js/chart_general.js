@@ -3,7 +3,8 @@
 // como parámetros a los métodos de la construcción de las gráficas.
 
 // Obtiene las opciones de configuración comunes a todos las gráficas.
-getChartOptions = function (chartTitle, yTitle, xTitle, unidad, showLegend=true) {
+getChartOptions = function (chartTitle, yTitle, xTitle, unidad,
+    showLegend = true, pointRadius = 3, mod = 1) {
     return {
         legend: {
             display: showLegend
@@ -40,10 +41,18 @@ getChartOptions = function (chartTitle, yTitle, xTitle, unidad, showLegend=true)
                     fontSize: 13
                 },
                 ticks: {
-                    autoSkip: false
+                    autoSkip: false,
+                    userCallback: function (value, index) {
+                        if (index % mod) return "";
+                        return value;
+                    }
+                },
+                gridLines: {
+                    display: false
                 }
             }]
-        }
+        },
+        elements: { point: { radius: pointRadius } }
     }
 };
 

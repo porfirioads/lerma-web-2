@@ -8,6 +8,7 @@ $(document).ready(function () {
     var contVolumenes = $('#contVolumenes');
     var contAlmPrincipales = $('#contAlmPrincipales');
     var contAlmLagoChapala = $('#contAlmLagoChapala');
+    var contAlmLagoChapala = $('#contAlmLagoChapala');
     var btnLluviaMediaAnual = $('#btnLluviaMediaAnual');
     var btnEscurrimiento = $('#btnEscurrimiento');
     var btnVolumenes = $('#btnVolumenes');
@@ -16,7 +17,7 @@ $(document).ready(function () {
     var btnLluviaAnualEstacion = $('#btnLluviaAnualEstacion');
     var contenedores = [contPrecipitacionMedia, contEscurrimiento,
         contVolumenes, contAlmPrincipales, contAlmLagoChapala,
-        contLluviaAnualEstacion];
+        contLluviaAnualEstacion, contAlmLagoChapala];
     var selTipoGraficaAlm = $('#selTipoGraficaAlm');
     var selCicloLae = $('#selCicloLae');
 

@@ -1,4 +1,5 @@
 ﻿using Cuenca_conagua.src.BaseDatos;
+using Cuenca_conagua.src.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,16 +83,17 @@ namespace Cuenca_conagua.src.Entidades
         public string ToJSON()
         {
             StringBuilder json = new StringBuilder();
-            json.Append("{\n    ");
-            json.Append("fecha: '").Append(fecha).Append("',\n    ");
-            json.Append("almacenamiento: ").Append(almacenamiento).Append("\n");
+            json.Append("{");
+            json.Append("fecha: '").Append(DateConversion
+                .ConvertDateTimeMonthDayString(fecha)).Append("', ");
+            json.Append("almacenamiento: ").Append(almacenamiento).Append("");
             json.Append("}");
             return json.ToString();
         }
 
         public int CompareTo(AlmacenamientoHistoricoChapala other)
         {
-            return other.fecha.CompareTo(other.fecha);
+            return fecha.CompareTo(other.fecha);
         }
     }
 }

@@ -12,6 +12,7 @@
     <script src="../js/chart_volumenes.js"></script>
     <script src="../js/chart_lluvia_anual_estacion.js"></script>
     <script src="../js/chart_almacenamientos_principales.js"></script>
+    <script src="../js/chart_almacenamiento_historico_chapala.js"></script>
 </asp:Content>
 
 <asp:Content ID="contentCuerpoContainer" ContentPlaceHolderID="cuerpoContainer" runat="server">
@@ -24,6 +25,7 @@
         <a id="bntAlmPrincipales" class="btn btn-white btn-100">Almacenamientos principales</a>
         <a id="btnAlmLagoChapala" class="btn btn-white btn-100">Almacenamiento del lago de Chapala</a>
     </aside>
+
     <section id="contPrecipitacionMedia" class="contenido">
         <%-- Esta etiqueda div se va a sustituir por un script --%>
         <div id="scrPrecAnual" class="hidden" runat="server"></div>
@@ -93,6 +95,7 @@
             </div>
         </section>
     </section>
+
     <section id="contVolumenes" class="contenido hidden">
         <%-- Esta etiqueda div se va a sustituir por un script --%>
         <div id="scrVolumenes" class="hidden" runat="server"></div>
@@ -143,6 +146,7 @@
             </div>
         </section>
     </section>
+
     <section id="contAlmPrincipales" class="contenido hidden">
         <%-- Esta etiqueda div se va a sustituir por un script --%>
         <div id="srcAlmacenamientosPrincipales" class="hidden" runat="server"></div>
@@ -175,8 +179,23 @@
             </select>
         </section>
     </section>
-    <section id="contAlmLagoChapala" class="contenido hidden" runat="server">
-        AlmacenamientoLagoChapala
+
+    <section id="contAlmLagoChapala" class="contenido hidden">
+        <%-- Esta etiqueda div se va a sustituir por un script --%>
+        <div id="srcAlmHistoricosChapala" class="hidden" runat="server"></div>
+        <script>
+            setTimeout(function () {
+                $('#cuerpoContainer_srcAlmHistoricosChapala').contents().unwrap().wrap('<script/>');
+            }, 5000);
+            //$('#cuerpoContainer_srcAlmHistoricosChapala').contents().unwrap().wrap('<script/>');
+        </script>
+        <section id="almHistChapala">
+            <div id="almHistChapalaChart" class="chart-area">
+                <div class="chart-content">
+                    <canvas id="grafica_almHistChapala" class="chart" width="500" height="300"></canvas>
+                </div>
+            </div>
+        </section>
     </section>
 </asp:Content>
 

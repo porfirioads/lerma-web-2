@@ -175,14 +175,18 @@ namespace Cuenca_conagua.src.BaseDatos
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 AlmacenamientoHistoricoChapala alm = null;
+
                 while (reader.Read())
                 {
                     alm = new AlmacenamientoHistoricoChapala();
                     alm.Fecha = reader.GetDateTime(0);
                     alm.Almacenamiento = double.Parse(reader.GetValue(1).ToString());
+                    alms.Add(alm);
                 }
+
                 reader.Close();
             }
+
             return alms;
         }
 

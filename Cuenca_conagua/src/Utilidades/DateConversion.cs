@@ -17,5 +17,10 @@ namespace Cuenca_conagua.src.Utilidades
         {
             return dateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
         }
+
+        public static string ConvertDateTimeMonthDayString(DateTime dateTime)
+        {
+            return dateTime.ToString("MMM-yyyy", CultureInfo.InvariantCulture);
+        }
     }
 }

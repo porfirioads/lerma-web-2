@@ -21,16 +21,6 @@ namespace Cuenca_conagua.pages
         /// </summary>
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
-            CargarPrecipitacionesJS();
-            CargarEscurrimientosJS();
-            CargarVolumenesJS();
-            CargarLluviasAnualesEstacionJS();
-            CargarAlmacenamientosPrincipalesJS();
-            CargarAlmacenamientoHistoricoChapalaJS();
-            */
-            //yourList.Cast<IMyInterface>().ToList()
-
             List<PrecipitacionMedia> precipitaciones = PrecipitacionMedia.All();
             precipitaciones.Sort();
             CargarListEntidadJs(precipitaciones.Cast<IJsonable>().ToList(),
@@ -81,6 +71,10 @@ namespace Cuenca_conagua.pages
             CargarListEntidadJs(volPiUtilizados.Cast<IJsonable>().ToList(),
                 "volPiUtilizados", scrVolumenes, true);
 
+            List<AlmacenamientoHistoricoChapala> almHistoricosChapala = AlmacenamientoHistoricoChapala.All();
+            almHistoricosChapala.Sort();
+            CargarListEntidadJs(almHistoricosChapala.Cast<IJsonable>().ToList(),
+                "almHistoricosChapala", srcAlmHistoricosChapala);
         }
 
         private void CargarListEntidadJs(List<IJsonable> listaEntidades,
@@ -97,7 +91,10 @@ namespace Cuenca_conagua.pages
                     json.Append(entidad.ToJSON()).Append(",");
                 }
 
-                json.Remove(json.Length - 1, 1);
+                if (json.ToString().EndsWith(",")) {
+                    json.Remove(json.Length - 1, 1);
+                }
+
                 json.Append("]");
 
                 if (append)
@@ -110,7 +107,6 @@ namespace Cuenca_conagua.pages
                     srcControl.InnerHtml = "var " + nombreVariableJs + " = " +
                     json.ToString() + ";";
                 }
-
             }
         }
     }
