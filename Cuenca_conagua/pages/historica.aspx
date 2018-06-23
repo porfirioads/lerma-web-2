@@ -181,6 +181,10 @@
     </section>
 
     <section id="contAlmLagoChapala" class="contenido hidden">
+        <div id="almLagoChapalaSpinnerContainer" class="spinnerContainer">
+            <div class="lds-dual-ring"></div>
+            <p>Cargando gráfica</p>
+        </div>
         <%-- Esta etiqueda div se va a sustituir por un script --%>
         <div id="srcAlmHistoricosChapala" class="hidden" runat="server"></div>
         <script>

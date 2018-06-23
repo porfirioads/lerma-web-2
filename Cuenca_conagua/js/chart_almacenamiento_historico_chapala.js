@@ -56,6 +56,7 @@ $(document).ready(function () {
         if (typeof almHistoricosChapala !== "undefined") {
             start();
             crearGraficaAlmHistChapala();
+            $('#almLagoChapalaSpinnerContainer').addClass('hidden');
         }
         else {
             setTimeout(waitForElement, 1000);
