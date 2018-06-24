@@ -20,6 +20,7 @@ $(document).ready(function () {
     var btnChangePrecMensual = $('#btnChangePrecMensual');
     var btnChangePrecAnual = $('#btnChangePrecAnual');
     var chart;
+    var ciclosIgnorados = 13;
 
     // Inicia la carga de los datos para la creacion de las graficas de 
     // precipitacion.
@@ -30,23 +31,43 @@ $(document).ready(function () {
         precMensualValues = [];
         precMensualMediaValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         media = 0;
+
+        console.log(regPrecipitacion.length + " precipitaciones");
+        console.log(regPrecipitacion);
+
+        // Calcula media anual y llega arreglo de valores
+
         for (var i = 0; i < regPrecipitacion.length; i++) {
             labelsCiclo.push(regPrecipitacion[i].ciclo);
-            selCiclo.append('<option value="' + i + '">' + labelsCiclo[i] + '</option>');
             precAnualValues.push(regPrecipitacion[i].total);
             media += precAnualValues[i];
+        }
+
+        media /= precAnualValues.length;
+
+        console.log('media anual: ' + media);
+
+        for (var i = ciclosIgnorados; i < regPrecipitacion.length; i++) {
+            precAnualMediaValues.push(media);
+        }
+
+        for (var i = ciclosIgnorados; i < regPrecipitacion.length; i++) {
+            selCiclo.append('<option value="' + i + '">' + labelsCiclo[i] + '</option>');
+
             for (var j = 0; j < 12; j++) {
                 precMensualMediaValues[j]
                     += regPrecipitacion[i][labelsMensual[j].toLowerCase()];
             }
         }
+
+        console.log(labelsCiclo);
+
         for (var i = 0; i < 12; i++) {
-            precMensualMediaValues[i] /= regPrecipitacion.length;
+            precMensualMediaValues[i] /= (regPrecipitacion.length - ciclosIgnorados);
         }
-        media /= precAnualValues.length;
-        for (var i = 0; i < regPrecipitacion.length; i++) {
-            precAnualMediaValues.push(media);
-        }
+
+        
+
         refreshDataSetMensual();
     }
 
@@ -72,7 +93,7 @@ $(document).ready(function () {
     // precipitacion mensual.
     btnChangePrecMensual.click(function () {
         var lastIndex = $('#selCiclo > option').last().val();
-        $('#selCiclo option')[lastIndex].selected = true;
+        $('#selCiclo option')[lastIndex - ciclosIgnorados].selected = true;
         divChkAnual.addClass('hidden');
         divChkMensual.removeClass('hidden');
         btnChangePrecMensual.addClass('hidden');
