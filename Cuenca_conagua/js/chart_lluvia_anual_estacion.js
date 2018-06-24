@@ -23,7 +23,6 @@ $(document).ready(function () {
     function start() {
         labelsCiclo = [];
         valuesPromHistorico = [];
-        valuesLluviaPorCiclo = [];
 
         // Llena los selects del ciclo
         for (var i = 0; i < regLluviaAnualEstacion.length; i++) {
@@ -66,6 +65,7 @@ $(document).ready(function () {
     function crearGraficaLae() {
         clearCanvas();
         datasets = [];
+        valuesLluviaPorCiclo = [];
 
         datasets.push(getBarDataSet('Media histórica anual',
             valuesPromHistorico, "rgba(170, 60, 57, 1)",
@@ -73,6 +73,10 @@ $(document).ready(function () {
 
         var cicloIndex = selCicloLae.val();
         var cicloName = 'Ciclo ' + regLluviaAnualEstacion[cicloIndex].ciclo;
+
+        //console.log(regLluviaAnualEstacion);
+        //console.log('index: ' + cicloIndex);
+        //console.log(regLluviaAnualEstacion[cicloIndex]);
 
         for (key in regLluviaAnualEstacion[0]) {
             if (key !== 'ciclo') {
