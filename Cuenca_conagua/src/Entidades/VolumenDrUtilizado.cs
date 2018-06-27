@@ -48,16 +48,9 @@ namespace Cuenca_conagua.src.Entidades
             }
         }
 
-        /// <summary>
-        /// Devuelve todas las instancias de la entidad en la base de datos.
-        /// </summary>
-        /// <returns>
-        /// La lista de las entidades.
-        /// </returns>
-        public static List<VolumenDrUtilizado> All()
+        public static List<VolumenDr> All()
         {
-            return ToVolumenDrUtilizadoList(ConexionBD
-                .GetAllVolumenDr(ConexionBD.VOL_DR_UTILIZADO));
+            return ConexionBD.GetAllVolumenDr(ConexionBD.VOL_DR_UTILIZADO);
         }
     }
 }

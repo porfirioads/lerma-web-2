@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cuenca_conagua.src.BaseDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace Cuenca_conagua.src.Entidades
     /// Es la clase padre para los volumenes autorizados, asignados y 
     /// utilizados de los DR.
     /// </summary>
-    public class VolumenDr: IComparable<VolumenDr>, IJsonable
+    public class VolumenDr : IComparable<VolumenDr>, IJsonable
     {
         private string ciclo;
         private double dr033;
@@ -321,6 +322,30 @@ namespace Cuenca_conagua.src.Entidades
             return volDrAs;
         }
 
+        public const int MENORES = 100000;
+        public const int MAYORES = 100001;
+
+        public static void filtrarVolumenesDr(
+            List<VolumenDr> volumenes, string ciclo, int comparador)
+        {
+            VolumenDr volComparador = new VolumenDr();
+            volComparador.Ciclo = ciclo;
+            List<VolumenDr> volumenesToDelete = new List<VolumenDr>();
+
+            foreach (VolumenDr volumen in volumenes)
+            {
+                if (comparador == MENORES && volumen.CompareTo(volComparador) >= 0)
+                    volumenesToDelete.Add(volumen);
+                else if (comparador == MAYORES && volumen.CompareTo(volComparador) <= 0)
+                    volumenesToDelete.Add(volumen);
+            }
+
+            foreach (VolumenDr toDelete in volumenesToDelete)
+            {
+                volumenes.Remove(toDelete);
+            }
+        }
+
         /// <summary>
         /// Genera la representación en JSON del objeto.
         /// </summary>
@@ -344,6 +369,11 @@ namespace Cuenca_conagua.src.Entidades
             json.Append("total: ").Append(Total).Append("\n");
             json.Append("}");
             return json.ToString();
+        }
+
+        public override string ToString()
+        {
+            return ToJSON();
         }
 
         /// <summary>

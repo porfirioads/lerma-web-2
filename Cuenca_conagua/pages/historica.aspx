@@ -134,16 +134,42 @@
                     <td id="colVolUtM">8</td>
                 </tr>
             </table>
+
             <select id="selDr" class="form-control">
             </select>
+
             <select id="selPi" class="form-control hidden">
             </select>
+
+            <select id="selTipoGraficaVol" class="form-control">
+                <option value="vol_dr_viejos">
+                    Volúmenes Distritos de Riego (anteriores a 2004)
+                </option>
+                <option value="vol_pi_viejos">
+                    Volúmenes Pequeña Irrigación (anteriores a 2004)
+                </option>
+                <option value="vol_dr_actual">
+                    Volúmenes Distritos de Riego (a partir de 2004)
+                </option>
+                <option value="vol_pi_actual">
+                    Volúmenes Pequeña Irrigación (a partir de 2004)
+                </option>
+                <option value="vol_gt">
+                    Volumen para Generación Tepuxtepec
+                </option>
+                <option value="vol_ag">
+                    Volumen de agua potable Guadalajara
+                </option>
+            </select>
+
+            <!--
             <div>
                 <a id="btnChangeVolPi" class="btn btn-green">Volúmenes Pequeña Irrigación
                 </a>
                 <a id="btnChangeVolDr" class="btn btn-green hidden">Volúmenes Distritos de Riego
                 </a>
             </div>
+            -->
         </section>
     </section>
 
