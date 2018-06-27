@@ -28,8 +28,7 @@ $(document).ready(function () {
         'piZula', 'piChapala'];
     var selDr = $('#selDr');
     var selPi = $('#selPi');
-    var btnChangeVolPi = $('#btnChangeVolPi');
-    var btnChangeVolDr = $('#btnChangeVolDr');
+    var selTipoGraficaVol = $('#selTipoGraficaVol');
     var tablaResumen = $('#tablaResumen');
     var chart;
     var drAdicional;
@@ -41,6 +40,8 @@ $(document).ready(function () {
 
     // Es el constructor del script
     function start() {
+        console.log('start() ' + selTipoGraficaVol.val());
+
         cicloDrLabels = [];
         for (var i = 0; i < volDrAsignados.length; i++) {
             cicloDrLabels.push(volDrAsignados[i].ciclo);
@@ -105,10 +106,6 @@ $(document).ready(function () {
             resumenDr[volDrAttributes[i]]['promExcedido'] = promExcedido;
             resumenDr[volDrAttributes[i]]['porcAutMax'] = porcAutMax;
             resumenDr[volDrAttributes[i]]['porcUtiMax'] = porcUtiMax;
-            //console.log(volDrAttributes[i] + ': ' + padRound(volMaxDr[i]) +
-            //    ', ' + padRound(promAutorizado) + ', ' + padRound(promAsignado)
-            //    + ', ' + padRound(promUtilizado) + ', ' + padRound(promExcedido)
-            //    + ', ' + padRound(porcAutMax) + ', ' + padRound(porcUtiMax));
         }
         //console.log('------------------------------');
         resumenPi = {};
@@ -143,19 +140,7 @@ $(document).ready(function () {
             resumenPi[volPiAttributes[i]]['promExcedido'] = promExcedido;
             resumenPi[volPiAttributes[i]]['porcAutMax'] = porcAutMax;
             resumenPi[volPiAttributes[i]]['porcUtiMax'] = porcUtiMax;
-            //console.log(volPiAttributes[i] + ': ' + padRound(volMaxPi[i]) +
-            //    ', ' + padRound(promAutorizado) + ', ' + padRound(promAsignado)
-            //    + ', ' + padRound(promUtilizado) + ', ' + padRound(promExcedido)
-            //    + ', ' + padRound(porcAutMax) + ', ' + padRound(porcUtiMax));
         }
-    }
-
-    // Rellena una número para que su longitud sea de un número predeterminado,
-    // además, la redondea a un número determinado de decimales.
-    function padRound(numero) {
-        var longitud = 8;
-        var decimales = 2;
-        return strPad(numero.toFixed(decimales), longitud, ' ');
     }
 
     // Modifica una cadena para hacer que su longitud mínima sea la especificada,
@@ -284,34 +269,46 @@ $(document).ready(function () {
         $('#colVolUtM').text(porcUtM.toFixed(2));
     }
 
-    // Se ejecuta cuando se selecciona el boton para cambiar a volumen P.I.
-    btnChangeVolPi.click(function () {
-        $('#selPi option')[0].selected = true;
-        btnChangeVolDr.removeClass('hidden');
-        btnChangeVolPi.addClass('hidden');
-        selDr.addClass('hidden');
-        selPi.removeClass('hidden');
-        crearGraficaPi();
-    });
-
-    // Se ejecuta cuando se selecciona el boton para cambiar a volumen D.R.
-    btnChangeVolDr.click(function () {
-        $('#selDr option')[0].selected = true;
-        btnChangeVolPi.removeClass('hidden');
-        btnChangeVolDr.addClass('hidden');
-        selPi.addClass('hidden');
-        selDr.removeClass('hidden');
-        crearGraficaDr();
-    });
-
     // Se ejecuta cuando se selecciona un elemento de la lista de D.R.
     selDr.change(function () {
+        console.log('selDr.change()');
         crearGraficaDr();
     });
 
     // Se ejecuta cuando se selecciona un elemento de la lista de P.I.
     selPi.change(function () {
+        console.log('selPi.change()');
         crearGraficaPi();
+    });
+
+    // Cambia el tipo de gráfica al seleccionar uno del comboBox de tipos de
+    // gráfica de volumen.
+    selTipoGraficaVol.change(function () {
+        console.log('Se hará gráfica [' + selTipoGraficaVol.val() + ']');
+
+        var tipoGrafica = selTipoGraficaVol.val();
+
+        if (tipoGrafica === 'vol_dr_viejos') {
+            selPi.addClass('hidden');
+            selDr.removeClass('hidden');
+            //selDr.trigger('change');
+        } else if (tipoGrafica === 'vol_pi_viejos') {
+            selDr.addClass('hidden');
+            selPi.removeClass('hidden');
+            //selPi.trigger('change');
+        } else if (tipoGrafica === 'vol_dr_actual') {
+            selPi.addClass('hidden');
+            selDr.removeClass('hidden');
+            selDr.trigger('change');
+        } else if (tipoGrafica === 'vol_pi_actual') {
+            selDr.addClass('hidden');
+            selPi.removeClass('hidden');
+            selPi.trigger('change');
+        } else if (tipoGrafica === 'vol_gt') {
+
+        } else if (tipoGrafica === 'vol_ag') {
+
+        }
     });
 
     // Limpia el canvas.
@@ -323,5 +320,4 @@ $(document).ready(function () {
 
     // Ejecución del script.
     start();
-    crearGraficaDr();
 });
