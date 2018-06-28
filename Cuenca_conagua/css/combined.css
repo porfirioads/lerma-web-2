@@ -614,3 +614,12 @@ table.blue-big-text td {
 }
 
 /* << Estilos para portada */
+
+.anuncio-construccion {
+    padding-top: 90px;
+    padding-bottom: 70px;
+    font-size: 50pt;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}

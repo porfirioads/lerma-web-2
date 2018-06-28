@@ -5,5 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="contentCuerpoContainer" ContentPlaceHolderID="cuerpoContainer" runat="server">
-
+    <p class="anuncio-construccion">
+        En construcción
+    </p>
 </asp:Content>
