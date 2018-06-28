@@ -85,6 +85,10 @@ namespace Cuenca_conagua.pages
             {
                 FileManager.crearCarpetasFaltantes("uploaded_files/restitucion/presentacion_covi");
                 path = "../uploaded_files/restitucion/presentacion_covi";
+            } else if(tipo.Equals("minuta_god"))
+            {
+                FileManager.crearCarpetasFaltantes("uploaded_files/minutas_GOD");
+                path = "../uploaded_files/minutas_GOD";
             }
 
             Logger.AddToLog("Tipo de archivo: " + tipo, true);

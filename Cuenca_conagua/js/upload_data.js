@@ -86,6 +86,8 @@ function updateTipoArchivo() {
         tipoArchivo.val('archivo_calculo');
     } else if (tipo === 'Presentación_covi') {
         tipoArchivo.val('presentacion_covi');
+    } else if (tipo === 'Minuta_god') {
+        tipoArchivo.val('minuta_god');
     }
 }
 
@@ -101,6 +103,8 @@ var MSJ_MAX_FILES = '<strong>Puedes subir máximo ' + maxFiles + ' archivos</str
 function evaluarExtension(nombreArchivo) {
     var nombreCorrecto = $('#sel_tipo_archivo').val();
 
+    console.log(nombreCorrecto);
+
     if (nombreCorrecto === "Boletin"
         || nombreCorrecto === "Reglamentación") {
         return nombreArchivo.endsWith('.pdf');
@@ -108,6 +112,8 @@ function evaluarExtension(nombreArchivo) {
         return nombreArchivo.endsWith('.xls') || nombreArchivo.endsWith('.xlsx');
     } else if (nombreCorrecto === "Presentación_covi") {
         return nombreArchivo.endsWith('.ppt') || nombreArchivo.endsWith('.pptx');
+    } else if (nombreCorrecto === 'Minuta_god') {
+        return nombreArchivo.endsWith('.zip');
     } else {
         return nombreArchivo.endsWith('.xls') || nombreArchivo.endsWith('.xlsx');
     }
@@ -120,7 +126,8 @@ function evaluarNombre(nombreArchivo) {
     if (nombreCorrecto === "Boletin"
         || nombreCorrecto === "Reglamentación"
         || nombreCorrecto === "Archivo_calculo"
-        || nombreCorrecto === "Presentación_covi") {
+        || nombreCorrecto === "Presentación_covi"
+        || nombreCorrecto === 'Minuta_god') {
         // Devuelve true si se trata de un archivo donde no se requiere 
         // coincidencia en el nombre
         return true;
@@ -135,7 +142,8 @@ function removeFileExtension(nombreArchivo) {
     return nombreArchivo
         .replace('.xlsx', '')
         .replace('.xls', '')
-        .replace('.pdf', '');
+        .replace('.pdf', '')
+        .replace('.zip', '');
 }
 
 // Muestra el mensaje correspondiente al resultado del intento de subir el archivo.

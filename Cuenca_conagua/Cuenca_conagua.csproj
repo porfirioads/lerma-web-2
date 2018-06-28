@@ -113,6 +113,7 @@
     <Content Include="js\activate_hidroclimatologica_tab.js" />
     <Content Include="js\activate_historica_tab.js" />
     <Content Include="js\activate_inicio_tab.js" />
+    <Content Include="js\activate_minutas_tab.js" />
     <Content Include="js\activate_reglamentacion_tab.js" />
     <Content Include="js\almacenamientosMap.js" />
     <Content Include="js\Chart.min.js" />
@@ -137,6 +138,7 @@
     </Content>
     <Content Include="pages\default.aspx" />
     <Content Include="pages\login_admin.aspx" />
+    <Content Include="pages\minutas.aspx" />
     <Content Include="pages\restitucion.aspx" />
     <Content Include="pages\subir_datos.aspx" />
     <Content Include="Default.aspx" />
@@ -257,6 +259,13 @@
     </Compile>
     <Compile Include="pages\login_admin.aspx.designer.cs">
       <DependentUpon>login_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\minutas.aspx.cs">
+      <DependentUpon>minutas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\minutas.aspx.designer.cs">
+      <DependentUpon>minutas.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\reglamentacion.aspx.cs">
       <DependentUpon>reglamentacion.aspx</DependentUpon>

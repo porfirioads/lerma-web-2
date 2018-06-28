@@ -47,6 +47,7 @@
                     <ul id="lista_menu" runat="server">
                         <li><a id="menuInicio" href="inicio.aspx">Inicio</a></li>
                         <li><a id="menuGeneral" href="general.aspx">General</a></li>
+                        <li><a id="menuMinutas" href="minutas.aspx">Minutas GOD</a></li>
                         <li><a id="menuReglas" href="reglamentacion.aspx">Reglamentación</a></li>
                         <li><a id="menuBoletines" href="boletines.aspx">Boletines</a></li>
                         <li><a id="menuHistorica" href="historica.aspx">Histórica</a></li>
