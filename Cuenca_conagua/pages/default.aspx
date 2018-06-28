@@ -6,17 +6,18 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpoContainer" runat="server">
-    <p class="very-big-text">
-        LERMA WEB 2
+    <br /><br />
+
+    <p class="h-portada h1-portada">
+        Grupo de Ordenamiento y Distribución de la Cuenca Lerma Chapala, GOD
     </p>
 
-    <p class="lerma-general-info">
-        Información hidrológica y del uso del agua utilizando la política de
-        distribución del agua superficial de la cuenca Lerma Chapala aprobada
+    <p class="h-portada h2-portada">
+        Información Hidrológica y del Uso del Agua Utilizando la Política de
+        Distribución del Agua Superficial de la Cuenca Lerma Chapala Aprobada
         en el 2004
     </p>
 
-    <br />
     <br />
 
     <p class="medium-text">

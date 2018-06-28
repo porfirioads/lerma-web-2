@@ -507,7 +507,7 @@ table.table-padded th td {
 
     .table-logo-header .header-title h1 {
         color: #002060 !important;
-        font-size: 20pt !important;
+        font-size: 40pt !important;
     }
 
 img[usemap] {
@@ -538,14 +538,6 @@ img[usemap] {
     font-size: 15pt;
 }
 
-.lerma-general-info {
-    text-align: center;
-    font-weight: bold;
-    font-size: 18pt;
-    color: black;
-    text-transform: capitalize;
-}
-
 table.blue-big-text td {
     color: #002060;
     font-size: 20pt;
@@ -565,7 +557,7 @@ table.blue-big-text td {
     text-align: right;
 }
 
-/* Estilos para loader [inicio] */
+/* >> Estilos para loader */
 
 .spinnerContainer {
     display: flex;
@@ -601,4 +593,24 @@ table.blue-big-text td {
     }
 }
 
-/* Estilos para loader [fin] */
+/* << Estilos para loader */
+
+/* >> Estilos para portada */
+
+.h-portada {
+    font-weight: bold;
+    text-align: center;
+}
+
+.h1-portada {
+    color: #4472C4;
+    font-size: 30pt;
+    
+}
+
+.h2-portada {
+    color: black;
+    font-size: 20pt;
+}
+
+/* << Estilos para portada */
