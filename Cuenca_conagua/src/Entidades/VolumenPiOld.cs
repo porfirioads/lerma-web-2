@@ -103,6 +103,30 @@ namespace Cuenca_conagua.src.Entidades
             }
         }
 
+        public VolumenPiAutorizadoOld ToVolumenPiAutorizadoOld()
+        {
+            VolumenPiAutorizadoOld vol = new VolumenPiAutorizadoOld();
+            SetVolumenPiOldAttributes(vol);
+            return vol;
+        }
+
+        public VolumenPiUtilizadoOld ToVolumenPiUtilizadoOld()
+        {
+            VolumenPiUtilizadoOld vol = new VolumenPiUtilizadoOld();
+            SetVolumenPiOldAttributes(vol);
+            return vol;
+        }
+
+        private void SetVolumenPiOldAttributes(VolumenPiOld vol)
+        {
+            vol.Ciclo = ciclo;
+            vol.PiAltoLerma = piAltoLerma;
+            vol.PiRioQueretaro = piRioQueretaro;
+            vol.PiBajio = piBajio;
+            vol.PiAnguloDuero = piAnguloDuero;
+            vol.PiBajoLerma = piBajoLerma;
+        }
+
         public string ToJSON()
         {
         StringBuilder json = new StringBuilder();

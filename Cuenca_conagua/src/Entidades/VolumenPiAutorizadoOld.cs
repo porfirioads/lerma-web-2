@@ -7,5 +7,6 @@ namespace Cuenca_conagua.src.Entidades
 {
     public class VolumenPiAutorizadoOld: VolumenPiOld
     {
+        
     }
 }
