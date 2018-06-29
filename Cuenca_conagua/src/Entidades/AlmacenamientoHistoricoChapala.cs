@@ -84,7 +84,7 @@ namespace Cuenca_conagua.src.Entidades
         {
             StringBuilder json = new StringBuilder();
             json.Append("{");
-            json.Append("fecha: '").Append(DateConversion
+            json.Append("fecha: '").Append(DateUtils
                 .ConvertDateTimeMonthDayString(fecha)).Append("', ");
             json.Append("almacenamiento: ").Append(almacenamiento).Append("");
             json.Append("}");

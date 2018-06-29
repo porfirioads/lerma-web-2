@@ -1,4 +1,5 @@
 ﻿using Cuenca_conagua.src.BaseDatos;
+using Cuenca_conagua.src.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -342,6 +343,7 @@ namespace Cuenca_conagua.src.Entidades
 
             foreach (VolumenDr toDelete in volumenesToDelete)
             {
+                Logger.AddToLog(toDelete.ciclo + " is not" + (comparador == MAYORES ? " > " : " < ") + ciclo, true);
                 volumenes.Remove(toDelete);
             }
         }
@@ -388,11 +390,11 @@ namespace Cuenca_conagua.src.Entidades
         /// </returns>
         public int CompareTo(VolumenDr other)
         {
-            if (ciclo.StartsWith("9") && !other.ciclo.StartsWith("9"))
+            if (DateUtils.AnioMenorAl2000(ciclo) && !DateUtils.AnioMenorAl2000(other.ciclo))
             {
                 return -1;
             }
-            else if (!ciclo.StartsWith("9") && other.ciclo.StartsWith("9"))
+            else if (!DateUtils.AnioMenorAl2000(ciclo) && DateUtils.AnioMenorAl2000(other.ciclo))
             {
                 return 1;
             }

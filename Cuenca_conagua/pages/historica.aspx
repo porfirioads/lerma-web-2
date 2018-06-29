@@ -161,15 +161,6 @@
                     Volumen de agua potable Guadalajara
                 </option>
             </select>
-
-            <!--
-            <div>
-                <a id="btnChangeVolPi" class="btn btn-green">Volúmenes Pequeña Irrigación
-                </a>
-                <a id="btnChangeVolDr" class="btn btn-green hidden">Volúmenes Distritos de Riego
-                </a>
-            </div>
-            -->
         </section>
     </section>
 

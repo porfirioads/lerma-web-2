@@ -1,4 +1,5 @@
 ﻿using Cuenca_conagua.src.BaseDatos;
+using Cuenca_conagua.src.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -333,11 +334,11 @@ namespace Cuenca_conagua.src.Entidades
         /// </returns>
         public int CompareTo(PrecipitacionMedia other)
         {
-            if (anioMenorAl2000(ciclo) && !anioMenorAl2000(other.ciclo))
+            if (DateUtils.AnioMenorAl2000(ciclo) && !DateUtils.AnioMenorAl2000(other.ciclo))
             {
                 return -1;
             }
-            else if (!anioMenorAl2000(ciclo) && anioMenorAl2000(other.ciclo))
+            else if (!DateUtils.AnioMenorAl2000(ciclo) && DateUtils.AnioMenorAl2000(other.ciclo))
             {
                 return 1;
             }
@@ -346,30 +347,5 @@ namespace Cuenca_conagua.src.Entidades
                 return ciclo.CompareTo(other.ciclo);
             }
         }
-
-        /// <summary>
-        /// Determina si un año de dos cifras es menor al 2000.
-        /// </summary>
-        /// <param name="anioDosCifras">
-        /// El año de dos cifras que se desea evaluar.
-        /// </param>
-        /// <returns>
-        /// true si el año es menor al 2000 o false en caso contrario.
-        /// </returns>
-        private bool anioMenorAl2000(string anioDosCifras)
-        {
-            string[] primerDigitoAniosMenor2000 = { "5", "6", "7", "8", "9" };
-
-            foreach (string primerDigito in primerDigitoAniosMenor2000)
-            {
-                if (anioDosCifras.StartsWith(primerDigito))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
     }
 }

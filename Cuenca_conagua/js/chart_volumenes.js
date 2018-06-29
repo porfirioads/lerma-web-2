@@ -42,6 +42,24 @@ $(document).ready(function () {
     function start() {
         console.log('start() ' + selTipoGraficaVol.val());
 
+        var tipoGrafica = selTipoGraficaVol.val();
+
+        if (tipoGrafica === 'vol_dr_actual') {
+            volDrAsignados = volDrAsignadosActual;
+            volDrAutorizados = volDrAutorizadosActual;
+            volDrUtilizados = volDrUtilizadosActual;
+        } else if (tipoGrafica === 'vol_dr_viejos') {
+            volDrAsignados = volDrAsignadosOld;
+            volDrAutorizados = volDrAutorizadosOld;
+            volDrUtilizados = volDrUtilizadosOld;
+        }
+
+        console.log('DR_DATA ' + JSON.stringify({
+            drAsignados: volDrAsignados,
+            drAutorizados: volDrAutorizados,
+            drUtilizados: volDrUtilizados
+        }, null, 4));
+
         cicloDrLabels = [];
         for (var i = 0; i < volDrAsignados.length; i++) {
             cicloDrLabels.push(volDrAsignados[i].ciclo);
@@ -207,6 +225,7 @@ $(document).ready(function () {
     // Crea la grafica de D.R. para el D.R. seleccionado.
     function crearGraficaDr() {
         clearCanvas();
+        start();
         refreshDrValues();
         var datasets = [];
         datasets.push(getBarDataSet('Autorizado', volDrAutorizadoValues,
@@ -291,7 +310,7 @@ $(document).ready(function () {
         if (tipoGrafica === 'vol_dr_viejos') {
             selPi.addClass('hidden');
             selDr.removeClass('hidden');
-            //selDr.trigger('change');
+            selDr.trigger('change');
         } else if (tipoGrafica === 'vol_pi_viejos') {
             selDr.addClass('hidden');
             selPi.removeClass('hidden');

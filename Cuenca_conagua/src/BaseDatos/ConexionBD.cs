@@ -101,7 +101,7 @@ namespace Cuenca_conagua.src.BaseDatos
             string query = "SELECT * FROM [almacenamiento_historico_chapala] " +
                 "WHERE fecha=@fecha";
             SqlCommand command = new SqlCommand(query, conexion);
-            string formatedDate = DateConversion.ConvertDateTimeToSqlDate(fecha);
+            string formatedDate = DateUtils.ConvertDateTimeToSqlDate(fecha);
             command.Parameters.AddWithValue("@fecha", formatedDate);
 
             using (SqlDataReader reader = command.ExecuteReader())
@@ -134,7 +134,7 @@ namespace Cuenca_conagua.src.BaseDatos
             InitConnection();
             bool insertado = false;
 
-            string formatedDate = DateConversion.ConvertDateTimeToSqlDate(alm.Fecha);
+            string formatedDate = DateUtils.ConvertDateTimeToSqlDate(alm.Fecha);
 
             string sql = string.Format("INSERT INTO " +
                 "almacenamiento_historico_chapala VALUES('{0}', {1})",
