@@ -306,7 +306,10 @@
     <Compile Include="src\Entidades\VolumenPi.cs" />
     <Compile Include="src\Entidades\VolumenPiAsignado.cs" />
     <Compile Include="src\Entidades\VolumenPiAutorizado.cs" />
+    <Compile Include="src\Entidades\VolumenPiAutorizadoOld.cs" />
+    <Compile Include="src\Entidades\VolumenPiOld.cs" />
     <Compile Include="src\Entidades\VolumenPiUtilizado.cs" />
+    <Compile Include="src\Entidades\VolumenPiUtilizadoOld.cs" />
     <Compile Include="src\Utilidades\DateUtils.cs" />
     <Compile Include="src\Utilidades\ExcelFileIO.cs" />
     <Compile Include="src\Utilidades\FileManager.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cuenca_conagua.src.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -307,24 +308,9 @@ namespace Cuenca_conagua.src.Entidades
         /// </returns>
         public VolumenPiAsignado ToVolumenPiAsignado()
         {
-            VolumenPiAsignado v = new VolumenPiAsignado();
-            v.Ciclo = ciclo;
-            v.PiAlzate = PiAlzate;
-            v.PiRamirez = piRamirez;
-            v.PiTepetitlan = piTepetitlan;
-            v.PiTepuxtepec = piTepuxtepec;
-            v.PiSolis = piSolis;
-            v.PiBegona = piBegona;
-            v.PiQueretaro = piQueretaro;
-            v.PiPericos = piPericos;
-            v.PiAdjuntas = piAdjuntas;
-            v.PiAngulo = piAngulo;
-            v.PiCorrales = piCorrales;
-            v.PiYurecuaro = piYurecuaro;
-            v.PiDuero = piDuero;
-            v.PiZula = piZula;
-            v.PiChapala = piChapala;
-            return v;
+            VolumenPiAsignado vol = new VolumenPiAsignado();
+            SetVolumenPiAttributes(vol);
+            return vol;
         }
 
         /// <summary>
@@ -335,24 +321,9 @@ namespace Cuenca_conagua.src.Entidades
         /// </returns>
         public VolumenPiAutorizado ToVolumenPiAutorizado()
         {
-            VolumenPiAutorizado v = new VolumenPiAutorizado();
-            v.Ciclo = ciclo;
-            v.PiAlzate = PiAlzate;
-            v.PiRamirez = piRamirez;
-            v.PiTepetitlan = piTepetitlan;
-            v.PiTepuxtepec = piTepuxtepec;
-            v.PiSolis = piSolis;
-            v.PiBegona = piBegona;
-            v.PiQueretaro = piQueretaro;
-            v.PiPericos = piPericos;
-            v.PiAdjuntas = piAdjuntas;
-            v.PiAngulo = piAngulo;
-            v.PiCorrales = piCorrales;
-            v.PiYurecuaro = piYurecuaro;
-            v.PiDuero = piDuero;
-            v.PiZula = piZula;
-            v.PiChapala = piChapala;
-            return v;
+            VolumenPiAutorizado vol = new VolumenPiAutorizado();
+            SetVolumenPiAttributes(vol);
+            return vol;
         }
 
         /// <summary>
@@ -363,84 +334,29 @@ namespace Cuenca_conagua.src.Entidades
         /// </returns>
         public VolumenPiUtilizado ToVolumenPiUtilizado()
         {
-            VolumenPiUtilizado v = new VolumenPiUtilizado();
-            v.Ciclo = ciclo;
-            v.PiAlzate = PiAlzate;
-            v.PiRamirez = piRamirez;
-            v.PiTepetitlan = piTepetitlan;
-            v.PiTepuxtepec = piTepuxtepec;
-            v.PiSolis = piSolis;
-            v.PiBegona = piBegona;
-            v.PiQueretaro = piQueretaro;
-            v.PiPericos = piPericos;
-            v.PiAdjuntas = piAdjuntas;
-            v.PiAngulo = piAngulo;
-            v.PiCorrales = piCorrales;
-            v.PiYurecuaro = piYurecuaro;
-            v.PiDuero = piDuero;
-            v.PiZula = piZula;
-            v.PiChapala = piChapala;
-            return v;
+            VolumenPiUtilizado vol = new VolumenPiUtilizado();
+            SetVolumenPiAttributes(vol);
+            return vol;
         }
 
-        /// <summary>
-        /// Convierte una lista de VolumenPi a una lista de VolumenPiAsignado
-        /// </summary>
-        /// <param name="listGenerica">
-        /// Es la lista de VolumenPi a convertir.
-        /// </param>
-        /// <returns>
-        /// La lista de VolumenPiAsignado.
-        /// </returns>
-        public static List<VolumenPiAsignado> ToVolumenPiAsignadoList(
-            List<VolumenPi> listGenerica)
+        private void SetVolumenPiAttributes(VolumenPi vol)
         {
-            List<VolumenPiAsignado> volPiAs = new List<VolumenPiAsignado>();
-            foreach (VolumenPi vpi in listGenerica)
-            {
-                volPiAs.Add(vpi.ToVolumenPiAsignado());
-            }
-            return volPiAs;
-        }
-
-        /// <summary>
-        /// Convierte una lista de VolumenPi a una lista de VolumenPiAutorizado
-        /// </summary>
-        /// <param name="listGenerica">
-        /// Es la lista de VolumenPi a convertir.
-        /// </param>
-        /// <returns>
-        /// La lista de VolumenPiAutorizado.
-        /// </returns>
-        public static List<VolumenPiAutorizado> ToVolumenPiAutorizadoList(
-            List<VolumenPi> listGenerica)
-        {
-            List<VolumenPiAutorizado> volPiAu = new List<VolumenPiAutorizado>();
-            foreach (VolumenPi vpi in listGenerica)
-            {
-                volPiAu.Add(vpi.ToVolumenPiAutorizado());
-            }
-            return volPiAu;
-        }
-
-        /// <summary>
-        /// Convierte una lista de VolumenPi a una lista de VolumenPiUtilizado
-        /// </summary>
-        /// <param name="listGenerica">
-        /// Es la lista de VolumenPi a convertir.
-        /// </param>
-        /// <returns>
-        /// La lista de VolumenPiUtilizado.
-        /// </returns>
-        public static List<VolumenPiUtilizado> ToVolumenPiUtilizadoList(
-            List<VolumenPi> listGenerica)
-        {
-            List<VolumenPiUtilizado> volPiUt = new List<VolumenPiUtilizado>();
-            foreach (VolumenPi vpi in listGenerica)
-            {
-                volPiUt.Add(vpi.ToVolumenPiUtilizado());
-            }
-            return volPiUt;
+            vol.Ciclo = ciclo;
+            vol.PiAlzate = PiAlzate;
+            vol.PiRamirez = piRamirez;
+            vol.PiTepetitlan = piTepetitlan;
+            vol.PiTepuxtepec = piTepuxtepec;
+            vol.PiSolis = piSolis;
+            vol.PiBegona = piBegona;
+            vol.PiQueretaro = piQueretaro;
+            vol.PiPericos = piPericos;
+            vol.PiAdjuntas = piAdjuntas;
+            vol.PiAngulo = piAngulo;
+            vol.PiCorrales = piCorrales;
+            vol.PiYurecuaro = piYurecuaro;
+            vol.PiDuero = piDuero;
+            vol.PiZula = piZula;
+            vol.PiChapala = piChapala;
         }
 
         /// <summary>
@@ -486,11 +402,11 @@ namespace Cuenca_conagua.src.Entidades
         /// </returns>
         public int CompareTo(VolumenPi other)
         {
-            if (ciclo.StartsWith("9") && !other.ciclo.StartsWith("9"))
+            if (DateUtils.AnioMenorAl2000(ciclo) && !DateUtils.AnioMenorAl2000(other.ciclo))
             {
                 return -1;
             }
-            else if (!ciclo.StartsWith("9") && other.ciclo.StartsWith("9"))
+            else if (!DateUtils.AnioMenorAl2000(ciclo) && DateUtils.AnioMenorAl2000(other.ciclo))
             {
                 return 1;
             }

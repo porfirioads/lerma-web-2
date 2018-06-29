@@ -266,22 +266,22 @@ namespace Cuenca_conagua.pages
         /// </param>
         protected void IngresarVolumenesBD(string nombreArchivo)
         {
-            List<VolumenDrAsignado> volsDrAsignados = ExcelFileIO
+            List<VolumenDr> volsDrAsignados = ExcelFileIO
                 .ReadVolumenDrAsignado(nombreArchivo);
-            List<VolumenDrAutorizado> volsDrAutorizados = ExcelFileIO
+            List<VolumenDr> volsDrAutorizados = ExcelFileIO
                 .ReadVolumenDrAutorizado(nombreArchivo);
-            List<VolumenDrUtilizado> volsDrUtilizados = ExcelFileIO
+            List<VolumenDr> volsDrUtilizados = ExcelFileIO
                 .ReadVolumenDrUtilizado(nombreArchivo);
-            List<VolumenPiAsignado> volsPiAsignados = ExcelFileIO
+            List<VolumenPi> volsPiAsignados = ExcelFileIO
                 .ReadVolumenPiAsignado(nombreArchivo);
-            List<VolumenPiAutorizado> volsPiAutorizados = ExcelFileIO
+            List<VolumenPi> volsPiAutorizados = ExcelFileIO
                 .ReadVolumenPiAutorizado(nombreArchivo);
-            List<VolumenPiUtilizado> volsPiUtilizados = ExcelFileIO
+            List<VolumenPi> volsPiUtilizados = ExcelFileIO
                 .ReadVolumenPiUtilizado(nombreArchivo);
 
-            foreach (VolumenDrAsignado volAs in volsDrAsignados)
+            foreach (VolumenDr volAs in volsDrAsignados)
             {
-                if (volAs.Save())
+                if (volAs.ToVolumenDrAsignado().Save())
                 {
                     Logger.AddToLog("Volumen DR Asignado: " + volAs.Ciclo + " guardado", true);
                 }
@@ -291,9 +291,9 @@ namespace Cuenca_conagua.pages
                 }
             }
 
-            foreach (VolumenDrAutorizado volAu in volsDrAutorizados)
+            foreach (VolumenDr volAu in volsDrAutorizados)
             {
-                if (volAu.Save())
+                if (volAu.ToVolumenDrAsignado().Save())
                 {
                     Logger.AddToLog("Volumen DR Autorizado: " + volAu.Ciclo + " guardado", true);
                 }
@@ -303,9 +303,9 @@ namespace Cuenca_conagua.pages
                 }
             }
 
-            foreach (VolumenDrUtilizado volUt in volsDrUtilizados)
+            foreach (VolumenDr volUt in volsDrUtilizados)
             {
-                if (volUt.Save())
+                if (volUt.ToVolumenDrAsignado().Save())
                 {
                     Logger.AddToLog("Volumen DR Utilizado: " + volUt.Ciclo + " guardado", true);
                 }
@@ -315,9 +315,9 @@ namespace Cuenca_conagua.pages
                 }
             }
 
-            foreach (VolumenPiAsignado volAs in volsPiAsignados)
+            foreach (VolumenPi volAs in volsPiAsignados)
             {
-                if (volAs.Save())
+                if (volAs.ToVolumenPiAsignado().Save())
                 {
                     Logger.AddToLog("Volumen PI asignado: " + volAs.Ciclo + " guardado", true);
                 }
@@ -327,9 +327,9 @@ namespace Cuenca_conagua.pages
                 }
             }
 
-            foreach (VolumenPiAutorizado volAu in volsPiAutorizados)
+            foreach (VolumenPi volAu in volsPiAutorizados)
             {
-                if (volAu.Save())
+                if (volAu.ToVolumenPiAutorizado().Save())
                 {
                     Logger.AddToLog("Volumen PI autorizado: " + volAu.Ciclo + " guardado", true);
                 }
@@ -339,9 +339,9 @@ namespace Cuenca_conagua.pages
                 }
             }
 
-            foreach (VolumenPiUtilizado volUt in volsPiUtilizados)
+            foreach (VolumenPi volUt in volsPiUtilizados)
             {
-                if (volUt.Save())
+                if (volUt.ToVolumenPiUtilizado().Save())
                 {
                     Logger.AddToLog("Volumen PI utilizado: " + volUt.Ciclo + " guardado", true);
                 }

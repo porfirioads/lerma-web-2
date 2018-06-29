@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Web;
 using Excel;
-using Cuenca_conagua.src.Utilidades;
 using Cuenca_conagua.src.Entidades;
 using System.Globalization;
 
@@ -57,12 +54,6 @@ namespace Cuenca_conagua.src.Utilidades
         /// Lee los registros de la precipitacion media del archivo de excel
         /// correspondiente.
         /// </summary>
-        /// <param name="excelFilename">
-        /// Es el nombre del archivo de excel donde vienen los datos.
-        /// </param>
-        /// <returns>
-        /// Una lista con los registros de la precipitacion media.
-        /// </returns>
         public static List<PrecipitacionMedia> ReadPrecipitacionMedia(string excelFilename)
         {
             List<PrecipitacionMedia> precipitacionesMedias = new List<PrecipitacionMedia>();
@@ -102,12 +93,6 @@ namespace Cuenca_conagua.src.Utilidades
         /// Lee los registros del escurrimiento anual del archivo de excel
         /// correspondiente.
         /// </summary>
-        /// <param name="excelFilename">
-        /// Es el nombre del archivo de excel donde vienen los datos.
-        /// </param>
-        /// <returns>
-        /// Una lista con los registros del escurrimiento anual.
-        /// </returns>
         public static List<EscurrimientoAnual> ReadEscurrimientoAnual(
             string excelFilename)
         {
@@ -170,14 +155,8 @@ namespace Cuenca_conagua.src.Utilidades
         /// Lee los registros de almacenamientos históricos de chapala del 
         /// archivo de excel correspondiente.
         /// </summary>
-        /// <param name="nombreArchivo">
-        /// Es el nombre del archivo de excel donde vienen los datos.
-        /// </param>
-        /// <returns>
-        /// Una lista con los registros de almacenamientos históricos de 
-        /// chapala.
-        /// </returns>
-        public static List<AlmacenamientoHistoricoChapala> ReadAlmacenamientoHistoricoChapala(string nombreArchivo)
+        public static List<AlmacenamientoHistoricoChapala> ReadAlmacenamientoHistoricoChapala(
+            string nombreArchivo)
         {
             List<AlmacenamientoHistoricoChapala> almacenamientos =
                 new List<AlmacenamientoHistoricoChapala>();
@@ -217,12 +196,6 @@ namespace Cuenca_conagua.src.Utilidades
         /// Lee los registros de almacenamientos principales del archivo de 
         /// excel correspondiente.
         /// </summary>
-        /// <param name="nombreArchivo">
-        /// Es el nombre del archivo de excel donde vienen los datos.
-        /// </param>
-        /// <returns>
-        /// Una lista con los registros de almacenamientos principales.
-        /// </returns>
         public static List<AlmacenamientoPrincipal> ReadAlmacenamientoPrincipal(string nombreArchivo)
         {
             List<AlmacenamientoPrincipal> almacenamientos =
@@ -270,15 +243,6 @@ namespace Cuenca_conagua.src.Utilidades
         /// Lee los registros de algun tipo de volumen DR del archivo de excel
         /// correspondiente.
         /// </summary>
-        /// <param name="excelFilename">
-        /// Es el nombre del archivo de excel donde vienen los datos.
-        /// </param>
-        /// <param name="sheetIndex">
-        /// Es el indice de la hoja de donde se van a extraer los datos.
-        /// </param>
-        /// <returns>
-        /// Una lista con los registros del volumen.
-        /// </returns>
         private static List<VolumenDr> ReadVolumenDr(
             string excelFilename, int sheetIndex)
         {
@@ -317,22 +281,10 @@ namespace Cuenca_conagua.src.Utilidades
         /// Lee los registros del volumen DR autorizado del archivo de excel
         /// correspondiente.
         /// </summary>
-        /// <param name="excelFilename">
-        /// Es el nombre del archivo de excel donde vienen los datos.
-        /// </param>
-        /// <returns>
-        /// Una lista con los registros del volumen autorizado.
-        /// </returns>
-        public static List<VolumenDrAutorizado> ReadVolumenDrAutorizado(
+        public static List<VolumenDr> ReadVolumenDrAutorizado(
             string excelFilename)
         {
-            List<VolumenDr> volumenes = ReadVolumenDr(excelFilename, 0);
-            List<VolumenDrAutorizado> volumenesAutorizados = new List<VolumenDrAutorizado>();
-            foreach (VolumenDr v in volumenes)
-            {
-                volumenesAutorizados.Add(v.ToVolumenDrAutorizado());
-            }
-            return volumenesAutorizados;
+            return ReadVolumenDr(excelFilename, 0);
         }
 
         /// <summary>
@@ -345,16 +297,10 @@ namespace Cuenca_conagua.src.Utilidades
         /// <returns>
         /// Una lista con los registros del volumen asignado.
         /// </returns>
-        public static List<VolumenDrAsignado> ReadVolumenDrAsignado(
+        public static List<VolumenDr> ReadVolumenDrAsignado(
             string excelFilename)
         {
-            List<VolumenDr> volumenes = ReadVolumenDr(excelFilename, 1);
-            List<VolumenDrAsignado> volumenesAsignados = new List<VolumenDrAsignado>();
-            foreach (VolumenDr v in volumenes)
-            {
-                volumenesAsignados.Add(v.ToVolumenDrAsignado());
-            }
-            return volumenesAsignados;
+            return ReadVolumenDr(excelFilename, 1);
         }
 
         /// <summary>
@@ -367,16 +313,10 @@ namespace Cuenca_conagua.src.Utilidades
         /// <returns>
         /// Una lista con los registros del volumen utilizado.
         /// </returns>
-        public static List<VolumenDrUtilizado> ReadVolumenDrUtilizado(
+        public static List<VolumenDr> ReadVolumenDrUtilizado(
             string excelFilename)
         {
-            List<VolumenDr> volumenes = ReadVolumenDr(excelFilename, 2);
-            List<VolumenDrUtilizado> volumenesUtilizados = new List<VolumenDrUtilizado>();
-            foreach (VolumenDr v in volumenes)
-            {
-                volumenesUtilizados.Add(v.ToVolumenDrUtilizado());
-            }
-            return volumenesUtilizados;
+            return ReadVolumenDr(excelFilename, 2);
         }
 
         /// <summary>
@@ -442,16 +382,10 @@ namespace Cuenca_conagua.src.Utilidades
         /// <returns>
         /// Una lista con los registros del volumen autorizado.
         /// </returns>
-        public static List<VolumenPiAutorizado> ReadVolumenPiAutorizado(
+        public static List<VolumenPi> ReadVolumenPiAutorizado(
             string excelFilename)
         {
-            List<VolumenPi> volumenes = ReadVolumenPi(excelFilename, 3);
-            List<VolumenPiAutorizado> volumenesAutorizados = new List<VolumenPiAutorizado>();
-            foreach (VolumenPi v in volumenes)
-            {
-                volumenesAutorizados.Add(v.ToVolumenPiAutorizado());
-            }
-            return volumenesAutorizados;
+            return ReadVolumenPi(excelFilename, 3);
         }
 
         /// <summary>
@@ -464,17 +398,10 @@ namespace Cuenca_conagua.src.Utilidades
         /// <returns>
         /// Una lista con los registros del volumen asignado.
         /// </returns>
-        public static List<VolumenPiAsignado> ReadVolumenPiAsignado(
+        public static List<VolumenPi> ReadVolumenPiAsignado(
             string excelFilename)
         {
-            List<VolumenPi> volumenes = ReadVolumenPi(excelFilename, 4);
-            List<VolumenPiAsignado> volumenesAsignados = new List<VolumenPiAsignado>();
-            foreach (VolumenPi v in volumenes)
-            {
-                volumenesAsignados.Add(v.ToVolumenPiAsignado());
-                Logger.AddToLog(v.ToJSON(), true);
-            }
-            return volumenesAsignados;
+            return ReadVolumenPi(excelFilename, 4);
         }
 
         /// <summary>
@@ -487,16 +414,10 @@ namespace Cuenca_conagua.src.Utilidades
         /// <returns>
         /// Una lista con los registros del volumen utilizado.
         /// </returns>
-        public static List<VolumenPiUtilizado> ReadVolumenPiUtilizado(
+        public static List<VolumenPi> ReadVolumenPiUtilizado(
             string excelFilename)
         {
-            List<VolumenPi> volumenes = ReadVolumenPi(excelFilename, 5);
-            List<VolumenPiUtilizado> volumenesUtilizados = new List<VolumenPiUtilizado>();
-            foreach (VolumenPi v in volumenes)
-            {
-                volumenesUtilizados.Add(v.ToVolumenPiUtilizado());
-            }
-            return volumenesUtilizados;
+            return ReadVolumenPi(excelFilename, 5);
         }
 
         /// <summary>

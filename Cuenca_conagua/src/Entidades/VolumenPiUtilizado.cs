@@ -21,10 +21,9 @@ namespace Cuenca_conagua.src.Entidades
         /// La instancia de la entidad o null si no se encontró un registro con
         /// el identificador dado.
         /// </returns>
-        public static VolumenPiUtilizado Find(string ciclo)
+        public static VolumenPi Find(string ciclo)
         {
-            VolumenPi v = ConexionBD.GetVolumenPi(ciclo, ConexionBD.VOL_PI_UTILIZADO);
-            return v == null ? null : v.ToVolumenPiUtilizado();
+            return ConexionBD.GetVolumenPi(ciclo, ConexionBD.VOL_PI_UTILIZADO);
         }
 
         /// <summary>
@@ -53,10 +52,9 @@ namespace Cuenca_conagua.src.Entidades
         /// <returns>
         /// La lista de las entidades.
         /// </returns>
-        public static List<VolumenPiUtilizado> All()
+        public static List<VolumenPi> All()
         {
-            return ToVolumenPiUtilizadoList(ConexionBD
-                .GetAllVolumenPi(ConexionBD.VOL_PI_UTILIZADO));
+            return ConexionBD.GetAllVolumenPi(ConexionBD.VOL_PI_UTILIZADO);
         }
 
     }

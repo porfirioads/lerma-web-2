@@ -43,17 +43,17 @@ namespace Cuenca_conagua.pages
 
             CargarVolumenesDr();
 
-            List<VolumenPiAsignado> volPiAsignados = VolumenPiAsignado.All();
+            List<VolumenPi> volPiAsignados = VolumenPiAsignado.All();
             volPiAsignados.Sort();
             CargarListEntidadJs(volPiAsignados.Cast<IJsonable>().ToList(),
                 "volPiAsignados", scrVolumenes, true);
 
-            List<VolumenPiAutorizado> volPiAutorizados = VolumenPiAutorizado.All();
+            List<VolumenPi> volPiAutorizados = VolumenPiAutorizado.All();
             volPiAutorizados.Sort();
             CargarListEntidadJs(volPiAutorizados.Cast<IJsonable>().ToList(),
                 "volPiAutorizados", scrVolumenes, true);
 
-            List<VolumenPiUtilizado> volPiUtilizados = VolumenPiUtilizado.All();
+            List<VolumenPi> volPiUtilizados = VolumenPiUtilizado.All();
             volPiUtilizados.Sort();
             CargarListEntidadJs(volPiUtilizados.Cast<IJsonable>().ToList(),
                 "volPiUtilizados", scrVolumenes, true);
@@ -68,42 +68,42 @@ namespace Cuenca_conagua.pages
         {
             List<VolumenDr> volDrAsignados = VolumenDrAsignado.All();
             volDrAsignados.Sort();
-            VolumenDr.filtrarVolumenesDr(volDrAsignados, "03-04", 
+            VolumenDr.FiltrarVolumenesDr(volDrAsignados, "03-04", 
                 VolumenDr.MAYORES);
             CargarListEntidadJs(volDrAsignados.Cast<IJsonable>().ToList(),
                 "volDrAsignadosActual", scrVolumenes, true);
 
             List<VolumenDr> volDrAsignadosOld = VolumenDrAsignado.All();
             volDrAsignadosOld.Sort();
-            VolumenDr.filtrarVolumenesDr(volDrAsignadosOld, "04-05", 
+            VolumenDr.FiltrarVolumenesDr(volDrAsignadosOld, "04-05", 
                 VolumenDr.MENORES);
             CargarListEntidadJs(volDrAsignadosOld.Cast<IJsonable>().ToList(),
                 "volDrAsignadosOld", scrVolumenes, true);
 
             List<VolumenDr> volDrAutorizados = VolumenDrAutorizado.All();
             volDrAutorizados.Sort();
-            VolumenDr.filtrarVolumenesDr(volDrAutorizados, "03-04", 
+            VolumenDr.FiltrarVolumenesDr(volDrAutorizados, "03-04", 
                 VolumenDr.MAYORES);
             CargarListEntidadJs(volDrAutorizados.Cast<IJsonable>().ToList(),
                 "volDrAutorizadosActual", scrVolumenes, true);
 
             List<VolumenDr> volDrAutorizadosOld = VolumenDrAutorizado.All();
             volDrAutorizadosOld.Sort();
-            VolumenDr.filtrarVolumenesDr(volDrAutorizadosOld, "04-05", 
+            VolumenDr.FiltrarVolumenesDr(volDrAutorizadosOld, "04-05", 
                 VolumenDr.MENORES);
             CargarListEntidadJs(volDrAutorizadosOld.Cast<IJsonable>().ToList(),
                 "volDrAutorizadosOld", scrVolumenes, true);
 
             List<VolumenDr> volDrUtilizados = VolumenDrUtilizado.All();
             volDrUtilizados.Sort();
-            VolumenDr.filtrarVolumenesDr(volDrUtilizados, "03-04",
+            VolumenDr.FiltrarVolumenesDr(volDrUtilizados, "03-04",
                 VolumenDr.MAYORES);
             CargarListEntidadJs(volDrUtilizados.Cast<IJsonable>().ToList(),
                 "volDrUtilizadosActual", scrVolumenes, true);
 
             List<VolumenDr> volDrUtilizadosOld = VolumenDrUtilizado.All();
             volDrUtilizadosOld.Sort();
-            VolumenDr.filtrarVolumenesDr(volDrUtilizadosOld, "04-05",
+            VolumenDr.FiltrarVolumenesDr(volDrUtilizadosOld, "04-05",
                 VolumenDr.MENORES);
             CargarListEntidadJs(volDrUtilizadosOld.Cast<IJsonable>().ToList(),
                 "volDrUtilizadosOld", scrVolumenes, true);

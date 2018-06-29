@@ -205,18 +205,9 @@ namespace Cuenca_conagua.src.Entidades
         /// </returns>
         public VolumenDrAsignado ToVolumenDrAsignado()
         {
-            VolumenDrAsignado v = new VolumenDrAsignado();
-            v.Ciclo = ciclo;
-            v.Dr033 = dr033;
-            v.Dr045 = dr045;
-            v.Dr011 = dr011;
-            v.Dr085 = dr085;
-            v.Dr087 = dr087;
-            v.Dr022 = dr022;
-            v.Dr061 = dr061;
-            v.Dr024 = dr024;
-            v.Dr013 = dr013;
-            return v;
+            VolumenDrAsignado vol = new VolumenDrAsignado();
+            SetVolumenDrAttributes(vol);
+            return vol;
         }
 
         /// <summary>
@@ -227,18 +218,9 @@ namespace Cuenca_conagua.src.Entidades
         /// </returns>
         public VolumenDrAutorizado ToVolumenDrAutorizado()
         {
-            VolumenDrAutorizado v = new VolumenDrAutorizado();
-            v.Ciclo = ciclo;
-            v.Dr033 = dr033;
-            v.Dr045 = dr045;
-            v.Dr011 = dr011;
-            v.Dr085 = dr085;
-            v.Dr087 = dr087;
-            v.Dr022 = dr022;
-            v.Dr061 = dr061;
-            v.Dr024 = dr024;
-            v.Dr013 = dr013;
-            return v;
+            VolumenDrAutorizado vol = new VolumenDrAutorizado();
+            SetVolumenDrAttributes(vol);
+            return vol;
         }
 
         /// <summary>
@@ -249,84 +231,29 @@ namespace Cuenca_conagua.src.Entidades
         /// </returns>
         public VolumenDrUtilizado ToVolumenDrUtilizado()
         {
-            VolumenDrUtilizado v = new VolumenDrUtilizado();
-            v.Ciclo = ciclo;
-            v.Dr033 = dr033;
-            v.Dr045 = dr045;
-            v.Dr011 = dr011;
-            v.Dr085 = dr085;
-            v.Dr087 = dr087;
-            v.Dr022 = dr022;
-            v.Dr061 = dr061;
-            v.Dr024 = dr024;
-            v.Dr013 = dr013;
-            return v;
+            VolumenDrUtilizado vol = new VolumenDrUtilizado();
+            SetVolumenDrAttributes(vol);
+            return vol;
         }
 
-        /// <summary>
-        /// Convierte una lista de VolumenDr a una lista de VolumenDrUtilizado
-        /// </summary>
-        /// <param name="listGenerica">
-        /// Es la lista de VolumenDr a convertir.
-        /// </param>
-        /// <returns>
-        /// La lista de VolumenDrUtilizado.
-        /// </returns>
-        public static List<VolumenDrUtilizado> ToVolumenDrUtilizadoList(
-            List<VolumenDr> listGenerica)
+        private void SetVolumenDrAttributes(VolumenDr vol)
         {
-            List<VolumenDrUtilizado> volDrUt = new List<VolumenDrUtilizado>();
-            foreach (VolumenDr vdr in listGenerica)
-            {
-                volDrUt.Add(vdr.ToVolumenDrUtilizado());
-            }
-            return volDrUt;
-        }
-
-        /// <summary>
-        /// Convierte una lista de VolumenDr a una lista de VolumenDrAutorizado
-        /// </summary>
-        /// <param name="listGenerica">
-        /// Es la lista de VolumenDr a convertir.
-        /// </param>
-        /// <returns>
-        /// La lista de VolumenDrAutorizado.
-        /// </returns>
-        public static List<VolumenDrAutorizado> ToVolumenDrAutorizadoList(
-            List<VolumenDr> listGenerica)
-        {
-            List<VolumenDrAutorizado> volDrAu = new List<VolumenDrAutorizado>();
-            foreach (VolumenDr vdr in listGenerica)
-            {
-                volDrAu.Add(vdr.ToVolumenDrAutorizado());
-            }
-            return volDrAu;
-        }
-
-        /// <summary>
-        /// Convierte una lista de VolumenDr a una lista de VolumenDrAsignado
-        /// </summary>
-        /// <param name="listGenerica">
-        /// Es la lista de VolumenDr a convertir.
-        /// </param>
-        /// <returns>
-        /// La lista de VolumenDrAsignado.
-        /// </returns>
-        public static List<VolumenDrAsignado> ToVolumenDrAsigndoList(
-            List<VolumenDr> listGenerica)
-        {
-            List<VolumenDrAsignado> volDrAs = new List<VolumenDrAsignado>();
-            foreach (VolumenDr vdr in listGenerica)
-            {
-                volDrAs.Add(vdr.ToVolumenDrAsignado());
-            }
-            return volDrAs;
+            vol.Ciclo = ciclo;
+            vol.Dr033 = dr033;
+            vol.Dr045 = dr045;
+            vol.Dr011 = dr011;
+            vol.Dr085 = dr085;
+            vol.Dr087 = dr087;
+            vol.Dr022 = dr022;
+            vol.Dr061 = dr061;
+            vol.Dr024 = dr024;
+            vol.Dr013 = dr013;
         }
 
         public const int MENORES = 100000;
         public const int MAYORES = 100001;
 
-        public static void filtrarVolumenesDr(
+        public static void FiltrarVolumenesDr(
             List<VolumenDr> volumenes, string ciclo, int comparador)
         {
             VolumenDr volComparador = new VolumenDr();
