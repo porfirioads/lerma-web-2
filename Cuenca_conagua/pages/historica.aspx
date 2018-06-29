@@ -143,16 +143,16 @@
 
             <select id="selTipoGraficaVol" class="form-control">
                 <option value="vol_dr_viejos">
-                    Volúmenes Distritos de Riego (anteriores a 2004)
+                    Volúmenes Distritos de Riego (Acuerdo 1991)
                 </option>
                 <option value="vol_pi_viejos">
-                    Volúmenes Pequeña Irrigación (anteriores a 2004)
+                    Volúmenes Pequeña Irrigación (Acuerdo 1991)
                 </option>
                 <option value="vol_dr_actual">
-                    Volúmenes Distritos de Riego (a partir de 2004)
+                    Volúmenes Distritos de Riego (Convenio 2004)
                 </option>
                 <option value="vol_pi_actual">
-                    Volúmenes Pequeña Irrigación (a partir de 2004)
+                    Volúmenes Pequeña Irrigación (Convenio 2004)
                 </option>
                 <option value="vol_gt">
                     Volumen para Generación Tepuxtepec
