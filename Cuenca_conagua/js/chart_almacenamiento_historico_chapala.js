@@ -39,7 +39,7 @@ $(document).ready(function () {
             },
             options: getChartOptions([
                 'Evolución del Lago de Chapala'
-            ], "Almacenamiento", "Fecha", "hm3", false, 0, 100)
+            ], "Almacenamiento (hm³)", "Fecha", "hm³", false, 0, 100)
         });
     }
 

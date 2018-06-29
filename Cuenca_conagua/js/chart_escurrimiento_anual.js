@@ -98,7 +98,7 @@ $(document).ready(function () {
                 datasets: datasets
             },
             options: getChartOptions("Escurrimiento Anual",
-                "Escurrimiento (hm3)", "Ciclo", "hm3")
+                "Escurrimiento (hm³)", "Ciclo", "hm³")
         });
     }
 

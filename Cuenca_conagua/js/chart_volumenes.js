@@ -198,7 +198,7 @@ $(document).ready(function () {
                 datasets: datasets
             },
             options: getChartOptions(volPiLabels[selPi.val()],
-                "Volumen (hm3)", "Ciclo", "hm3")
+                "Volumen (hm³)", "Ciclo", "hm³")
         });
 
         updateTablaPi();
@@ -222,7 +222,7 @@ $(document).ready(function () {
                 datasets: datasets
             },
             options: getChartOptions(volDrLabels[selDr.val()],
-                "Volumen (hm3)", "Ciclo", "hm3")
+                "Volumen (hm³)", "Ciclo", "hm³")
         });
         updateTablaDr();
     }

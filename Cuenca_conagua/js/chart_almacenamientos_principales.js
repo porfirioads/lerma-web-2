@@ -97,7 +97,7 @@ $(document).ready(function () {
             options: getChartOptions([
                 'Almacenamiento al 1° de noviembre de ' + anio,
                 ' de las presas principales'
-            ], "Volumen de almacenamiento", "Presa", "hm3", false)
+            ], "Almacenamiento (hm³)", "Presa", "hm³", false)
         });
 
         //console.log('crearGraficaAlmAnio() end');
