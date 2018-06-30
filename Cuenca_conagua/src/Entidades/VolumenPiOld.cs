@@ -1,13 +1,10 @@
 ﻿using Cuenca_conagua.src.Utilidades;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Web;
 
 namespace Cuenca_conagua.src.Entidades
 {
-    public class VolumenPiOld
+    public class VolumenPiOld: IComparable<VolumenPiOld>, IJsonable
     {
         private string ciclo;
         private double piAltoLerma;
@@ -129,7 +126,7 @@ namespace Cuenca_conagua.src.Entidades
 
         public string ToJSON()
         {
-        StringBuilder json = new StringBuilder();
+            StringBuilder json = new StringBuilder();
             json.Append("{\n    ");
             json.Append("ciclo: ").Append("'").Append(ciclo).Append("'").Append(",\n    ");
             json.Append("piAltoLerma: ").Append(piAltoLerma).Append(",\n    ");

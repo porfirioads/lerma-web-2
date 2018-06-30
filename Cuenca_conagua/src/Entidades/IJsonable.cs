@@ -8,6 +8,12 @@ namespace Cuenca_conagua.src.Entidades
 {
     interface IJsonable
     {
+        /// <summary>
+        /// Genera la cadena de la representación JSON del objeto.
+        /// </summary>
+        /// <returns>
+        /// JSON del objeto.
+        /// </returns>
         string ToJSON();
     }
 }
