@@ -501,9 +501,13 @@ table.table-padded th td {
     vertical-align: middle;
 }
 
-.table-logo-header .header-image {
-    width: 100px;
-}
+    .table-logo-header .header-image {
+        width: 300px;
+    }
+    
+    .table-logo-header .header-image img {
+        width: 300px;
+    }
 
     .table-logo-header .header-title h1 {
         color: #002060 !important;
