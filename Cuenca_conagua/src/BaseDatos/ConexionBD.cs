@@ -21,14 +21,17 @@ namespace Cuenca_conagua.src.BaseDatos
         /// Constante que indica el volumen asignado DR.
         /// </summary>
         public const int VOL_DR_ASIGNADO = 0;
+
         /// <summary>
         /// Constante que indica el volumen autorizado DR.
         /// </summary>
         public const int VOL_DR_AUTORIZADO = 1;
+
         /// <summary>
         /// Constante que indica el volumen utilizado DR.
         /// </summary>
         public const int VOL_DR_UTILIZADO = 2;
+
         /// <summary>
         /// Constante que indica el volumen asignado PI.
         /// </summary>
@@ -38,6 +41,7 @@ namespace Cuenca_conagua.src.BaseDatos
         /// Constante que indica el volumen autorizado PI.
         /// </summary>
         public const int VOL_PI_AUTORIZADO = 4;
+
         /// <summary>
         /// Constante que indica el volumen asignado PI.
         /// </summary>
@@ -47,6 +51,7 @@ namespace Cuenca_conagua.src.BaseDatos
         /// Es la cadena de conexion con la BD.
         /// </summary>
         private static string connectionString;
+
         /// <summary>
         /// Es el objeto de conexion con la BD.
         /// </summary>
@@ -610,22 +615,22 @@ namespace Cuenca_conagua.src.BaseDatos
         /// El nombre de la tabla correspondiente o null, si no existe una
         /// tabla asociada al tipo dado.
         /// </returns>
-        private static string GetNombreTablaVolumen(int tipo)
+        private static string GetNombreTablaVolumen(int tipo, string sufijo="")
         {
             switch (tipo)
             {
                 case VOL_DR_ASIGNADO:
-                    return "volumen_dr_asignado";
+                    return "volumen_dr_asignado" + sufijo;
                 case VOL_DR_AUTORIZADO:
-                    return "volumen_dr_autorizado";
+                    return "volumen_dr_autorizado" + sufijo;
                 case VOL_DR_UTILIZADO:
-                    return "volumen_dr_utilizado";
+                    return "volumen_dr_utilizado" + sufijo;
                 case VOL_PI_ASIGNADO:
-                    return "volumen_pi_asignado";
+                    return "volumen_pi_asignado" + sufijo;
                 case VOL_PI_AUTORIZADO:
-                    return "volumen_pi_autorizado";
+                    return "volumen_pi_autorizado" + sufijo;
                 case VOL_PI_UTILIZADO:
-                    return "volumen_pi_utilizado";
+                    return "volumen_pi_utilizado" + sufijo;
                 default: return null;
             }
         }
@@ -975,6 +980,7 @@ namespace Cuenca_conagua.src.BaseDatos
         public static LluviaAnualEstacion GetLluviaAnualEstacion(string ciclo)
         {
             InitConnection();
+
             string query = "SELECT * FROM [lluvia_ae] WHERE ciclo=@ciclo";
             SqlCommand command = new SqlCommand(query, conexion);
             command.Parameters.AddWithValue("@ciclo", ciclo);
@@ -1033,6 +1039,133 @@ namespace Cuenca_conagua.src.BaseDatos
             lae.LaeZamora = double.Parse(reader.GetValue(24).ToString());
             lae.LaeQueretaroObs = double.Parse(reader.GetValue(25).ToString());
             return lae;
+        }
+
+        /// <summary>
+        /// Inserta un registro de volumen PI old.
+        /// </summary>
+        /// <param name="vol">
+        /// Instancia del volumen a ingresar
+        /// </param>
+        /// <param name="tipo">
+        /// Tipo de volumen PI old a insertar: autorizado o utilizado.
+        /// </param>
+        /// <returns>
+        /// true si la inserción se realizó de forma correcta o false en caso 
+        /// contrario.
+        /// </returns>
+        public static bool InsertarVolumenPiOld(VolumenPiOld vol, int tipo)
+        {
+            InitConnection();
+            bool insertado = false;
+            string nombreTabla = GetNombreTablaVolumen(tipo, "_old");
+            if (nombreTabla == null) return false;
+
+            string sql = string.Format("INSERT INTO {0} VALUES('{1}', {2}, "
+                + "{3}, {4}, {5}, {6})", nombreTabla, vol.Ciclo, 
+                vol.PiAltoLerma, vol.PiRioQueretaro, vol.PiBajio, 
+                vol.PiAnguloDuero, vol.PiBajoLerma);
+
+            SqlCommand cmd = new SqlCommand(sql, conexion);
+            cmd.CommandType = CommandType.Text;
+
+            if (GetVolumenPiOld(vol.Ciclo, tipo) == null)
+            {
+                try
+                {
+                    insertado = cmd.ExecuteNonQuery() > 0;
+                }
+                catch (Exception ex)
+                {
+                    Logger.AddToLog(ex.Message, true);
+                }
+            }
+
+            return insertado;
+        }
+
+        /// <summary>
+        /// Lee un volumen pi old a partir de un reader sql.
+        /// </summary>
+        private static VolumenPiOld ReadVolumenPiOldFromReader(SqlDataReader reader) {
+            VolumenPiOld vol = new VolumenPiOld();
+
+            vol.Ciclo= reader.GetString(0);
+            vol.PiAltoLerma = double.Parse(reader.GetValue(1).ToString());
+            vol.PiRioQueretaro = double.Parse(reader.GetValue(2).ToString());
+            vol.PiBajio = double.Parse(reader.GetValue(3).ToString());
+            vol.PiAnguloDuero = double.Parse(reader.GetValue(4).ToString());
+            vol.PiBajoLerma = double.Parse(reader.GetValue(5).ToString());
+
+            return vol;
+        }
+
+        /// <summary>
+        /// Obtiene el registro del volumen PI old para el ciclo especificado.
+        /// </summary>
+        /// <param name="ciclo">
+        /// Ciclo que identifica al volumen.
+        /// </param>
+        /// <param name="tipo">
+        /// Tipo de volumen PI old a buscar: autorizado o utilizado.
+        /// </param>
+        /// <returns>
+        /// Instancia del volumen buscado o null si no se encontró.
+        /// </returns>
+        public static VolumenPiOld GetVolumenPiOld(string ciclo, int tipo)
+        {
+            InitConnection();
+
+            string nombreTabla = GetNombreTablaVolumen(tipo, "_old");
+            string query = "SELECT * FROM [" + tipo + "] WHERE ciclo=@ciclo";
+            SqlCommand command = new SqlCommand(query, conexion);
+            command.Parameters.AddWithValue("@ciclo", ciclo);
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                VolumenPiOld vol = null;
+
+                if (reader.Read())
+                {
+                    vol = ReadVolumenPiOldFromReader(reader);
+                }
+
+                reader.Close();
+                return vol;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene una lista de los volúmenes PI old.
+        /// </summary>
+        /// <param name="tipo">
+        /// Tipo de volúmenes PI old a obtener: autorizados o utilzados.
+        /// </param>
+        /// <returns>
+        /// Lista con los volúmenes encontrados.
+        /// </returns>
+        public static List<VolumenPiOld> GetAllVolumenPiOld(int tipo)
+        {
+            InitConnection();
+
+            string nombreTabla = GetNombreTablaVolumen(tipo, "_old");
+            string query = "SELECT * FROM [" + tipo + "]";
+            SqlCommand command = new SqlCommand(query, conexion);
+            List<VolumenPiOld> vols = new List<VolumenPiOld>();
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                VolumenPiOld vol = null;
+
+                while (reader.Read())
+                {
+                    vol = ReadVolumenPiOldFromReader(reader);
+                    vols.Add(vol);
+                }
+
+                reader.Close();
+                return vols;
+            }
         }
     }
 }

@@ -215,11 +215,6 @@ namespace Cuenca_conagua.pages
 
             foreach (PrecipitacionMedia pm in precipitaciones)
             {
-                Logger.AddToLog("Precipitación: " + pm.Ciclo + ", "
-                    + pm.Nov + ", " + pm.Dic + ", " + pm.Ene + ", "
-                     + pm.Feb + ", " + pm.Mar + ", " + pm.Abr + ", "
-                      + pm.May + ", " + pm.Jun + ", " + pm.Jul + ", "
-                       + pm.Ago + ", " + pm.Sep + ", " + pm.Oct, true);
                 if (pm.Save())
                 {
                     Logger.AddToLog("Precipitación: " + pm.Ciclo + " agregado.", true);
@@ -242,6 +237,7 @@ namespace Cuenca_conagua.pages
         {
             List<EscurrimientoAnual> escurrimientos
                     = ExcelFileIO.ReadEscurrimientoAnual(nombreArchivo);
+
             foreach (EscurrimientoAnual ea in escurrimientos)
             {
                 if (ea.Save())
@@ -266,30 +262,8 @@ namespace Cuenca_conagua.pages
         /// </param>
         protected void IngresarVolumenesBD(string nombreArchivo)
         {
-            List<VolumenDr> volsDrAsignados = ExcelFileIO
-                .ReadVolumenDrAsignado(nombreArchivo);
             List<VolumenDr> volsDrAutorizados = ExcelFileIO
                 .ReadVolumenDrAutorizado(nombreArchivo);
-            List<VolumenDr> volsDrUtilizados = ExcelFileIO
-                .ReadVolumenDrUtilizado(nombreArchivo);
-            List<VolumenPi> volsPiAsignados = ExcelFileIO
-                .ReadVolumenPiAsignado(nombreArchivo);
-            List<VolumenPi> volsPiAutorizados = ExcelFileIO
-                .ReadVolumenPiAutorizado(nombreArchivo);
-            List<VolumenPi> volsPiUtilizados = ExcelFileIO
-                .ReadVolumenPiUtilizado(nombreArchivo);
-
-            foreach (VolumenDr volAs in volsDrAsignados)
-            {
-                if (volAs.ToVolumenDrAsignado().Save())
-                {
-                    Logger.AddToLog("Volumen DR Asignado: " + volAs.Ciclo + " guardado", true);
-                }
-                else
-                {
-                    Logger.AddToLog("Volumen DR Asignado: " + volAs.Ciclo + " no guardado", true);
-                }
-            }
 
             foreach (VolumenDr volAu in volsDrAutorizados)
             {
@@ -303,6 +277,24 @@ namespace Cuenca_conagua.pages
                 }
             }
 
+            List<VolumenDr> volsDrAsignados = ExcelFileIO
+                .ReadVolumenDrAsignado(nombreArchivo);
+
+            foreach (VolumenDr volAs in volsDrAsignados)
+            {
+                if (volAs.ToVolumenDrAsignado().Save())
+                {
+                    Logger.AddToLog("Volumen DR Asignado: " + volAs.Ciclo + " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen DR Asignado: " + volAs.Ciclo + " no guardado", true);
+                }
+            }
+
+            List<VolumenDr> volsDrUtilizados = ExcelFileIO
+                .ReadVolumenDrUtilizado(nombreArchivo);
+
             foreach (VolumenDr volUt in volsDrUtilizados)
             {
                 if (volUt.ToVolumenDrAsignado().Save())
@@ -315,17 +307,8 @@ namespace Cuenca_conagua.pages
                 }
             }
 
-            foreach (VolumenPi volAs in volsPiAsignados)
-            {
-                if (volAs.ToVolumenPiAsignado().Save())
-                {
-                    Logger.AddToLog("Volumen PI asignado: " + volAs.Ciclo + " guardado", true);
-                }
-                else
-                {
-                    Logger.AddToLog("Volumen PI asignado: " + volAs.Ciclo + " no guardado", true);
-                }
-            }
+            List<VolumenPi> volsPiAutorizados = ExcelFileIO
+                .ReadVolumenPiAutorizado(nombreArchivo);
 
             foreach (VolumenPi volAu in volsPiAutorizados)
             {
@@ -339,6 +322,24 @@ namespace Cuenca_conagua.pages
                 }
             }
 
+            List<VolumenPi> volsPiAsignados = ExcelFileIO
+                .ReadVolumenPiAsignado(nombreArchivo);
+
+            foreach (VolumenPi volAs in volsPiAsignados)
+            {
+                if (volAs.ToVolumenPiAsignado().Save())
+                {
+                    Logger.AddToLog("Volumen PI asignado: " + volAs.Ciclo + " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen PI asignado: " + volAs.Ciclo + " no guardado", true);
+                }
+            }
+
+            List<VolumenPi> volsPiUtilizados = ExcelFileIO
+                .ReadVolumenPiUtilizado(nombreArchivo);
+
             foreach (VolumenPi volUt in volsPiUtilizados)
             {
                 if (volUt.ToVolumenPiUtilizado().Save())
@@ -349,6 +350,46 @@ namespace Cuenca_conagua.pages
                 {
                     Logger.AddToLog("Volumen PI utilizado: " + volUt.Ciclo + " no guardado", true);
                 }
+            }
+
+            List<VolumenPiOld> volsPiOldAutorizados = ExcelFileIO
+                .ReadVolumenPiOldAutorizado(nombreArchivo);
+
+            foreach (VolumenPiOld volPiOld in volsPiOldAutorizados)
+            {
+                Logger.AddToLog(volPiOld.ToJSON(), true);
+                /*
+                if(volPiOld.ToVolumenPiAutorizadoOld().Save())
+                {
+                    Logger.AddToLog("Volumen PI Old Autorizado: " + 
+                        volPiOld.Ciclo + " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen PI Old Autorizado: " + 
+                        volPiOld.Ciclo + " no guardado", true);
+                }
+                */
+            }
+
+            List<VolumenPiOld> volsPiOldUtilizados = ExcelFileIO
+                .ReadVolumenPiOldUtilizado(nombreArchivo);
+
+            foreach (VolumenPiOld volPiOld in volsPiOldUtilizados)
+            {
+                Logger.AddToLog(volPiOld.ToJSON(), true);
+                /*
+                if (volPiOld.ToVolumenPiUtilizadoOld().Save())
+                {
+                    Logger.AddToLog("Volumen PI Old Autorizado: " +
+                        volPiOld.Ciclo + " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen PI Old Autorizado: " +
+                        volPiOld.Ciclo + " no guardado", true);
+                }
+                */
             }
         }
 

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Text;
-using Excel;
+//using Excel;
+using Microsoft.Office.Interop.Excel;
 using Cuenca_conagua.src.Entidades;
 using System.Globalization;
+using System.Runtime.InteropServices;
 
 namespace Cuenca_conagua.src.Utilidades
 {
@@ -15,6 +17,7 @@ namespace Cuenca_conagua.src.Utilidades
     /// </summary>
     public class ExcelFileIO
     {
+        /*
         /// <summary>
         /// Lee un archivo de excel y devuelve una lista con cada una de las 
         /// filas del archivo.
@@ -42,12 +45,98 @@ namespace Cuenca_conagua.src.Utilidades
                 result = excelReader.AsDataSet();
                 excelReader.Close();
                 stream.Close();
+
+                Logger.AddToLog(excelFilename + " has " + result.Tables.Count + " sheets", true);
+
+                for (int i = 0; i < result.Tables.Count; i++) {
+                    Logger.AddToLog(result.Tables[i].TableName, true);
+                }
+
                 return result.Tables[sheetIndex].Rows;
             }
             else
             {
                 return null;
             }
+        }
+        */
+
+        /// <summary>
+        /// Lee un archivo de excel y devuelve una lista con cada una de las 
+        /// filas del archivo.
+        /// </summary>
+        /// <param name="excelFilename">
+        /// El nombre del archivo de excel a leer.
+        /// </param>
+        /// <param name="sheetIndex">
+        /// El indice de la hoja del archivo a leer.
+        /// </param>
+        /// <returns>
+        /// Lista con el contenido de las filas.
+        /// </returns>
+        public static DataRowCollection ReadExcel(string excelFilename, int sheetIndex = 0)
+        {
+            Application xlApp = new Application();
+            Workbook xlWorkbook = xlApp.Workbooks.Open(excelFilename);
+            _Worksheet xlWorksheet = xlWorkbook.Sheets[sheetIndex + 1];
+            Range xlRange = xlWorksheet.UsedRange;
+
+            int rowCount = xlRange.Rows.Count;
+            int colCount = xlRange.Columns.Count;
+
+            Logger.AddToLog(excelFilename + " sheet " + (sheetIndex + 1), true);
+            Logger.AddToLog(xlWorksheet.Name, true);
+
+            DataSet excelDataSet = new DataSet();
+            System.Data.DataTable table = new System.Data.DataTable("sheet " + 
+                (sheetIndex + 1));
+
+            Logger.AddToLog("rowCount: " + rowCount, true);
+            Logger.AddToLog("colCount: " + colCount, true);
+
+            for (int i = 0; i < colCount; i++)
+            {
+                table.Columns.Add();
+            }
+
+            for (int i = 1; i <= rowCount; i++)
+            {
+                DataRow row = table.NewRow();
+
+                for (int j = 1; j <= colCount; j++)
+                {
+                    if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
+                    {
+                        row[table.Columns[j - 1]] = xlRange.Cells[i, j].Value2.ToString();
+                    }
+                }
+
+                table.Rows.Add(row);
+            }
+
+            excelDataSet.Tables.Add(table);
+
+            //cleanup  
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            //rule of thumb for releasing com objects:  
+            //  never use two dots, all COM objects must be referenced and released individually  
+            //  ex: [somthing].[something].[something] is bad  
+
+            //release com objects to fully kill excel process from running in the background  
+            Marshal.ReleaseComObject(xlRange);
+            Marshal.ReleaseComObject(xlWorksheet);
+
+            //close and release  
+            xlWorkbook.Close();
+            Marshal.ReleaseComObject(xlWorkbook);
+
+            //quit and release  
+            xlApp.Quit();
+            Marshal.ReleaseComObject(xlApp);
+
+            return excelDataSet.Tables[0].Rows;
         }
 
         /// <summary>
@@ -83,9 +172,12 @@ namespace Cuenca_conagua.src.Utilidades
                     pm.Sep = double.Parse(rows[i][11].ToString(), CultureInfo.InvariantCulture);
                     pm.Oct = double.Parse(rows[i][12].ToString(), CultureInfo.InvariantCulture);
                     precipitacionesMedias.Add(pm);
-                    Logger.AddToLog(pm.ToJSON(), true);
                 }
             }
+
+            Logger.AddToLog("Se leyeron " + precipitacionesMedias.Count +
+                " precipitaciones medias del archivo de Excel", true);
+
             return precipitacionesMedias;
         }
 
@@ -103,28 +195,14 @@ namespace Cuenca_conagua.src.Utilidades
             {
                 EscurrimientoAnual es;
                 int filasIgnoradas = 3;
-                for (int i = 0; i < filasIgnoradas; i++)
-                {
-                    String str = "";
-                    for (int j = 0; j < rows[i].ItemArray.Length; j++)
-                    {
-                        str += rows[i].ItemArray[j] + ",";
-                    }
-                    Logger.AddToLog(str, true);
-                }
+                
                 for (int i = filasIgnoradas; i < rows.Count; i++)
                 {
-                    String str = "";
-                    for (int j = 0; j < rows[i].ItemArray.Length; j++)
-                    {
-                        str += rows[i].ItemArray[j] + ",";
-                    }
-                    Logger.AddToLog(str, true);
-                    //Logger.AddToLog("Primera: " + rows[i][0].ToString(), true);
                     if (rows[i][0].ToString().Replace(" ", "").Length == 0)
                     {
                         break;
                     }
+
                     es = new EscurrimientoAnual();
                     es.Ciclo = rows[i][0].ToString();
                     es.Alzate = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
@@ -145,9 +223,12 @@ namespace Cuenca_conagua.src.Utilidades
                     es.Zula = double.Parse(rows[i][16].ToString(), CultureInfo.InvariantCulture);
                     es.Chapala = double.Parse(rows[i][17].ToString(), CultureInfo.InvariantCulture);
                     escurrimientosAnuales.Add(es);
-                    Logger.AddToLog(es.ToJSON(), true);
                 }
             }
+
+            Logger.AddToLog("Se leyeron " + escurrimientosAnuales.Count +
+                " escurrimientos anuales del archivo de Excel", true);
+
             return escurrimientosAnuales;
         }
 
@@ -181,7 +262,6 @@ namespace Cuenca_conagua.src.Utilidades
                     alm.Fecha = DateUtils.ConvertSqlDateToDateTime(rows[i][0].ToString());
                     alm.Almacenamiento = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
                     almacenamientos.Add(alm);
-                    Logger.AddToLog(alm.ToJSON(), true);
                 }
             }
 
@@ -228,7 +308,6 @@ namespace Cuenca_conagua.src.Utilidades
                     alm.Purisima = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
                     alm.Chapala = double.Parse(rows[i][10].ToString(), CultureInfo.InvariantCulture);
                     almacenamientos.Add(alm);
-                    Logger.AddToLog(alm.ToJSON(), true);
                 }
 
             }
@@ -237,6 +316,57 @@ namespace Cuenca_conagua.src.Utilidades
                 " almacenamientos principales del archivo de Excel", true);
 
             return almacenamientos;
+        }
+
+        public static List<VolumenPiOld> ReadVolumenPiOldAutorizado(string nombreArchivo)
+        {
+            return ReadVolumenPiOld(nombreArchivo, 12);
+        }
+
+        public static List<VolumenPiOld> ReadVolumenPiOldUtilizado(string nombreArchivo)
+        {
+            return ReadVolumenPiOld(nombreArchivo, 13);
+        }
+
+        private static List<VolumenPiOld> ReadVolumenPiOld(string filename, int sheedIndex)
+        {
+            List<VolumenPiOld> vols = new List<VolumenPiOld>();
+            DataRowCollection rows = ReadExcel(filename, sheedIndex);
+
+            if(rows != null)
+            {
+                int filasIgnoradas = 2;
+                VolumenPiOld vol;
+
+                for (int i = filasIgnoradas; i < rows.Count; i++)
+                {
+                    Logger.AddToLog(string.Join(",", rows[i].ItemArray), true);
+
+                    if (!IsFilaVolumenValida(rows[i], 6)) continue;
+                    else
+                    {
+                        vol = new VolumenPiOld();
+                        vol.Ciclo = rows[i][0].ToString();
+                        vol.PiAltoLerma = double.Parse(rows[i][1].ToString(), 
+                            CultureInfo.InvariantCulture);
+                        vol.PiRioQueretaro = double.Parse(rows[i][2].ToString(), 
+                            CultureInfo.InvariantCulture);
+                        vol.PiBajio = double.Parse(rows[i][3].ToString(), 
+                            CultureInfo.InvariantCulture);
+                        vol.PiAnguloDuero = double.Parse(rows[i][4].ToString(), 
+                            CultureInfo.InvariantCulture);
+                        vol.PiBajoLerma = double.Parse(rows[i][5].ToString(), 
+                            CultureInfo.InvariantCulture);
+                        vols.Add(vol);
+                    }
+                }
+            }
+
+            Logger.AddToLog("Se leyeron " + vols.Count +
+                " volumenes pi old en la hoja " + sheedIndex +" del archivo de Excel", 
+                true);
+
+            return vols;
         }
 
         /// <summary>
@@ -257,6 +387,7 @@ namespace Cuenca_conagua.src.Utilidades
                     if (!IsFilaVolumenValida(rows[i], 9)) break;
                     else
                     {
+                        Logger.AddToLog("El volumen DR es válido", true);
                         vol = new VolumenDr();
                         vol.Ciclo = rows[i][0].ToString();
                         vol.Dr033 = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
@@ -269,11 +400,15 @@ namespace Cuenca_conagua.src.Utilidades
                         vol.Dr024 = double.Parse(rows[i][8].ToString(), CultureInfo.InvariantCulture);
                         vol.Dr013 = double.Parse(rows[i][9].ToString(), CultureInfo.InvariantCulture);
                         volumenes.Add(vol);
-                        Logger.AddToLog(vol.ToJSON(), true);
                     }
                 }
 
             }
+
+            Logger.AddToLog("Se leyeron " + volumenes.Count +
+                " volumenes dr en la hoja " + sheetIndex + 
+                " del archivo de Excel", true);
+
             return volumenes;
         }
 
@@ -364,11 +499,14 @@ namespace Cuenca_conagua.src.Utilidades
                         vol.PiZula = double.Parse(rows[i][14].ToString(), CultureInfo.InvariantCulture);
                         vol.PiChapala = double.Parse(rows[i][15].ToString(), CultureInfo.InvariantCulture);
                         volumenes.Add(vol);
-                        Logger.AddToLog(vol.ToJSON(), true);
                     }
                 }
-
             }
+
+            Logger.AddToLog("Se leyeron " + volumenes.Count +
+                " volumenes pi en la hoja " + sheetIndex + " del archivo de Excel",
+                true);
+
             return volumenes;
         }
 
@@ -433,13 +571,31 @@ namespace Cuenca_conagua.src.Utilidades
         /// <returns></returns>
         private static bool IsFilaVolumenValida(DataRow row, int dataCols)
         {
-            if (row[0].ToString().Replace(" ", "").Length == 0)
+            if (row.ItemArray.Length < dataCols)
+            {
+                Logger.AddToLog("La fila volumen tiene " +
+                    row.ItemArray.Length + " columnas y se esperaban " +
+                    dataCols, true);
+
                 return false;
-            if (row[0].ToString().Replace(" ", "").ToLower().Equals("promedio"))
+            }
+
+            if (row[0].ToString().Replace(" ", "").Length == 0) {
+                Logger.AddToLog("La fila está vacía", true);
                 return false;
+            }
+
+            if (row[0].ToString().Replace(" ", "").ToLower().Equals("promedio")) {
+                Logger.AddToLog("La fila es la de promedio", true);
+                return false;
+            }
+                
             for (int i = 1; i < dataCols; i++)
                 if (row[i].ToString().Replace(" ", "").Length > 0)
                     return true;
+
+            Logger.AddToLog("Hay campos vacíos en la fila", true);
+
             return false;
         }
 
@@ -523,9 +679,12 @@ namespace Cuenca_conagua.src.Utilidades
                     lae.LaeQueretaroObs = double.Parse(rows[i][25].ToString(),
                         CultureInfo.InvariantCulture);
                     lluviasAnuales.Add(lae);
-                    Logger.AddToLog(lae.ToJSON(), true);
                 }
             }
+
+            Logger.AddToLog("Se leyeron " + lluviasAnuales.Count +
+                " lluvias anuales por estación del archivo de Excel",
+                true);
 
             return lluviasAnuales;
         }

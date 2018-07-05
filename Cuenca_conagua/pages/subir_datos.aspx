@@ -82,7 +82,7 @@
                     Lluvia anual por estación (Lluvia_anual_estación.xlsx)
                 </option>
                 <option value="Almacenamientos_principales">
-                    Almacenamientos principales (Almacenamiento_histórico_chapala.xlsx)
+                    Almacenamientos principales (Almacenamientos_principalesxlsx)
                 </option>
                 <option value="Almacenamiento_histórico_chapala">
                     Almacenamiento histórico Chapala (Almacenamiento_histórico_chapala.xlsx)
