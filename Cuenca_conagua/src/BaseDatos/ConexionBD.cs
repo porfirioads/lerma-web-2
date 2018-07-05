@@ -1117,7 +1117,7 @@ namespace Cuenca_conagua.src.BaseDatos
             InitConnection();
 
             string nombreTabla = GetNombreTablaVolumen(tipo, "_old");
-            string query = "SELECT * FROM [" + tipo + "] WHERE ciclo=@ciclo";
+            string query = "SELECT * FROM [" + nombreTabla + "] WHERE ciclo=@ciclo";
             SqlCommand command = new SqlCommand(query, conexion);
             command.Parameters.AddWithValue("@ciclo", ciclo);
 

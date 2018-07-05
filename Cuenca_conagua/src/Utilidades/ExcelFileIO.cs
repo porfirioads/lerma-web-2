@@ -340,8 +340,6 @@ namespace Cuenca_conagua.src.Utilidades
 
                 for (int i = filasIgnoradas; i < rows.Count; i++)
                 {
-                    Logger.AddToLog(string.Join(",", rows[i].ItemArray), true);
-
                     if (!IsFilaVolumenValida(rows[i], 6)) continue;
                     else
                     {

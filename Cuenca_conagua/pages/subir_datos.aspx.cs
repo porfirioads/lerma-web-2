@@ -357,8 +357,6 @@ namespace Cuenca_conagua.pages
 
             foreach (VolumenPiOld volPiOld in volsPiOldAutorizados)
             {
-                Logger.AddToLog(volPiOld.ToJSON(), true);
-                /*
                 if(volPiOld.ToVolumenPiAutorizadoOld().Save())
                 {
                     Logger.AddToLog("Volumen PI Old Autorizado: " + 
@@ -369,7 +367,6 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen PI Old Autorizado: " + 
                         volPiOld.Ciclo + " no guardado", true);
                 }
-                */
             }
 
             List<VolumenPiOld> volsPiOldUtilizados = ExcelFileIO
@@ -377,8 +374,6 @@ namespace Cuenca_conagua.pages
 
             foreach (VolumenPiOld volPiOld in volsPiOldUtilizados)
             {
-                Logger.AddToLog(volPiOld.ToJSON(), true);
-                /*
                 if (volPiOld.ToVolumenPiUtilizadoOld().Save())
                 {
                     Logger.AddToLog("Volumen PI Old Autorizado: " +
@@ -389,7 +384,6 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen PI Old Autorizado: " +
                         volPiOld.Ciclo + " no guardado", true);
                 }
-                */
             }
         }
 
