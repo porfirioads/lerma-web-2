@@ -9,18 +9,11 @@ $(document).ready(function () {
     // Inicia la carga de los datos para la creación de las gráficas de 
     // almacenamientos históricos de chapala.
     function start() {
-        console.log("chart_almacenamiento_historico_chapala start()");
-
         // Llena valores y etiquetas de la gráfica
         for (var i = 0; i < almHistoricosChapala.length; i++) {
             values.push(almHistoricosChapala[i].almacenamiento);
             labels.push(almHistoricosChapala[i].fecha);
         }
-
-        console.log('labels: ' + labels.length);
-        console.log('values: ' + values.length);
-
-        console.log("chart_almacenamiento_historico_chapala end()");
     }
 
     function crearGraficaAlmHistChapala() {

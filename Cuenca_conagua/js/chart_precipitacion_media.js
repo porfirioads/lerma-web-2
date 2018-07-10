@@ -32,9 +32,6 @@ $(document).ready(function () {
         precMensualMediaValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         media = 0;
 
-        console.log(regPrecipitacion.length + " precipitaciones");
-        console.log(regPrecipitacion);
-
         // Calcula media anual y llega arreglo de valores
 
         for (var i = 0; i < regPrecipitacion.length; i++) {
@@ -44,8 +41,6 @@ $(document).ready(function () {
         }
 
         media /= precAnualValues.length;
-
-        console.log('media anual: ' + media);
 
         for (var i = ciclosIgnorados; i < regPrecipitacion.length; i++) {
             precAnualMediaValues.push(media);
@@ -59,8 +54,6 @@ $(document).ready(function () {
                     += regPrecipitacion[i][labelsMensual[j].toLowerCase()];
             }
         }
-
-        console.log(labelsCiclo);
 
         for (var i = 0; i < 12; i++) {
             precMensualMediaValues[i] /= (regPrecipitacion.length - ciclosIgnorados);

@@ -33,13 +33,10 @@ $(document).ready(function () {
     // Inicia la carga de los datos para la creación de las gráficas de 
     // almacenamientos principales.
     function start() {
-        //console.log('chart_almacenamientos_principales start()');
         labelsAnios = [];
         valuesAlmEnPresas = [];
         valuesAlmEnPresasPorc = [];
         valuesAlmEnUnaPresa = [];
-
-        //console.log(regAlmacenamientosPrincipales);
 
         // Llena los selects del año
         for (var i = 0; i < regAlmacenamientosPrincipales.length; i++) {
@@ -69,9 +66,6 @@ $(document).ready(function () {
                 }
             }
         }
-
-        //console.log(valuesAlmEnPresas);
-        //console.log(valuesAlmEnPresasPorc);
     }
 
     function crearGraficaAlmAnio() {
@@ -99,13 +93,9 @@ $(document).ready(function () {
                 ' de las presas principales'
             ], "Almacenamiento (hm³)", "Presa", "hm³", false)
         });
-
-        //console.log('crearGraficaAlmAnio() end');
     }
 
     function crearGraficaAlmAnioPorc() {
-        //console.log('crearGraficaAlmAnioPorc() start');
-
         clearCanvas();
         datasets = [];
 
@@ -127,8 +117,6 @@ $(document).ready(function () {
                 ' de las presas principales, respecto a su capacidad de operación'
             ], "% de almacenamiento", "Presa", "%", false)
         });
-
-        //console.log('crearGraficaAlmAnioPorc() end');
     }
 
     function crearGraficaAlmPresa() {
@@ -139,13 +127,9 @@ $(document).ready(function () {
         var presaName = $('#selPresaAlm option:selected').text();
         var values = [];
 
-        //console.log(presaKey + ': ' + presaName);
-
         for (var i = 0; i < regAlmacenamientosPrincipales.length; i++) {
             values.push(regAlmacenamientosPrincipales[i][presaKey]);
         }
-
-        //console.log(values);
 
         datasets.push(getBarDataSet('',
             values, "rgba(41, 81, 109, 1)",
@@ -189,8 +173,6 @@ $(document).ready(function () {
     // Muestra/oculta opciones y manda renderizar el tipo de gráfica 
     // seleccionado.
     selTipoGraficaAlm.change(function () {
-        //console.log('selTipoGraficaAlm.change()');
-
         var tipo = selTipoGraficaAlm.val();
 
         if (tipo === 'almAnio') {

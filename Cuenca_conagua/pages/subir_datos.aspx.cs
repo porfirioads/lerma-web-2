@@ -385,6 +385,24 @@ namespace Cuenca_conagua.pages
                         volPiOld.Ciclo + " no guardado", true);
                 }
             }
+
+            List<VolumenPiOld> volsPiOld = VolumenPiAutorizadoOld.All();
+
+            Logger.AddToLog("Volúmenes PI old autorizados\n\n", true);
+
+            foreach (VolumenPiOld volPiOld in volsPiOld)
+            {
+                Logger.AddToLog(volPiOld.ToJSON(), true);
+            }
+
+            volsPiOld = VolumenPiUtilizadoOld.All();
+
+            Logger.AddToLog("Volúmenes PI old utilizados\n\n", true);
+
+            foreach (VolumenPiOld volPiOld in volsPiOld)
+            {
+                Logger.AddToLog(volPiOld.ToJSON(), true);
+            }
         }
 
         /// <summary>

@@ -30,7 +30,6 @@ $(document).ready(function () {
         dentro del área en el mapa
         */
         $(this).mouseout(function (e) {
-            console.log('fixed ' + fixedInfo);
             if (!fixedInfo) {
                 hideAllContainters();
             }

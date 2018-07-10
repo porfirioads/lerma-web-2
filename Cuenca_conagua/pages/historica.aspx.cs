@@ -58,6 +58,16 @@ namespace Cuenca_conagua.pages
             CargarListEntidadJs(volPiUtilizados.Cast<IJsonable>().ToList(),
                 "volPiUtilizados", scrVolumenes, true);
 
+            List<VolumenPiOld> volPiUtilizadosOld = VolumenPiUtilizadoOld.All();
+            volPiUtilizadosOld.Sort();
+            CargarListEntidadJs(volPiUtilizadosOld.Cast<IJsonable>().ToList(),
+                "volPiUtilizadosOld", scrVolumenes, true);
+
+            List<VolumenPiOld> volPiAutorizadosOld = VolumenPiAutorizadoOld.All();
+            volPiAutorizadosOld.Sort();
+            CargarListEntidadJs(volPiAutorizadosOld.Cast<IJsonable>().ToList(),
+                "volPiAutorizadosOld", scrVolumenes, true);
+
             List<AlmacenamientoHistoricoChapala> almHistoricosChapala = AlmacenamientoHistoricoChapala.All();
             almHistoricosChapala.Sort();
             CargarListEntidadJs(almHistoricosChapala.Cast<IJsonable>().ToList(),
@@ -107,15 +117,6 @@ namespace Cuenca_conagua.pages
                 VolumenDr.MENORES);
             CargarListEntidadJs(volDrUtilizadosOld.Cast<IJsonable>().ToList(),
                 "volDrUtilizadosOld", scrVolumenes, true);
-
-            /*
-            Logger.AddToLog("ASIGNADOS: " + string.Join(",\n", volDrAsignados), true);
-            Logger.AddToLog("ASIGNADOS OLD: " + string.Join(",\n", volDrAsignadosOld), true);
-            Logger.AddToLog("AUTORIZADOS: " + string.Join(",\n", volDrAutorizados), true);
-            Logger.AddToLog("AUTORIZADOS OLD: " + string.Join(",\n", volDrAutorizadosOld), true);
-            Logger.AddToLog("UTILIZADOS: " + string.Join(",\n", volDrUtilizados), true);
-            Logger.AddToLog("UTILIZADOS OLD: " + string.Join(",\n", volDrUtilizadosOld), true);
-            */
         }
         
 

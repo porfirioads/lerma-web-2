@@ -15,6 +15,8 @@ $(document).ready(function () {
         'P.I. Tepuxtepec', 'P.I. Solis', 'P.I. La Begoña', 'P.I. Queretaro',
         'P.I. Pericos', 'P.I. Adjuntas', 'P.I. Angulo', 'P.I. Corrales',
         'P.I. Yurecuaro', 'P.I. Duero', 'P.I. Zula', 'P.I. Chapala'];
+    var volPiOldLabels = ["P.I. Alto Lerma", "P. I. Río Querétaro",
+        "P. I. Bajío", "P. I. Ángulo Duero", "P. I. Bajo Lerma"];
     var volMaxDr = [90, 90, 955, 110, 232, 8, 200, 170, 150];
     var volMaxPi = [30, 30, 30, 26, 128, 53, 112, 14, 182, 60, 113, 198, 50,
         78, 137];
@@ -26,6 +28,8 @@ $(document).ready(function () {
         'piTepuxtepec', 'piSolis', 'piBegona', 'piQueretaro', 'piPericos',
         'piAdjuntas', 'piAngulo', 'piCorrales', 'piYurecuaro', 'piDuero',
         'piZula', 'piChapala'];
+    var volPiOldAttributes = ['piAltoLerma', 'piRioQueretaro', 'piBajio',
+        'piAnguloDuero', 'piBajoLerma'];
     var selDr = $('#selDr');
     var selPi = $('#selPi');
     var selTipoGraficaVol = $('#selTipoGraficaVol');
@@ -37,11 +41,10 @@ $(document).ready(function () {
     var piExcedido;
     var resumenDr;
     var resumenPi;
+    var resumenPiOld;
 
     // Es el constructor del script
     function start() {
-        console.log('start() ' + selTipoGraficaVol.val());
-
         var tipoGrafica = selTipoGraficaVol.val();
 
         if (tipoGrafica === 'vol_dr_actual') {
@@ -54,27 +57,28 @@ $(document).ready(function () {
             volDrUtilizados = volDrUtilizadosOld;
         }
 
-        console.log('DR_DATA ' + JSON.stringify({
-            drAsignados: volDrAsignados,
-            drAutorizados: volDrAutorizados,
-            drUtilizados: volDrUtilizados
-        }, null, 4));
-
         cicloDrLabels = [];
+
         for (var i = 0; i < volDrAsignados.length; i++) {
             cicloDrLabels.push(volDrAsignados[i].ciclo);
         }
+
         cicloPiLabels = [];
+
         for (var i = 0; i < volPiAsignados.length; i++) {
             cicloPiLabels.push(volPiAsignados[i].ciclo);
         }
+
         for (var i = 0; i < volDrLabels.length; i++) {
             selDr.append('<option value="' + i + '">' + volDrLabels[i] + '</option>');
         }
+
         for (var i = 0; i < volPiLabels.length; i++) {
             selPi.append('<option value="' + i + '">' + volPiLabels[i] + '</option>');
         }
+
         excedidosDr = [];
+
         for (var i = 0; i < volDrAsignados.length; i++) {
             excedidosDr.push({});
             for (var j = 0; j < volDrAttributes.length; j++) {
@@ -83,7 +87,9 @@ $(document).ready(function () {
                 excedidosDr[i][volDrAttributes[j]] = ex >= 0 ? ex : 0;
             }
         }
+
         excedidosPi = [];
+
         for (var i = 0; i < volPiAsignados.length; i++) {
             excedidosPi.push({});
             for (var j = 0; j < volPiAttributes.length; j++) {
@@ -92,7 +98,9 @@ $(document).ready(function () {
                 excedidosPi[i][volPiAttributes[j]] = ex >= 0 ? ex : 0;
             }
         }
+
         resumenDr = {};
+
         for (var i = 0; i < volDrAttributes.length; i++) {
             resumenDr[volDrAttributes[i]] = {};
             var promAutorizado = 0;
@@ -102,6 +110,7 @@ $(document).ready(function () {
             var porcAutMax = 0;
             var porcUtiMax = 0;
             resumenDr[volDrAttributes[i]]['volMax'] = volMaxDr[i];
+
             for (var j = 0; j < volDrAutorizados.length; j++) {
                 var aut = volDrAutorizados[j][volDrAttributes[i]];
                 var asi = volDrAsignados[j][volDrAttributes[i]];
@@ -112,6 +121,7 @@ $(document).ready(function () {
                 promUtilizado += uti;
                 promExcedido += exc;
             }
+
             promAutorizado /= volDrAutorizados.length;
             promAsignado /= volDrAsignados.length;
             promUtilizado /= volDrUtilizados.length;
@@ -125,8 +135,9 @@ $(document).ready(function () {
             resumenDr[volDrAttributes[i]]['porcAutMax'] = porcAutMax;
             resumenDr[volDrAttributes[i]]['porcUtiMax'] = porcUtiMax;
         }
-        //console.log('------------------------------');
+        
         resumenPi = {};
+
         for (var i = 0; i < volPiAttributes.length; i++) {
             resumenPi[volPiAttributes[i]] = {};
             var promAutorizado = 0;
@@ -136,6 +147,7 @@ $(document).ready(function () {
             var porcAutMax = 0;
             var porcUtiMax = 0;
             resumenPi[volPiAttributes[i]]['volMax'] = volMaxPi[i];
+
             for (var j = 0; j < volPiAutorizados.length; j++) {
                 var aut = volPiAutorizados[j][volPiAttributes[i]];
                 var asi = volPiAsignados[j][volPiAttributes[i]];
@@ -146,6 +158,7 @@ $(document).ready(function () {
                 promUtilizado += uti;
                 promExcedido += exc;
             }
+
             promAutorizado /= volPiAutorizados.length;
             promAsignado /= volPiAsignados.length;
             promUtilizado /= volPiUtilizados.length;
@@ -159,6 +172,8 @@ $(document).ready(function () {
             resumenPi[volPiAttributes[i]]['porcAutMax'] = porcAutMax;
             resumenPi[volPiAttributes[i]]['porcUtiMax'] = porcUtiMax;
         }
+
+        calculateResumenPiOld();
     }
 
     // Modifica una cadena para hacer que su longitud mínima sea la especificada,
@@ -178,6 +193,7 @@ $(document).ready(function () {
         volDrAsignadoValues = [];
         volDrAutorizadoValues = [];
         volDrUtilizadoValues = [];
+
         for (var i = 0; i < volDrAsignados.length; i++) {
             volDrAsignadoValues.push(volDrAsignados[i][volDrAttributes[index]]);
             volDrAutorizadoValues.push(volDrAutorizados[i][volDrAttributes[index]]);
@@ -191,6 +207,7 @@ $(document).ready(function () {
         volPiAsignadoValues = [];
         volPiAutorizadoValues = [];
         volPiUtilizadoValues = [];
+
         for (var i = 0; i < volPiAsignados.length; i++) {
             volPiAsignadoValues.push(volPiAsignados[i][volPiAttributes[index]]);
             volPiAutorizadoValues.push(volPiAutorizados[i][volPiAttributes[index]]);
@@ -220,6 +237,41 @@ $(document).ready(function () {
         });
 
         updateTablaPi();
+    }
+
+    /**
+     * Crea la gráfica de P.I. acuerdo 1991 para la P.I. seleccionada.
+     */
+    function crearGraficaPiOld() {
+        clearCanvas();
+        var datasets = [];
+        var autorizadosValues = [];
+        var utilizadosValues = [];
+        var cicloLabels = [];
+        var piIndex = selPi.val();
+
+        for (var i = 0; i < volPiAutorizadosOld.length; i++) {
+            autorizadosValues.push(volPiAutorizadosOld[i][volPiOldAttributes[piIndex]]);
+            utilizadosValues.push(volPiUtilizadosOld[i][volPiOldAttributes[piIndex]]);
+            cicloLabels.push(volPiUtilizadosOld[i].ciclo);
+        }
+
+        datasets.push(getBarDataSet('Autorizado', autorizadosValues,
+            "rgba(41, 81, 109, 1)", "rgba(18, 55, 82, 1)"));
+        datasets.push(getBarDataSet('Utilizado', utilizadosValues,
+            "rgba(170, 60, 57, 1)", "rgba(128, 25, 22, 1)"));
+
+        chart = new Chart(context, {
+            type: 'bar',
+            data: {
+                labels: cicloLabels,
+                datasets: datasets
+            },
+            options: getChartOptions(volPiOldLabels[piIndex],
+                "Volumen (hm³)", "Ciclo", "hm³")
+        });
+
+        updateTablaPiOld();
     }
 
     // Crea la grafica de D.R. para el D.R. seleccionado.
@@ -288,17 +340,102 @@ $(document).ready(function () {
         $('#colVolUtM').text(porcUtM.toFixed(2));
     }
 
+    function calculateResumenPiOld() {
+        resumenPiOld = {};
+        var volMaxPi = [241, 65, 523, 464, 157];
+
+        for (var i = 0; i < volPiOldAttributes.length; i++) {
+            resumenPiOld[volPiOldAttributes[i]] = {};
+            var promAutorizado = 0;
+            var promAsignado = '-';
+            var promUtilizado = 0;
+            var promExcedido = '-';
+            var porcAutMax = 0;
+            var porcUtiMax = 0;
+
+            resumenPiOld[volPiOldAttributes[i]]['volMax'] = volMaxPi[i];
+
+            for (var j = 0; j < volPiAutorizadosOld.length; j++) {
+                var aut = volPiAutorizadosOld[j][volPiOldAttributes[i]];
+                var uti = volPiUtilizadosOld[j][volPiOldAttributes[i]];
+                promAutorizado += aut;
+                promUtilizado += uti;
+            }
+
+            promAutorizado /= volPiAutorizadosOld.length;
+            promUtilizado /= volPiUtilizadosOld.length;
+            porcAutMax = promAutorizado * 100 / volMaxPi[i];
+            porcUtiMax = promUtilizado * 100 / volMaxPi[i];
+            resumenPiOld[volPiOldAttributes[i]]['promAutorizado'] = promAutorizado;
+            resumenPiOld[volPiOldAttributes[i]]['promAsignado'] = promAsignado;
+            resumenPiOld[volPiOldAttributes[i]]['promUtilizado'] = promUtilizado;
+            resumenPiOld[volPiOldAttributes[i]]['promExcedido'] = promExcedido;
+            resumenPiOld[volPiOldAttributes[i]]['porcAutMax'] = porcAutMax;
+            resumenPiOld[volPiOldAttributes[i]]['porcUtiMax'] = porcUtiMax;
+        }
+
+        console.log(resumenPiOld);
+    }
+
+    /**
+     * Actualiza la tabla de resumen de P.I. Old.
+     */
+    function updateTablaPiOld() {
+        var index = selPi.val();
+        var promAut = resumenPiOld[volPiOldAttributes[index]]['promAutorizado'];
+        var promAsi = resumenPiOld[volPiOldAttributes[index]]['promAsignado'];
+        var promUti = resumenPiOld[volPiOldAttributes[index]]['promUtilizado'];
+        var promExc = resumenPiOld[volPiOldAttributes[index]]['promExcedido'];
+        var porcAuM = resumenPiOld[volPiOldAttributes[index]]['porcAutMax'];
+        var porcUtM = resumenPiOld[volPiOldAttributes[index]]['porcUtiMax'];
+        var voluMax = resumenPiOld[volPiOldAttributes[index]]['volMax'];
+        $('#resId').text("P.I.");
+        $('#colId').text(volPiOldLabels[index]);
+        $('#colVolMax').text(voluMax);
+        $('#colVolAut').text(promAut.toFixed(2));
+        $('#colVolAsi').text(promAsi);
+        $('#colVolUti').text(promUti.toFixed(2));
+        $('#colVolExc').text(promExc);
+        $('#colVolAuM').text(porcAuM.toFixed(2));
+        $('#colVolUtM').text(porcUtM.toFixed(2));
+    }
+
     // Se ejecuta cuando se selecciona un elemento de la lista de D.R.
     selDr.change(function () {
-        console.log('selDr.change()');
         crearGraficaDr();
     });
 
     // Se ejecuta cuando se selecciona un elemento de la lista de P.I.
     selPi.change(function () {
-        console.log('selPi.change()');
-        crearGraficaPi();
+        var tipoGrafica = selTipoGraficaVol.val();
+
+        if (tipoGrafica === 'vol_pi_viejos') {
+            crearGraficaPiOld();
+        } else {
+            crearGraficaPi();
+        }
     });
+
+    /**
+     * Actualiza las opciones del comboBox de pequeña irrigación dependiendo
+     * del si la gráfica es del acuerdo 1991 o convenio 2004.
+     */
+    function refreshSelPi() {
+        var tipoGrafica = selTipoGraficaVol.val();
+        var piLabels;
+        
+        if (tipoGrafica === 'vol_pi_viejos') {
+            piLabels = volPiOldLabels;
+        } else {
+            piLabels = volPiLabels;
+        }
+
+        selPi.empty();
+
+        for (var i = 0; i < piLabels.length; i++) {
+            selPi.append('<option value="' + i + '">' + piLabels[i] + '</option>');
+        }
+    }
 
     // Cambia el tipo de gráfica al seleccionar uno del comboBox de tipos de
     // gráfica de volumen.
@@ -307,26 +444,15 @@ $(document).ready(function () {
 
         var tipoGrafica = selTipoGraficaVol.val();
 
-        if (tipoGrafica === 'vol_dr_viejos') {
+        if (tipoGrafica.startsWith('vol_dr')) {
             selPi.addClass('hidden');
             selDr.removeClass('hidden');
             selDr.trigger('change');
-        } else if (tipoGrafica === 'vol_pi_viejos') {
+        } else if (tipoGrafica.startsWith('vol_pi')) {
             selDr.addClass('hidden');
             selPi.removeClass('hidden');
-            //selPi.trigger('change');
-        } else if (tipoGrafica === 'vol_dr_actual') {
-            selPi.addClass('hidden');
-            selDr.removeClass('hidden');
-            selDr.trigger('change');
-        } else if (tipoGrafica === 'vol_pi_actual') {
-            selDr.addClass('hidden');
-            selPi.removeClass('hidden');
+            refreshSelPi();
             selPi.trigger('change');
-        } else if (tipoGrafica === 'vol_gt') {
-
-        } else if (tipoGrafica === 'vol_ag') {
-
         }
     });
 

@@ -17,50 +17,6 @@ namespace Cuenca_conagua.src.Utilidades
     /// </summary>
     public class ExcelFileIO
     {
-        /*
-        /// <summary>
-        /// Lee un archivo de excel y devuelve una lista con cada una de las 
-        /// filas del archivo.
-        /// </summary>
-        /// <param name="excelFilename">
-        /// El nombre del archivo de excel a leer.
-        /// </param>
-        /// <param name="sheetIndex">
-        /// El indice de la hoja del archivo a leer.
-        /// </param>
-        /// <returns>
-        /// Lista con el contenido de las filas.
-        /// </returns>
-        public static DataRowCollection ReadExcel(string excelFilename, int sheetIndex = 0)
-        {
-            DataSet result = new DataSet();
-            StringBuilder a = new StringBuilder();
-
-            if (excelFilename.EndsWith(".xlsx") || excelFilename.EndsWith(".xlsx"))
-            {
-                FileStream stream = File.Open(excelFilename, FileMode.Open,
-                                    FileAccess.Read);
-                IExcelDataReader excelReader = ExcelReaderFactory
-                    .CreateOpenXmlReader(stream);
-                result = excelReader.AsDataSet();
-                excelReader.Close();
-                stream.Close();
-
-                Logger.AddToLog(excelFilename + " has " + result.Tables.Count + " sheets", true);
-
-                for (int i = 0; i < result.Tables.Count; i++) {
-                    Logger.AddToLog(result.Tables[i].TableName, true);
-                }
-
-                return result.Tables[sheetIndex].Rows;
-            }
-            else
-            {
-                return null;
-            }
-        }
-        */
-
         /// <summary>
         /// Lee un archivo de excel y devuelve una lista con cada una de las 
         /// filas del archivo.

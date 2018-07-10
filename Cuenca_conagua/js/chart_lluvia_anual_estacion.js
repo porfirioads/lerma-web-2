@@ -74,10 +74,6 @@ $(document).ready(function () {
         var cicloIndex = selCicloLae.val();
         var cicloName = 'Ciclo ' + regLluviaAnualEstacion[cicloIndex].ciclo;
 
-        //console.log(regLluviaAnualEstacion);
-        //console.log('index: ' + cicloIndex);
-        //console.log(regLluviaAnualEstacion[cicloIndex]);
-
         for (key in regLluviaAnualEstacion[0]) {
             if (key !== 'ciclo') {
                 valuesLluviaPorCiclo
@@ -86,10 +82,7 @@ $(document).ready(function () {
         }
 
         datasets.push(getBarDataSet(cicloName, valuesLluviaPorCiclo,
-            "rgba(41, 81, 109, 1)", "rgba(18, 55, 82, 1)"));
-
-        //console.log('Prom histórico: ' + valuesPromHistorico);   
-        //console.log(cicloName + ': ' + valuesLluviaPorCiclo);   
+            "rgba(41, 81, 109, 1)", "rgba(18, 55, 82, 1)")); 
 
         chart = new Chart(context, {
             type: 'bar',

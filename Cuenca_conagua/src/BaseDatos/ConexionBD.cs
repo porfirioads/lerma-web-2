@@ -1149,7 +1149,7 @@ namespace Cuenca_conagua.src.BaseDatos
             InitConnection();
 
             string nombreTabla = GetNombreTablaVolumen(tipo, "_old");
-            string query = "SELECT * FROM [" + tipo + "]";
+            string query = "SELECT * FROM [" + nombreTabla + "]";
             SqlCommand command = new SqlCommand(query, conexion);
             List<VolumenPiOld> vols = new List<VolumenPiOld>();
 
