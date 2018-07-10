@@ -51,16 +51,21 @@
     <section id="cuencas" class="contenido hidden" runat="server">
         <h4>Cuencas</h4>
 
-        <%--<a href="../res/images/cuenca_lc_con_nombres.png.png">
-            <img class="img-max-100" src="../res/images/cuenca_lc_con_nombres.png.png" />
-        </a>--%>
-
         <p>
             La cuenca se divide en 19 subcuencas, incluyendo las cuencas cerradas de
     Pátzcuaro y Cuitzeo.
         </p>
+
         <img class="img-max-100" src="../res/images/gral_regionalizacion_2.jpg" />
+
+        <a class="btn btn-green"
+            href="../uploaded_files/shp/Cuenca Lerma OCLSP Lerma WEB.zip">
+            Archivo SHP oficial
+        </a>
+        <br />
+
         <h4>ZONA HIDROLÓGICA DEL RÍO LERMA-CHAPALA</h4>
+
         <table>
             <thead>
                 <tr>
