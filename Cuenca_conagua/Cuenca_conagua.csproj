@@ -303,6 +303,10 @@
     <Compile Include="src\Entidades\VolumenDrAsignado.cs" />
     <Compile Include="src\Entidades\VolumenDrAutorizado.cs" />
     <Compile Include="src\Entidades\VolumenDrUtilizado.cs" />
+    <Compile Include="src\Entidades\VolumenGt.cs" />
+    <Compile Include="src\Entidades\VolumenGtAsignado.cs" />
+    <Compile Include="src\Entidades\VolumenGtAutorizado.cs" />
+    <Compile Include="src\Entidades\VolumenGtUtilizado.cs" />
     <Compile Include="src\Entidades\VolumenPi.cs" />
     <Compile Include="src\Entidades\VolumenPiAsignado.cs" />
     <Compile Include="src\Entidades\VolumenPiAutorizado.cs" />

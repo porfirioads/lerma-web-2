@@ -366,6 +366,52 @@ namespace Cuenca_conagua.src.Utilidades
             return volumenes;
         }
 
+        private static List<VolumenGt> ReadVolumenGt(string excelFilename, 
+            int sheetIndex)
+        {
+            List<VolumenGt> volumenes = new List<VolumenGt>();
+            DataRowCollection rows = ReadExcel(excelFilename, sheetIndex);
+
+            if (rows != null)
+            {
+                VolumenGt vol;
+                int filasIgnoradas = 2;
+
+                for (int i = filasIgnoradas; i < rows.Count; i++)
+                {
+                    if (!IsFilaVolumenValida(rows[i], 2)) break;
+                    else
+                    {
+                        vol = new VolumenGt();
+                        vol.Ciclo = rows[i][0].ToString();
+                        vol.Volumen = double.Parse(rows[i][1].ToString(), CultureInfo.InvariantCulture);
+                        volumenes.Add(vol);
+                    }
+                }
+            }
+
+            Logger.AddToLog("Se leyeron " + volumenes.Count +
+                " volumenes gt en la hoja " + sheetIndex +
+                " del archivo de Excel", true);
+
+            return volumenes;
+        }
+
+        public static List<VolumenGt> ReadVolumenGtAutorizado(string nombreArchivo)
+        {
+            return ReadVolumenGt(nombreArchivo, 6);
+        }
+
+        public static List<VolumenGt> ReadVolumenGtUtilizado(string nombreArchivo)
+        {
+            return ReadVolumenGt(nombreArchivo, 8);
+        }
+
+        public static List<VolumenGt> ReadVolumenGtAsignado(string nombreArchivo)
+        {
+            return ReadVolumenGt(nombreArchivo, 7);
+        }
+
         /// <summary>
         /// Lee los registros del volumen DR autorizado del archivo de excel
         /// correspondiente.
