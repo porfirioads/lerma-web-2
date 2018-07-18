@@ -466,6 +466,12 @@ $(document).ready(function () {
             crearGraficaGt();
             tablaResumen.addClass('hidden');
             tablaResumenGtAg.removeClass('hidden');
+        } else if (tipoGrafica === 'vol_ag') {
+            selDr.addClass('hidden');
+            selPi.addClass('hidden');
+            crearGraficaAg();
+            tablaResumen.addClass('hidden');
+            tablaResumenGtAg.removeClass('hidden');
         }
     });
 
@@ -510,6 +516,9 @@ $(document).ready(function () {
         updateTablaGt();
     }
 
+    /**
+     * Actualiza la tabla de resumen para la tabla GT
+     */
     function updateTablaGt() {
         tablaResumenGtAg.find('.colId').text('Generación Tepuxtepec');
         var volMax = 472;
@@ -537,6 +546,90 @@ $(document).ready(function () {
         volAutorizadoProm = (volAutorizadoProm / volGtAutorizados.length).toFixed(2);
         volUtilizadoProm = (volUtilizadoProm / volGtUtilizados.length).toFixed(2);
         volExcedidoProm = (volExcedidoProm / volGtUtilizados.length).toFixed(2);
+
+        var volAuM = (volAutorizadoProm * 100 / volMax).toFixed(2);
+        var volUtM = (volUtilizadoProm * 100 / volMax).toFixed(2);
+
+        tablaResumenGtAg.find('.colVolMax').text(volMax);
+        tablaResumenGtAg.find('.colVolAut').text(volAutorizadoProm);
+        tablaResumenGtAg.find('.colVolAsi').text(volAsignadoProm);
+        tablaResumenGtAg.find('.colVolUti').text(volUtilizadoProm);
+        tablaResumenGtAg.find('.colVolExc').text(volExcedidoProm);
+        tablaResumenGtAg.find('.colVolAuM').text(volAuM);
+        tablaResumenGtAg.find('.colVolUtM').text(volUtM);
+    }
+
+    /**
+     * Crea la tabla de la generación tepuxtepec.
+     */
+    function crearGraficaAg() {
+        clearCanvas();
+        var cicloLabels = [];
+        var asignadoValues = [];
+        var autorizadoValues = [];
+        var utilizadoValues = [];
+        var datasets = [];
+
+        for (var i = 0; i < volAgAsignados.length; i++) {
+            cicloLabels.push(volAgAsignados[i].ciclo);
+            asignadoValues.push(volAgAsignados[i].volumen);
+
+            if (i < volAgAutorizados.length)
+                autorizadoValues.push(volAgAutorizados[i].volumen);
+
+            if (i < volAgUtilizados.length)
+                utilizadoValues.push(volAgUtilizados[i].volumen);
+        }
+
+        datasets.push(getBarDataSet('Autorizado', autorizadoValues,
+            "rgba(41, 81, 109, 1)", "rgba(18, 55, 82, 1)"));
+        datasets.push(getBarDataSet('Asignado', asignadoValues,
+            "rgba(170, 60, 57, 1)", "rgba(128, 25, 22, 1)"));
+        datasets.push(getBarDataSet('Utilizado', utilizadoValues,
+            "rgba(45, 134, 51, 1)", "rgba(17, 101, 22, 1)"));
+        chart = new Chart(context, {
+            type: 'bar',
+            data: {
+                labels: cicloLabels,
+                datasets: datasets
+            },
+            options: getChartOptions('Agua Potable Guadalajara',
+                "Volumen (hm³)", "Ciclo", "hm³")
+        });
+
+        updateTablaAg();
+    }
+
+    /**
+     * Actualiza la tabla de resumen para la tabla AG
+     */
+    function updateTablaAg() {
+        tablaResumenGtAg.find('.colId').text('Agua potable Guadalajara');
+        var volMax = 240;
+        var volAsignadoProm = 0;
+        var volAutorizadoProm = 0;
+        var volUtilizadoProm = 0;
+        var volExcedidoProm = 0;
+
+        for (var i = 0; i < volAgAsignados.length; i++) {
+            volAsignadoProm += volAgAsignados[i].volumen;
+
+            if (i < volAgAutorizados.length)
+                volAutorizadoProm += volAgAutorizados[i].volumen;
+
+            if (i < volAgUtilizados.length)
+                volUtilizadoProm += volAgUtilizados[i].volumen;
+
+            if (i < volAgUtilizados.length && i < volAgAsignados.length) {
+                var exTmp = volAgUtilizados[i] - volAgAsignados[i];
+                volExcedidoProm += exTmp >= 0 ? exTmp : 0;
+            }
+        }
+
+        volAsignadoProm = (volAsignadoProm / volAgAsignados.length).toFixed(2);
+        volAutorizadoProm = (volAutorizadoProm / volAgAutorizados.length).toFixed(2);
+        volUtilizadoProm = (volUtilizadoProm / volAgUtilizados.length).toFixed(2);
+        volExcedidoProm = (volExcedidoProm / volAgUtilizados.length).toFixed(2);
 
         var volAuM = (volAutorizadoProm * 100 / volMax).toFixed(2);
         var volUtM = (volUtilizadoProm * 100 / volMax).toFixed(2);

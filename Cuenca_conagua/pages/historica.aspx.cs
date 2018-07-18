@@ -74,6 +74,7 @@ namespace Cuenca_conagua.pages
                 "almHistoricosChapala", srcAlmHistoricosChapala);
 
             CargarVolumenesGt();
+            CargarVolumenesAg();
         }
 
         private void CargarVolumenesGt()
@@ -92,6 +93,24 @@ namespace Cuenca_conagua.pages
             volGtUtilizados.Sort();
             CargarListEntidadJs(volGtUtilizados.Cast<IJsonable>().ToList(),
                 "volGtUtilizados", scrVolumenes, true);
+        }
+
+        private void CargarVolumenesAg()
+        {
+            List<VolumenAg> volAgAsignados = VolumenAgAsignado.All();
+            volAgAsignados.Sort();
+            CargarListEntidadJs(volAgAsignados.Cast<IJsonable>().ToList(),
+                "volAgAsignados", scrVolumenes, true);
+
+            List<VolumenAg> volAgAutorizados = VolumenAgAutorizado.All();
+            volAgAutorizados.Sort();
+            CargarListEntidadJs(volAgAutorizados.Cast<IJsonable>().ToList(),
+                "volAgAutorizados", scrVolumenes, true);
+
+            List<VolumenAg> volAgUtilizados = VolumenAgUtilizado.All();
+            volAgUtilizados.Sort();
+            CargarListEntidadJs(volAgUtilizados.Cast<IJsonable>().ToList(),
+                "volAgUtilizados", scrVolumenes, true);
         }
 
         private void CargarVolumenesDr()
