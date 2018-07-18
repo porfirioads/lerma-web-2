@@ -299,6 +299,10 @@
     <Compile Include="src\Entidades\LluviaAnualEstacion.cs" />
     <Compile Include="src\Entidades\NamespaceDoc.cs" />
     <Compile Include="src\Entidades\PrecipitacionMedia.cs" />
+    <Compile Include="src\Entidades\VolumenAg.cs" />
+    <Compile Include="src\Entidades\VolumenAgAsignado.cs" />
+    <Compile Include="src\Entidades\VolumenAgAutorizado.cs" />
+    <Compile Include="src\Entidades\VolumenAgUtilizado.cs" />
     <Compile Include="src\Entidades\VolumenDr.cs" />
     <Compile Include="src\Entidades\VolumenDrAsignado.cs" />
     <Compile Include="src\Entidades\VolumenDrAutorizado.cs" />

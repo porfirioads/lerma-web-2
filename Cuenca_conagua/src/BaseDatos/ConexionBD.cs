@@ -53,6 +53,12 @@ namespace Cuenca_conagua.src.BaseDatos
 
         public const int VOL_GT_UTILIZADO = 8;
 
+        public const int VOL_AG_ASIGNADO = 9;
+
+        public const int VOL_AG_AUTORIZADO = 10;
+
+        public const int VOL_AG_UTILIZADO = 11;
+
         /// <summary>
         /// Es la cadena de conexion con la BD.
         /// </summary>
@@ -643,6 +649,12 @@ namespace Cuenca_conagua.src.BaseDatos
                     return "volumen_gt_autorizado" + sufijo;
                 case VOL_GT_UTILIZADO:
                     return "volumen_gt_utilizado" + sufijo;
+                case VOL_AG_ASIGNADO:
+                    return "volumen_ag_asignado" + sufijo;
+                case VOL_AG_AUTORIZADO:
+                    return "volumen_ag_autorizado" + sufijo;
+                case VOL_AG_UTILIZADO:
+                    return "volumen_ag_utilizado" + sufijo;
                 default: return null;
             }
         }
@@ -1256,6 +1268,89 @@ namespace Cuenca_conagua.src.BaseDatos
                 while (reader.Read())
                 {
                     vol = ReadVolumenGtFromReader(reader);
+                    vols.Add(vol);
+                }
+
+                reader.Close();
+                return vols;
+            }
+        }
+
+        private static VolumenAg ReadVolumenAgFromReader(SqlDataReader reader)
+        {
+            VolumenAg vol = new VolumenAg();
+            vol.Ciclo = reader.GetString(0);
+            vol.Volumen = double.Parse(reader.GetValue(1).ToString());
+            return vol;
+        }
+
+        public static VolumenAg GetVolumenAg(string ciclo, int tipo)
+        {
+            InitConnection();
+
+            string nombreTabla = GetNombreTablaVolumen(tipo);
+            string query = "SELECT * FROM [" + nombreTabla + "] WHERE ciclo=@ciclo";
+            SqlCommand command = new SqlCommand(query, conexion);
+            command.Parameters.AddWithValue("@ciclo", ciclo);
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                VolumenAg vol = null;
+
+                if (reader.Read())
+                {
+                    vol = ReadVolumenAgFromReader(reader);
+                }
+
+                reader.Close();
+                return vol;
+            }
+        }
+
+        public static bool InsertarVolumenAg(VolumenAg vol, int tipo)
+        {
+            InitConnection();
+            bool insertado = false;
+            string nombreTabla = GetNombreTablaVolumen(tipo);
+            if (nombreTabla == null) return false;
+
+            string sql = string.Format("INSERT INTO {0} VALUES('{1}', {2})",
+                nombreTabla, vol.Ciclo, vol.Volumen);
+
+            SqlCommand cmd = new SqlCommand(sql, conexion);
+            cmd.CommandType = CommandType.Text;
+
+            if (GetVolumenGt(vol.Ciclo, tipo) == null)
+            {
+                try
+                {
+                    insertado = cmd.ExecuteNonQuery() > 0;
+                }
+                catch (Exception ex)
+                {
+                    Logger.AddToLog(ex.Message, true);
+                }
+            }
+
+            return insertado;
+        }
+
+        public static List<VolumenAg> GetAllVolumenAg(int tipo)
+        {
+            InitConnection();
+
+            string nombreTabla = GetNombreTablaVolumen(tipo);
+            string query = "SELECT * FROM [" + nombreTabla + "]";
+            SqlCommand command = new SqlCommand(query, conexion);
+            List<VolumenAg> vols = new List<VolumenAg>();
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                VolumenAg vol = null;
+
+                while (reader.Read())
+                {
+                    vol = ReadVolumenAgFromReader(reader);
                     vols.Add(vol);
                 }
 
