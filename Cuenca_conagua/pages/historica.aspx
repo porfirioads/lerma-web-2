@@ -135,6 +135,32 @@
                 </tr>
             </table>
 
+            <table id="tablaResumenGtAg" class="table-100 table-padded hidden">
+                <tr>
+                    <th id="resId" rowspan="2">Usuario</th>
+                    <th rowspan="2">Vol. máx (hm<sup>3</sup>)</th>
+                    <th colspan="4">Volumen promedio (hm<sup>3</sup>)</th>
+                    <th rowspan="2">Vol. aut / Vol. máx %</th>
+                    <th rowspan="2">Vol. uti / Vol. máx, % </th>
+                </tr>
+                <tr>
+                    <th>Autorizado</th>
+                    <th>Asignado</th>
+                    <th>Utilizado</th>
+                    <th>Excedido</th>
+                </tr>
+                <tr>
+                    <td class="colId">1</td>
+                    <td class="colVolMax">2</td>
+                    <td class="colVolAut">3</td>
+                    <td class="colVolAsi">4</td>
+                    <td class="colVolUti">5</td>
+                    <td class="colVolExc">6</td>
+                    <td class="colVolAuM">7</td>
+                    <td class="colVolUtM">8</td>
+                </tr>
+            </table>
+
             <select id="selDr" class="form-control">
             </select>
 

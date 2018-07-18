@@ -42,6 +42,8 @@ $(document).ready(function () {
     var resumenDr;
     var resumenPi;
     var resumenPiOld;
+    var tablaResumen = $('#tablaResumen');
+    var tablaResumenGtAg = $('#tablaResumenGtAg');
 
     // Es el constructor del script
     function start() {
@@ -340,6 +342,9 @@ $(document).ready(function () {
         $('#colVolUtM').text(porcUtM.toFixed(2));
     }
 
+    /**
+     * Calcula los datos de la tabla de resumen de volúmenes P.I. acuerdo 1991.
+     */
     function calculateResumenPiOld() {
         resumenPiOld = {};
         var volMaxPi = [241, 65, 523, 464, 157];
@@ -373,8 +378,6 @@ $(document).ready(function () {
             resumenPiOld[volPiOldAttributes[i]]['porcAutMax'] = porcAutMax;
             resumenPiOld[volPiOldAttributes[i]]['porcUtiMax'] = porcUtiMax;
         }
-
-        console.log(resumenPiOld);
     }
 
     /**
@@ -448,13 +451,104 @@ $(document).ready(function () {
             selPi.addClass('hidden');
             selDr.removeClass('hidden');
             selDr.trigger('change');
+            tablaResumen.removeClass('hidden');
+            tablaResumenGtAg.addClass('hidden');
         } else if (tipoGrafica.startsWith('vol_pi')) {
             selDr.addClass('hidden');
             selPi.removeClass('hidden');
             refreshSelPi();
             selPi.trigger('change');
+            tablaResumen.removeClass('hidden');
+            tablaResumenGtAg.addClass('hidden');
+        } else if (tipoGrafica === 'vol_gt') {
+            selDr.addClass('hidden');
+            selPi.addClass('hidden');
+            crearGraficaGt();
+            tablaResumen.addClass('hidden');
+            tablaResumenGtAg.removeClass('hidden');
         }
     });
+
+    /**
+     * Crea la tabla de la generación tepuxtepec.
+     */
+    function crearGraficaGt() {
+        clearCanvas();
+        var cicloLabels = [];
+        var asignadoValues = [];
+        var autorizadoValues = [];
+        var utilizadoValues = [];
+        var datasets = [];
+
+        for (var i = 0; i < volGtAsignados.length; i++) {
+            cicloLabels.push(volGtAsignados[i].ciclo);
+            asignadoValues.push(volGtAsignados[i].volumen);
+
+            if (i < volGtAutorizados.length)
+                autorizadoValues.push(volGtAutorizados[i].volumen);
+
+            if (i < volGtUtilizados.length)
+                utilizadoValues.push(volGtUtilizados[i].volumen);
+        }
+        
+        datasets.push(getBarDataSet('Autorizado', autorizadoValues,
+            "rgba(41, 81, 109, 1)", "rgba(18, 55, 82, 1)"));
+        datasets.push(getBarDataSet('Asignado', asignadoValues,
+            "rgba(170, 60, 57, 1)", "rgba(128, 25, 22, 1)"));
+        datasets.push(getBarDataSet('Utilizado', utilizadoValues,
+            "rgba(45, 134, 51, 1)", "rgba(17, 101, 22, 1)"));
+        chart = new Chart(context, {
+            type: 'bar',
+            data: {
+                labels: cicloLabels,
+                datasets: datasets
+            },
+            options: getChartOptions('Generación Tepuxtepec',
+                "Volumen (hm³)", "Ciclo", "hm³")
+        });
+
+        updateTablaGt();
+    }
+
+    function updateTablaGt() {
+        tablaResumenGtAg.find('.colId').text('Generación Tepuxtepec');
+        var volMax = 472;
+        var volAsignadoProm = 0;
+        var volAutorizadoProm = 0;
+        var volUtilizadoProm = 0;
+        var volExcedidoProm = 0;
+
+        for (var i = 0; i < volGtAsignados.length; i++) {
+            volAsignadoProm += volGtAsignados[i].volumen;
+            
+            if (i < volGtAutorizados.length)
+                volAutorizadoProm += volGtAutorizados[i].volumen;
+
+            if (i < volGtUtilizados.length)
+                volUtilizadoProm += volGtUtilizados[i].volumen;
+
+            if (i < volGtUtilizados.length && i < volGtAsignados.length) {
+                var exTmp = volGtUtilizados[i] - volGtAsignados[i];
+                volExcedidoProm += exTmp >= 0 ? exTmp : 0;
+            }
+        }
+     
+        volAsignadoProm = (volAsignadoProm / volGtAsignados.length).toFixed(2);
+        volAutorizadoProm = (volAutorizadoProm / volGtAutorizados.length).toFixed(2);
+        volUtilizadoProm = (volUtilizadoProm / volGtUtilizados.length).toFixed(2);
+        volExcedidoProm = (volExcedidoProm / volGtUtilizados.length).toFixed(2);
+
+        var volAuM = (volAutorizadoProm * 100 / volMax).toFixed(2);
+        var volUtM = (volUtilizadoProm * 100 / volMax).toFixed(2);
+
+        tablaResumenGtAg.find('.colVolMax').text(volMax);
+        tablaResumenGtAg.find('.colVolAut').text(volAutorizadoProm);
+        tablaResumenGtAg.find('.colVolAsi').text(volAsignadoProm);
+        tablaResumenGtAg.find('.colVolUti').text(volUtilizadoProm);
+        tablaResumenGtAg.find('.colVolExc').text(volExcedidoProm);
+        tablaResumenGtAg.find('.colVolAuM').text(volAuM);
+        tablaResumenGtAg.find('.colVolUtM').text(volUtM);
+    }
 
     // Limpia el canvas.
     function clearCanvas() {
