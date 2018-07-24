@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
-using System.Text;
-//using Excel;
 using Microsoft.Office.Interop.Excel;
 using Cuenca_conagua.src.Entidades;
 using System.Globalization;

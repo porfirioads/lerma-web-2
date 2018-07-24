@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cuenca_conagua.src.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,7 @@ namespace Cuenca_conagua.pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //CsvDataReader.ReadCsv("C:\\Users\\porfi\\Downloads\\ejemplo.csv");
         }
     }
 }

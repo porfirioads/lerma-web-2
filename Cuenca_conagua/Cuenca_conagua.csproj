@@ -53,6 +53,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Desktop\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="LumenWorks.Framework.IO">
+      <HintPath>..\..\..\Downloads\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -318,6 +321,7 @@
     <Compile Include="src\Entidades\VolumenPiOld.cs" />
     <Compile Include="src\Entidades\VolumenPiUtilizado.cs" />
     <Compile Include="src\Entidades\VolumenPiUtilizadoOld.cs" />
+    <Compile Include="src\Utilidades\CsvDataReader.cs" />
     <Compile Include="src\Utilidades\DateUtils.cs" />
     <Compile Include="src\Utilidades\ExcelFileIO.cs" />
     <Compile Include="src\Utilidades\FileManager.cs" />

@@ -42,7 +42,7 @@ $(document).ready(function () {
 
         media /= precAnualValues.length;
 
-        for (var i = ciclosIgnorados; i < regPrecipitacion.length; i++) {
+        for (var i = 0; i < regPrecipitacion.length; i++) {
             precAnualMediaValues.push(media);
         }
 
