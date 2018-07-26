@@ -4,6 +4,140 @@ var maxFilesExceeded = false;
 var uploadAllowed = false;
 var maxFiles = 100;
 
+var uploadLabels = [
+    {
+        optionValue: 'Lluvia_media_anual',
+        optionLabel: 'Precipitación media (Lluvia_media_anual.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Escurrimiento_anual',
+        optionLabel: 'Escurrimiento anual (Escurrimiento_anual.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Lluvia_anual_estación',
+        optionLabel: 'Lluvia anual por estación (Lluvia_anual_estación.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Almacenamientos_principales',
+        optionLabel: 'Almacenamientos principales (Almacenamientos_principales.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Almacenamiento_histórico_chapala',
+        optionLabel: 'Almacenamiento histórico Chapala (Almacenamiento_histórico_chapala.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_ag_asignado',
+        optionLabel: 'Volumen Agua Guadalajara Asignado (Volumen_ag_asignado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_ag_autorizado',
+        optionLabel: 'Volumen Agua Guadalajara Autorizado (Volumen_ag_autorizado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_ag_utilizado',
+        optionLabel: 'Volumen Agua Guadalajara Utilizado (Volumen_ag_utilizado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_gt_asignado',
+        optionLabel: 'Volumen Generación Tepuxtepec Asignado (Volumen_gt_asignado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_gt_autorizado',
+        optionLabel: 'Volumen Generación Tepuxtepec Autorizado (Volumen_gt_autorizado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_gt_utilizado',
+        optionLabel: 'Volumen Generación Tepuxtepec Utilizado (Volumen_gt_utilizado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_dr_asignado',
+        optionLabel: 'Volumen Distrito de Riego Asignado (Volumen_dr_asignado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_dr_autorizado',
+        optionLabel: 'Volumen Distrito de Riego Autorizado (Volumen_dr_autorizado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_dr_utilizado',
+        optionLabel: 'Volumen Distrito de Riego Utilizado (Volumen_dr_utilizado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_pi_asignado',
+        optionLabel: 'Volumen Pequeña Irrigación Asignado (Volumen_pi_asignado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_pi_autorizado',
+        optionLabel: 'Volumen Pequeña Irrigación Autorizado (Volumen_pi_autorizado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_pi_utilizado',
+        optionLabel: 'Volumen Pequeña Irrigación Utilizado (Volumen_pi_utilizado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_pi_1991_autorizado',
+        optionLabel: 'Volumen Pequeña Irrigación Acuerdo 1991 Autorizado (Volumen_pi_autorizado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Volumen_pi_1991_utilizado',
+        optionLabel: 'Volumen Pequeña Irrigación Acuerdo 1991 Utilizado (Volumen_pi_utilizado.csv)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Boletin',
+        optionLabel: 'Boletín (*.pdf)',
+        fileExtension: '.pdf'
+    },
+    {
+        optionValue: 'Reglamentación',
+        optionLabel: 'Reglamentación (*.pdf)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Archivo_calculo',
+        optionLabel: 'Archivo de cálculo (*.xls, *.xlsx)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Presentación_covi',
+        optionLabel: 'Presentación COVI (*.ppt, *.pptx)',
+        fileExtension: '.csv'
+    },
+    {
+        optionValue: 'Minuta_god',
+        optionLabel: 'Minutas GOD (*.zip)',
+        fileExtension: '.csv'
+    }
+];
+
+function start() {
+    var selTipoArchivo = $('#sel_tipo_archivo');
+
+    for (var i = 0; i < uploadLabels.length; i++) {
+        selTipoArchivo.append('<option value="' + uploadLabels[i].optionValue +
+            '">' + uploadLabels[i].optionLabel + '</option>');
+    }
+}
+
+start();
+
 Dropzone.options.fileUpload = {
     maxFiles: maxFiles,
 
@@ -44,7 +178,6 @@ Dropzone.options.fileUpload = {
 
         this.on("complete", function (file) {
             setTimeout(function () {
-                //parent.removeAllFiles();
                 mostrarMensajeResultado(RES_EXITO, MSJ_EXITO);
                 maxFilesExceeded = false;
             }, 2000);
@@ -67,27 +200,20 @@ function updateTipoArchivo() {
     uploadAllowed = false;
     maxFilesExceeded = false;
 
-    console.log('sel_tipo_archivo change', tipo);
-
     var tipoArchivo = $('#tipoArchivo');
 
     if (tipo === 'Boletin') {
         tipoArchivo.val('boletin');
     } else if (tipo === 'Reglamentación') {
         tipoArchivo.val('reglamentacion');
-    } else if (tipo === 'Lluvia_media_anual'
-        || tipo === 'Escurrimiento_anual'
-        || tipo === 'Volumenes_DR_PI'
-        || tipo === 'Lluva_anual_estación'
-        || tipo === 'Almacenamientos_principales'
-        || tipo === 'Almacenamiento_histórico_chapala') {
-        tipoArchivo.val('datos');
     } else if (tipo === 'Archivo_calculo') {
         tipoArchivo.val('archivo_calculo');
     } else if (tipo === 'Presentación_covi') {
         tipoArchivo.val('presentacion_covi');
     } else if (tipo === 'Minuta_god') {
         tipoArchivo.val('minuta_god');
+    } else {
+        tipoArchivo.val('datos');
     }
 }
 
@@ -115,7 +241,7 @@ function evaluarExtension(nombreArchivo) {
     } else if (nombreCorrecto === 'Minuta_god') {
         return nombreArchivo.endsWith('.zip');
     } else {
-        return nombreArchivo.endsWith('.xls') || nombreArchivo.endsWith('.xlsx');
+        return nombreArchivo.endsWith('.csv');
     }
 }
 
@@ -143,7 +269,8 @@ function removeFileExtension(nombreArchivo) {
         .replace('.xlsx', '')
         .replace('.xls', '')
         .replace('.pdf', '')
-        .replace('.zip', '');
+        .replace('.zip', '')
+        .replace('.csv', '');
 }
 
 // Muestra el mensaje correspondiente al resultado del intento de subir el archivo.

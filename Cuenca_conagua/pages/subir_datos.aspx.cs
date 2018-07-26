@@ -44,6 +44,35 @@ namespace Cuenca_conagua.pages
             }
         }
 
+        private string GetPathForUploadedFile(string tipo)
+        {
+            string path = "";
+
+            switch(tipo)
+            {
+                case "boletin":
+                    path = "uploaded_files/boletines";
+                    break;
+                case "reglamentacion":
+                    path = "uploaded_files/reglamentacion";
+                    break;
+                case "datos":
+                    path = "uploaded_files/datos";
+                    break;
+                case "archivo_calculo":
+                    path = "uploaded_files/restitucion/archivos_calculo";
+                    break;
+                case "presentacion_covi":
+                    path = "uploaded_files/restitucion/presentacion_covi";
+                    break;
+                case "minuta_god":
+                    path = "uploaded_files/minutas_GOD";
+                    break;
+            }
+
+            return path;
+        }
+
         /// <summary>
         /// Guarda el archivo recibido en el directorio correspondiente
         /// </summary>
@@ -58,39 +87,13 @@ namespace Cuenca_conagua.pages
         /// </returns>
         private string SaveFile(HttpPostedFile file, string tipo)
         {
-            string path = "../";
             string fileName = file.FileName;
+            string path = GetPathForUploadedFile(tipo);
 
-            if (tipo.Equals("boletin"))
-            {
-                FileManager.crearCarpetasFaltantes("uploaded_files/boletines");
-                path = "../uploaded_files/boletines";
-            }
-            else if (tipo.Equals("reglamentacion"))
-            {
-                FileManager.crearCarpetasFaltantes("uploaded_files/reglamentacion");
-                path = "../uploaded_files/reglamentacion";
-            }
-            else if (tipo.Equals("datos"))
-            {
-                FileManager.crearCarpetasFaltantes("uploaded_files/datos");
-                path = "../uploaded_files/datos";
-            }
-            else if (tipo.Equals("archivo_calculo"))
-            {
-                FileManager.crearCarpetasFaltantes("uploaded_files/restitucion/archivos_calculo");
-                path = "../uploaded_files/restitucion/archivos_calculo";
-            }
-            else if (tipo.Equals("presentacion_covi"))
-            {
-                FileManager.crearCarpetasFaltantes("uploaded_files/restitucion/presentacion_covi");
-                path = "../uploaded_files/restitucion/presentacion_covi";
-            } else if(tipo.Equals("minuta_god"))
-            {
-                FileManager.crearCarpetasFaltantes("uploaded_files/minutas_GOD");
-                path = "../uploaded_files/minutas_GOD";
-            }
+            FileManager.crearCarpetasFaltantes(path);
+            path = "../" + path;
 
+            Logger.AddToLog(path, true);
             Logger.AddToLog("Tipo de archivo: " + tipo, true);
 
             string savedFileName = Path.Combine(Server.MapPath(path), fileName);
@@ -114,6 +117,7 @@ namespace Cuenca_conagua.pages
 
             Logger.AddToLog("IngresarBaseDatos(" + archivoSinRuta + ")", true);
 
+            /*
             if (archivoSinRuta.StartsWith("Lluvia_media_anual"))
             {
                 Logger.AddToLog("IngresarPrecipitacionBD", true);
@@ -144,6 +148,7 @@ namespace Cuenca_conagua.pages
                 Logger.AddToLog("IngresarAlmacenamientoHistoricoChapala", true);
                 IngresarAlmacenamientoHistoricoChapalaBD(nombreArchivo);
             }
+            */
         }
 
         /// <summary>
