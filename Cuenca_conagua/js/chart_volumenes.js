@@ -71,8 +71,11 @@ $(document).ready(function () {
             cicloPiLabels.push(volPiAsignados[i].ciclo);
         }
 
+        console.log('DrLabels');
+
         for (var i = 0; i < volDrLabels.length; i++) {
             selDr.append('<option value="' + i + '">' + volDrLabels[i] + '</option>');
+            console.log(volDrLabels[i]);
         }
 
         for (var i = 0; i < volPiLabels.length; i++) {
@@ -279,7 +282,6 @@ $(document).ready(function () {
     // Crea la grafica de D.R. para el D.R. seleccionado.
     function crearGraficaDr() {
         clearCanvas();
-        start();
         refreshDrValues();
         var datasets = [];
         datasets.push(getBarDataSet('Autorizado', volDrAutorizadoValues,
