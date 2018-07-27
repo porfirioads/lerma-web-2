@@ -228,7 +228,7 @@ namespace Cuenca_conagua.pages
             Logger.AddToLog("IngresarEscurrimientoBD", true);
 
             List<EscurrimientoAnual> escurrimientos
-                    = ExcelFileIO.ReadEscurrimientoAnual(nombreArchivo);
+                    = CsvDataReader.ReadEscurrimientoAnual(nombreArchivo);
 
             foreach (EscurrimientoAnual ea in escurrimientos)
             {

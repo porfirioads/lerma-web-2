@@ -43,7 +43,6 @@ namespace Cuenca_conagua.src.Utilidades
         {
             List<Dictionary<string, string>> data = ReadCsv(filename);
             Logger.AddToLog(DictListToJsonString(data), true);
-
             List<PrecipitacionMedia> precs = new List<PrecipitacionMedia>();
 
             foreach (Dictionary<string, string> prec in data)
@@ -66,6 +65,39 @@ namespace Cuenca_conagua.src.Utilidades
             }
 
             return precs;
+        }
+
+        public static List<EscurrimientoAnual> ReadEscurrimientoAnual(string filename)
+        {
+            List<Dictionary<string, string>> data = ReadCsv(filename);
+            Logger.AddToLog(DictListToJsonString(data), true);
+            List<EscurrimientoAnual> escs = new List<EscurrimientoAnual>();
+
+            foreach (Dictionary<string, string> prec in data)
+            {
+                EscurrimientoAnual e = new EscurrimientoAnual();
+                e.Ciclo = prec["ciclo"];
+                e.Alzate = double.Parse(prec["alzate"]);
+                e.Ramirez = double.Parse(prec["ramirez"]);
+                e.Tepetitlan = double.Parse(prec["tepetitlan"]);
+                e.Tepuxtepec = double.Parse(prec["tepuxtepec"]);
+                e.Solis = double.Parse(prec["solis"]);
+                e.Begona = double.Parse(prec["begona"]);
+                e.Ameche = double.Parse(prec["ameche"]);
+                e.Pericos = double.Parse(prec["pericos"]);
+                e.Yuriria = double.Parse(prec["yuriria"]);
+                e.Salamanca = double.Parse(prec["salamanca"]);
+                e.Adjuntas = double.Parse(prec["adjuntas"]);
+                e.Angulo = double.Parse(prec["angulo"]);
+                e.Corrales = double.Parse(prec["corrales"]);
+                e.Yurecuaro = double.Parse(prec["yurecuaro"]);
+                e.Duero = double.Parse(prec["duero"]);
+                e.Zula = double.Parse(prec["zula"]);
+                e.Chapala = double.Parse(prec["chapala"]);
+                escs.Add(e);
+            }
+
+            return escs;
         }
 
         private static string DictListToJsonString(List<Dictionary<string, string>> obj)
