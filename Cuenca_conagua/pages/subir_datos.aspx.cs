@@ -117,38 +117,18 @@ namespace Cuenca_conagua.pages
 
             Logger.AddToLog("IngresarBaseDatos(" + archivoSinRuta + ")", true);
 
-            /*
             if (archivoSinRuta.StartsWith("Lluvia_media_anual"))
-            {
-                Logger.AddToLog("IngresarPrecipitacionBD", true);
                 IngresarPrecipitacionBD(nombreArchivo);
-            }
             else if (archivoSinRuta.StartsWith("Escurrimiento_anual"))
-            {
-                Logger.AddToLog("IngresarEscurrimientoBD", true);
                 IngresarEscurrimientoBD(nombreArchivo);
-            }
-            else if (archivoSinRuta.StartsWith("Volumenes_DR_PI"))
-            {
-                Logger.AddToLog("IngresarVolumenesBD", true);
-                IngresarVolumenesBD(nombreArchivo);
-            }
             else if (archivoSinRuta.StartsWith("Lluvia_anual_estación"))
-            {
-                Logger.AddToLog("IngresarLluviaAnualEstacion", true);
                 IngresarLluviaAnualEstacion(nombreArchivo);
-            }
             else if (archivoSinRuta.StartsWith("Almacenamientos_principales"))
-            {
-                Logger.AddToLog("IngresarAlmacenamientosPrincipales", true);
                 IngresarAlmacenamientosPrincipalesBD(nombreArchivo);
-            }
-            else if(archivoSinRuta.StartsWith("Almacenamiento_histórico_chapala"))
-            {
-                Logger.AddToLog("IngresarAlmacenamientoHistoricoChapala", true);
+            else if (archivoSinRuta.StartsWith("Almacenamiento_histórico_chapala"))
                 IngresarAlmacenamientoHistoricoChapalaBD(nombreArchivo);
-            }
-            */
+
+            // TODO Agregar archivos de volúmenes
         }
 
         /// <summary>
@@ -160,6 +140,8 @@ namespace Cuenca_conagua.pages
         /// </param>
         private void IngresarAlmacenamientoHistoricoChapalaBD(string nombreArchivo)
         {
+            Logger.AddToLog("IngresarAlmacenamientoHistoricoChapala", true);
+
             List<AlmacenamientoHistoricoChapala> almacenamientos = 
                 ExcelFileIO.ReadAlmacenamientoHistoricoChapala(nombreArchivo);
 
@@ -187,9 +169,10 @@ namespace Cuenca_conagua.pages
         /// </param>
         private void IngresarAlmacenamientosPrincipalesBD(string nombreArchivo)
         {
+            Logger.AddToLog("IngresarAlmacenamientosPrincipales", true);
+
             List<AlmacenamientoPrincipal> almacenamientos = ExcelFileIO.
                 ReadAlmacenamientoPrincipal(nombreArchivo);
-
 
             foreach (AlmacenamientoPrincipal alm in almacenamientos)
             {
@@ -215,8 +198,10 @@ namespace Cuenca_conagua.pages
         /// </param>
         protected void IngresarPrecipitacionBD(string nombreArchivo)
         {
-            List<PrecipitacionMedia> precipitaciones
-                    = ExcelFileIO.ReadPrecipitacionMedia(nombreArchivo);
+            Logger.AddToLog("IngresarPrecipitacionBD", true);
+
+            List<PrecipitacionMedia> precipitaciones = CsvDataReader
+                .ReadPrecipitacionMediaCsv(nombreArchivo);
 
             foreach (PrecipitacionMedia pm in precipitaciones)
             {
@@ -240,6 +225,8 @@ namespace Cuenca_conagua.pages
         /// </param>
         protected void IngresarEscurrimientoBD(string nombreArchivo)
         {
+            Logger.AddToLog("IngresarEscurrimientoBD", true);
+
             List<EscurrimientoAnual> escurrimientos
                     = ExcelFileIO.ReadEscurrimientoAnual(nombreArchivo);
 
@@ -536,6 +523,8 @@ namespace Cuenca_conagua.pages
         /// </param>
         protected void IngresarLluviaAnualEstacion(string nombreArchivo)
         {
+            Logger.AddToLog("IngresarLluviaAnualEstacion", true);
+
             List<LluviaAnualEstacion> lluvias =
                 ExcelFileIO.ReadLluviaAnualEstacion(nombreArchivo);
 

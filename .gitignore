@@ -335,7 +335,9 @@ ASALocalRun/
 *.ppt
 *.pptx
 *.zip
+*.csv
 !Cuenca_conagua/uploaded_files/usuarios_agua_superficial/*
+!Cuenca_conagua/uploaded_files/minutas_GOD/*
 !Cuenca_conagua/uploaded_files/shp/*
 
 # Log file
