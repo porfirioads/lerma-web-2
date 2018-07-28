@@ -245,12 +245,54 @@ namespace Cuenca_conagua.src.Utilidades
 
         public static List<VolumenPi> ReadVolumenPi(string filename)
         {
-            throw new NotImplementedException();
+            List<Dictionary<string, string>> data = ReadCsv(filename);
+            Logger.AddToLog(DictListToJsonString(data), true);
+            List<VolumenPi> vols = new List<VolumenPi>();
+
+            foreach (Dictionary<string, string> vol in data)
+            {
+                VolumenPi v = new VolumenPi();
+                v.Ciclo = vol["ciclo"];
+                v.PiAlzate = double.Parse(vol["piAlzate"]);
+                v.PiRamirez = double.Parse(vol["piRamirez"]);
+                v.PiTepetitlan = double.Parse(vol["piTepetitlan"]);
+                v.PiTepuxtepec = double.Parse(vol["piTepuxtepec"]);
+                v.PiSolis = double.Parse(vol["piSolis"]);
+                v.PiBegona = double.Parse(vol["piBegona"]);
+                v.PiQueretaro = double.Parse(vol["piQueretaro"]);
+                v.PiPericos = double.Parse(vol["piPericos"]);
+                v.PiAdjuntas = double.Parse(vol["piAdjuntas"]);
+                v.PiAngulo = double.Parse(vol["piAngulo"]);
+                v.PiCorrales = double.Parse(vol["piCorrales"]);
+                v.PiYurecuaro = double.Parse(vol["piYurecuaro"]);
+                v.PiDuero = double.Parse(vol["piDuero"]);
+                v.PiZula = double.Parse(vol["piZula"]);
+                v.PiChapala = double.Parse(vol["piChapala"]);
+                vols.Add(v);
+            }
+
+            return vols;
         }
 
         public static List<VolumenPiOld> ReadVolumenPiOld(string filename)
         {
-            throw new NotImplementedException();
+            List<Dictionary<string, string>> data = ReadCsv(filename);
+            Logger.AddToLog(DictListToJsonString(data), true);
+            List<VolumenPiOld> vols = new List<VolumenPiOld>();
+
+            foreach (Dictionary<string, string> vol in data)
+            {
+                VolumenPiOld v = new VolumenPiOld();
+                v.Ciclo = vol["ciclo"];
+                v.PiAltoLerma = double.Parse(vol["piAltoLerma"]);
+                v.PiRioQueretaro = double.Parse(vol["piRioQueretaro"]);
+                v.PiBajio = double.Parse(vol["piBajio"]);
+                v.PiAnguloDuero = double.Parse(vol["piAnguloDuero"]);
+                v.PiBajoLerma = double.Parse(vol["piBajoLerma"]);
+                vols.Add(v);
+            }
+
+            return vols;
         }
 
         private static string DictListToJsonString(List<Dictionary<string, string>> obj)

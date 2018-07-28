@@ -145,6 +145,16 @@ namespace Cuenca_conagua.pages
                 IngresarVolumenDrAutorizadoBD(nombreArchivo);
             else if (archivoSinRuta.StartsWith("Volumen_dr_utilizado"))
                 IngresarVolumenDrUtilizadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_pi_asignado"))
+                IngresarVolumenPiAsignadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_pi_autorizado"))
+                IngresarVolumenPiAutorizadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_pi_utilizado"))
+                IngresarVolumenPiUtilizadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_pi_1991_autorizado"))
+                IngresarVolumenPiOldAutorizadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_pi_1991_utilizado"))
+                IngresarVolumenPiOldUtilizadoBD(nombreArchivo);
         }
 
         private void IngresarAlmacenamientoHistoricoChapalaBD(string nombreArchivo)
@@ -416,32 +426,11 @@ namespace Cuenca_conagua.pages
             }
         }
 
-        /// <summary>
-        /// Ingresa los registros de los volumenes en caso de que ese archivo
-        /// sea el que se subio al servidor.
-        /// </summary>
-        /// <param name="nombreArchivo">
-        /// Nombre del archivo de excel que contiene los datos.
-        /// </param>
-        protected void IngresarVolumenesBD(string nombreArchivo)
+        protected void IngresarVolumenPiAsignadoBD(string nombreArchivo)
         {
-            List<VolumenPi> volsPiAutorizados = ExcelFileIO
-                .ReadVolumenPiAutorizado(nombreArchivo);
+            List<VolumenPi> volsPiAsignados = CsvDataReader.ReadVolumenPi(nombreArchivo);
 
-            foreach (VolumenPi volAu in volsPiAutorizados)
-            {
-                if (volAu.ToVolumenPiAutorizado().Save())
-                {
-                    Logger.AddToLog("Volumen PI autorizado: " + volAu.Ciclo + " guardado", true);
-                }
-                else
-                {
-                    Logger.AddToLog("Volumen PI autorizado: " + volAu.Ciclo + " no guardado", true);
-                }
-            }
-
-            List<VolumenPi> volsPiAsignados = ExcelFileIO
-                .ReadVolumenPiAsignado(nombreArchivo);
+            Logger.AddToLog("Volúmenes PI Asignados", true);
 
             foreach (VolumenPi volAs in volsPiAsignados)
             {
@@ -454,9 +443,32 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen PI asignado: " + volAs.Ciclo + " no guardado", true);
                 }
             }
+        }
 
-            List<VolumenPi> volsPiUtilizados = ExcelFileIO
-                .ReadVolumenPiUtilizado(nombreArchivo);
+        protected void IngresarVolumenPiAutorizadoBD(string nombreArchivo)
+        {
+            List<VolumenPi> volsPiAutorizados = CsvDataReader.ReadVolumenPi(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes PI Autorizados", true);
+
+            foreach (VolumenPi volAu in volsPiAutorizados)
+            {
+                if (volAu.ToVolumenPiAutorizado().Save())
+                {
+                    Logger.AddToLog("Volumen PI autorizado: " + volAu.Ciclo + " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen PI autorizado: " + volAu.Ciclo + " no guardado", true);
+                }
+            }
+        }
+
+        protected void IngresarVolumenPiUtilizadoBD(string nombreArchivo)
+        {
+            List<VolumenPi> volsPiUtilizados = CsvDataReader.ReadVolumenPi(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes PI Utilizados", true);
 
             foreach (VolumenPi volUt in volsPiUtilizados)
             {
@@ -469,9 +481,13 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen PI utilizado: " + volUt.Ciclo + " no guardado", true);
                 }
             }
+        }
 
-            List<VolumenPiOld> volsPiOldAutorizados = ExcelFileIO
-                .ReadVolumenPiOldAutorizado(nombreArchivo);
+        protected void IngresarVolumenPiOldAutorizadoBD(string nombreArchivo)
+        {
+            List<VolumenPiOld> volsPiOldAutorizados = CsvDataReader.ReadVolumenPiOld(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes PI Old Autorizados", true);
 
             foreach (VolumenPiOld volPiOld in volsPiOldAutorizados)
             {
@@ -486,9 +502,13 @@ namespace Cuenca_conagua.pages
                         volPiOld.Ciclo + " no guardado", true);
                 }
             }
+        }
 
-            List<VolumenPiOld> volsPiOldUtilizados = ExcelFileIO
-                .ReadVolumenPiOldUtilizado(nombreArchivo);
+        protected void IngresarVolumenPiOldUtilizadoBD(string nombreArchivo)
+        {
+            List<VolumenPiOld> volsPiOldUtilizados = CsvDataReader.ReadVolumenPiOld(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes PI Old Utilizados", true);
 
             foreach (VolumenPiOld volPiOld in volsPiOldUtilizados)
             {
