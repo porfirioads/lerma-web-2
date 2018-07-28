@@ -47,24 +47,6 @@ $(document).ready(function () {
 
     // Es el constructor del script
     function start() {
-        var tipoGrafica = selTipoGraficaVol.val();
-
-        if (tipoGrafica === 'vol_dr_actual') {
-            volDrAsignados = volDrAsignadosActual;
-            volDrAutorizados = volDrAutorizadosActual;
-            volDrUtilizados = volDrUtilizadosActual;
-        } else if (tipoGrafica === 'vol_dr_viejos') {
-            volDrAsignados = volDrAsignadosOld;
-            volDrAutorizados = volDrAutorizadosOld;
-            volDrUtilizados = volDrUtilizadosOld;
-        }
-
-        cicloDrLabels = [];
-
-        for (var i = 0; i < volDrAsignados.length; i++) {
-            cicloDrLabels.push(volDrAsignados[i].ciclo);
-        }
-
         cicloPiLabels = [];
 
         for (var i = 0; i < volPiAsignados.length; i++) {
@@ -82,17 +64,6 @@ $(document).ready(function () {
             selPi.append('<option value="' + i + '">' + volPiLabels[i] + '</option>');
         }
 
-        excedidosDr = [];
-
-        for (var i = 0; i < volDrAsignados.length; i++) {
-            excedidosDr.push({});
-            for (var j = 0; j < volDrAttributes.length; j++) {
-                var ex = volDrUtilizados[i][volDrAttributes[j]]
-                    - volDrAsignados[i][volDrAttributes[j]];
-                excedidosDr[i][volDrAttributes[j]] = ex >= 0 ? ex : 0;
-            }
-        }
-
         excedidosPi = [];
 
         for (var i = 0; i < volPiAsignados.length; i++) {
@@ -104,43 +75,6 @@ $(document).ready(function () {
             }
         }
 
-        resumenDr = {};
-
-        for (var i = 0; i < volDrAttributes.length; i++) {
-            resumenDr[volDrAttributes[i]] = {};
-            var promAutorizado = 0;
-            var promAsignado = 0;
-            var promUtilizado = 0;
-            var promExcedido = 0;
-            var porcAutMax = 0;
-            var porcUtiMax = 0;
-            resumenDr[volDrAttributes[i]]['volMax'] = volMaxDr[i];
-
-            for (var j = 0; j < volDrAutorizados.length; j++) {
-                var aut = volDrAutorizados[j][volDrAttributes[i]];
-                var asi = volDrAsignados[j][volDrAttributes[i]];
-                var uti = volDrUtilizados[j][volDrAttributes[i]];
-                var exc = excedidosDr[j][volDrAttributes[i]];
-                promAutorizado += aut;
-                promAsignado += asi;
-                promUtilizado += uti;
-                promExcedido += exc;
-            }
-
-            promAutorizado /= volDrAutorizados.length;
-            promAsignado /= volDrAsignados.length;
-            promUtilizado /= volDrUtilizados.length;
-            promExcedido /= excedidosDr.length;
-            porcAutMax = promAutorizado * 100 / volMaxDr[i];
-            porcUtiMax = promUtilizado * 100 / volMaxDr[i];
-            resumenDr[volDrAttributes[i]]['promAutorizado'] = promAutorizado;
-            resumenDr[volDrAttributes[i]]['promAsignado'] = promAsignado;
-            resumenDr[volDrAttributes[i]]['promUtilizado'] = promUtilizado;
-            resumenDr[volDrAttributes[i]]['promExcedido'] = promExcedido;
-            resumenDr[volDrAttributes[i]]['porcAutMax'] = porcAutMax;
-            resumenDr[volDrAttributes[i]]['porcUtiMax'] = porcUtiMax;
-        }
-        
         resumenPi = {};
 
         for (var i = 0; i < volPiAttributes.length; i++) {
@@ -194,6 +128,72 @@ $(document).ready(function () {
 
     // Actualiza los valores de los volumenes dr, segun el dr seleccionado.
     function refreshDrValues() {
+        var tipoGrafica = selTipoGraficaVol.val();
+
+        if (tipoGrafica === 'vol_dr_actual') {
+            volDrAsignados = volDrAsignadosActual;
+            volDrAutorizados = volDrAutorizadosActual;
+            volDrUtilizados = volDrUtilizadosActual;
+        } else if (tipoGrafica === 'vol_dr_viejos') {
+            volDrAsignados = volDrAsignadosOld;
+            volDrAutorizados = volDrAutorizadosOld;
+            volDrUtilizados = volDrUtilizadosOld;
+        }
+
+        cicloDrLabels = [];
+
+        for (var i = 0; i < volDrAsignados.length; i++) {
+            cicloDrLabels.push(volDrAsignados[i].ciclo);
+        }
+
+        excedidosDr = [];
+
+        for (var i = 0; i < volDrAsignados.length; i++) {
+            excedidosDr.push({});
+            for (var j = 0; j < volDrAttributes.length; j++) {
+                var ex = volDrUtilizados[i][volDrAttributes[j]]
+                    - volDrAsignados[i][volDrAttributes[j]];
+                excedidosDr[i][volDrAttributes[j]] = ex >= 0 ? ex : 0;
+            }
+        }
+
+        resumenDr = {};
+
+        for (var i = 0; i < volDrAttributes.length; i++) {
+            resumenDr[volDrAttributes[i]] = {};
+            var promAutorizado = 0;
+            var promAsignado = 0;
+            var promUtilizado = 0;
+            var promExcedido = 0;
+            var porcAutMax = 0;
+            var porcUtiMax = 0;
+            resumenDr[volDrAttributes[i]]['volMax'] = volMaxDr[i];
+
+            for (var j = 0; j < volDrAutorizados.length; j++) {
+                var aut = volDrAutorizados[j][volDrAttributes[i]];
+                var asi = volDrAsignados[j][volDrAttributes[i]];
+                var uti = volDrUtilizados[j][volDrAttributes[i]];
+                var exc = excedidosDr[j][volDrAttributes[i]];
+                promAutorizado += aut;
+                promAsignado += asi;
+                promUtilizado += uti;
+                promExcedido += exc;
+            }
+
+            promAutorizado /= volDrAutorizados.length;
+            promAsignado /= volDrAsignados.length;
+            promUtilizado /= volDrUtilizados.length;
+            promExcedido /= excedidosDr.length;
+            porcAutMax = promAutorizado * 100 / volMaxDr[i];
+            porcUtiMax = promUtilizado * 100 / volMaxDr[i];
+            resumenDr[volDrAttributes[i]]['promAutorizado'] = promAutorizado;
+            resumenDr[volDrAttributes[i]]['promAsignado'] = promAsignado;
+            resumenDr[volDrAttributes[i]]['promUtilizado'] = promUtilizado;
+            resumenDr[volDrAttributes[i]]['promExcedido'] = promExcedido;
+            resumenDr[volDrAttributes[i]]['porcAutMax'] = porcAutMax;
+            resumenDr[volDrAttributes[i]]['porcUtiMax'] = porcUtiMax;
+        }
+
         var index = selDr.val();
         volDrAsignadoValues = [];
         volDrAutorizadoValues = [];

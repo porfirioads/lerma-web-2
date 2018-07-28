@@ -139,15 +139,14 @@ namespace Cuenca_conagua.pages
                 IngresarVolumenGtAutorizadoBD(nombreArchivo);
             else if (archivoSinRuta.StartsWith("Volumen_gt_utilizado"))
                 IngresarVolumenGtUtilizadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_dr_asignado"))
+                IngresarVolumenDrAsignadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_dr_autorizado"))
+                IngresarVolumenDrAutorizadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_dr_utilizado"))
+                IngresarVolumenDrUtilizadoBD(nombreArchivo);
         }
 
-        /// <summary>
-        /// Ingresa los registros de almacenamiento histórico de Chapala en 
-        /// caso de que ese archivo sea el que se subió al servidor.
-        /// </summary>
-        /// <param name="nombreArchivo">
-        /// Nombre del archivo de excel que contiene los datos.
-        /// </param>
         private void IngresarAlmacenamientoHistoricoChapalaBD(string nombreArchivo)
         {
             Logger.AddToLog("IngresarAlmacenamientoHistoricoChapala", true);
@@ -170,13 +169,6 @@ namespace Cuenca_conagua.pages
             }
         }
 
-        /// <summary>
-        /// Ingresa los registros de almacenamientos principales en caso de 
-        /// que ese archivo sea el que se subió al servidor.
-        /// </summary>
-        /// <param name="nombreArchivo">
-        /// Nombre del archivo de excel que contiene los datos.
-        /// </param>
         private void IngresarAlmacenamientosPrincipalesBD(string nombreArchivo)
         {
             Logger.AddToLog("IngresarAlmacenamientosPrincipales", true);
@@ -199,13 +191,6 @@ namespace Cuenca_conagua.pages
             }
         }
 
-        /// <summary>
-        /// Ingresa los registros de la precipitacion en caso de que ese archivo
-        /// sea el que se subio al servidor.
-        /// </summary>
-        /// <param name="nombreArchivo">
-        /// Nombre del archivo de excel que contiene los datos.
-        /// </param>
         protected void IngresarPrecipitacionBD(string nombreArchivo)
         {
             Logger.AddToLog("IngresarPrecipitacionBD", true);
@@ -226,13 +211,6 @@ namespace Cuenca_conagua.pages
             }
         }
 
-        /// <summary>
-        /// Ingresa los registros del escurrimiento en caso de que ese archivo
-        /// sea el que se subio al servidor.
-        /// </summary>
-        /// <param name="nombreArchivo">
-        /// Nombre del archivo de excel que contiene los datos.
-        /// </param>
         protected void IngresarEscurrimientoBD(string nombreArchivo)
         {
             Logger.AddToLog("IngresarEscurrimientoBD", true);
@@ -381,32 +359,11 @@ namespace Cuenca_conagua.pages
             }
         }
 
-        /// <summary>
-        /// Ingresa los registros de los volumenes en caso de que ese archivo
-        /// sea el que se subio al servidor.
-        /// </summary>
-        /// <param name="nombreArchivo">
-        /// Nombre del archivo de excel que contiene los datos.
-        /// </param>
-        protected void IngresarVolumenesBD(string nombreArchivo)
+        protected void IngresarVolumenDrAsignadoBD(string nombreArchivo)
         {
-            List<VolumenDr> volsDrAutorizados = ExcelFileIO
-                .ReadVolumenDrAutorizado(nombreArchivo);
+            List<VolumenDr> volsDrAsignados = CsvDataReader.ReadVolumenDr(nombreArchivo);
 
-            foreach (VolumenDr volAu in volsDrAutorizados)
-            {
-                if (volAu.ToVolumenDrAsignado().Save())
-                {
-                    Logger.AddToLog("Volumen DR Autorizado: " + volAu.Ciclo + " guardado", true);
-                }
-                else
-                {
-                    Logger.AddToLog("Volumen DR Autorizado: " + volAu.Ciclo + " no guardado", true);
-                }
-            }
-
-            List<VolumenDr> volsDrAsignados = ExcelFileIO
-                .ReadVolumenDrAsignado(nombreArchivo);
+            Logger.AddToLog("Volúmenes DR Asignados", true);
 
             foreach (VolumenDr volAs in volsDrAsignados)
             {
@@ -419,13 +376,36 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen DR Asignado: " + volAs.Ciclo + " no guardado", true);
                 }
             }
+        }
 
-            List<VolumenDr> volsDrUtilizados = ExcelFileIO
-                .ReadVolumenDrUtilizado(nombreArchivo);
+        protected void IngresarVolumenDrAutorizadoBD(string nombreArchivo)
+        {
+            List<VolumenDr> volsDrAutorizados = CsvDataReader.ReadVolumenDr(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes DR Autorizados", true);
+
+            foreach (VolumenDr volAu in volsDrAutorizados)
+            {
+                if (volAu.ToVolumenDrAutorizado().Save())
+                {
+                    Logger.AddToLog("Volumen DR Autorizado: " + volAu.Ciclo + " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen DR Autorizado: " + volAu.Ciclo + " no guardado", true);
+                }
+            }
+        }
+
+        protected void IngresarVolumenDrUtilizadoBD(string nombreArchivo)
+        {
+            List<VolumenDr> volsDrUtilizados = CsvDataReader.ReadVolumenDr(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes DR Utilizados", true);
 
             foreach (VolumenDr volUt in volsDrUtilizados)
             {
-                if (volUt.ToVolumenDrAsignado().Save())
+                if (volUt.ToVolumenDrUtilizado().Save())
                 {
                     Logger.AddToLog("Volumen DR Utilizado: " + volUt.Ciclo + " guardado", true);
                 }
@@ -434,7 +414,17 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen DR Utilizado: " + volUt.Ciclo + " no guardado", true);
                 }
             }
+        }
 
+        /// <summary>
+        /// Ingresa los registros de los volumenes en caso de que ese archivo
+        /// sea el que se subio al servidor.
+        /// </summary>
+        /// <param name="nombreArchivo">
+        /// Nombre del archivo de excel que contiene los datos.
+        /// </param>
+        protected void IngresarVolumenesBD(string nombreArchivo)
+        {
             List<VolumenPi> volsPiAutorizados = ExcelFileIO
                 .ReadVolumenPiAutorizado(nombreArchivo);
 
@@ -515,13 +505,6 @@ namespace Cuenca_conagua.pages
             }
         }
 
-        /// <summary>
-        /// Ingresa los registros de lluvia anual por estación en caso de que 
-        /// ese archivo sea el que se subió al servidor.
-        /// </summary>
-        /// <param name="nombreArchivo">
-        /// Nombre del archivo de excel que contiene los datos.
-        /// </param>
         protected void IngresarLluviaAnualEstacion(string nombreArchivo)
         {
             Logger.AddToLog("IngresarLluviaAnualEstacion", true);

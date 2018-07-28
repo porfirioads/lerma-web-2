@@ -220,7 +220,27 @@ namespace Cuenca_conagua.src.Utilidades
 
         public static List<VolumenDr> ReadVolumenDr(string filename)
         {
-            throw new NotImplementedException();
+            List<Dictionary<string, string>> data = ReadCsv(filename);
+            Logger.AddToLog(DictListToJsonString(data), true);
+            List<VolumenDr> vols = new List<VolumenDr>();
+
+            foreach (Dictionary<string, string> vol in data)
+            {
+                VolumenDr v = new VolumenDr();
+                v.Ciclo = vol["ciclo"];
+                v.Dr033 = double.Parse(vol["dr033"]);
+                v.Dr045 = double.Parse(vol["dr045"]);
+                v.Dr011 = double.Parse(vol["dr011"]);
+                v.Dr085 = double.Parse(vol["dr085"]);
+                v.Dr087 = double.Parse(vol["dr087"]);
+                v.Dr022 = double.Parse(vol["dr022"]);
+                v.Dr061 = double.Parse(vol["dr061"]);
+                v.Dr024 = double.Parse(vol["dr024"]);
+                v.Dr013 = double.Parse(vol["dr013"]);
+                vols.Add(v);
+            }
+
+            return vols;
         }
 
         public static List<VolumenPi> ReadVolumenPi(string filename)
