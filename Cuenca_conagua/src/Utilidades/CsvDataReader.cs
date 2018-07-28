@@ -184,6 +184,43 @@ namespace Cuenca_conagua.src.Utilidades
             return alms;
         }
 
+        public static List<VolumenAg> ReadVolumenAg(string filename)
+        {
+            List<Dictionary<string, string>> data = ReadCsv(filename);
+            Logger.AddToLog(DictListToJsonString(data), true);
+            List<VolumenAg> vols = new List<VolumenAg>();
+
+            foreach (Dictionary<string, string> vol in data)
+            {
+                VolumenAg v = new VolumenAg();
+                v.Ciclo = vol["ciclo"];
+                v.Volumen = double.Parse(vol["volumen"]);
+                vols.Add(v);
+            }
+
+            return vols;
+        }
+
+        public static List<VolumenDr> ReadVolumenDr(string filename)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static List<VolumenGt> ReadVolumenGt(string filename)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static List<VolumenPi> ReadVolumenPi(string filename)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static List<VolumenPiOld> ReadVolumenPiOld(string filename)
+        {
+            throw new NotImplementedException();
+        }
+
         private static string DictListToJsonString(List<Dictionary<string, string>> obj)
         {
             StringBuilder sb = new StringBuilder();

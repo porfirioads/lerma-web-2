@@ -48,7 +48,7 @@ namespace Cuenca_conagua.pages
         {
             string path = "";
 
-            switch(tipo)
+            switch (tipo)
             {
                 case "boletin":
                     path = "uploaded_files/boletines";
@@ -127,8 +127,12 @@ namespace Cuenca_conagua.pages
                 IngresarAlmacenamientosPrincipalesBD(nombreArchivo);
             else if (archivoSinRuta.StartsWith("Almacenamiento_histórico_chapala"))
                 IngresarAlmacenamientoHistoricoChapalaBD(nombreArchivo);
-
-            // TODO Agregar archivos de volúmenes
+            else if (archivoSinRuta.StartsWith("Volumen_ag_asignado"))
+                IngresarVolumenAgAsignadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_ag_autorizado"))
+                IngresarVolumenAgAutorizadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_ag_utilizado"))
+                IngresarVolumenAgUtilizadoBD(nombreArchivo);
         }
 
         /// <summary>
@@ -142,14 +146,14 @@ namespace Cuenca_conagua.pages
         {
             Logger.AddToLog("IngresarAlmacenamientoHistoricoChapala", true);
 
-            List<AlmacenamientoHistoricoChapala> almacenamientos = 
+            List<AlmacenamientoHistoricoChapala> almacenamientos =
                 CsvDataReader.ReadAlmacenamientoHistoricoChapala(nombreArchivo);
 
             foreach (AlmacenamientoHistoricoChapala alm in almacenamientos)
             {
                 if (alm.Save())
                 {
-                    Logger.AddToLog("Almacenamiento histórico de chapala: " + 
+                    Logger.AddToLog("Almacenamiento histórico de chapala: " +
                         alm.Fecha + " agregado.", true);
                 }
                 else
@@ -241,6 +245,69 @@ namespace Cuenca_conagua.pages
                 {
                     Logger.AddToLog("Escurrimiento: " + ea.Ciclo
                         + " no agregado.", true);
+                }
+            }
+        }
+
+        protected void IngresarVolumenAgAsignadoBD(string nombreArchivo)
+        {
+            List<VolumenAg> volsAgAsignados = CsvDataReader.ReadVolumenAg(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes AG Asignados", true);
+
+            foreach (VolumenAg volAg in volsAgAsignados)
+            {
+                if (volAg.ToVolumenAgAsignado().Save())
+                {
+                    Logger.AddToLog("Volumen AG Asignado: " + volAg.Ciclo +
+                        " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen AG Asignado: " + volAg.Ciclo +
+                        " no guardado", true);
+                }
+            }
+        }
+
+        protected void IngresarVolumenAgAutorizadoBD(string nombreArchivo)
+        {
+            List<VolumenAg> volsAgAutorizados = CsvDataReader.ReadVolumenAg(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes Ag Autorizados", true);
+
+            foreach (VolumenAg volAg in volsAgAutorizados)
+            {
+                if (volAg.ToVolumenAgAutorizado().Save())
+                {
+                    Logger.AddToLog("Volumen AG Autorizado: " + volAg.Ciclo +
+                        " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen AG Autorizado: " + volAg.Ciclo +
+                        " no guardado", true);
+                }
+            }
+        }
+
+        protected void IngresarVolumenAgUtilizadoBD(string nombreArchivo)
+        {
+            List<VolumenAg> volsAgUtilizados = CsvDataReader.ReadVolumenAg(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes Ag Utilizados", true);
+
+            foreach (VolumenAg volAg in volsAgUtilizados)
+            {
+                if (volAg.ToVolumenAgUtilizado().Save())
+                {
+                    Logger.AddToLog("Volumen AG Utilizado: " + volAg.Ciclo +
+                        " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen AG Utilizado: " + volAg.Ciclo +
+                        " no guardado", true);
                 }
             }
         }
@@ -349,14 +416,14 @@ namespace Cuenca_conagua.pages
 
             foreach (VolumenPiOld volPiOld in volsPiOldAutorizados)
             {
-                if(volPiOld.ToVolumenPiAutorizadoOld().Save())
+                if (volPiOld.ToVolumenPiAutorizadoOld().Save())
                 {
-                    Logger.AddToLog("Volumen PI Old Autorizado: " + 
+                    Logger.AddToLog("Volumen PI Old Autorizado: " +
                         volPiOld.Ciclo + " guardado", true);
                 }
                 else
                 {
-                    Logger.AddToLog("Volumen PI Old Autorizado: " + 
+                    Logger.AddToLog("Volumen PI Old Autorizado: " +
                         volPiOld.Ciclo + " no guardado", true);
                 }
             }
@@ -384,7 +451,7 @@ namespace Cuenca_conagua.pages
 
             foreach (VolumenGt volGt in volsGtAsignados)
             {
-                if(volGt.ToVolumenGtAsignado().Save())
+                if (volGt.ToVolumenGtAsignado().Save())
                 {
                     Logger.AddToLog("Volumen GT Asignado: " + volGt.Ciclo +
                         " guardado", true);
@@ -430,87 +497,6 @@ namespace Cuenca_conagua.pages
                     Logger.AddToLog("Volumen GT Asignado: " + volGt.Ciclo +
                         " no guardado", true);
                 }
-            }
-
-            List<VolumenAg> volsAgAsignados = ExcelFileIO.ReadVolumenAgAsignado(nombreArchivo);
-
-            Logger.AddToLog("Volúmenes AG Asignados", true);
-
-            foreach (VolumenAg volAg in volsAgAsignados)
-            {
-                if (volAg.ToVolumenAgAsignado().Save())
-                {
-                    Logger.AddToLog("Volumen AG Asignado: " + volAg.Ciclo +
-                        " guardado", true);
-                }
-                else
-                {
-                    Logger.AddToLog("Volumen AG Asignado: " + volAg.Ciclo +
-                        " no guardado", true);
-                }
-            }
-
-            List<VolumenAg> volsAgAutorizados = ExcelFileIO.ReadVolumenAgAutorizado(nombreArchivo);
-
-            Logger.AddToLog("Volúmenes Ag Autorizados", true);
-
-            foreach (VolumenAg volAg in volsAgAutorizados)
-            {
-                if (volAg.ToVolumenAgAutorizado().Save())
-                {
-                    Logger.AddToLog("Volumen AG Asignado: " + volAg.Ciclo +
-                        " guardado", true);
-                }
-                else
-                {
-                    Logger.AddToLog("Volumen AG Asignado: " + volAg.Ciclo +
-                        " no guardado", true);
-                }
-            }
-
-            List<VolumenAg> volsAgUtilizados = ExcelFileIO.ReadVolumenAgUtilizado(nombreArchivo);
-
-            Logger.AddToLog("Volúmenes Ag Utilizados", true);
-
-            foreach (VolumenAg volAg in volsAgUtilizados)
-            {
-                if (volAg.ToVolumenAgUtilizado().Save())
-                {
-                    Logger.AddToLog("Volumen AG Asignado: " + volAg.Ciclo +
-                        " guardado", true);
-                }
-                else
-                {
-                    Logger.AddToLog("Volumen AG Asignado: " + volAg.Ciclo +
-                        " no guardado", true);
-                }
-            }
-
-            volsAgAsignados = VolumenAgAsignado.All();
-
-            Logger.AddToLog("Volúmenes AG Asignados from DB", true);
-
-            foreach (VolumenAg volAg in volsAgAsignados)
-            {
-                Logger.AddToLog(volAg.ToJSON(), true);
-            }
-
-            volsAgAutorizados = VolumenAgAutorizado.All();
-
-            Logger.AddToLog("Volúmenes Ag Autorizados from DB", true);
-
-            foreach (VolumenAg volAg in volsAgAutorizados)
-            {
-                Logger.AddToLog(volAg.ToJSON(), true);
-            }
-
-            volsAgUtilizados = VolumenAgUtilizado.All();
-
-            Logger.AddToLog("Volúmenes Ag Utilizados from DB", true);
-
-            foreach (VolumenAg volAg in volsAgUtilizados)
-            {
-                Logger.AddToLog(volAg.ToJSON(), true);
             }
         }
 
