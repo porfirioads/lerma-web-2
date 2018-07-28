@@ -141,6 +141,32 @@ namespace Cuenca_conagua.src.Utilidades
             return lluvias;
         }
 
+        public static List<AlmacenamientoPrincipal> ReadAlmacenamientoPrincipal(string filename)
+        {
+            List<Dictionary<string, string>> data = ReadCsv(filename);
+            Logger.AddToLog(DictListToJsonString(data), true);
+            List<AlmacenamientoPrincipal> alms = new List<AlmacenamientoPrincipal>();
+
+            foreach (Dictionary<string, string> alm in data)
+            {
+                AlmacenamientoPrincipal a = new AlmacenamientoPrincipal();
+                a.Anio = alm["anio"];
+                a.Alzate = double.Parse(alm["alzate"]);
+                a.Ramirez = double.Parse(alm["ramirez"]);
+                a.Tepetitlan = double.Parse(alm["tepetitlan"]);
+                a.Tepuxtepec = double.Parse(alm["tepuxtepec"]);
+                a.Solis = double.Parse(alm["solis"]);
+                a.Yuriria = double.Parse(alm["yuriria"]);
+                a.Allende = double.Parse(alm["allende"]);
+                a.MOcampo = double.Parse(alm["m_ocampo"]);
+                a.Purisima = double.Parse(alm["purisima"]);
+                a.Chapala = double.Parse(alm["chapala"]);
+                alms.Add(a);
+            }
+
+            return alms;
+        }
+
         private static string DictListToJsonString(List<Dictionary<string, string>> obj)
         {
             StringBuilder sb = new StringBuilder();

@@ -171,7 +171,7 @@ namespace Cuenca_conagua.pages
         {
             Logger.AddToLog("IngresarAlmacenamientosPrincipales", true);
 
-            List<AlmacenamientoPrincipal> almacenamientos = ExcelFileIO.
+            List<AlmacenamientoPrincipal> almacenamientos = CsvDataReader.
                 ReadAlmacenamientoPrincipal(nombreArchivo);
 
             foreach (AlmacenamientoPrincipal alm in almacenamientos)
