@@ -201,12 +201,24 @@ namespace Cuenca_conagua.src.Utilidades
             return vols;
         }
 
-        public static List<VolumenDr> ReadVolumenDr(string filename)
+        public static List<VolumenGt> ReadVolumenGt(string filename)
         {
-            throw new NotImplementedException();
+            List<Dictionary<string, string>> data = ReadCsv(filename);
+            Logger.AddToLog(DictListToJsonString(data), true);
+            List<VolumenGt> vols = new List<VolumenGt>();
+
+            foreach (Dictionary<string, string> vol in data)
+            {
+                VolumenGt v = new VolumenGt();
+                v.Ciclo = vol["ciclo"];
+                v.Volumen = double.Parse(vol["volumen"]);
+                vols.Add(v);
+            }
+
+            return vols;
         }
 
-        public static List<VolumenGt> ReadVolumenGt(string filename)
+        public static List<VolumenDr> ReadVolumenDr(string filename)
         {
             throw new NotImplementedException();
         }

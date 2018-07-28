@@ -133,6 +133,12 @@ namespace Cuenca_conagua.pages
                 IngresarVolumenAgAutorizadoBD(nombreArchivo);
             else if (archivoSinRuta.StartsWith("Volumen_ag_utilizado"))
                 IngresarVolumenAgUtilizadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_gt_asignado"))
+                IngresarVolumenGtAsignadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_gt_autorizado"))
+                IngresarVolumenGtAutorizadoBD(nombreArchivo);
+            else if (archivoSinRuta.StartsWith("Volumen_gt_utilizado"))
+                IngresarVolumenGtUtilizadoBD(nombreArchivo);
         }
 
         /// <summary>
@@ -312,6 +318,69 @@ namespace Cuenca_conagua.pages
             }
         }
 
+        protected void IngresarVolumenGtAsignadoBD(string nombreArchivo)
+        {
+            List<VolumenGt> volsGtAsignados = CsvDataReader.ReadVolumenGt(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes GT Asignados", true);
+
+            foreach (VolumenGt volGt in volsGtAsignados)
+            {
+                if (volGt.ToVolumenGtAsignado().Save())
+                {
+                    Logger.AddToLog("Volumen GT Asignado: " + volGt.Ciclo +
+                        " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen GT Asignado: " + volGt.Ciclo +
+                        " no guardado", true);
+                }
+            }
+        }
+
+        protected void IngresarVolumenGtAutorizadoBD(string nombreArchivo)
+        {
+            List<VolumenGt> volsGtAutorizados = CsvDataReader.ReadVolumenGt(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes GT Autorizados", true);
+
+            foreach (VolumenGt volGt in volsGtAutorizados)
+            {
+                if (volGt.ToVolumenGtAutorizado().Save())
+                {
+                    Logger.AddToLog("Volumen GT Autorizado: " + volGt.Ciclo +
+                        " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen GT Autorizado: " + volGt.Ciclo +
+                        " no guardado", true);
+                }
+            }
+        }
+
+        protected void IngresarVolumenGtUtilizadoBD(string nombreArchivo)
+        {
+            List<VolumenGt> volsGtUtilizados = CsvDataReader.ReadVolumenGt(nombreArchivo);
+
+            Logger.AddToLog("Volúmenes GT Utilizados", true);
+
+            foreach (VolumenGt volGt in volsGtUtilizados)
+            {
+                if (volGt.ToVolumenGtUtilizado().Save())
+                {
+                    Logger.AddToLog("Volumen GT Utilizado: " + volGt.Ciclo +
+                        " guardado", true);
+                }
+                else
+                {
+                    Logger.AddToLog("Volumen GT Utilizado: " + volGt.Ciclo +
+                        " no guardado", true);
+                }
+            }
+        }
+
         /// <summary>
         /// Ingresa los registros de los volumenes en caso de que ese archivo
         /// sea el que se subio al servidor.
@@ -442,60 +511,6 @@ namespace Cuenca_conagua.pages
                 {
                     Logger.AddToLog("Volumen PI Old Autorizado: " +
                         volPiOld.Ciclo + " no guardado", true);
-                }
-            }
-
-            List<VolumenGt> volsGtAsignados = ExcelFileIO.ReadVolumenGtAsignado(nombreArchivo);
-
-            Logger.AddToLog("Volúmenes GT Asignados", true);
-
-            foreach (VolumenGt volGt in volsGtAsignados)
-            {
-                if (volGt.ToVolumenGtAsignado().Save())
-                {
-                    Logger.AddToLog("Volumen GT Asignado: " + volGt.Ciclo +
-                        " guardado", true);
-                }
-                else
-                {
-                    Logger.AddToLog("Volumen GT Asignado: " + volGt.Ciclo +
-                        " no guardado", true);
-                }
-            }
-
-            List<VolumenGt> volsGtAutorizados = ExcelFileIO.ReadVolumenGtAutorizado(nombreArchivo);
-
-            Logger.AddToLog("Volúmenes GT Autorizados", true);
-
-            foreach (VolumenGt volGt in volsGtAutorizados)
-            {
-                if (volGt.ToVolumenGtAutorizado().Save())
-                {
-                    Logger.AddToLog("Volumen GT Asignado: " + volGt.Ciclo +
-                        " guardado", true);
-                }
-                else
-                {
-                    Logger.AddToLog("Volumen GT Asignado: " + volGt.Ciclo +
-                        " no guardado", true);
-                }
-            }
-
-            List<VolumenGt> volsGtUtilizados = ExcelFileIO.ReadVolumenGtUtilizado(nombreArchivo);
-
-            Logger.AddToLog("Volúmenes GT Utilizados", true);
-
-            foreach (VolumenGt volGt in volsGtUtilizados)
-            {
-                if (volGt.ToVolumenGtUtilizado().Save())
-                {
-                    Logger.AddToLog("Volumen GT Asignado: " + volGt.Ciclo +
-                        " guardado", true);
-                }
-                else
-                {
-                    Logger.AddToLog("Volumen GT Asignado: " + volGt.Ciclo +
-                        " no guardado", true);
                 }
             }
         }
