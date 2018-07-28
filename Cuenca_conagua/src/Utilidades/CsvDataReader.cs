@@ -100,6 +100,47 @@ namespace Cuenca_conagua.src.Utilidades
             return escs;
         }
 
+        public static List<LluviaAnualEstacion> ReadLluviaAnualEstacion(string filename)
+        {
+            List<Dictionary<string, string>> data = ReadCsv(filename);
+            Logger.AddToLog(DictListToJsonString(data), true);
+            List<LluviaAnualEstacion> lluvias = new List<LluviaAnualEstacion>();
+
+            foreach (Dictionary<string, string> lluvia in data)
+            {
+                LluviaAnualEstacion l = new LluviaAnualEstacion();
+                l.Ciclo = lluvia["ciclo"];
+                l.LaeCelaya = double.Parse(lluvia["laeCelaya"]);
+                l.LaeGuanajuato = double.Parse(lluvia["laeGuanajuato"]);
+                l.LaeIrapuato = double.Parse(lluvia["laeIrapuato"]);
+                l.LaeAdjuntas = double.Parse(lluvia["laeAdjuntas"]);
+                l.LaeLeon = double.Parse(lluvia["laeLeon"]);
+                l.LaePPenuelitas = double.Parse(lluvia["laePPenuelitas"]);
+                l.LaePSolis = double.Parse(lluvia["laePSolis"]);
+                l.LaeSanFelipe = double.Parse(lluvia["laeSanFelipe"]);
+                l.LaeSanLuisDeLaPaz = double.Parse(lluvia["laeSanLuisDeLaPaz"]);
+                l.LaeYuriria = double.Parse(lluvia["laeYuriria"]);
+                l.LaeChapala = double.Parse(lluvia["laeChapala"]);
+                l.LaeFuerte = double.Parse(lluvia["laeFuerte"]);
+                l.LaeTule = double.Parse(lluvia["laeTule"]);
+                l.LaeTizapan = double.Parse(lluvia["laeTizapan"]);
+                l.LaeYurecuaro = double.Parse(lluvia["laeYurecuaro"]);
+                l.LaeAtlacomulco = double.Parse(lluvia["laeAtlacomulco"]);
+                l.LaeTolucaRectoria = double.Parse(lluvia["laeTolucaRectoria"]);
+                l.LaeChincua = double.Parse(lluvia["laeChincua"]);
+                l.LaeCuitzeoAu = double.Parse(lluvia["laeCuitzeoAu"]);
+                l.LaeMelchorOcampo = double.Parse(lluvia["laeMelchorOcampo"]);
+                l.LaeMorelia = double.Parse(lluvia["laeMorelia"]);
+                l.LaeTepuxtepec = double.Parse(lluvia["laeTepuxtepec"]);
+                l.LaeZacapu = double.Parse(lluvia["laeZacapu"]);
+                l.LaeZamora = double.Parse(lluvia["laeZamora"]);
+                l.LaeQueretaroObs = double.Parse(lluvia["laeQueretaroObs"]);
+                lluvias.Add(l);
+            }
+
+            return lluvias;
+        }
+
         private static string DictListToJsonString(List<Dictionary<string, string>> obj)
         {
             StringBuilder sb = new StringBuilder();
@@ -109,7 +150,7 @@ namespace Cuenca_conagua.src.Utilidades
             {
                 IEnumerable<string> enumerable = o.Select(
                     d => string.Format("\"{0}\": {1}", d.Key, d.Value));
-                string oJson = "{\n        " + string.Join(",\n        ", 
+                string oJson = "{\n        " + string.Join(",\n        ",
                     enumerable) + "\n    }";
                 sb.Append(oJson).Append(",\n    ");
             }

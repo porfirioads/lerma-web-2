@@ -526,7 +526,7 @@ namespace Cuenca_conagua.pages
             Logger.AddToLog("IngresarLluviaAnualEstacion", true);
 
             List<LluviaAnualEstacion> lluvias =
-                ExcelFileIO.ReadLluviaAnualEstacion(nombreArchivo);
+                CsvDataReader.ReadLluviaAnualEstacion(nombreArchivo);
 
             foreach (LluviaAnualEstacion lae in lluvias)
             {
