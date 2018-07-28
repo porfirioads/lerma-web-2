@@ -167,6 +167,23 @@ namespace Cuenca_conagua.src.Utilidades
             return alms;
         }
 
+        public static List<AlmacenamientoHistoricoChapala> ReadAlmacenamientoHistoricoChapala(string filename)
+        {
+            List<Dictionary<string, string>> data = ReadCsv(filename);
+            Logger.AddToLog(DictListToJsonString(data), true);
+            List<AlmacenamientoHistoricoChapala> alms = new List<AlmacenamientoHistoricoChapala>();
+
+            foreach (Dictionary<string, string> alm in data)
+            {
+                AlmacenamientoHistoricoChapala a = new AlmacenamientoHistoricoChapala();
+                a.Fecha = DateUtils.ConvertSqlDateToDateTime(alm["fecha"]);
+                a.Almacenamiento = double.Parse(alm["almacenamiento"]);
+                alms.Add(a);
+            }
+
+            return alms;
+        }
+
         private static string DictListToJsonString(List<Dictionary<string, string>> obj)
         {
             StringBuilder sb = new StringBuilder();

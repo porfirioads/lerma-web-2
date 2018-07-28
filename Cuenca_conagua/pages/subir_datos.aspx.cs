@@ -143,7 +143,7 @@ namespace Cuenca_conagua.pages
             Logger.AddToLog("IngresarAlmacenamientoHistoricoChapala", true);
 
             List<AlmacenamientoHistoricoChapala> almacenamientos = 
-                ExcelFileIO.ReadAlmacenamientoHistoricoChapala(nombreArchivo);
+                CsvDataReader.ReadAlmacenamientoHistoricoChapala(nombreArchivo);
 
             foreach (AlmacenamientoHistoricoChapala alm in almacenamientos)
             {
