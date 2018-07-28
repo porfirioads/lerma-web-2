@@ -77,27 +77,27 @@ var uploadLabels = [
     },
     {
         optionValue: 'Volumen_pi_asignado',
-        optionLabel: 'Volumen Pequeña Irrigación Asignado (Volumen_pi_asignado.csv)',
+        optionLabel: 'Volumen Pequeña Irrigación Convenio 2004 Asignado (Volumen_pi_asignado.csv)',
         fileExtension: '.csv'
     },
     {
         optionValue: 'Volumen_pi_autorizado',
-        optionLabel: 'Volumen Pequeña Irrigación Autorizado (Volumen_pi_autorizado.csv)',
+        optionLabel: 'Volumen Pequeña Irrigación Convenio 2004 Autorizado (Volumen_pi_autorizado.csv)',
         fileExtension: '.csv'
     },
     {
         optionValue: 'Volumen_pi_utilizado',
-        optionLabel: 'Volumen Pequeña Irrigación Utilizado (Volumen_pi_utilizado.csv)',
+        optionLabel: 'Volumen Pequeña Irrigación Convenio 2004 Utilizado (Volumen_pi_utilizado.csv)',
         fileExtension: '.csv'
     },
     {
         optionValue: 'Volumen_pi_1991_autorizado',
-        optionLabel: 'Volumen Pequeña Irrigación Acuerdo 1991 Autorizado (Volumen_pi_autorizado.csv)',
+        optionLabel: 'Volumen Pequeña Irrigación Acuerdo 1991 Autorizado (Volumen_pi_1991_autorizado.csv)',
         fileExtension: '.csv'
     },
     {
         optionValue: 'Volumen_pi_1991_utilizado',
-        optionLabel: 'Volumen Pequeña Irrigación Acuerdo 1991 Utilizado (Volumen_pi_utilizado.csv)',
+        optionLabel: 'Volumen Pequeña Irrigación Acuerdo 1991 Utilizado (Volumen_pi_1991_utilizado.csv)',
         fileExtension: '.csv'
     },
     {
